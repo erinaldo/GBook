@@ -35,12 +35,12 @@ namespace DAL
             return usuariosDTO;
         }
 
-        public UsuarioLoginDTO Login(string email)
+        public Models.Usuario Login(string email)
         {
             SelectCommandText = String.Format(LOGIN, email);
 
             DataSet ds = Load();
-            UsuarioLoginDTO usuario = ds.Tables[0].Rows.Count <= 0 ? null : fill.FillObjectUsuarioLoginDTO(ds.Tables[0].Rows[0]);
+            Models.Usuario usuario = ds.Tables[0].Rows.Count <= 0 ? null : fill.FillObjectUsuarioLoginDTO(ds.Tables[0].Rows[0]);
 
             return usuario;
         }

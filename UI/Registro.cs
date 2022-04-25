@@ -35,6 +35,9 @@ namespace UI
                 string password = txtPassword.Text;
 
                 _usuarioService.RegistrarUsuario(usuario, password);
+
+                MessageBox.Show("Usuario registrado con éxito.");
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -43,6 +46,16 @@ namespace UI
         }
 
         private void Registro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CerrarForm();
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CerrarForm()
         {
             Login login = new Login(_usuarioService);
             login.Show();

@@ -1,5 +1,6 @@
 ﻿using Interfaces;
 using Models;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace UI
 
         private void lblLogout_Click(object sender, EventArgs e)
         {
-            Usuario.RemoveInstance();
+            Sesion.RemoveInstance();
             this.Close();
 
             Login login = new Login(_usuarioService);
@@ -33,7 +34,7 @@ namespace UI
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Usuario usuario = Usuario.GetInstance();
+            Usuario usuario = Sesion.GetInstance();
 
             lblBienvenido.Text = $"Hola, {usuario.Nombre} {usuario.Apellido}.";
         }

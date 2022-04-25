@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Models.DTOs;
 using System.Text.RegularExpressions;
+using Servicios;
 
 namespace BLL
 {
@@ -30,22 +31,24 @@ namespace BLL
         {
             try
             {
-                UsuarioLoginDTO usuario = _usuarioDAL.Login(email);
+                Models.Usuario usuario = _usuarioDAL.Login(email);
                 if (usuario != null)
                 {
                     string passwordEncriptada = _encriptacion.Hash(password);
                     if (passwordEncriptada == usuario.Password)
                     {
-                        if (Models.Usuario.GetInstance() != null) throw new Exception("Ya hay una instancia de un usuario creada.");
+                        if (Sesion.GetInstance() != null) throw new Exception("Ya hay una instancia de un usuario creada.");
 
-                        Models.Usuario usuarioSingleton = Models.Usuario.CreateInstance();
-
-                        usuarioSingleton.UsuarioId = usuario.UsuarioId;
-                        usuarioSingleton.Email = usuario.Email;
-                        usuarioSingleton.Password = usuario.Password;
-                        usuarioSingleton.Nombre = usuario.Nombre;
-                        usuarioSingleton.Apellido = usuario.Apellido;
-
+                        Models.Usuario usuarioSingleton = new Models.Usuario()
+                        {
+                            UsuarioId = usuario.UsuarioId,
+                            Email = usuario.Email,
+                            Password = usuario.Password,
+                            Nombre = usuario.Nombre,
+                            Apellido = usuario.Apellido,
+                        };
+                        Sesion.CreateInstance(usuarioSingleton);
+                        
                         return usuarioSingleton;
                     }
                     else throw new Exception("La contraseña ingresada es incorrecta.");

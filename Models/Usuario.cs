@@ -9,36 +9,36 @@ namespace Models
     public class Usuario
     {
 
-        private static Usuario _instance = null;
-        private static object _protect = new object();
+        //private static Usuario _instance = null;
+        //private static object _protect = new object();
 
-        private Usuario()
-        {
-        }
+        //private Usuario()
+        //{
+        //}
 
-        public static Usuario CreateInstance()
-        {
-            // Utilizo el lock para proteger el hilo de mi instancia.
-            lock (_protect)
-            {
-                if (_instance == null)
-                {
-                    _instance = new Usuario();
-                }
-            }
+        //public static Usuario CreateInstance()
+        //{
+        //    // Utilizo el lock para proteger el hilo de mi instancia.
+        //    lock (_protect)
+        //    {
+        //        if (_instance == null)
+        //        {
+        //            _instance = new Usuario();
+        //        }
+        //    }
 
-            return _instance;
-        }
+        //    return _instance;
+        //}
 
-        public static Usuario GetInstance()
-        {
-            return _instance;
-        }
+        //public static Usuario GetInstance()
+        //{
+        //    return _instance;
+        //}
 
-        public static Usuario RemoveInstance()
-        {
-            return _instance = null;
-        }
+        //public static Usuario RemoveInstance()
+        //{
+        //    return _instance = null;
+        //}
 
         public int UsuarioId { get; set; }
         public string Email { get; set; }
