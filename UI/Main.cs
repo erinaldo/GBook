@@ -28,8 +28,7 @@ namespace UI
             Sesion.RemoveInstance();
             this.Close();
 
-            Login login = new Login(_usuarioService);
-            login.Show();
+            AbrirFormLogin();
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -37,6 +36,18 @@ namespace UI
             Usuario usuario = Sesion.GetInstance();
 
             lblBienvenido.Text = $"Hola, {usuario.Nombre} {usuario.Apellido}.";
+        }
+
+        private void AbrirFormLogin()
+        {
+            Login login = new Login(_usuarioService);
+            login.Show();
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Sesion.RemoveInstance();
+            AbrirFormLogin();
         }
     }
 }
