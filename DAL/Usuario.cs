@@ -14,9 +14,10 @@ namespace DAL
     {
         #region Querys
         private const string GET_USERS = @"SELECT * FROM Usuario";
-        private const string REGISTRAR_USUARIO = @"INSERT INTO Usuario (Email, Password, Nombre, Apellido) 
-                                                   OUTPUT inserted.UsuarioId VALUES (@parEmail, @parPassword, @parNombre, @parApellido)";
+        private const string REGISTRAR_USUARIO = @"INSERT INTO Usuario (Email, Password, Nombre, Apellido, Bloqueo) 
+                                                   OUTPUT inserted.UsuarioId VALUES (@parEmail, @parPassword, @parNombre, @parApellido, @parBloqueo)";
         private const string LOGIN = @"SELECT TOP 1 * FROM Usuario WHERE Email = '{0}'";
+        private const string BLOQUEAR_USUARIO = @"UPDATE Usuario SET Bloqueo = Bloqueo + 1 WHERE Email = @parEmail";
         #endregion
 
         Fill fill = new Fill();
@@ -47,18 +48,29 @@ namespace DAL
         #endregion
 
         #region Métodos CRUD
-        public int RegistrarUsuario(UsuarioDTO usuario, string password)
+        public int RegistrarUsuario(Models.Usuario usuario)
         {
             this.ExecuteCommandText = REGISTRAR_USUARIO;
 
             this.ExecuteParameters.Parameters.Clear();
 
             this.ExecuteParameters.Parameters.AddWithValue("@parEmail", usuario.Email);
-            this.ExecuteParameters.Parameters.AddWithValue("@parPassword", password);
+            this.ExecuteParameters.Parameters.AddWithValue("@parPassword", usuario.Password);
             this.ExecuteParameters.Parameters.AddWithValue("@parNombre", usuario.Nombre);
             this.ExecuteParameters.Parameters.AddWithValue("@parApellido", usuario.Apellido);
+            this.ExecuteParameters.Parameters.AddWithValue("@parBloqueo", usuario.Bloqueo);
 
             return this.ExecuteNonEscalar();
+        }
+
+        public void BloquearUsuario(string email)
+        {
+            this.ExecuteCommandText = BLOQUEAR_USUARIO;
+
+            this.ExecuteParameters.Parameters.Clear();
+
+            this.ExecuteParameters.Parameters.AddWithValue("@parEmail", email);
+            this.executeNonQuery();
         }
         #endregion
     }

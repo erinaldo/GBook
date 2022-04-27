@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Models;
 using Models.DTOs;
 using System;
 using System.Collections.Generic;
@@ -26,15 +27,15 @@ namespace UI
         {
             try
             {
-                UsuarioDTO usuario = new UsuarioDTO()
+                Usuario usuario = new Usuario()
                 {
                     Email = txtEmail.Text,
                     Nombre = txtNombre.Text,
                     Apellido = txtApellido.Text,
+                    Password = txtPassword.Text,
                 };
-                string password = txtPassword.Text;
 
-                _usuarioService.RegistrarUsuario(usuario, password);
+                _usuarioService.RegistrarUsuario(usuario);
 
                 MessageBox.Show("Usuario registrado con éxito.");
                 this.Close();

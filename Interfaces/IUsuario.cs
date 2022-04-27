@@ -1,4 +1,5 @@
-﻿using Models.DTOs;
+﻿using Models;
+using Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Interfaces
     public interface IUsuario
     {
         List<UsuarioDTO> GetUsers();
-        int RegistrarUsuario(UsuarioDTO usuario, string password);
-        Models.Usuario Login(string email, string password);
+        int RegistrarUsuario(Usuario usuario);
+        Usuario Login(string email, string password);
     }
 }

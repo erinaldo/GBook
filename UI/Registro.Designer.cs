@@ -49,6 +49,7 @@
             this.txtEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.ForeColor = System.Drawing.Color.White;
             this.txtEmail.Location = new System.Drawing.Point(261, 54);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtEmail.Name = "txtEmail";
@@ -84,11 +85,12 @@
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.ForeColor = System.Drawing.Color.White;
             this.txtPassword.Location = new System.Drawing.Point(261, 111);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(132, 14);
+            this.txtPassword.Size = new System.Drawing.Size(239, 14);
             this.txtPassword.TabIndex = 2;
             // 
             // label3
@@ -108,10 +110,11 @@
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombre.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.ForeColor = System.Drawing.Color.White;
             this.txtNombre.Location = new System.Drawing.Point(262, 170);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(132, 14);
+            this.txtNombre.Size = new System.Drawing.Size(238, 14);
             this.txtNombre.TabIndex = 4;
             // 
             // label4
@@ -131,10 +134,11 @@
             this.txtApellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.txtApellido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtApellido.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellido.ForeColor = System.Drawing.Color.White;
             this.txtApellido.Location = new System.Drawing.Point(263, 227);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(132, 14);
+            this.txtApellido.Size = new System.Drawing.Size(239, 14);
             this.txtApellido.TabIndex = 6;
             // 
             // btnRegistro

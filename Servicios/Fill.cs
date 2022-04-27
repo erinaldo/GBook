@@ -31,6 +31,9 @@ namespace Servicios
 
                 if (dr.Table.Columns.Contains("Apellido") && !Convert.IsDBNull(dr["Apellido"]))
                     usuario.Apellido = Convert.ToString(dr["Apellido"]);
+
+                if (dr.Table.Columns.Contains("Bloqueo") && !Convert.IsDBNull(dr["Bloqueo"]))
+                    usuario.Bloqueo = Convert.ToInt32(dr["Bloqueo"]);
             }
             catch (Exception ex)
             {

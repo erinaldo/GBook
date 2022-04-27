@@ -48,13 +48,15 @@ namespace DAL.Conexion
 
         public virtual void executeNonQuery()
         {
+            //abro la conexión
+            Conectar();
+
             //comando a ejecutar
-            SqlCommand command = new SqlCommand(ExecuteCommandText, connection);
+            SqlTransaction TR = connection.BeginTransaction();
+            SqlCommand command = new SqlCommand(ExecuteCommandText, connection, TR);
+            
             command.CommandType = CommandType.Text;
             command.Parameters.Clear();
-
-            SqlTransaction TR;
-            TR = connection.BeginTransaction();
 
             //agrego los parámetros al comando
             foreach (SqlParameter p in ExecuteParameters.Parameters)
@@ -64,8 +66,6 @@ namespace DAL.Conexion
 
             try
             {
-                //abro la conexión
-                Conectar();
                 //ejecuto la sentencia
                 command.ExecuteNonQuery();
                 TR.Commit();
