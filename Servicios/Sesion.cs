@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace Servicios
 {
     public class Sesion
-    {
-
+    {      
         private static Usuario _instance = null;
         private static object _protect = new object();
 

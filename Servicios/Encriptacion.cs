@@ -9,6 +9,12 @@ namespace Servicios
 {
     public class Encriptacion
     {
+        #region Keys AES
+        private readonly string IV = "qo1lc3sjd8zpt9cx"; //16 chars = 128 bytes
+        private readonly string key = "ow7dxys8glfor9tnc2ansdfo1etkfjcv";  // 32 chars = 256 bytes
+        #endregion
+
+        #region Hash SHA256
         public string Hash(string texto)
         {
             UnicodeEncoding codificar = new UnicodeEncoding();
@@ -18,10 +24,9 @@ namespace Servicios
             string textoCifrado = Convert.ToBase64String(tablaBytes).ToString();
             return textoCifrado;
         }
+        #endregion
 
-        public static string IV = "qo1lc3sjd8zpt9cx"; //16 chars = 128 bytes
-        public static string key = "ow7dxys8glfor9tnc2ansdfo1etkfjcv";  // 32 chars = 256 bytes
-
+        #region Algoritmo Encriptación AES
         public string EncriptarAES(string decrypted)
         {
             byte[] textbytes = ASCIIEncoding.ASCII.GetBytes(decrypted);
@@ -59,5 +64,6 @@ namespace Servicios
 
             return ASCIIEncoding.ASCII.GetString(dec);
         }
+        #endregion
     }
 }

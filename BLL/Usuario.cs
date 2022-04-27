@@ -13,8 +13,16 @@ namespace BLL
 {
     public class Usuario : IUsuario
     {
-        DAL.Usuario _usuarioDAL = new DAL.Usuario();
-        Servicios.Encriptacion _encriptacion = new Servicios.Encriptacion();
+        #region Inyección de dependencias
+        private readonly DAL.Usuario _usuarioDAL;
+        private readonly Encriptacion _encriptacion;
+
+        public Usuario()
+        {
+            _usuarioDAL = new DAL.Usuario();
+            _encriptacion = new Encriptacion();
+        }
+        #endregion
 
         #region Métodos View
         public List<UsuarioDTO> GetUsers()
@@ -113,7 +121,5 @@ namespace BLL
             }
         }
         #endregion
-
-
     }
 }

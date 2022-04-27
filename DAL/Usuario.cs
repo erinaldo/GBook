@@ -12,6 +12,14 @@ namespace DAL
 {
     public class Usuario : Acceso
     {
+        #region Inyección de dependencias
+        private readonly Fill _fill;
+        public Usuario()
+        {
+            _fill = new Fill();
+        }
+        #endregion
+
         #region Querys
         private const string GET_USERS = @"SELECT * FROM Usuario";
         private const string REGISTRAR_USUARIO = @"INSERT INTO Usuario (Email, Password, Nombre, Apellido, Bloqueo) 
@@ -19,8 +27,6 @@ namespace DAL
         private const string LOGIN = @"SELECT TOP 1 * FROM Usuario WHERE Email = '{0}'";
         private const string BLOQUEAR_USUARIO = @"UPDATE Usuario SET Bloqueo = Bloqueo + 1 WHERE Email = @parEmail";
         #endregion
-
-        Fill fill = new Fill();
 
         #region Métodos View
         public List<UsuarioDTO> GetUsers()
@@ -31,7 +37,7 @@ namespace DAL
             List<UsuarioDTO> usuariosDTO = new List<UsuarioDTO>();
 
             if (ds.Tables[0].Rows.Count > 0)
-               usuariosDTO = fill.FillListUsuarioDTO(ds);
+               usuariosDTO = _fill.FillListUsuarioDTO(ds);
 
             return usuariosDTO;
         }
@@ -41,7 +47,7 @@ namespace DAL
             SelectCommandText = String.Format(LOGIN, email);
 
             DataSet ds = Load();
-            Models.Usuario usuario = ds.Tables[0].Rows.Count <= 0 ? null : fill.FillObjectUsuarioLoginDTO(ds.Tables[0].Rows[0]);
+            Models.Usuario usuario = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectUsuarioLoginDTO(ds.Tables[0].Rows[0]);
 
             return usuario;
         }
