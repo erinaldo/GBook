@@ -27,8 +27,6 @@ namespace UI
         {
             Sesion.RemoveInstance();
             this.Close();
-
-            AbrirFormLogin();
         }
 
         private void Main_Load(object sender, EventArgs e)
