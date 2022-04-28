@@ -35,11 +35,11 @@
             // lblLogout
             // 
             this.lblLogout.AutoSize = true;
-            this.lblLogout.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogout.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.lblLogout.Location = new System.Drawing.Point(684, 425);
+            this.lblLogout.Location = new System.Drawing.Point(661, 420);
             this.lblLogout.Name = "lblLogout";
-            this.lblLogout.Size = new System.Drawing.Size(104, 16);
+            this.lblLogout.Size = new System.Drawing.Size(127, 21);
             this.lblLogout.TabIndex = 0;
             this.lblLogout.Text = "Cerrar sesión";
             this.lblLogout.Click += new System.EventHandler(this.lblLogout_Click);
@@ -47,11 +47,11 @@
             // lblBienvenido
             // 
             this.lblBienvenido.AutoSize = true;
-            this.lblBienvenido.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBienvenido.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBienvenido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.lblBienvenido.Location = new System.Drawing.Point(13, 13);
+            this.lblBienvenido.Location = new System.Drawing.Point(12, 9);
             this.lblBienvenido.Name = "lblBienvenido";
-            this.lblBienvenido.Size = new System.Drawing.Size(51, 16);
+            this.lblBienvenido.Size = new System.Drawing.Size(64, 21);
             this.lblBienvenido.TabIndex = 1;
             this.lblBienvenido.Text = "label1";
             // 
