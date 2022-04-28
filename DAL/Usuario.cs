@@ -31,52 +31,80 @@ namespace DAL
         #region Métodos View
         public List<UsuarioDTO> GetUsers()
         {
-            SelectCommandText = String.Format(GET_USERS);
-            DataSet ds = Load();
+            try
+            {
+                SelectCommandText = String.Format(GET_USERS);
+                DataSet ds = Load();
 
-            List<UsuarioDTO> usuariosDTO = new List<UsuarioDTO>();
+                List<UsuarioDTO> usuariosDTO = new List<UsuarioDTO>();
 
-            if (ds.Tables[0].Rows.Count > 0)
-               usuariosDTO = _fill.FillListUsuarioDTO(ds);
+                if (ds.Tables[0].Rows.Count > 0)
+                    usuariosDTO = _fill.FillListUsuarioDTO(ds);
 
-            return usuariosDTO;
+                return usuariosDTO;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
         }
 
         public Models.Usuario Login(string email)
         {
-            SelectCommandText = String.Format(LOGIN, email);
+            try
+            {
+                SelectCommandText = String.Format(LOGIN, email);
 
-            DataSet ds = Load();
-            Models.Usuario usuario = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectUsuarioLoginDTO(ds.Tables[0].Rows[0]);
+                DataSet ds = Load();
+                Models.Usuario usuario = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectUsuarioLoginDTO(ds.Tables[0].Rows[0]);
 
-            return usuario;
+                return usuario;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
         }
         #endregion
 
         #region Métodos CRUD
         public int RegistrarUsuario(Models.Usuario usuario)
         {
-            this.ExecuteCommandText = REGISTRAR_USUARIO;
+            try
+            {
+                ExecuteCommandText = REGISTRAR_USUARIO;
 
-            this.ExecuteParameters.Parameters.Clear();
+                ExecuteParameters.Parameters.Clear();
 
-            this.ExecuteParameters.Parameters.AddWithValue("@parEmail", usuario.Email);
-            this.ExecuteParameters.Parameters.AddWithValue("@parPassword", usuario.Password);
-            this.ExecuteParameters.Parameters.AddWithValue("@parNombre", usuario.Nombre);
-            this.ExecuteParameters.Parameters.AddWithValue("@parApellido", usuario.Apellido);
-            this.ExecuteParameters.Parameters.AddWithValue("@parBloqueo", usuario.Bloqueo);
+                ExecuteParameters.Parameters.AddWithValue("@parEmail", usuario.Email);
+                ExecuteParameters.Parameters.AddWithValue("@parPassword", usuario.Password);
+                ExecuteParameters.Parameters.AddWithValue("@parNombre", usuario.Nombre);
+                ExecuteParameters.Parameters.AddWithValue("@parApellido", usuario.Apellido);
+                ExecuteParameters.Parameters.AddWithValue("@parBloqueo", usuario.Bloqueo);
 
-            return this.ExecuteNonEscalar();
+                return ExecuteNonEscalar();
+            }
+            catch
+            {
+                throw new Exception("Error en la base de datos.");
+            }
         }
 
         public void BloquearUsuario(string email)
         {
-            this.ExecuteCommandText = BLOQUEAR_USUARIO;
+            try
+            {
+                ExecuteCommandText = BLOQUEAR_USUARIO;
 
-            this.ExecuteParameters.Parameters.Clear();
+                ExecuteParameters.Parameters.Clear();
 
-            this.ExecuteParameters.Parameters.AddWithValue("@parEmail", email);
-            this.executeNonQuery();
+                ExecuteParameters.Parameters.AddWithValue("@parEmail", email);
+                executeNonQuery();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
         }
         #endregion
     }

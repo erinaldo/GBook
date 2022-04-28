@@ -79,15 +79,22 @@ namespace BLL
         #region Métodos CRUD
         public int RegistrarUsuario(Models.Usuario usuario)
         {
-            ValidarUsuario(usuario);
+            try
+            {
+                ValidarUsuario(usuario);
 
-            usuario.Email = _encriptacion.EncriptarAES(usuario.Email);
-            usuario.Nombre = _encriptacion.EncriptarAES(usuario.Nombre);
-            usuario.Apellido = _encriptacion.EncriptarAES(usuario.Apellido);
-            usuario.Password = _encriptacion.Hash(usuario.Password);
-            usuario.Bloqueo = 0;
+                usuario.Email = _encriptacion.EncriptarAES(usuario.Email);
+                usuario.Nombre = _encriptacion.EncriptarAES(usuario.Nombre);
+                usuario.Apellido = _encriptacion.EncriptarAES(usuario.Apellido);
+                usuario.Password = _encriptacion.Hash(usuario.Password);
+                usuario.Bloqueo = 0;
 
-            return _usuarioDAL.RegistrarUsuario(usuario);
+                return _usuarioDAL.RegistrarUsuario(usuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
         #endregion
 
@@ -102,23 +109,13 @@ namespace BLL
 
         private bool ValidarEmail(string email)
         {
-            String expresion;
-            expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            string expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
             if (Regex.IsMatch(email, expresion))
             {
-                if (Regex.Replace(email, expresion, String.Empty).Length == 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                if (Regex.Replace(email, expresion, String.Empty).Length == 0) return true;
+                else return false;
             }
-            else
-            {
-                return false;
-            }
+            else return false;
         }
         #endregion
     }
