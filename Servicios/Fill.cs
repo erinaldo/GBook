@@ -11,7 +11,7 @@ namespace Servicios
     public class Fill
     {
         #region Usuario
-        public Models.Usuario FillObjectUsuarioLoginDTO(DataRow dr)
+        public Models.Usuario FillObjectUsuario(DataRow dr)
         {
             Models.Usuario usuario = new Models.Usuario();
 

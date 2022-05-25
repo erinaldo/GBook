@@ -1,5 +1,6 @@
 ﻿using Interfaces;
 using Models;
+using Models.DTOs;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -25,13 +26,12 @@ namespace UI
 
         private void lblLogout_Click(object sender, EventArgs e)
         {
-            Sesion.RemoveInstance();
             this.Close();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Usuario usuario = Sesion.GetInstance();
+            UsuarioDTO usuario = Sesion.GetInstance();
 
             lblBienvenido.Text = $"Hola, {usuario.Nombre} {usuario.Apellido}.";
         }
@@ -44,8 +44,15 @@ namespace UI
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Sesion.RemoveInstance();
-            AbrirFormLogin();
+            try
+            {
+                _usuarioService.Logout();
+                AbrirFormLogin();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Interfaces
     {
         List<UsuarioDTO> GetUsers();
         int RegistrarUsuario(Usuario usuario);
-        Usuario Login(string email, string password);
+        void Login(string email, string password);
+        void Logout();
     }
 }

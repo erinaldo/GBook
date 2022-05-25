@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,8 +11,8 @@ namespace Servicios
     public class Encriptacion
     {
         #region Keys AES
-        private readonly string IV = "qo1lc3sjd8zpt9cx"; //16 chars = 128 bytes
-        private readonly string key = "ow7dxys8glfor9tnc2ansdfo1etkfjcv";  // 32 chars = 256 bytes
+        private readonly string IV = ConfigurationManager.AppSettings["AES_KeyIV"]; //16 chars = 128 bytes
+        private readonly string key = ConfigurationManager.AppSettings["AES_Key"];  // 32 chars = 256 bytes
         #endregion
 
         #region Hash SHA256

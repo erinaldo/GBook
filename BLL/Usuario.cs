@@ -35,10 +35,13 @@ namespace BLL
             catch (Exception) { throw new Exception("Hubo un error al querer obtener los usuarios."); }
         }
 
-        public Models.Usuario Login(string email, string password)
+        public void Login(string email, string password)
         {
             try
             {
+                if (Sesion.GetInstance() != null) throw new Exception("Ya hay una instancia de un usuario creada.");
+                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password)) throw new Exception("Se deben completar los campos");
+
                 string emailEncriptado = _encriptacion.EncriptarAES(email);
                 Models.Usuario usuario = _usuarioDAL.Login(emailEncriptado);
              
@@ -49,20 +52,15 @@ namespace BLL
                     string passwordEncriptada = _encriptacion.Hash(password);
                     if (passwordEncriptada == usuario.Password)
                     {
-                        if (Sesion.GetInstance() != null) throw new Exception("Ya hay una instancia de un usuario creada.");
-
-                        Models.Usuario usuarioSingleton = new Models.Usuario()
+                        UsuarioDTO usuarioSingleton = new UsuarioDTO()
                         {
                             UsuarioId = usuario.UsuarioId,
                             Email = _encriptacion.DesencriptarAES(usuario.Email),
-                            Password = usuario.Password,
                             Nombre = _encriptacion.DesencriptarAES(usuario.Nombre),
                             Apellido = _encriptacion.DesencriptarAES(usuario.Apellido),
-                            Bloqueo = usuario.Bloqueo
                         };
-                        Sesion.CreateInstance(usuarioSingleton);
 
-                        return usuarioSingleton;
+                        Sesion.CreateInstance(usuarioSingleton);
                     }
                     else
                     { 
@@ -73,6 +71,18 @@ namespace BLL
                 else throw new Exception("No existe un usuario con ese email.");
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+
+        public void Logout()
+        {
+            try
+            {
+                Sesion.RemoveInstance();
+            }
+            catch
+            {
+                throw new Exception("Hubo un error al querer desloguear. Contacte al administrador.");
+            }
         }
         #endregion
 

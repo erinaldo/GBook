@@ -34,7 +34,7 @@ namespace DAL
             try
             {
                 SelectCommandText = String.Format(GET_USERS);
-                DataSet ds = Load();
+                DataSet ds = ExecuteNonReader();
 
                 List<UsuarioDTO> usuariosDTO = new List<UsuarioDTO>();
 
@@ -55,8 +55,8 @@ namespace DAL
             {
                 SelectCommandText = String.Format(LOGIN, email);
 
-                DataSet ds = Load();
-                Models.Usuario usuario = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectUsuarioLoginDTO(ds.Tables[0].Rows[0]);
+                DataSet ds = ExecuteNonReader();
+                Models.Usuario usuario = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectUsuario(ds.Tables[0].Rows[0]);
 
                 return usuario;
             }
@@ -99,7 +99,7 @@ namespace DAL
                 ExecuteParameters.Parameters.Clear();
 
                 ExecuteParameters.Parameters.AddWithValue("@parEmail", email);
-                executeNonQuery();
+                ExecuteNonQuery();
             }
             catch (Exception)
             {

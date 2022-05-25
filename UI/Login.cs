@@ -26,11 +26,11 @@ namespace UI
         {
             try
             {
-                Models.Usuario usuario = _usuarioService.Login(txtEmail.Text, txtPassword.Text);
+                _usuarioService.Login(txtEmail.Text, txtPassword.Text);
                 
                 Limpiar();
-
                 this.Hide();
+                
                 Main main = new Main(_usuarioService);
                 main.Show();
             }

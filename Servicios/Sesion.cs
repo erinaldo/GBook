@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,14 @@ namespace Servicios
 {
     public class Sesion
     {      
-        private static Usuario _instance = null;
+        private static UsuarioDTO _instance = null;
         private static object _protect = new object();
 
         private Sesion()
         {
         }
 
-        public static Usuario CreateInstance(Usuario user)
+        public static UsuarioDTO CreateInstance(UsuarioDTO user)
         {
             // Utilizo el lock para proteger el hilo de mi instancia.
             lock (_protect)
@@ -30,12 +31,12 @@ namespace Servicios
             return _instance;
         }
 
-        public static Usuario GetInstance()
+        public static UsuarioDTO GetInstance()
         {
             return _instance;
         }
 
-        public static Usuario RemoveInstance()
+        public static UsuarioDTO RemoveInstance()
         {
             return _instance = null;
         }

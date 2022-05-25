@@ -12,6 +12,7 @@ namespace DAL.Conexion
 {
     public class Acceso : Conexion
     {
+        #region Propiedades
         SqlConnection connection = new SqlConnection();
 
         private string _SelectCommandText;
@@ -34,7 +35,9 @@ namespace DAL.Conexion
             get { return _ExecuteParameters; }
             set { _ExecuteParameters = value; }
         }
+        #endregion
 
+        #region Conexión
         private void Conectar()
         {
             connection.ConnectionString = conexion;
@@ -44,20 +47,19 @@ namespace DAL.Conexion
         {
             connection.Close();           
         }
+        #endregion
 
-        public virtual void executeNonQuery()
+        #region Métodos
+        public virtual void ExecuteNonQuery()
         {
-            //abro la conexión
             Conectar();
 
-            //comando a ejecutar
             SqlTransaction TR = connection.BeginTransaction();
             SqlCommand command = new SqlCommand(ExecuteCommandText, connection, TR);
             
             command.CommandType = CommandType.Text;
             command.Parameters.Clear();
 
-            //agrego los parámetros al comando
             foreach (SqlParameter p in ExecuteParameters.Parameters)
             {
                 command.Parameters.AddWithValue(p.ParameterName, p.SqlValue);
@@ -65,27 +67,21 @@ namespace DAL.Conexion
 
             try
             {
-                //ejecuto la sentencia
                 command.ExecuteNonQuery();
                 TR.Commit();
             }
-            //error de SQL
             catch (SqlException exc)
             {
-                //en caso de error disparo excepción
                 TR.Rollback();
-                throw new Exception("ocurrio un Error en BD:" + exc.Message);
+                throw new Exception("Ocurrió un error en BD: " + exc.Message);
             }
-            //error general
             catch (Exception exc2)
             {
-                //en caso de error disparo excepción
                 TR.Rollback();
-                throw new Exception("ocurrio un Error :" + exc2.Message);
+                throw new Exception("Ocurrió un Error: " + exc2.Message);
             }
             finally
             {
-                //cierro la conexión
                 Desconectar();
             }
         }
@@ -99,13 +95,11 @@ namespace DAL.Conexion
             command.CommandType = CommandType.Text;
             command.Parameters.Clear();
             
-            //agrego los parámetros al comando
             foreach (SqlParameter p in ExecuteParameters.Parameters)
             {
                 command.Parameters.AddWithValue(p.ParameterName, p.SqlValue);
             }
 
-            //parámetro de retorno
             SqlParameter sp_return = new SqlParameter();
             sp_return.Direction = ParameterDirection.ReturnValue;
             command.Parameters.Add(sp_return);
@@ -117,17 +111,15 @@ namespace DAL.Conexion
                 outputId = (int)command.ExecuteScalar();
                 transaction.Commit();
             }
-            //error de SQL
             catch (SqlException exc)
             {
                 transaction.Rollback();
-                throw new Exception("ocurrio un Error en BD:" + exc.Message);
+                throw new Exception("Ocurrió un error en BD: " + exc.Message);
             }
-            //error general
             catch (Exception exc2)
             {
                 transaction.Rollback();
-                throw new Exception("ocurrio un Error :" + exc2.Message);
+                throw new Exception("Ocurrió un error: " + exc2.Message);
             }
             finally
             {
@@ -137,30 +129,19 @@ namespace DAL.Conexion
             return outputId;
         }
 
-        public virtual DataSet Load()
+        public virtual DataSet ExecuteNonReader()
         {
-            // Check select command text first 
             if (this.SelectCommandText == "")
                 throw new Exception("You must provide SelectCommandText first. Review Framework documentation.");
 
-            // Create Connection
             using (connection)
             {
-                // create Adapter
                 DbDataAdapter da = this.BaseFactory.CreateDataAdapter();
-
-                // create Command
                 da.SelectCommand = this.BaseFactory.CreateCommand();
-
-                // assign Command Text
                 da.SelectCommand.CommandText = this.SelectCommandText;
-
-                // assign connection
                 da.SelectCommand.Connection = connection;
 
-                // Instance New DataSet
                 DataSet ds = new DataSet();
-                // open connection and execute command
                 try
                 {
                     Conectar();
@@ -175,9 +156,9 @@ namespace DAL.Conexion
                     Desconectar();
                 }
 
-                // return DataSet
                 return ds;
             }
         }
+        #endregion
     }
 }
