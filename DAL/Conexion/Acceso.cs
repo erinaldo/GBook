@@ -42,8 +42,7 @@ namespace DAL.Conexion
         }
         private void Desconectar()
         {
-            connection.Close();
-            connection.Close();
+            connection.Close();           
         }
 
         public virtual void executeNonQuery()
