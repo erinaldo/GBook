@@ -54,7 +54,7 @@ namespace BLL
                     {
                         UsuarioDTO usuarioSingleton = new UsuarioDTO()
                         {
-                            UsuarioId = usuario.UsuarioId,
+                            UsuarioId = usuario.Id,
                             Email = _encriptacion.DesencriptarAES(usuario.Email),
                             Nombre = _encriptacion.DesencriptarAES(usuario.Nombre),
                             Apellido = _encriptacion.DesencriptarAES(usuario.Apellido),

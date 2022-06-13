@@ -18,7 +18,7 @@ namespace Servicios
             try
             {
                 if (dr.Table.Columns.Contains("UsuarioId") && !Convert.IsDBNull(dr["UsuarioId"]))
-                    usuario.UsuarioId = Convert.ToInt32(dr["UsuarioId"]);
+                    usuario.Id = Convert.ToInt32(dr["UsuarioId"]);
 
                 if (dr.Table.Columns.Contains("Email") && !Convert.IsDBNull(dr["Email"]))
                     usuario.Email = Convert.ToString(dr["Email"]);
