@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class Autor
+    partial class AltaAutor
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSeudonimo = new System.Windows.Forms.TextBox();
-            this.txtAlta = new System.Windows.Forms.Button();
+            this.btnAlta = new System.Windows.Forms.Button();
             this.datagridAutores = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.datagridAutores)).BeginInit();
             this.SuspendLayout();
@@ -135,36 +135,37 @@
             this.txtSeudonimo.Size = new System.Drawing.Size(216, 16);
             this.txtSeudonimo.TabIndex = 16;
             // 
-            // txtAlta
+            // btnAlta
             // 
-            this.txtAlta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.txtAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.txtAlta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txtAlta.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAlta.Location = new System.Drawing.Point(66, 252);
-            this.txtAlta.Name = "txtAlta";
-            this.txtAlta.Size = new System.Drawing.Size(100, 37);
-            this.txtAlta.TabIndex = 19;
-            this.txtAlta.Text = "Alta";
-            this.txtAlta.UseVisualStyleBackColor = false;
-            this.txtAlta.Click += new System.EventHandler(this.txtAlta_Click);
+            this.btnAlta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.btnAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAlta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlta.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlta.Location = new System.Drawing.Point(66, 252);
+            this.btnAlta.Name = "btnAlta";
+            this.btnAlta.Size = new System.Drawing.Size(100, 37);
+            this.btnAlta.TabIndex = 19;
+            this.btnAlta.Text = "Alta";
+            this.btnAlta.UseVisualStyleBackColor = false;
+            this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
             // 
             // datagridAutores
             // 
+            this.datagridAutores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.datagridAutores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridAutores.Location = new System.Drawing.Point(267, 13);
             this.datagridAutores.Name = "datagridAutores";
             this.datagridAutores.Size = new System.Drawing.Size(378, 386);
             this.datagridAutores.TabIndex = 20;
             // 
-            // Autor
+            // AltaAutor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(651, 406);
             this.Controls.Add(this.datagridAutores);
-            this.Controls.Add(this.txtAlta);
+            this.Controls.Add(this.btnAlta);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSeudonimo);
@@ -174,7 +175,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
-            this.Name = "Autor";
+            this.Name = "AltaAutor";
             this.Text = "Autor";
             this.Load += new System.EventHandler(this.Autor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridAutores)).EndInit();
@@ -194,7 +195,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSeudonimo;
-        private System.Windows.Forms.Button txtAlta;
+        private System.Windows.Forms.Button btnAlta;
         private System.Windows.Forms.DataGridView datagridAutores;
     }
 }

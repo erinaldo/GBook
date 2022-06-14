@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class Autor : Form
+    public partial class AltaAutor : Form
     {
         private readonly IAutor _autorService;
-        public Autor(IAutor autorService)
+        public AltaAutor(IAutor autorService)
         {
             _autorService = autorService;
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace UI
             CargarGridAutores();
         }
 
-        private void txtAlta_Click(object sender, EventArgs e)
+        private void btnAlta_Click(object sender, EventArgs e)
         {
             try
             {
@@ -40,6 +40,7 @@ namespace UI
 
                 CargarGridAutores();
                 Limpiar();
+                MessageBox.Show("Autor cargado con éxito.");
             }
             catch (Exception ex)
             {
@@ -50,6 +51,8 @@ namespace UI
         private void CargarGridAutores()
         {
             datagridAutores.DataSource = _autorService.GetAutores();
+            datagridAutores.Columns["Id"].Visible = false;
+            datagridAutores.Columns["Activo"].Visible = false;
         }
 
         private void Limpiar()

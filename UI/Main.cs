@@ -18,12 +18,16 @@ namespace UI
     {
         private readonly IUsuario _usuarioService;
         private readonly IAutor _autorService;
+        private readonly IEditorial _editorialService;
+        private readonly IGenero _generoService;
 
-        public Main(IUsuario UsuarioService, IAutor AutorService)
+        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService)
         {
             InitializeComponent();
             _usuarioService = UsuarioService;
             _autorService = AutorService;
+            _editorialService = editorialService;
+            _generoService = generoService;
         }
 
         private void lblLogout_Click(object sender, EventArgs e)
@@ -40,7 +44,7 @@ namespace UI
 
         private void AbrirFormLogin()
         {
-            Login login = new Login(_usuarioService, _autorService);
+            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService);
             login.Show();
         }
 
@@ -59,8 +63,38 @@ namespace UI
 
         private void altaAutorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Autor autor = new Autor(_autorService);
-            autor.Show();
+            AltaAutor altaAutor = new AltaAutor(_autorService);
+            altaAutor.Show();
+        }
+
+        private void modificarAutorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarAutor modificarAutor = new ModificarAutor(_autorService);
+            modificarAutor.Show();
+        }
+
+        private void altaEditorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaEditorial altaEditorial = new AltaEditorial(_editorialService);
+            altaEditorial.Show();
+        }
+
+        private void modificarEditorialToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarEditorial modificarEditorial = new ModificarEditorial(_editorialService);
+            modificarEditorial.Show();
+        }
+
+        private void altaGéneroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaGenero altaGenero = new AltaGenero(_generoService);
+            altaGenero.Show();
+        }
+
+        private void modificarGéneroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarGenero modificarGenero = new ModificarGenero(_generoService);
+            modificarGenero.Show();
         }
     }
 }

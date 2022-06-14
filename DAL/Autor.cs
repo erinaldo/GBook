@@ -1,4 +1,5 @@
 ﻿using DAL.Conexion;
+using Interfaces;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class Autor : Acceso
+    public class Autor : Acceso, IAutor
     {
         #region Inyección de dependencias
         private readonly Fill _fill;
@@ -21,14 +22,14 @@ namespace DAL
 
         #region Querys
         private const string ALTA_AUTOR = "INSERT INTO Autor (Nombre, Apellido, Seudonimo, Activo) OUTPUT inserted.Id VALUES (@parNombre, @parApellido, @parSeudonimo, @parActivo)";
-        private const string MODIFICAR_AUTOR = "UPDATE Autor SET Nombre = @parNombre, Apellido = @parApellido, Seudonimo = @parSeudonimo, Activo = @parActivo WHERE Id = @parId";
-        private const string BAJA_AUTOR = "UPDATE Autor SET Activo = false WHERE Id = @parId";
+        private const string MODIFICAR_AUTOR = "UPDATE Autor SET Nombre = @parNombre, Apellido = @parApellido, Seudonimo = @parSeudonimo, Activo = @parActivo OUTPUT inserted.Id WHERE Id = @parId";
+        private const string BAJA_AUTOR = "UPDATE Autor SET Activo = false OUTPUT inserted.Id WHERE Id = @parId";
         private const string GET_AUTORES = "SELECT * FROM Autor";
-        private const string GET_AUTOR = "SELECT * FROM Autor WHERE Id = @parId";
+        private const string GET_AUTOR = "SELECT * FROM Autor WHERE Id = {0}";
         #endregion
 
         #region Métodos CRUD
-        public int AltaAutor(Models.Autor autor)
+        public int RegistrarAutor(Models.Autor autor)
         {
             try
             {

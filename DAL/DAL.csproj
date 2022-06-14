@@ -45,10 +45,16 @@
     <Compile Include="Autor.cs" />
     <Compile Include="Conexion\Acceso.cs" />
     <Compile Include="Conexion\Conexion.cs" />
+    <Compile Include="Editorial.cs" />
+    <Compile Include="Genero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{047F295C-979F-42F2-A8C1-8432A51DAC1C}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{bac30afb-1a49-470f-8287-2d516c903b42}</Project>
       <Name>Models</Name>

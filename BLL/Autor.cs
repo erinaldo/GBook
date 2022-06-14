@@ -24,7 +24,7 @@ namespace BLL
             try
             {
                 ValidarAutor(autor);
-                return _autorDAL.AltaAutor(autor);
+                return _autorDAL.RegistrarAutor(autor);
             }
             catch (Exception ex)
             {

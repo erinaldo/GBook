@@ -109,5 +109,63 @@ namespace Servicios
         }
 
         #endregion
+
+        #region Editorial
+        public Models.Editorial FillObjectEditorial(DataRow dr)
+        {
+            Models.Editorial editorial = new Models.Editorial();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    editorial.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("Nombre") && !Convert.IsDBNull(dr["Nombre"]))
+                    editorial.Nombre = Convert.ToString(dr["Nombre"]);
+
+                if (dr.Table.Columns.Contains("Activo") && !Convert.IsDBNull(dr["Activo"]))
+                    editorial.Activo = Convert.ToBoolean(dr["Activo"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+            return editorial;
+        }
+
+        public List<Models.Editorial> FillListEditorial(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectEditorial(dr)).ToList();
+        }
+        #endregion
+
+        #region Género
+        public Models.Genero FillObjectGenero(DataRow dr)
+        {
+            Models.Genero genero = new Models.Genero();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    genero.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("Nombre") && !Convert.IsDBNull(dr["Nombre"]))
+                    genero.Nombre = Convert.ToString(dr["Nombre"]);
+
+                if (dr.Table.Columns.Contains("Activo") && !Convert.IsDBNull(dr["Activo"]))
+                    genero.Activo = Convert.ToBoolean(dr["Activo"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+            return genero;
+        }
+
+        public List<Models.Genero> FillListGenero(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectGenero(dr)).ToList();
+        }
+        #endregion
     }
 }

@@ -34,6 +34,13 @@
             this.administrarNegocioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónAutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaAutorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarAutorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónEditorialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaEditorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarEditorialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónGénerosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaGéneroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarGéneroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +80,9 @@
             // administrarNegocioToolStripMenuItem
             // 
             this.administrarNegocioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestiónAutoresToolStripMenuItem});
+            this.gestiónAutoresToolStripMenuItem,
+            this.gestiónEditorialesToolStripMenuItem,
+            this.gestiónGénerosToolStripMenuItem});
             this.administrarNegocioToolStripMenuItem.Name = "administrarNegocioToolStripMenuItem";
             this.administrarNegocioToolStripMenuItem.Size = new System.Drawing.Size(127, 20);
             this.administrarNegocioToolStripMenuItem.Text = "Administrar negocio";
@@ -81,7 +90,8 @@
             // gestiónAutoresToolStripMenuItem
             // 
             this.gestiónAutoresToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaAutorToolStripMenuItem1});
+            this.altaAutorToolStripMenuItem1,
+            this.modificarAutorToolStripMenuItem});
             this.gestiónAutoresToolStripMenuItem.Name = "gestiónAutoresToolStripMenuItem";
             this.gestiónAutoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gestiónAutoresToolStripMenuItem.Text = "Gestión autores";
@@ -89,9 +99,62 @@
             // altaAutorToolStripMenuItem1
             // 
             this.altaAutorToolStripMenuItem1.Name = "altaAutorToolStripMenuItem1";
-            this.altaAutorToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.altaAutorToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
             this.altaAutorToolStripMenuItem1.Text = "Alta autor";
             this.altaAutorToolStripMenuItem1.Click += new System.EventHandler(this.altaAutorToolStripMenuItem1_Click);
+            // 
+            // modificarAutorToolStripMenuItem
+            // 
+            this.modificarAutorToolStripMenuItem.Name = "modificarAutorToolStripMenuItem";
+            this.modificarAutorToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.modificarAutorToolStripMenuItem.Text = "Modificar autor";
+            this.modificarAutorToolStripMenuItem.Click += new System.EventHandler(this.modificarAutorToolStripMenuItem_Click);
+            // 
+            // gestiónEditorialesToolStripMenuItem
+            // 
+            this.gestiónEditorialesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaEditorialToolStripMenuItem,
+            this.modificarEditorialToolStripMenuItem});
+            this.gestiónEditorialesToolStripMenuItem.Name = "gestiónEditorialesToolStripMenuItem";
+            this.gestiónEditorialesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestiónEditorialesToolStripMenuItem.Text = "Gestión editoriales";
+            // 
+            // altaEditorialToolStripMenuItem
+            // 
+            this.altaEditorialToolStripMenuItem.Name = "altaEditorialToolStripMenuItem";
+            this.altaEditorialToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.altaEditorialToolStripMenuItem.Text = "Alta editorial";
+            this.altaEditorialToolStripMenuItem.Click += new System.EventHandler(this.altaEditorialToolStripMenuItem_Click);
+            // 
+            // modificarEditorialToolStripMenuItem
+            // 
+            this.modificarEditorialToolStripMenuItem.Name = "modificarEditorialToolStripMenuItem";
+            this.modificarEditorialToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.modificarEditorialToolStripMenuItem.Text = "Modificar editorial";
+            this.modificarEditorialToolStripMenuItem.Click += new System.EventHandler(this.modificarEditorialToolStripMenuItem_Click);
+            // 
+            // gestiónGénerosToolStripMenuItem
+            // 
+            this.gestiónGénerosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaGéneroToolStripMenuItem,
+            this.modificarGéneroToolStripMenuItem});
+            this.gestiónGénerosToolStripMenuItem.Name = "gestiónGénerosToolStripMenuItem";
+            this.gestiónGénerosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestiónGénerosToolStripMenuItem.Text = "Gestión géneros";
+            // 
+            // altaGéneroToolStripMenuItem
+            // 
+            this.altaGéneroToolStripMenuItem.Name = "altaGéneroToolStripMenuItem";
+            this.altaGéneroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.altaGéneroToolStripMenuItem.Text = "Alta género";
+            this.altaGéneroToolStripMenuItem.Click += new System.EventHandler(this.altaGéneroToolStripMenuItem_Click);
+            // 
+            // modificarGéneroToolStripMenuItem
+            // 
+            this.modificarGéneroToolStripMenuItem.Name = "modificarGéneroToolStripMenuItem";
+            this.modificarGéneroToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarGéneroToolStripMenuItem.Text = "Modificar género";
+            this.modificarGéneroToolStripMenuItem.Click += new System.EventHandler(this.modificarGéneroToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -123,5 +186,12 @@
         private System.Windows.Forms.ToolStripMenuItem administrarNegocioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestiónAutoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaAutorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem modificarAutorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestiónEditorialesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem altaEditorialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarEditorialToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestiónGénerosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem altaGéneroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarGéneroToolStripMenuItem;
     }
 }
