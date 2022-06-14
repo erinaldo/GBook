@@ -16,11 +16,13 @@ namespace UI
     public partial class Registro : Form
     {
         private readonly IUsuario _usuarioService;
+        private readonly IAutor _autorService;
 
-        public Registro(IUsuario usuarioService)
+        public Registro(IUsuario usuarioService, IAutor autorService)   
         {
             InitializeComponent();
             _usuarioService = usuarioService;
+            _autorService = autorService;
         }
 
         private void btnRegistro_Click(object sender, EventArgs e)
@@ -58,7 +60,7 @@ namespace UI
 
         private void CerrarForm()
         {
-            Login login = new Login(_usuarioService);
+            Login login = new Login(_usuarioService, _autorService);
             login.Show();
         }
     }

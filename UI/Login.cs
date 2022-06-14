@@ -15,11 +15,13 @@ namespace UI
     public partial class Login : Form
     {
         private readonly IUsuario _usuarioService;
+        private readonly IAutor _autorService;
 
-        public Login(IUsuario usuarioService)
+        public Login(IUsuario usuarioService, IAutor autorService)
         {
             InitializeComponent();
             _usuarioService = usuarioService;
+            _autorService = autorService;
         }
 
         private void txtLogin_Click(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace UI
                 Limpiar();
                 this.Hide();
                 
-                Main main = new Main(_usuarioService);
+                Main main = new Main(_usuarioService, _autorService);
                 main.Show();
             }
             catch (Exception ex)
@@ -51,7 +53,7 @@ namespace UI
         {
             this.Hide();
 
-            Registro formRegistro = new Registro(_usuarioService);
+            Registro formRegistro = new Registro(_usuarioService, _autorService);
             formRegistro.Show();
         }
 

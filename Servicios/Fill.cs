@@ -73,5 +73,41 @@ namespace Servicios
         }
 
         #endregion
+
+        #region Autor
+        public Models.Autor FillObjectAutor(DataRow dr)
+        {
+            Models.Autor autor = new Models.Autor();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    autor.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("Nombre") && !Convert.IsDBNull(dr["Nombre"]))
+                    autor.Nombre = Convert.ToString(dr["Nombre"]);
+
+                if (dr.Table.Columns.Contains("Apellido") && !Convert.IsDBNull(dr["Apellido"]))
+                    autor.Apellido = Convert.ToString(dr["Apellido"]);
+
+                if (dr.Table.Columns.Contains("Seudonimo") && !Convert.IsDBNull(dr["Seudonimo"]))
+                    autor.Seudonimo = Convert.ToString(dr["Seudonimo"]);
+
+                if (dr.Table.Columns.Contains("Activo") && !Convert.IsDBNull(dr["Activo"]))
+                    autor.Activo = Convert.ToBoolean(dr["Activo"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+            return autor;
+        }
+
+        public List<Models.Autor> FillListAutor(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectAutor(dr)).ToList();
+        }
+
+        #endregion
     }
 }

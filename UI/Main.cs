@@ -17,11 +17,13 @@ namespace UI
     public partial class Main : Form
     {
         private readonly IUsuario _usuarioService;
+        private readonly IAutor _autorService;
 
-        public Main(IUsuario UsuarioService)
+        public Main(IUsuario UsuarioService, IAutor AutorService)
         {
             InitializeComponent();
             _usuarioService = UsuarioService;
+            _autorService = AutorService;
         }
 
         private void lblLogout_Click(object sender, EventArgs e)
@@ -38,7 +40,7 @@ namespace UI
 
         private void AbrirFormLogin()
         {
-            Login login = new Login(_usuarioService);
+            Login login = new Login(_usuarioService, _autorService);
             login.Show();
         }
 
@@ -53,6 +55,12 @@ namespace UI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void altaAutorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Autor autor = new Autor(_autorService);
+            autor.Show();
         }
     }
 }

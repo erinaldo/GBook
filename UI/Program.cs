@@ -19,8 +19,9 @@ namespace UI
 
             // Inyecciones de dependencias
             BLL.Usuario usuarioService = new BLL.Usuario();
+            BLL.Autor autorService = new BLL.Autor();
 
-            Application.Run(new Login(usuarioService));
+            Application.Run(new Login(usuarioService, autorService));
         }
     }
 }
