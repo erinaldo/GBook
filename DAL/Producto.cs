@@ -29,8 +29,12 @@ namespace DAL
         private const string ALTA_ALERTA = "INSERT INTO Alerta (Activo, CantidadStockAviso, ProductoId) OUTPUT inserted.Id " +
                                             " VALUES (@parActivo, @parCantidadStockAviso, @parProductoId)";
         private const string GET_STOCK = "SELECT Id, Cantidad FROM Stock WHERE ProductoId = {0}";
-        private const string GET_PRODUCTO = "SELECT TOP 1 * FROM Producto WHERE ProductoId = {0}";
+        private const string GET_PRODUCTO = "SELECT TOP 1 * FROM Producto WHERE Id = {0}";
         private const string GET_PRODUCTOS = "SELECT * FROM Producto";
+        private const string MODIFICAR_PRODUCTO = "UPDATE Producto SET ISBN = @parISBN, Nombre = @parNombre, Precio = @parPrecio, " +
+                                                  "CantidadPaginas = @parCantidadPaginas, AutorId = @parAutorId, GeneroId = @parGeneroId, " +
+                                                   "EditorialId = @parEditorialId OUTPUT inserted.Id WHERE Id = @parProductoId";
+        private const string PUBLICAR_PRODUCTO = "Update Producto SET EnVenta = @parEnVenta, Precio = @parPrecio OUTPUT inserted.Id WHERE Id = @parProductoId";
         #endregion
 
         #region Métodos CRUD
@@ -91,6 +95,50 @@ namespace DAL
                 ExecuteParameters.Parameters.AddWithValue("@parActivo", false);
                 ExecuteParameters.Parameters.AddWithValue("@parCantidadStockAviso", 0);
                 ExecuteParameters.Parameters.AddWithValue("@parProductoId", productoId);
+
+                return ExecuteNonEscalar();
+            }
+            catch
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public int ModificarProducto(Models.Producto producto)
+        {
+            try
+            {
+                ExecuteCommandText = MODIFICAR_PRODUCTO;
+
+                ExecuteParameters.Parameters.Clear();
+
+                ExecuteParameters.Parameters.AddWithValue("@parProductoId", producto.Id);
+                ExecuteParameters.Parameters.AddWithValue("@parISBN", producto.ISBN);
+                ExecuteParameters.Parameters.AddWithValue("@parNombre", producto.Nombre);
+                ExecuteParameters.Parameters.AddWithValue("@parPrecio", producto.Precio);
+                ExecuteParameters.Parameters.AddWithValue("@parCantidadPaginas", producto.CantidadPaginas);
+                ExecuteParameters.Parameters.AddWithValue("@parAutorId", producto.Autor.Id);
+                ExecuteParameters.Parameters.AddWithValue("@parGeneroId", producto.Genero.Id);
+                ExecuteParameters.Parameters.AddWithValue("@parEditorialId", producto.Editorial.Id);
+
+                return ExecuteNonEscalar();
+            }
+            catch
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+        public int PublicarProducto(Models.Producto producto)
+        {
+            try
+            {
+                ExecuteCommandText = PUBLICAR_PRODUCTO;
+
+                ExecuteParameters.Parameters.Clear();
+
+                ExecuteParameters.Parameters.AddWithValue("@parProductoId", producto.Id);                
+                ExecuteParameters.Parameters.AddWithValue("@parPrecio", producto.Precio);
+                ExecuteParameters.Parameters.AddWithValue("@parEnVenta", producto.EnVenta);
 
                 return ExecuteNonEscalar();
             }

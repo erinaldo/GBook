@@ -13,14 +13,14 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class AltaProducto : Form
+    public partial class ModificarProducto : Form
     {
         private readonly IProducto _productoService;
         private readonly IAutor _autorService;
         private readonly IGenero _generoService;
         private readonly IEditorial _editorialService;
 
-        public AltaProducto(IProducto productoService, IAutor autorService, IGenero generoService, IEditorial editorialService)
+        public ModificarProducto(IProducto productoService, IAutor autorService, IGenero generoService, IEditorial editorialService)
         {
             InitializeComponent();
             _productoService = productoService;
@@ -29,7 +29,7 @@ namespace UI
             _editorialService = editorialService;
         }
 
-        private void AltaProducto_Load(object sender, EventArgs e)
+        private void ModificarProducto_Load(object sender, EventArgs e)
         {
             CargarAutores();
             CargarGeneros();
@@ -68,7 +68,18 @@ namespace UI
             datagridProductos.Columns["Id"].Visible = false;
         }
 
-        private void btnAlta_Click(object sender, EventArgs e)
+        private void Limpiar()
+        {
+            txtISBN.Text = "";
+            txtNombre.Text = "";
+            txtPrecio.Text = "";
+            txtCantidadPaginas.Text = "";
+            cbxAutor.SelectedIndex = -1;
+            cbxGenero.SelectedIndex = -1;
+            cbxEditorial.SelectedIndex = -1;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -90,6 +101,7 @@ namespace UI
 
                 Producto producto = new Models.Producto()
                 {
+                    Id = (int)datagridProductos.SelectedRows[0].Cells["Id"].Value,
                     ISBN = txtISBN.Text,
                     Nombre = txtNombre.Text,
                     Precio = Convert.ToDouble(txtPrecio.Text),
@@ -99,26 +111,28 @@ namespace UI
                     Editorial = editorial,
                 };
 
-                _productoService.AltaProducto(producto);
+                _productoService.ModificarProducto(producto);
 
                 CargarProductos();
                 Limpiar();
-                MessageBox.Show("Producto cargado con éxito.");
+                MessageBox.Show("Producto modificado con éxito.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
-        private void Limpiar()
+
+        private void datagridProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtISBN.Text = "";
-            txtNombre.Text = "";
-            txtPrecio.Text = "";
-            txtCantidadPaginas.Text = "";
-            cbxAutor.SelectedIndex = -1;
-            cbxGenero.SelectedIndex = -1;
-            cbxEditorial.SelectedIndex = -1;
+            Producto producto = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
+            txtISBN.Text = producto.ISBN;
+            txtNombre.Text = producto.Nombre;
+            txtPrecio.Text = producto.Precio.ToString();
+            txtCantidadPaginas.Text = producto.CantidadPaginas.ToString();
+            cbxAutor.SelectedValue = producto.Autor.Id;
+            cbxGenero.SelectedValue = producto.Genero.Id;
+            cbxEditorial.SelectedValue = producto.Editorial.Id;
         }
     }
 }

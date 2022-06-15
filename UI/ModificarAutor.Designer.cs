@@ -151,10 +151,14 @@
             // 
             // datagridAutores
             // 
+            this.datagridAutores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.datagridAutores.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.datagridAutores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.datagridAutores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridAutores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridAutores.Location = new System.Drawing.Point(293, 12);
             this.datagridAutores.Name = "datagridAutores";
+            this.datagridAutores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridAutores.Size = new System.Drawing.Size(378, 386);
             this.datagridAutores.TabIndex = 30;
             this.datagridAutores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridAutores_CellClick);

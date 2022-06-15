@@ -104,5 +104,17 @@ namespace UI
             AltaProducto altaProducto = new AltaProducto(_productoService, _autorService, _generoService, _editorialService);
             altaProducto.Show();
         }
+
+        private void modificarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarProducto modificarProducto = new ModificarProducto(_productoService, _autorService, _generoService, _editorialService);
+            modificarProducto.Show();
+        }
+
+        private void publicarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PublicarProducto publicarProducto = new PublicarProducto(_productoService);
+            publicarProducto.Show();
+        }
     }
 }

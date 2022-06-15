@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.datagridProductos = new System.Windows.Forms.DataGridView();
-            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnAlta = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
@@ -56,26 +56,30 @@
             // 
             // datagridProductos
             // 
+            this.datagridProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridProductos.Location = new System.Drawing.Point(416, 12);
+            this.datagridProductos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.datagridProductos.Enabled = false;
+            this.datagridProductos.Location = new System.Drawing.Point(262, 12);
             this.datagridProductos.Name = "datagridProductos";
-            this.datagridProductos.Size = new System.Drawing.Size(648, 512);
+            this.datagridProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.datagridProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.datagridProductos.Size = new System.Drawing.Size(941, 512);
             this.datagridProductos.TabIndex = 41;
             // 
-            // btnModificar
+            // btnAlta
             // 
-            this.btnModificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModificar.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(61, 486);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(106, 38);
-            this.btnModificar.TabIndex = 40;
-            this.btnModificar.Text = "Alta";
-            this.btnModificar.UseVisualStyleBackColor = false;
-            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            this.btnAlta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.btnAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAlta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAlta.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlta.Location = new System.Drawing.Point(61, 486);
+            this.btnAlta.Name = "btnAlta";
+            this.btnAlta.Size = new System.Drawing.Size(106, 38);
+            this.btnAlta.TabIndex = 40;
+            this.btnAlta.Text = "Alta";
+            this.btnAlta.UseVisualStyleBackColor = false;
+            this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
             // 
             // panel3
             // 
@@ -302,7 +306,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(1076, 536);
+            this.ClientSize = new System.Drawing.Size(1215, 536);
             this.Controls.Add(this.cbxEditorial);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.label7);
@@ -316,7 +320,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtCantidadPaginas);
             this.Controls.Add(this.datagridProductos);
-            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.btnAlta);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPrecio);
@@ -338,7 +342,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView datagridProductos;
-        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnAlta;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtPrecio;

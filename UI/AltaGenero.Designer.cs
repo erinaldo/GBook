@@ -38,8 +38,12 @@
             // 
             // datagridGenero
             // 
+            this.datagridGenero.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.datagridGenero.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.datagridGenero.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.datagridGenero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridGenero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridGenero.Enabled = false;
             this.datagridGenero.Location = new System.Drawing.Point(281, 12);
             this.datagridGenero.Name = "datagridGenero";
             this.datagridGenero.Size = new System.Drawing.Size(403, 426);

@@ -66,6 +66,31 @@ namespace BLL
                 throw new Exception(ex.Message);
             }
         }
+
+        public int ModificarProducto(Models.Producto producto)
+        {
+            try
+            {
+                ValidarProducto(producto);
+                return _productoDAL.ModificarProducto(producto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public int PublicarProducto(Models.Producto producto)
+        {
+            try
+            {
+                return _productoDAL.PublicarProducto(producto);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         #region Métodos View

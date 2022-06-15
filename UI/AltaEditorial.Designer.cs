@@ -83,8 +83,12 @@
             // 
             // datagridEditoriales
             // 
+            this.datagridEditoriales.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.datagridEditoriales.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.datagridEditoriales.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.datagridEditoriales.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridEditoriales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridEditoriales.Enabled = false;
             this.datagridEditoriales.Location = new System.Drawing.Point(265, 12);
             this.datagridEditoriales.Name = "datagridEditoriales";
             this.datagridEditoriales.Size = new System.Drawing.Size(403, 426);

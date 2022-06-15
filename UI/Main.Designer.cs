@@ -44,6 +44,8 @@
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónProductosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.publicarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,7 +173,9 @@
             // gestiónProductosToolStripMenuItem
             // 
             this.gestiónProductosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaProductoToolStripMenuItem});
+            this.altaProductoToolStripMenuItem,
+            this.modificarProductoToolStripMenuItem,
+            this.publicarProductoToolStripMenuItem});
             this.gestiónProductosToolStripMenuItem.Name = "gestiónProductosToolStripMenuItem";
             this.gestiónProductosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gestiónProductosToolStripMenuItem.Text = "Gestión productos";
@@ -182,6 +186,20 @@
             this.altaProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.altaProductoToolStripMenuItem.Text = "Alta producto";
             this.altaProductoToolStripMenuItem.Click += new System.EventHandler(this.altaProductoToolStripMenuItem_Click);
+            // 
+            // modificarProductoToolStripMenuItem
+            // 
+            this.modificarProductoToolStripMenuItem.Name = "modificarProductoToolStripMenuItem";
+            this.modificarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarProductoToolStripMenuItem.Text = "Modificar producto";
+            this.modificarProductoToolStripMenuItem.Click += new System.EventHandler(this.modificarProductoToolStripMenuItem_Click);
+            // 
+            // publicarProductoToolStripMenuItem
+            // 
+            this.publicarProductoToolStripMenuItem.Name = "publicarProductoToolStripMenuItem";
+            this.publicarProductoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.publicarProductoToolStripMenuItem.Text = "Publicar producto";
+            this.publicarProductoToolStripMenuItem.Click += new System.EventHandler(this.publicarProductoToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -223,5 +241,7 @@
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestiónProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarProductoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem publicarProductoToolStripMenuItem;
     }
 }
