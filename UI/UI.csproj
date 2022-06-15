@@ -64,6 +64,12 @@
     <Compile Include="AltaGenero.Designer.cs">
       <DependentUpon>AltaGenero.cs</DependentUpon>
     </Compile>
+    <Compile Include="AltaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AltaProducto.Designer.cs">
+      <DependentUpon>AltaProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AltaGenero.resx">
       <DependentUpon>AltaGenero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AltaProducto.resx">
+      <DependentUpon>AltaProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

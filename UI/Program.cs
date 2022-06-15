@@ -22,8 +22,9 @@ namespace UI
             BLL.Autor autorService = new BLL.Autor();
             BLL.Editorial editorialService = new BLL.Editorial();
             BLL.Genero generoService = new BLL.Genero();
+            BLL.Producto productoService = new BLL.Producto();
 
-            Application.Run(new Login(usuarioService, autorService, editorialService, generoService));
+            Application.Run(new Login(usuarioService, autorService, editorialService, generoService, productoService));
         }
     }
 }

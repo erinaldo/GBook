@@ -44,6 +44,7 @@
     <Compile Include="IAutor.cs" />
     <Compile Include="IEditorial.cs" />
     <Compile Include="IGenero.cs" />
+    <Compile Include="IProducto.cs" />
     <Compile Include="IUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

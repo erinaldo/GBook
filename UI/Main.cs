@@ -20,14 +20,16 @@ namespace UI
         private readonly IAutor _autorService;
         private readonly IEditorial _editorialService;
         private readonly IGenero _generoService;
+        private readonly IProducto _productoService;
 
-        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService)
+        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService)
         {
             InitializeComponent();
             _usuarioService = UsuarioService;
             _autorService = AutorService;
             _editorialService = editorialService;
             _generoService = generoService;
+            _productoService = productoService;
         }
 
         private void lblLogout_Click(object sender, EventArgs e)
@@ -44,7 +46,7 @@ namespace UI
 
         private void AbrirFormLogin()
         {
-            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService);
+            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService);
             login.Show();
         }
 
@@ -95,6 +97,12 @@ namespace UI
         {
             ModificarGenero modificarGenero = new ModificarGenero(_generoService);
             modificarGenero.Show();
+        }
+
+        private void altaProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaProducto altaProducto = new AltaProducto(_productoService, _autorService, _generoService, _editorialService);
+            altaProducto.Show();
         }
     }
 }
