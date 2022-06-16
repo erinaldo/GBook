@@ -200,6 +200,7 @@
   <ItemGroup>
     <Content Include="Scripts\base_v1.sql" />
     <Content Include="Scripts\script_v1_limpio.sql" />
+    <Content Include="Scripts\script_v2.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
