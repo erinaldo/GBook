@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Interfaces;
+using Models;
 using Models.DTOs;
 using System;
 using System.Collections.Generic;
@@ -275,6 +276,119 @@ namespace DAL.Tools
             }
 
             return alerta;
+        }
+        #endregion
+
+        #region Compra
+        public Models.ComprobanteCompra FillObjectComprobanteCompra(DataRow dr)
+        {
+            Compra _compraDAL = new Compra();
+
+            Models.ComprobanteCompra comprobante = new Models.ComprobanteCompra();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    comprobante.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("FechaRecepcion") && !Convert.IsDBNull(dr["FechaRecepcion"]))
+                    comprobante.FechaRecepcion = Convert.ToDateTime(dr["FechaRecepcion"]);
+
+                if (dr.Table.Columns.Contains("EnvioId") && !Convert.IsDBNull(dr["EnvioId"]))
+                    comprobante.Envio = _compraDAL.GetEnvio(Convert.ToInt32(dr["EnvioId"]));
+
+                if (dr.Table.Columns.Contains("Detalle") && !Convert.IsDBNull(dr["Detalle"]))
+                    comprobante.Detalle = Convert.ToString(dr["Detalle"]);
+
+                if (dr.Table.Columns.Contains("Fecha") && !Convert.IsDBNull(dr["Fecha"]))
+                    comprobante.Fecha = Convert.ToDateTime(dr["Fecha"]);
+
+                if (dr.Table.Columns.Contains("Total") && !Convert.IsDBNull(dr["Total"]))
+                    comprobante.Total = Convert.ToDouble(dr["Total"]);
+
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    comprobante.Items = _compraDAL.GetDetalleComprobanteCompra(Convert.ToInt32(dr["Id"]));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return comprobante;
+        }
+
+        public List<Models.ComprobanteCompra> FillListComprobanteCompra(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectComprobanteCompra(dr)).ToList();
+        }
+        #endregion
+
+        #region Envio
+        public Models.Envio FillObjectEnvio(DataRow dr)
+        {
+            Models.Envio envio = new Models.Envio();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    envio.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("Domicilio") && !Convert.IsDBNull(dr["Domicilio"]))
+                    envio.Domicilio = Convert.ToString(dr["Domicilio"]);
+
+                if (dr.Table.Columns.Contains("Numero") && !Convert.IsDBNull(dr["Numero"]))
+                    envio.Numero = Convert.ToString(dr["Numero"]);
+
+
+                if (dr.Table.Columns.Contains("EntreCalles") && !Convert.IsDBNull(dr["EntreCalles"]))
+                    envio.EntreCalles = Convert.ToString(dr["EntreCalles"]);
+
+                if (dr.Table.Columns.Contains("TelefonoContacto") && !Convert.IsDBNull(dr["TelefonoContacto"]))
+                    envio.TelefonoContacto = Convert.ToString(dr["TelefonoContacto"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return envio;
+            #endregion
+        }
+        #region Detalle Comprobante
+        public Models.DetalleComprobante FillObjectDetalleComprobante(DataRow dr)
+        {
+            Producto _productoDAL = new Producto();
+
+            Models.DetalleComprobante detalle = new Models.DetalleComprobante();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    detalle.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("Cantidad") && !Convert.IsDBNull(dr["Cantidad"]))
+                    detalle.Cantidad = Convert.ToInt32(dr["Cantidad"]);
+
+                if (dr.Table.Columns.Contains("PrecioUnitario") && !Convert.IsDBNull(dr["PrecioUnitario"]))
+                    detalle.PrecioUnitario = Convert.ToDouble(dr["PrecioUnitario"]);
+
+                if (dr.Table.Columns.Contains("ProductoId") && !Convert.IsDBNull(dr["ProductoId"]))
+                    detalle.Producto = _productoDAL.GetProducto(Convert.ToInt32(dr["ProductoId"]));
+
+                if (dr.Table.Columns.Contains("Total") && !Convert.IsDBNull(dr["Total"]))
+                    detalle.Total = Convert.ToDouble(dr["Total"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return detalle;
+        }
+
+        public List<Models.DetalleComprobante> FillListDetalleComprobante(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectDetalleComprobante(dr)).ToList();
         }
         #endregion
     }

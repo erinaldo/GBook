@@ -66,6 +66,8 @@ namespace UI
             List<ProductoDTO> productos = ProductoDTO.FillListDTO(_productoService.GetProductos());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
+            datagridProductos.ClearSelection();
+            datagridProductos.TabStop = false;            
         }
 
         private void btnAlta_Click(object sender, EventArgs e)

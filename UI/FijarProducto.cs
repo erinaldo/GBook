@@ -33,6 +33,8 @@ namespace UI
             List<ProductoAlertaDTO> productos = ProductoAlertaDTO.FillListDTO(_productoService.GetProductos());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
+            datagridProductos.ClearSelection();
+            datagridProductos.TabStop = false;
         }
 
         private void datagridProductos_CellClick(object sender, DataGridViewCellEventArgs e)

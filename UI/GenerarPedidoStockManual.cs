@@ -37,6 +37,8 @@ namespace UI
             List<ProductoDTO> productos = ProductoDTO.FillListDTO(_productoService.GetProductos());
             datagridProductosCompra.DataSource = productos;
             datagridProductosCompra.Columns["Id"].Visible = false;
+            datagridProductosCompra.ClearSelection();
+            datagridProductosCompra.TabStop = false;
         }
 
         private void datagridProductosCompra_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -51,10 +53,16 @@ namespace UI
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtCantidad.Text)) throw new Exception("No se seleccionó la cantidad.");
+
                 Producto producto = _productoService.GetProducto((int)datagridProductosCompra.CurrentRow.Cells["Id"].Value);
-                foreach (var item in _carrito)
+
+                if (_carrito != null)
                 {
-                    if (item.Producto.Id == producto.Id) throw new Exception("El producto ya esta en el carrito");
+                    foreach (var item in _carrito)
+                    {
+                        if (item.Producto.Id == producto.Id) throw new Exception("El producto ya esta en el carrito");
+                    }
                 }
 
                 DetalleComprobante carrito = new DetalleComprobante()
@@ -79,6 +87,8 @@ namespace UI
         {
             List<CarritoDTO> carritoDTO = CarritoDTO.FillListDTO(_carrito);
             datagridCarrito.DataSource = carritoDTO;
+            datagridCarrito.ClearSelection();
+            datagridCarrito.TabStop = false;
         }
 
         private void Limpiar()
@@ -111,6 +121,8 @@ namespace UI
                 };
 
                 _compraService.GenerarPedidoStock(envio, comprobante);
+                MessageBox.Show("Se realizó un pedido de stock correctamente.");
+
                 Limpiar();
                 LimpiarCarrito();
                 CargarCarrito();
@@ -127,6 +139,7 @@ namespace UI
             txtNumero.Text = "";
             txtEntreCalles.Text = "";
             txtTelefonoContacto.Text = "";
+            txtDetalle.Text = "";
             _carrito = null;
         }
     }

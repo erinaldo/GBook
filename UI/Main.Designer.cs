@@ -49,6 +49,7 @@
             this.fijarProductoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarPedidoDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recibirPedidoDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -216,7 +217,8 @@
             // compraToolStripMenuItem
             // 
             this.compraToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generarPedidoDeStockToolStripMenuItem});
+            this.generarPedidoDeStockToolStripMenuItem,
+            this.recibirPedidoDeStockToolStripMenuItem});
             this.compraToolStripMenuItem.Name = "compraToolStripMenuItem";
             this.compraToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.compraToolStripMenuItem.Text = "Compra";
@@ -227,6 +229,13 @@
             this.generarPedidoDeStockToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.generarPedidoDeStockToolStripMenuItem.Text = "Generar pedido de stock";
             this.generarPedidoDeStockToolStripMenuItem.Click += new System.EventHandler(this.generarPedidoDeStockToolStripMenuItem_Click);
+            // 
+            // recibirPedidoDeStockToolStripMenuItem
+            // 
+            this.recibirPedidoDeStockToolStripMenuItem.Name = "recibirPedidoDeStockToolStripMenuItem";
+            this.recibirPedidoDeStockToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.recibirPedidoDeStockToolStripMenuItem.Text = "Recibir pedido de stock";
+            this.recibirPedidoDeStockToolStripMenuItem.Click += new System.EventHandler(this.recibirPedidoDeStockToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -273,5 +282,6 @@
         private System.Windows.Forms.ToolStripMenuItem fijarProductoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem compraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generarPedidoDeStockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recibirPedidoDeStockToolStripMenuItem;
     }
 }

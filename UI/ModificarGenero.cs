@@ -31,6 +31,8 @@ namespace UI
             datagridGenero.DataSource = _generoService.GetGeneros();
             datagridGenero.Columns["Id"].Visible = false;
             datagridGenero.Columns["Activo"].Visible = false;
+            datagridGenero.ClearSelection();
+            datagridGenero.TabStop = false;
         }
 
         private void Limpiar()

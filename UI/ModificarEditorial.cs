@@ -35,6 +35,8 @@ namespace UI
             datagridEditoriales.DataSource = _editorialService.GetEditoriales();
             datagridEditoriales.Columns["Id"].Visible = false;
             datagridEditoriales.Columns["Activo"].Visible = false;
+            datagridEditoriales.ClearSelection();
+            datagridEditoriales.TabStop = false;
         }
 
         private void Limpiar()

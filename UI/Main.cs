@@ -130,5 +130,11 @@ namespace UI
             GenerarPedidoStockManual generarPedidoStockManual = new GenerarPedidoStockManual(_productoService, _compraService);
             generarPedidoStockManual.Show();
         }
+
+        private void recibirPedidoDeStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RecibirPedidoStock recibirPedidoStock = new RecibirPedidoStock(_compraService);
+            recibirPedidoStock.Show();
+        }
     }
 }

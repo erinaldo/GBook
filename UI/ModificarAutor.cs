@@ -31,6 +31,8 @@ namespace UI
             datagridAutores.DataSource = _autorService.GetAutores();
             datagridAutores.Columns["Id"].Visible = false;
             datagridAutores.Columns["Activo"].Visible = false;
+            datagridAutores.ClearSelection();
+            datagridAutores.TabStop = false;
         }
 
         private void Limpiar()

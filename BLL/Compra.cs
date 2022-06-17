@@ -64,16 +64,16 @@ namespace BLL
             try
             {
                 int compraId = 0;
-                
+
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    int envioId = _compraDAL.AltaEnvio(envio);
-                    compraId = _compraDAL.AltaCompra(compra, envioId);
-                    foreach(var item in compra.Items)
+                    int envioId = AltaEnvio(envio);
+                    compraId = AltaCompra(compra, envioId);
+                    foreach (var item in compra.Items)
                     {
                         _compraDAL.AltaDetalleComprobante(item, compraId);
                     }
-                    
+
                     scope.Complete();
                 }
 
@@ -84,7 +84,73 @@ namespace BLL
                 throw new Exception(ex.Message);
             }
         }
-            
+
+        public int AumentarStock(Models.DetalleComprobante detalle)
+        {
+            try
+            {
+                return _compraDAL.AumentarStock(detalle);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public int RecibirPedidoStock(ComprobanteCompra comprobante)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    int pedido = _compraDAL.RecibirPedidoStock(comprobante);
+                    foreach (DetalleComprobante item in comprobante.Items)
+                    {
+                        _compraDAL.AumentarStock(item);
+                    }
+                    scope.Complete();
+
+                    return pedido;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Métodos View
+        public Models.Envio GetEnvio(int envioId)
+        {
+            try
+            {
+                Models.Envio envio = _compraDAL.GetEnvio(envioId);
+                return envio;
+            }
+            catch (Exception) { throw new Exception("Hubo un error al querer obtener el envío."); }
+        }
+
+        public List<Models.DetalleComprobante> GetDetalleComprobanteCompra(int compraId)
+        {
+            try
+            {
+                List<Models.DetalleComprobante> detalleComprobante = _compraDAL.GetDetalleComprobanteCompra(compraId);
+                return detalleComprobante;
+            }
+            catch (Exception) { throw new Exception("Hubo un error al querer obtener los detalles de comprobantes de compra."); }
+        }
+
+        public List<Models.ComprobanteCompra> GetComprobanteCompra()
+        {
+            try
+            {
+                List<Models.ComprobanteCompra> comprobantesCompra = _compraDAL.GetComprobanteCompra();
+                return comprobantesCompra;
+            }
+            catch (Exception) { throw new Exception("Hubo un error al querer obtener los comprobantes de compra"); }
+        }
         #endregion
 
         #region Tools

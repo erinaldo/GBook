@@ -27,9 +27,13 @@ namespace Models.DTOs
         public static List<CarritoDTO> FillListDTO(List<DetalleComprobante> carrito)
         {
             List<CarritoDTO> carritoDTO = new List<CarritoDTO>();
-            foreach (DetalleComprobante producto in carrito)
+
+            if (carrito != null)
             {
-                carritoDTO.Add(FillObject(producto));
+                foreach (DetalleComprobante producto in carrito)
+                {
+                    carritoDTO.Add(FillObject(producto));
+                }
             }
             
             return carritoDTO;
