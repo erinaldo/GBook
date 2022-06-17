@@ -36,6 +36,7 @@ namespace DAL
                                                    "EditorialId = @parEditorialId OUTPUT inserted.Id WHERE Id = @parProductoId";
         private const string PUBLICAR_PRODUCTO = "Update Producto SET EnVenta = @parEnVenta, Precio = @parPrecio OUTPUT inserted.Id WHERE Id = @parProductoId";
         private const string GET_ALERTA = "SELECT Id, Activo, CantidadStockAviso FROM Alerta WHERE ProductoId = {0}";
+        private const string FIJAR_PRODUCTO = "UPDATE Alerta SET Activo = @parActivo, CantidadStockAviso = @parCantidadStockAviso OUTPUT inserted.Id WHERE ProductoId = @parProductoId";
         #endregion
 
         #region Métodos CRUD
@@ -140,6 +141,26 @@ namespace DAL
                 ExecuteParameters.Parameters.AddWithValue("@parProductoId", producto.Id);                
                 ExecuteParameters.Parameters.AddWithValue("@parPrecio", producto.Precio);
                 ExecuteParameters.Parameters.AddWithValue("@parEnVenta", producto.EnVenta);
+
+                return ExecuteNonEscalar();
+            }
+            catch
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public int FijarProducto(Models.Producto producto)
+        {
+            try
+            {
+                ExecuteCommandText = FIJAR_PRODUCTO;
+
+                ExecuteParameters.Parameters.Clear();
+
+                ExecuteParameters.Parameters.AddWithValue("@parProductoId", producto.Id);
+                ExecuteParameters.Parameters.AddWithValue("@parActivo", producto.Alerta.Activo);
+                ExecuteParameters.Parameters.AddWithValue("@parCantidadStockAviso", producto.Alerta.CantidadStockAviso);
 
                 return ExecuteNonEscalar();
             }

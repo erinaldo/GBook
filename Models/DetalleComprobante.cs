@@ -10,8 +10,8 @@ namespace Models
     {
         public int Id { get; set; }
         public int Cantidad { get; set; }
-        public float PrecioUnitario { get; set; }
+        public double PrecioUnitario { get; set; }
         public Producto Producto { get; set; }
-        public float Total { get; set; }
+        public double Total { get; set; }
     }
 }

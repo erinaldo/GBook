@@ -21,8 +21,9 @@ namespace UI
         private readonly IEditorial _editorialService;
         private readonly IGenero _generoService;
         private readonly IProducto _productoService;
+        private readonly ICompra _compraService;
 
-        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService)
+        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService)
         {
             InitializeComponent();
             _usuarioService = UsuarioService;
@@ -30,6 +31,7 @@ namespace UI
             _editorialService = editorialService;
             _generoService = generoService;
             _productoService = productoService;
+            _compraService = compraService;
         }
 
         private void lblLogout_Click(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace UI
 
         private void AbrirFormLogin()
         {
-            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService);
+            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService);
             login.Show();
         }
 
@@ -115,6 +117,18 @@ namespace UI
         {
             PublicarProducto publicarProducto = new PublicarProducto(_productoService);
             publicarProducto.Show();
+        }
+
+        private void fijarProductoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FijarProducto fijarProducto = new FijarProducto(_productoService);
+            fijarProducto.Show();
+        }
+
+        private void generarPedidoDeStockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenerarPedidoStockManual generarPedidoStockManual = new GenerarPedidoStockManual(_productoService, _compraService);
+            generarPedidoStockManual.Show();
         }
     }
 }

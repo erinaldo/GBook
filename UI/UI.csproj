@@ -70,6 +70,18 @@
     <Compile Include="AltaProducto.Designer.cs">
       <DependentUpon>AltaProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FijarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FijarProducto.Designer.cs">
+      <DependentUpon>FijarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarPedidoStockManual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GenerarPedidoStockManual.Designer.cs">
+      <DependentUpon>GenerarPedidoStockManual.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +143,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AltaProducto.resx">
       <DependentUpon>AltaProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FijarProducto.resx">
+      <DependentUpon>FijarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GenerarPedidoStockManual.resx">
+      <DependentUpon>GenerarPedidoStockManual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

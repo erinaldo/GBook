@@ -11,6 +11,6 @@ namespace Models
         public int Id { get; set; }
         public string Detalle { get; set; }
         public DateTime Fecha { get; set; }
-        public float Total { get; set; }
+        public double Total { get; set; }
     }
 }

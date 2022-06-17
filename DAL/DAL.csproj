@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autor.cs" />
+    <Compile Include="Compra.cs" />
     <Compile Include="Conexion\Acceso.cs" />
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Editorial.cs" />

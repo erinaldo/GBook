@@ -20,8 +20,9 @@ namespace UI
         private readonly IEditorial _editorialService;
         private readonly IGenero _generoService;
         private readonly IProducto _productoService;
+        private readonly ICompra _compraService;
 
-        public Registro(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService)   
+        public Registro(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService)   
         {
             InitializeComponent();
             _usuarioService = usuarioService;
@@ -29,6 +30,7 @@ namespace UI
             _editorialService = editorialService;
             _generoService = generoService;
             _productoService = productoService;
+            _compraService = compraService;
         }
 
         private void btnRegistro_Click(object sender, EventArgs e)
@@ -66,7 +68,7 @@ namespace UI
 
         private void CerrarForm()
         {
-            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService);
+            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService);
             login.Show();
         }
     }

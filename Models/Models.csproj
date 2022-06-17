@@ -44,6 +44,8 @@
     <Compile Include="Alerta.cs" />
     <Compile Include="Autor.cs" />
     <Compile Include="DetalleComprobante.cs" />
+    <Compile Include="DTOs\CarritoDTO.cs" />
+    <Compile Include="DTOs\ProductoAlertaDTO.cs" />
     <Compile Include="DTOs\ProductoDTO.cs" />
     <Compile Include="DTOs\UsuarioDTO.cs" />
     <Compile Include="Editorial.cs" />

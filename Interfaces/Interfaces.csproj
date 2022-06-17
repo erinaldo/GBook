@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAutor.cs" />
+    <Compile Include="ICompra.cs" />
     <Compile Include="IEditorial.cs" />
     <Compile Include="IGenero.cs" />
     <Compile Include="IProducto.cs" />

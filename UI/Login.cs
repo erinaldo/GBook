@@ -19,8 +19,9 @@ namespace UI
         private readonly IEditorial _editorialService;
         private readonly IGenero _generoService;
         private readonly IProducto _productoService;
+        private readonly ICompra _compraService;
 
-        public Login(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService)
+        public Login(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService)
         {
             InitializeComponent();
             _usuarioService = usuarioService;
@@ -28,6 +29,7 @@ namespace UI
             _editorialService = editorialService;
             _generoService = generoService;
             _productoService = productoService;
+            _compraService = compraService;
         }
 
         private void txtLogin_Click(object sender, EventArgs e)
@@ -39,7 +41,7 @@ namespace UI
                 Limpiar();
                 this.Hide();
                 
-                Main main = new Main(_usuarioService, _autorService, _editorialService, _generoService, _productoService);
+                Main main = new Main(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService);
                 main.Show();
             }
             catch (Exception ex)
@@ -59,7 +61,7 @@ namespace UI
         {
             this.Hide();
 
-            Registro formRegistro = new Registro(_usuarioService, _autorService, _editorialService, _generoService, _productoService);
+            Registro formRegistro = new Registro(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService);
             formRegistro.Show();
         }
 
