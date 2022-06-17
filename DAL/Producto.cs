@@ -35,6 +35,7 @@ namespace DAL
                                                   "CantidadPaginas = @parCantidadPaginas, AutorId = @parAutorId, GeneroId = @parGeneroId, " +
                                                    "EditorialId = @parEditorialId OUTPUT inserted.Id WHERE Id = @parProductoId";
         private const string PUBLICAR_PRODUCTO = "Update Producto SET EnVenta = @parEnVenta, Precio = @parPrecio OUTPUT inserted.Id WHERE Id = @parProductoId";
+        private const string GET_ALERTA = "SELECT Id, Activo, CantidadStockAviso FROM Alerta WHERE ProductoId = {0}";
         #endregion
 
         #region Métodos CRUD
@@ -160,6 +161,23 @@ namespace DAL
                 Models.Stock stock = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectStock(ds.Tables[0].Rows[0]);
 
                 return stock;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public Models.Alerta GetAlerta(int productoId)
+        {
+            try
+            {
+                SelectCommandText = String.Format(GET_ALERTA, productoId);
+
+                DataSet ds = ExecuteNonReader();
+                Models.Alerta alerta = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectAlerta(ds.Tables[0].Rows[0]);
+
+                return alerta;
             }
             catch (Exception)
             {

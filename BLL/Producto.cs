@@ -123,6 +123,16 @@ namespace BLL
             }
             catch (Exception) { throw new Exception("Hubo un error al querer obtener el stock."); }
         }
+
+        public Models.Alerta GetAlerta (int productoId)
+        {
+            try
+            {
+                Models.Alerta alerta = _productoDAL.GetAlerta(productoId);
+                return alerta;
+            }
+            catch (Exception) { throw new Exception("Hubo un error al querer obtener la alerta."); }
+        }
         #endregion
 
         #region Tools

@@ -19,5 +19,6 @@ namespace Models
         public virtual Genero Genero { get; set; }
         public virtual Editorial Editorial { get; set; }
         public virtual Stock Stock { get; set; }
+        public virtual Alerta Alerta { get; set; }
     }
 }

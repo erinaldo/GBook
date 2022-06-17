@@ -214,6 +214,9 @@ namespace DAL.Tools
 
                 if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
                     producto.Stock = _productoDAL.GetStock(producto.Id);
+
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    producto.Alerta = _productoDAL.GetAlerta(producto.Id);
             }
             catch (Exception ex)
             {
@@ -247,6 +250,31 @@ namespace DAL.Tools
             }
 
             return stock;
+        }
+        #endregion
+
+        #region Alerta
+        public Models.Alerta FillObjectAlerta(DataRow dr)
+        {
+            Models.Alerta alerta = new Models.Alerta();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    alerta.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("CantidadStockAviso") && !Convert.IsDBNull(dr["CantidadStockAviso"]))
+                    alerta.CantidadStockAviso = Convert.ToInt32(dr["CantidadStockAviso"]);
+
+                if (dr.Table.Columns.Contains("Activo") && !Convert.IsDBNull(dr["Activo"]))
+                    alerta.Activo = Convert.ToBoolean(dr["Activo"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return alerta;
         }
         #endregion
     }

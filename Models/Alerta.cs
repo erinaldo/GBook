@@ -11,6 +11,5 @@ namespace Models
         public int Id { get; set; }
         public bool Activo { get; set; }
         public int CantidadStockAviso { get; set; }
-        public Producto Producto { get; set; }
     }
 }
