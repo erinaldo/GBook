@@ -18,5 +18,6 @@ namespace Interfaces
         Models.Alerta GetAlerta(int productoId);
         Models.Producto GetProducto(int productoId);
         List<Models.Producto> GetProductos();
+        List<Models.Producto> GenerarAlertaPedidoStock();
     }
 }

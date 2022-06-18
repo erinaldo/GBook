@@ -126,6 +126,16 @@ namespace BLL
             catch (Exception) { throw new Exception("Hubo un error al querer obtener los productos."); }
         }
 
+        public List<Models.Producto> GenerarAlertaPedidoStock()
+        {
+            try
+            {
+                List<Models.Producto> productos = _productoDAL.GetProductos().Where(x => x.Stock.Cantidad <= x.Alerta.CantidadStockAviso && x.Alerta.Activo == true).ToList();
+                return productos;
+            }
+            catch (Exception) { throw new Exception("Hubo un error al querer generer las alertas de pedido de stock."); }
+        }
+
         public Stock GetStock(int productoId)
         {
             try

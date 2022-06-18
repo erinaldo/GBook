@@ -46,6 +46,36 @@ namespace UI
             UsuarioDTO usuario = Sesion.GetInstance();
 
             lblBienvenido.Text = $"Hola, {usuario.Nombre} {usuario.Apellido}.";
+
+            GenerarAlertaPedidoStock();
+            timerAlerta.Start();
+        }
+
+        private void GenerarAlertaPedidoStock()
+        {
+            List<Producto> productos = _productoService.GenerarAlertaPedidoStock();
+            
+            if (productos.Count() > 0 && productos != null)
+            {
+                lblAlerta.Visible = true;
+                lblAlerta.Text = $"Alerta: hay {productos.Count} producto/s fijados que requieren su atención.";
+                datagridProductos.Visible = true;
+                CargarGridProductosAlerta();
+            }
+            else
+            {
+                lblAlerta.Visible = false;
+                datagridProductos.Visible = false;
+            }
+        }
+
+        private void CargarGridProductosAlerta()
+        {
+            List<ProductoAlertaDTO> productos = ProductoAlertaDTO.FillListDTO(_productoService.GenerarAlertaPedidoStock());
+            datagridProductos.DataSource = productos;
+            datagridProductos.Columns["Id"].Visible = false;
+            datagridProductos.ClearSelection();
+            datagridProductos.TabStop = false;
         }
 
         private void AbrirFormLogin()
@@ -58,6 +88,7 @@ namespace UI
         {
             try
             {
+                timerAlerta.Stop();
                 _usuarioService.Logout();
                 AbrirFormLogin();
             }
@@ -143,6 +174,46 @@ namespace UI
         {
             RealizarVenta realizarVenta = new RealizarVenta(_productoService, _ventaService);
             realizarVenta.Show();            
+        }
+
+        private void datagridProductos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            var altura = 40;
+            foreach (DataGridViewRow dr in datagridProductos.Rows)
+            {
+                altura += dr.Height;
+            }
+
+            datagridProductos.Height = altura;
+        }
+
+        private void timerAlerta_Tick(object sender, EventArgs e)
+        {
+            GenerarAlertaPedidoStock();
+        }
+
+        private void generarPedidoStockProductosFijadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenerarPedidoStockFijados generarPedidoStockFijados = new GenerarPedidoStockFijados(_productoService, _compraService);
+            generarPedidoStockFijados.Show();
+        }
+
+        private void listarProductosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListarProductos listarProductos = new ListarProductos(_productoService);
+            listarProductos.Show();
+        }
+
+        private void visualizarPedidosDeStockRealizadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VisualizarPedidosStock visualizarPedidosStock = new VisualizarPedidosStock(_compraService);
+            visualizarPedidosStock.Show();
+        }
+
+        private void visualizarVentasHistóricasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            VisualizarVentas visualizarVentas = new VisualizarVentas(_ventaService);
+            visualizarVentas.Show();
         }
     }
 }

@@ -242,6 +242,11 @@ namespace DAL
                 throw new Exception("Error en la base de datos.");
             }
         }
+
+        public List<Models.Producto> GenerarAlertaPedidoStock()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }
