@@ -58,7 +58,6 @@ namespace UI
                 if (string.IsNullOrWhiteSpace(txtCantidad.Text)) throw new Exception("No se seleccionó la cantidad.");
 
                 Producto producto = _productoService.GetProducto((int)datagridProductosCompra.CurrentRow.Cells["Id"].Value);
-
                 if (_carrito != null)
                 {
                     foreach (var item in _carrito)
@@ -106,6 +105,8 @@ namespace UI
         {
             try
             {
+                if (_carrito.Count() == 0) throw new Exception("El carrito está vacío.");
+
                 Models.Envio envio = new Models.Envio()
                 {
                     Domicilio = txtDomicilio.Text,

@@ -352,8 +352,9 @@ namespace DAL.Tools
             }
 
             return envio;
-            #endregion
         }
+        #endregion
+
         #region Detalle Comprobante
         public Models.DetalleComprobante FillObjectDetalleComprobante(DataRow dr)
         {
@@ -389,6 +390,45 @@ namespace DAL.Tools
         public List<Models.DetalleComprobante> FillListDetalleComprobante(DataSet ds)
         {
             return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectDetalleComprobante(dr)).ToList();
+        }
+        #endregion
+
+        #region Venta
+        public Models.ComprobanteVenta FillObjectComprobanteVenta(DataRow dr)
+        {
+            Venta _ventaDAL = new Venta();
+
+            Models.ComprobanteVenta comprobante = new Models.ComprobanteVenta();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    comprobante.Id = Convert.ToInt32(dr["Id"]);
+
+
+                if (dr.Table.Columns.Contains("Detalle") && !Convert.IsDBNull(dr["Detalle"]))
+                    comprobante.Detalle = Convert.ToString(dr["Detalle"]);
+
+                if (dr.Table.Columns.Contains("Fecha") && !Convert.IsDBNull(dr["Fecha"]))
+                    comprobante.Fecha = Convert.ToDateTime(dr["Fecha"]);
+
+                if (dr.Table.Columns.Contains("Total") && !Convert.IsDBNull(dr["Total"]))
+                    comprobante.Total = Convert.ToDouble(dr["Total"]);
+
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    comprobante.Items = _ventaDAL.GetDetalleComprobanteVenta(Convert.ToInt32(dr["Id"]));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return comprobante;
+        }
+
+        public List<Models.ComprobanteVenta> FillListComprobanteVenta(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectComprobanteVenta(dr)).ToList();
         }
         #endregion
     }

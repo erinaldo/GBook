@@ -47,6 +47,7 @@
     <Compile Include="IGenero.cs" />
     <Compile Include="IProducto.cs" />
     <Compile Include="IUsuario.cs" />
+    <Compile Include="IVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

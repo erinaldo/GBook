@@ -29,8 +29,8 @@ namespace DAL
         private const string ALTA_DETALLE_COMPRA = "INSERT INTO DetalleComprobante (ProductoId, Cantidad, PrecioUnitario, Total, ComprobanteCompraId) OUTPUT inserted.Id" +
                                                     " VALUES (@parProductoId, @parCantidad, @parPrecioUnitario, @parTotal, @parComprobanteCompraId)";
         private const string GET_ENVIO = "SELECT * FROM Envio WHERE Id = {0}";
-        private const string GET_COMPROBANTE = "SELECT * FROM ComprobanteCompra";
-        private const string GET_DETALLE_COMPROBANTE = "SELECT * FROM DetalleComprobante WHERE ComprobanteCompraId = {0}";
+        private const string GET_COMPROBANTE_COMPRA = "SELECT * FROM ComprobanteCompra";
+        private const string GET_DETALLE_COMPROBANTE_COMPRA = "SELECT * FROM DetalleComprobante WHERE ComprobanteCompraId = {0}";
         private const string RECIBIR_PEDIDO_STOCK = "UPDATE ComprobanteCompra SET FechaRecepcion = GETDATE() OUTPUT inserted.Id WHERE Id = @parId";
         private const string AUMENTAR_STOCK = "UPDATE Stock SET Cantidad = Cantidad + @parCantidad OUTPUT inserted.Id WHERE ProductoId = @parProductoId";
         #endregion
@@ -165,7 +165,7 @@ namespace DAL
         {
             try
             {
-                SelectCommandText = String.Format(GET_COMPROBANTE);
+                SelectCommandText = String.Format(GET_COMPROBANTE_COMPRA);
                 DataSet ds = ExecuteNonReader();
 
                 List<Models.ComprobanteCompra> comprobantes = new List<Models.ComprobanteCompra>();
@@ -186,7 +186,7 @@ namespace DAL
         {
             try
             {
-                SelectCommandText = String.Format(GET_DETALLE_COMPROBANTE, compraId);
+                SelectCommandText = String.Format(GET_DETALLE_COMPROBANTE_COMPRA, compraId);
                 DataSet ds = ExecuteNonReader();
 
                 List<Models.DetalleComprobante> detalleComprobante = new List<Models.DetalleComprobante>();
