@@ -41,6 +41,8 @@ namespace UI
         {
             try
             {
+                if (datagridPedidosStock.CurrentRow == null) throw new Exception("No seleccionó ningún pedido.");
+
                 if (chkRecibido.Checked == true)
                 {
                     ComprobanteCompra comprobante = _compraService.GetComprobanteCompra().Where(c => c.Id == (int)datagridPedidosStock.CurrentRow.Cells["Id"].Value).FirstOrDefault();

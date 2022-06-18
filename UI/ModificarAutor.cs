@@ -46,6 +46,8 @@ namespace UI
         {
             try
             {
+                if (datagridAutores.CurrentRow == null) throw new Exception("No seleccionó ningún autor.");
+
                 Models.Autor autor = new Models.Autor()
                 {
                     Id = int.Parse(datagridAutores.CurrentRow.Cells[0].Value.ToString()),

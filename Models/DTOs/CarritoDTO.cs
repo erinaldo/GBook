@@ -18,9 +18,9 @@ namespace Models.DTOs
             return new CarritoDTO()
             {
                 Producto = carrito.Producto.Nombre,
-                PrecioUnitario = carrito.Producto.Precio.ToString(),
+                PrecioUnitario = carrito.PrecioUnitario.ToString(),
                 Cantidad = carrito.Cantidad.ToString(),
-                Total = (carrito.Producto.Precio * carrito.Cantidad).ToString()
+                Total = (carrito.PrecioUnitario * carrito.Cantidad).ToString()
             };
         }
 

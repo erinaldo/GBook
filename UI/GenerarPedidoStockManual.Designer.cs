@@ -61,6 +61,9 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.txtDetalle = new System.Windows.Forms.TextBox();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtPrecioCompra = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductosCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCarrito)).BeginInit();
             this.SuspendLayout();
@@ -74,7 +77,7 @@
             this.datagridProductosCompra.Name = "datagridProductosCompra";
             this.datagridProductosCompra.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridProductosCompra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridProductosCompra.Size = new System.Drawing.Size(773, 311);
+            this.datagridProductosCompra.Size = new System.Drawing.Size(773, 335);
             this.datagridProductosCompra.TabIndex = 66;
             this.datagridProductosCompra.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridProductosCompra_CellClick);
             // 
@@ -83,11 +86,11 @@
             this.datagridCarrito.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridCarrito.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.datagridCarrito.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.datagridCarrito.Location = new System.Drawing.Point(279, 392);
+            this.datagridCarrito.Location = new System.Drawing.Point(279, 427);
             this.datagridCarrito.Name = "datagridCarrito";
             this.datagridCarrito.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridCarrito.Size = new System.Drawing.Size(773, 324);
+            this.datagridCarrito.Size = new System.Drawing.Size(773, 362);
             this.datagridCarrito.TabIndex = 67;
             // 
             // panel3
@@ -106,9 +109,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
             this.label3.Location = new System.Drawing.Point(12, 157);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 21);
+            this.label3.Size = new System.Drawing.Size(154, 21);
             this.label3.TabIndex = 75;
-            this.label3.Text = "Precio";
+            this.label3.Text = "Precio publicado";
             // 
             // txtPrecio
             // 
@@ -190,7 +193,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
             this.panel4.ForeColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(16, 265);
+            this.panel4.Location = new System.Drawing.Point(16, 314);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(216, 1);
             this.panel4.TabIndex = 79;
@@ -200,7 +203,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.label4.Location = new System.Drawing.Point(12, 223);
+            this.label4.Location = new System.Drawing.Point(12, 272);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 21);
             this.label4.TabIndex = 78;
@@ -212,7 +215,7 @@
             this.txtCantidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCantidad.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.ForeColor = System.Drawing.Color.White;
-            this.txtCantidad.Location = new System.Drawing.Point(16, 247);
+            this.txtCantidad.Location = new System.Drawing.Point(16, 296);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(216, 16);
             this.txtCantidad.TabIndex = 77;
@@ -223,7 +226,7 @@
             this.btnAgregarCarrito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAgregarCarrito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarCarrito.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarCarrito.Location = new System.Drawing.Point(64, 272);
+            this.btnAgregarCarrito.Location = new System.Drawing.Point(59, 332);
             this.btnAgregarCarrito.Name = "btnAgregarCarrito";
             this.btnAgregarCarrito.Size = new System.Drawing.Size(116, 55);
             this.btnAgregarCarrito.TabIndex = 80;
@@ -235,7 +238,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.ForeColor = System.Drawing.Color.White;
-            this.panel5.Location = new System.Drawing.Point(16, 410);
+            this.panel5.Location = new System.Drawing.Point(16, 477);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(216, 1);
             this.panel5.TabIndex = 83;
@@ -245,7 +248,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.label5.Location = new System.Drawing.Point(12, 368);
+            this.label5.Location = new System.Drawing.Point(12, 435);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 21);
             this.label5.TabIndex = 82;
@@ -257,7 +260,7 @@
             this.txtDomicilio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDomicilio.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDomicilio.ForeColor = System.Drawing.Color.White;
-            this.txtDomicilio.Location = new System.Drawing.Point(16, 392);
+            this.txtDomicilio.Location = new System.Drawing.Point(16, 459);
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(216, 16);
             this.txtDomicilio.TabIndex = 81;
@@ -266,7 +269,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.ForeColor = System.Drawing.Color.White;
-            this.panel6.Location = new System.Drawing.Point(16, 471);
+            this.panel6.Location = new System.Drawing.Point(16, 538);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(216, 1);
             this.panel6.TabIndex = 86;
@@ -276,7 +279,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.label6.Location = new System.Drawing.Point(12, 429);
+            this.label6.Location = new System.Drawing.Point(12, 496);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 21);
             this.label6.TabIndex = 85;
@@ -288,7 +291,7 @@
             this.txtNumero.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNumero.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumero.ForeColor = System.Drawing.Color.White;
-            this.txtNumero.Location = new System.Drawing.Point(16, 453);
+            this.txtNumero.Location = new System.Drawing.Point(16, 520);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(216, 16);
             this.txtNumero.TabIndex = 84;
@@ -297,7 +300,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
             this.panel7.ForeColor = System.Drawing.Color.White;
-            this.panel7.Location = new System.Drawing.Point(16, 529);
+            this.panel7.Location = new System.Drawing.Point(16, 596);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(216, 1);
             this.panel7.TabIndex = 89;
@@ -307,7 +310,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.label7.Location = new System.Drawing.Point(12, 487);
+            this.label7.Location = new System.Drawing.Point(12, 554);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(118, 21);
             this.label7.TabIndex = 88;
@@ -319,7 +322,7 @@
             this.txtEntreCalles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEntreCalles.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEntreCalles.ForeColor = System.Drawing.Color.White;
-            this.txtEntreCalles.Location = new System.Drawing.Point(16, 511);
+            this.txtEntreCalles.Location = new System.Drawing.Point(16, 578);
             this.txtEntreCalles.Name = "txtEntreCalles";
             this.txtEntreCalles.Size = new System.Drawing.Size(216, 16);
             this.txtEntreCalles.TabIndex = 87;
@@ -328,7 +331,7 @@
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
             this.panel8.ForeColor = System.Drawing.Color.White;
-            this.panel8.Location = new System.Drawing.Point(16, 588);
+            this.panel8.Location = new System.Drawing.Point(16, 655);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(216, 1);
             this.panel8.TabIndex = 92;
@@ -338,7 +341,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.label8.Location = new System.Drawing.Point(12, 546);
+            this.label8.Location = new System.Drawing.Point(12, 613);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(163, 21);
             this.label8.TabIndex = 91;
@@ -350,7 +353,7 @@
             this.txtTelefonoContacto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefonoContacto.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefonoContacto.ForeColor = System.Drawing.Color.White;
-            this.txtTelefonoContacto.Location = new System.Drawing.Point(16, 570);
+            this.txtTelefonoContacto.Location = new System.Drawing.Point(16, 637);
             this.txtTelefonoContacto.Name = "txtTelefonoContacto";
             this.txtTelefonoContacto.Size = new System.Drawing.Size(216, 16);
             this.txtTelefonoContacto.TabIndex = 90;
@@ -361,7 +364,7 @@
             this.btnGenerarPedidoStock.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnGenerarPedidoStock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGenerarPedidoStock.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarPedidoStock.Location = new System.Drawing.Point(47, 662);
+            this.btnGenerarPedidoStock.Location = new System.Drawing.Point(47, 721);
             this.btnGenerarPedidoStock.Name = "btnGenerarPedidoStock";
             this.btnGenerarPedidoStock.Size = new System.Drawing.Size(147, 55);
             this.btnGenerarPedidoStock.TabIndex = 93;
@@ -385,7 +388,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.label10.Location = new System.Drawing.Point(275, 368);
+            this.label10.Location = new System.Drawing.Point(275, 403);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 21);
             this.label10.TabIndex = 95;
@@ -395,7 +398,7 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.White;
             this.panel9.ForeColor = System.Drawing.Color.White;
-            this.panel9.Location = new System.Drawing.Point(16, 646);
+            this.panel9.Location = new System.Drawing.Point(16, 705);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(216, 1);
             this.panel9.TabIndex = 98;
@@ -405,7 +408,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.label11.Location = new System.Drawing.Point(12, 604);
+            this.label11.Location = new System.Drawing.Point(12, 663);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 21);
             this.label11.TabIndex = 97;
@@ -417,17 +420,51 @@
             this.txtDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDetalle.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDetalle.ForeColor = System.Drawing.Color.White;
-            this.txtDetalle.Location = new System.Drawing.Point(16, 628);
+            this.txtDetalle.Location = new System.Drawing.Point(16, 687);
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(216, 16);
             this.txtDetalle.TabIndex = 96;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.White;
+            this.panel10.ForeColor = System.Drawing.Color.White;
+            this.panel10.Location = new System.Drawing.Point(16, 258);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(216, 1);
+            this.panel10.TabIndex = 104;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.label12.Location = new System.Drawing.Point(12, 216);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(235, 21);
+            this.label12.TabIndex = 103;
+            this.label12.Text = "Precio unitario de compra";
+            // 
+            // txtPrecioCompra
+            // 
+            this.txtPrecioCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.txtPrecioCompra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPrecioCompra.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioCompra.ForeColor = System.Drawing.Color.White;
+            this.txtPrecioCompra.Location = new System.Drawing.Point(16, 240);
+            this.txtPrecioCompra.Name = "txtPrecioCompra";
+            this.txtPrecioCompra.Size = new System.Drawing.Size(216, 16);
+            this.txtPrecioCompra.TabIndex = 102;
             // 
             // GenerarPedidoStockManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(1065, 729);
+            this.ClientSize = new System.Drawing.Size(1065, 799);
+            this.Controls.Add(this.panel10);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtPrecioCompra);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtDetalle);
@@ -506,5 +543,8 @@
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDetalle;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtPrecioCompra;
     }
 }

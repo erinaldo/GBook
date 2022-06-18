@@ -53,6 +53,8 @@ namespace UI
         {
             try
             {
+                if (datagridProductosCompra.CurrentRow == null) throw new Exception("No seleccionó ningún producto.");
+                if (string.IsNullOrWhiteSpace(txtPrecioCompra.Text)) throw new Exception("No se completó el precio de compra.");
                 if (string.IsNullOrWhiteSpace(txtCantidad.Text)) throw new Exception("No se seleccionó la cantidad.");
 
                 Producto producto = _productoService.GetProducto((int)datagridProductosCompra.CurrentRow.Cells["Id"].Value);
@@ -69,8 +71,8 @@ namespace UI
                 {
                     Producto = producto,
                     Cantidad = int.Parse(txtCantidad.Text),
-                    PrecioUnitario = producto.Precio,
-                    Total = producto.Precio * int.Parse(txtCantidad.Text)
+                    PrecioUnitario = Convert.ToDouble(txtPrecioCompra.Text),
+                    Total = Convert.ToDouble(txtPrecioCompra.Text) * int.Parse(txtCantidad.Text)
                 };
                 _carrito.Add(carrito);
 
@@ -97,6 +99,7 @@ namespace UI
             txtNombre.Text = "";
             txtPrecio.Text = "";
             txtCantidad.Text = "";
+            txtPrecioCompra.Text = "";
         }
 
         private void btnGenerarPedidoStock_Click(object sender, EventArgs e)
@@ -117,7 +120,7 @@ namespace UI
                     Envio = envio,
                     Items = _carrito,
                     Detalle = txtDetalle.Text,
-                    Total = Convert.ToDouble(_carrito.Sum(x => x.Total))
+                    Total = Convert.ToDouble(_carrito.Sum(x => x.Total)),
                 };
 
                 _compraService.GenerarPedidoStock(envio, comprobante);

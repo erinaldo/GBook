@@ -48,6 +48,8 @@ namespace UI
         {
             try
             {
+                if (datagridEditoriales.CurrentRow == null) throw new Exception("No seleccionó ninguna editorial.");
+
                 Models.Editorial editorial = new Models.Editorial()
                 {
                     Id = int.Parse(datagridEditoriales.CurrentRow.Cells[0].Value.ToString()),

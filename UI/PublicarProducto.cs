@@ -52,6 +52,8 @@ namespace UI
         {
             try
             {
+                if (datagridProductos.CurrentRow == null) throw new Exception("No seleccionó ningún producto.");                
+
                 Producto producto = new Producto()
                 {
                     Id = (int)datagridProductos.CurrentRow.Cells["Id"].Value,

@@ -49,6 +49,8 @@ namespace UI
         {
             try
             {
+                if (datagridGenero.CurrentRow == null) throw new Exception("No seleccionó ningún género.");
+
                 Models.Genero genero = new Models.Genero()
                 {
                     Id = int.Parse(datagridGenero.CurrentRow.Cells[0].Value.ToString()),

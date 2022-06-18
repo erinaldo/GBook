@@ -85,6 +85,8 @@ namespace UI
         {
             try
             {
+                if (datagridProductos.CurrentRow == null) throw new Exception("No seleccionó ningún producto.");
+
                 Autor autor = new Models.Autor()
                 {
                     Id = (int)cbxAutor.SelectedValue,
