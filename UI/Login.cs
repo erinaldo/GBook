@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Interfaces.Observer;
 using Models.DTOs;
 using System;
 using System.Collections.Generic;
@@ -21,8 +22,9 @@ namespace UI
         private readonly IProducto _productoService;
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
+        private readonly ITraductor _traductorService;
 
-        public Login(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService)
+        public Login(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService)
         {
             InitializeComponent();
             _usuarioService = usuarioService;
@@ -32,6 +34,7 @@ namespace UI
             _productoService = productoService;
             _compraService = compraService;
             _ventaService = ventaService;
+            _traductorService = traductorService;
         }
 
         private void txtLogin_Click(object sender, EventArgs e)
@@ -43,7 +46,7 @@ namespace UI
                 Limpiar();
                 this.Hide();
                 
-                Main main = new Main(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService);
+                Main main = new Main(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService);
                 main.Show();
             }
             catch (Exception ex)
@@ -63,7 +66,7 @@ namespace UI
         {
             this.Hide();
 
-            Registro formRegistro = new Registro(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService);
+            Registro formRegistro = new Registro(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService);
             formRegistro.Show();
         }
 

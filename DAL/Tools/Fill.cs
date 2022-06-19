@@ -2,6 +2,7 @@
 using Interfaces;
 using Models;
 using Models.DTOs;
+using Models.Observer;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -430,6 +431,107 @@ namespace DAL.Tools
         {
             return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectComprobanteVenta(dr)).ToList();
         }
+        #endregion
+
+        #region Idioma
+        public Models.Observer.IIdioma FillObjectIdioma(DataRow dr)
+        {
+            Models.Observer.Idioma idioma = new Models.Observer.Idioma();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    idioma.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("Nombre") && !Convert.IsDBNull(dr["Nombre"]))
+                    idioma.Nombre = Convert.ToString(dr["Nombre"]);
+
+                if (dr.Table.Columns.Contains("Default") && !Convert.IsDBNull(dr["Default"]))
+                    idioma.Default = Convert.ToBoolean(dr["Default"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return idioma;
+        }
+
+        public List<Models.Observer.IIdioma> FillListIdioma(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectIdioma(dr)).ToList();
+        }
+        #endregion
+
+        #region Traducción
+        public IDictionary<string, ITraduccion> FillTraducciones(DataSet ds)
+        {
+            IDictionary<string, ITraduccion> _traducciones = new Dictionary<string, ITraduccion>();
+
+            try
+            {
+                foreach (var item in ds.Tables[0].Rows)
+                {
+                    DataRow dr = item as DataRow;
+                    
+                    ITraduccion traduccion = new Traduccion();
+                    traduccion.Texto = Convert.ToString(dr["traduccion_traduccion"]);
+                    Etiqueta etiqueta = new Etiqueta()
+                    {
+                        Id = Convert.ToInt32(dr["EtiquetaId"]),
+                        Nombre = Convert.ToString(dr["nombre_etiqueta"])
+                    };
+                    traduccion.Etiqueta = etiqueta;
+
+                    _traducciones.Add(traduccion.Etiqueta.Nombre, traduccion);
+                }
+                //foreach (var item in ds.Tables)
+                //{
+                //    if (item.ToString().Contains("traduccion_traduccion") && !Convert.IsDBNull(dr[item.ToString()]))
+                //    {
+                //        ITraduccion traduccion = new Traduccion();
+
+                //        traduccion.Texto = Convert.ToString(ds[item.ToString()]);
+                //        _traducciones.Add(item.ToString(), traduccion);
+                //    }
+
+                //    if (item.ToString().Contains("EtiquetaId") && !Convert.IsDBNull(dr[item.ToString()]))
+                //    {
+                //        ITraduccion traduccion = new Traduccion();
+
+                //        traduccion.Etiqueta.Id = Convert.ToInt32(dr[item.ToString()]);
+                //        _traducciones.Add(item.ToString(), traduccion);
+                //    }
+
+                //    if (item.ToString().Contains("nombre_etiqueta") && !Convert.IsDBNull(dr[item.ToString()]))
+                //    {
+                //        ITraduccion traduccion = new Traduccion();
+
+                //        traduccion.Etiqueta.Nombre = Convert.ToString(dr[item.ToString()]);
+                //        _traducciones.Add(item.ToString(), traduccion);
+                //    }
+                //}
+
+
+                //if (dr.Table.Columns.Contains("traduccion_traduccion") && !Convert.IsDBNull(dr["traduccion_traduccion"]))
+                //    traduccion.Texto = Convert.ToString(dr["traduccion_traduccion"]);
+                //if (dr.Table.Columns.Contains("etiquetaId") && !Convert.IsDBNull(dr["etiquetaId"]))
+                //    traduccion.Etiqueta.Id = Convert.ToInt32(dr["etiquetaId"]);
+                //if (dr.Table.Columns.Contains("nombre_etiqueta") && !Convert.IsDBNull(dr["nombre_etiqueta"]))
+                //    traduccion.Etiqueta.Nombre = Convert.ToString(dr["nombre_etiqueta"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return _traducciones;
+        }
+
+        //public IDictionary<string, ITraduccion> FillListTraduccion(DataSet ds)
+        //{
+        //    return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectTraduccion(dr)).ToList();
+        //}
         #endregion
     }
 }

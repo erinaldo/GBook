@@ -53,13 +53,13 @@
             this.generarPedidoDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generarPedidoStockProductosFijadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recibirPedidoDeStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualizarPedidosDeStockRealizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ventaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.realizarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualizarVentasHistóricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblAlerta = new System.Windows.Forms.Label();
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.timerAlerta = new System.Windows.Forms.Timer(this.components);
-            this.visualizarPedidosDeStockRealizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.visualizarVentasHistóricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
             this.SuspendLayout();
@@ -266,6 +266,13 @@
             this.recibirPedidoDeStockToolStripMenuItem.Text = "Recibir pedido de stock";
             this.recibirPedidoDeStockToolStripMenuItem.Click += new System.EventHandler(this.recibirPedidoDeStockToolStripMenuItem_Click);
             // 
+            // visualizarPedidosDeStockRealizadosToolStripMenuItem
+            // 
+            this.visualizarPedidosDeStockRealizadosToolStripMenuItem.Name = "visualizarPedidosDeStockRealizadosToolStripMenuItem";
+            this.visualizarPedidosDeStockRealizadosToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
+            this.visualizarPedidosDeStockRealizadosToolStripMenuItem.Text = "Visualizar pedidos de stock realizados";
+            this.visualizarPedidosDeStockRealizadosToolStripMenuItem.Click += new System.EventHandler(this.visualizarPedidosDeStockRealizadosToolStripMenuItem_Click);
+            // 
             // ventaToolStripMenuItem
             // 
             this.ventaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -278,9 +285,16 @@
             // realizarVentaToolStripMenuItem
             // 
             this.realizarVentaToolStripMenuItem.Name = "realizarVentaToolStripMenuItem";
-            this.realizarVentaToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.realizarVentaToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
             this.realizarVentaToolStripMenuItem.Text = "Realizar venta";
             this.realizarVentaToolStripMenuItem.Click += new System.EventHandler(this.realizarVentaToolStripMenuItem_Click);
+            // 
+            // visualizarVentasHistóricasToolStripMenuItem
+            // 
+            this.visualizarVentasHistóricasToolStripMenuItem.Name = "visualizarVentasHistóricasToolStripMenuItem";
+            this.visualizarVentasHistóricasToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
+            this.visualizarVentasHistóricasToolStripMenuItem.Text = "Visualizar ventas históricas";
+            this.visualizarVentasHistóricasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVentasHistóricasToolStripMenuItem_Click);
             // 
             // lblAlerta
             // 
@@ -291,6 +305,7 @@
             this.lblAlerta.Name = "lblAlerta";
             this.lblAlerta.Size = new System.Drawing.Size(64, 21);
             this.lblAlerta.TabIndex = 3;
+            this.lblAlerta.Tag = "lbl_AlertaPedidoStock";
             this.lblAlerta.Text = "label1";
             this.lblAlerta.Visible = false;
             // 
@@ -312,20 +327,6 @@
             // 
             this.timerAlerta.Interval = 30000;
             this.timerAlerta.Tick += new System.EventHandler(this.timerAlerta_Tick);
-            // 
-            // visualizarPedidosDeStockRealizadosToolStripMenuItem
-            // 
-            this.visualizarPedidosDeStockRealizadosToolStripMenuItem.Name = "visualizarPedidosDeStockRealizadosToolStripMenuItem";
-            this.visualizarPedidosDeStockRealizadosToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
-            this.visualizarPedidosDeStockRealizadosToolStripMenuItem.Text = "Visualizar pedidos de stock realizados";
-            this.visualizarPedidosDeStockRealizadosToolStripMenuItem.Click += new System.EventHandler(this.visualizarPedidosDeStockRealizadosToolStripMenuItem_Click);
-            // 
-            // visualizarVentasHistóricasToolStripMenuItem
-            // 
-            this.visualizarVentasHistóricasToolStripMenuItem.Name = "visualizarVentasHistóricasToolStripMenuItem";
-            this.visualizarVentasHistóricasToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.visualizarVentasHistóricasToolStripMenuItem.Text = "Visualizar ventas históricas";
-            this.visualizarVentasHistóricasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVentasHistóricasToolStripMenuItem_Click);
             // 
             // Main
             // 

@@ -56,6 +56,12 @@
     <Compile Include="ComprobanteVenta.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="Genero.cs" />
+    <Compile Include="Observer\Etiqueta.cs" />
+    <Compile Include="Observer\Idioma.cs" />
+    <Compile Include="Observer\IEtiqueta.cs" />
+    <Compile Include="Observer\IIdioma.cs" />
+    <Compile Include="Observer\ITraduccion.cs" />
+    <Compile Include="Observer\Traduccion.cs" />
     <Compile Include="Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stock.cs" />

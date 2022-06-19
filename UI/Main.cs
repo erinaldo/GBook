@@ -1,6 +1,8 @@
 ﻿using Interfaces;
+using Interfaces.Observer;
 using Models;
 using Models.DTOs;
+using Models.Observer;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -23,8 +25,9 @@ namespace UI
         private readonly IProducto _productoService;
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
+        private readonly ITraductor _traductorService;
 
-        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService)
+        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService)
         {
             InitializeComponent();
             _usuarioService = UsuarioService;
@@ -34,6 +37,7 @@ namespace UI
             _productoService = productoService;
             _compraService = compraService;
             _ventaService = ventaService;
+            _traductorService = traductorService;
         }
 
         private void lblLogout_Click(object sender, EventArgs e)
@@ -47,6 +51,8 @@ namespace UI
 
             lblBienvenido.Text = $"Hola, {usuario.Nombre} {usuario.Apellido}.";
 
+            UpdateLanguage(Sesion.GetInstance().Idioma);
+
             GenerarAlertaPedidoStock();
             timerAlerta.Start();
         }
@@ -58,7 +64,6 @@ namespace UI
             if (productos.Count() > 0 && productos != null)
             {
                 lblAlerta.Visible = true;
-                lblAlerta.Text = $"Alerta: hay {productos.Count} producto/s fijados que requieren su atención.";
                 datagridProductos.Visible = true;
                 CargarGridProductosAlerta();
             }
@@ -80,7 +85,7 @@ namespace UI
 
         private void AbrirFormLogin()
         {
-            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService);
+            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService);
             login.Show();
         }
 
@@ -214,6 +219,19 @@ namespace UI
         {
             VisualizarVentas visualizarVentas = new VisualizarVentas(_ventaService);
             visualizarVentas.Show();
+        }
+
+        public void UpdateLanguage(IIdioma idioma)
+        {
+            Traducir(idioma);
+        }
+
+        private void Traducir(IIdioma idioma)
+        {
+            var traducciones = _traductorService.ObtenerTraducciones(Sesion.GetInstance().Idioma);
+
+            if (lblAlerta.Tag != null && traducciones.ContainsKey(lblAlerta.Tag.ToString()))
+                lblAlerta.Text = traducciones[lblAlerta.Tag.ToString()].Texto;
         }
     }
 }

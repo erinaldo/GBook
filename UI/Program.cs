@@ -25,8 +25,9 @@ namespace UI
             BLL.Producto productoService = new BLL.Producto();
             BLL.Compra compraService = new BLL.Compra();
             BLL.Venta ventaService = new BLL.Venta();
+            BLL.Observer.Idioma traductorService = new BLL.Observer.Idioma();
 
-            Application.Run(new Login(usuarioService, autorService, editorialService, generoService, productoService, compraService, ventaService));
+            Application.Run(new Login(usuarioService, autorService, editorialService, generoService, productoService, compraService, ventaService, traductorService));
         }
     }
 }

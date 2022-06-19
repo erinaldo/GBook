@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Interfaces.Observer;
 using Models;
 using Models.DTOs;
 using System;
@@ -22,8 +23,9 @@ namespace UI
         private readonly IProducto _productoService;
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
+        private readonly ITraductor _traductorService;
 
-        public Registro(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService)   
+        public Registro(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService)   
         {
             InitializeComponent();
             _usuarioService = usuarioService;
@@ -33,6 +35,7 @@ namespace UI
             _productoService = productoService;
             _compraService = compraService;
             _ventaService = ventaService;
+            _traductorService = traductorService;
         }
 
         private void btnRegistro_Click(object sender, EventArgs e)
@@ -70,7 +73,7 @@ namespace UI
 
         private void CerrarForm()
         {
-            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService);
+            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService);
             login.Show();
         }
     }

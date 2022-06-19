@@ -16,11 +16,13 @@ namespace BLL
         #region Inyección de dependencias
         private readonly DAL.Usuario _usuarioDAL;
         private readonly Encriptacion _encriptacion;
+        private readonly DAL.Observer.Idioma _idiomaDAL;
 
         public Usuario()
         {
             _usuarioDAL = new DAL.Usuario();
             _encriptacion = new Encriptacion();
+            _idiomaDAL = new DAL.Observer.Idioma();
         }
         #endregion
 
@@ -60,7 +62,7 @@ namespace BLL
                             Apellido = _encriptacion.DesencriptarAES(usuario.Apellido),
                         };
 
-                        Sesion.CreateInstance(usuarioSingleton);
+                        Sesion.CreateInstance(usuarioSingleton, _idiomaDAL.ObtenerIdiomaDefault());
                     }
                     else
                     { 
