@@ -374,5 +374,13 @@ namespace UI
             cargarEtiquetas.StartPosition = FormStartPosition.CenterScreen;
             cargarEtiquetas.Show();
         }
+
+        private void modificarEtiquetasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ModificarEtiquetas modificarEtiquetas = new ModificarEtiquetas(_traductorService);
+            modificarEtiquetas.MdiParent = this;
+            modificarEtiquetas.StartPosition = FormStartPosition.CenterScreen;
+            modificarEtiquetas.Show();
+        }
     }
 }

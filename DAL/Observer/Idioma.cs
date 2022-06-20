@@ -30,6 +30,9 @@ namespace DAL.Observer
         private const string GET_ETIQUETA = "SELECT * FROM Etiqueta WHERE Id = {0}";
         private const string ALTA_TRADUCCION = "INSERT INTO Traduccion (IdiomaId, EtiquetaId, Traduccion) OUTPUT inserted.Id VALUES (@parIdiomaId, @parEtiquetaId, @parTraduccion)";
         private const string GET_TRADUCCIONES_POR_IDIOMA = "SELECT * FROM Traduccion WHERE IdiomaId = {0}";
+        private const string MODIFICAR_TRADUCCION = "UPDATE Traduccion SET Traduccion = @parTraduccion OUTPUT inserted.Id " +
+                                                    "WHERE Id = @parId";
+        private const string GET_TRADUCCION_POR_ID = "SELECT * FROM Traduccion WHERE Id = {0}";
         #endregion
 
         #region Métodos CRUD
@@ -62,6 +65,25 @@ namespace DAL.Observer
                 ExecuteParameters.Parameters.AddWithValue("@parIdiomaId", idioma.Id);
                 ExecuteParameters.Parameters.AddWithValue("@parEtiquetaId", traduccion.Etiqueta.Id);
                 ExecuteParameters.Parameters.AddWithValue("@parTraduccion", traduccion.Texto);
+
+                return ExecuteNonEscalar();
+            }
+            catch
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public int ModificarTraduccion(Models.Observer.Traduccion traduccion)
+        {
+            try
+            {
+                ExecuteCommandText = MODIFICAR_TRADUCCION;
+
+                ExecuteParameters.Parameters.Clear();
+
+                ExecuteParameters.Parameters.AddWithValue("@parTraduccion", traduccion.Texto);
+                ExecuteParameters.Parameters.AddWithValue("@parId", traduccion.Id);
 
                 return ExecuteNonEscalar();
             }
@@ -152,6 +174,23 @@ namespace DAL.Observer
                 Models.Observer.Etiqueta etiqueta = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectEtiqueta(ds.Tables[0].Rows[0]);
 
                 return etiqueta;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public Models.Observer.Traduccion GetTraduccionId(int traduccionId)
+        {
+            try
+            {
+                SelectCommandText = String.Format(GET_TRADUCCION_POR_ID, traduccionId);
+
+                DataSet ds = ExecuteNonReader();
+                Models.Observer.Traduccion traduccion = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillGridTraduccion(ds.Tables[0].Rows[0]);
+
+                return traduccion;
             }
             catch (Exception)
             {

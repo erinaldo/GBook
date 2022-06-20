@@ -501,6 +501,9 @@ namespace DAL.Tools
             
             try
             {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    traduccion.Id = (Convert.ToInt32(dr["Id"]));
+
                 if (dr.Table.Columns.Contains("EtiquetaId") && !Convert.IsDBNull(dr["EtiquetaId"]))
                     traduccion.Etiqueta = _idiomaDAL.GetEtiqueta(Convert.ToInt32(dr["EtiquetaId"]));
 

@@ -130,6 +130,12 @@
     <Compile Include="ModificarEditorial.Designer.cs">
       <DependentUpon>ModificarEditorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="ModificarEtiquetas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarEtiquetas.Designer.cs">
+      <DependentUpon>ModificarEtiquetas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModificarGenero.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarEditorial.resx">
       <DependentUpon>ModificarEditorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarEtiquetas.resx">
+      <DependentUpon>ModificarEtiquetas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModificarGenero.resx">
       <DependentUpon>ModificarGenero.cs</DependentUpon>

@@ -61,6 +61,7 @@
             this.gestiónIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modificarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblAlerta = new System.Windows.Forms.Label();
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.timerAlerta = new System.Windows.Forms.Timer(this.components);
@@ -315,7 +316,8 @@
             // 
             this.gestiónIdiomaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.altaIdiomaToolStripMenuItem,
-            this.cargarEtiquetasToolStripMenuItem});
+            this.cargarEtiquetasToolStripMenuItem,
+            this.modificarEtiquetasToolStripMenuItem});
             this.gestiónIdiomaToolStripMenuItem.Name = "gestiónIdiomaToolStripMenuItem";
             this.gestiónIdiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gestiónIdiomaToolStripMenuItem.Text = "Gestión idioma";
@@ -333,6 +335,13 @@
             this.cargarEtiquetasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cargarEtiquetasToolStripMenuItem.Text = "Cargar etiquetas";
             this.cargarEtiquetasToolStripMenuItem.Click += new System.EventHandler(this.cargarEtiquetasToolStripMenuItem_Click);
+            // 
+            // modificarEtiquetasToolStripMenuItem
+            // 
+            this.modificarEtiquetasToolStripMenuItem.Name = "modificarEtiquetasToolStripMenuItem";
+            this.modificarEtiquetasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modificarEtiquetasToolStripMenuItem.Text = "Modificar etiquetas";
+            this.modificarEtiquetasToolStripMenuItem.Click += new System.EventHandler(this.modificarEtiquetasToolStripMenuItem_Click);
             // 
             // lblAlerta
             // 
@@ -432,5 +441,6 @@
         private System.Windows.Forms.ToolStripMenuItem gestiónIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargarEtiquetasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modificarEtiquetasToolStripMenuItem;
     }
 }

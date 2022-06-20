@@ -9,6 +9,7 @@ namespace Models.DTOs
 {
     public class TraduccionesDTO
     {
+        public int Id { get; set; }
         public string Etiqueta { get; set; }
         public string Traduccion { get; set; }
 
@@ -16,6 +17,7 @@ namespace Models.DTOs
         {
             return new TraduccionesDTO
             {
+                Id = traduccion.Id,
                 Etiqueta = traduccion.Etiqueta.Nombre,
                 Traduccion = traduccion.Texto
             };

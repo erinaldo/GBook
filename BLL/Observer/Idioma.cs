@@ -46,6 +46,19 @@ namespace BLL.Observer
                 throw new Exception(ex.Message);
             }
         }
+
+        public int ModificarTraduccion(Models.Observer.Traduccion traduccion)
+        {
+            try
+            {
+                ValidarTraduccion(traduccion);
+                return _idiomaDAL.ModificarTraduccion(traduccion);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         #region Métodos View
@@ -100,6 +113,16 @@ namespace BLL.Observer
                 return traducciones;
             }
             catch (Exception) { throw new Exception("Hubo un error al querer obtener los idiomas."); }
+        }
+
+        public Models.Observer.Traduccion GetTraduccionId(int traduccionId)
+        {
+            try
+            {
+                Models.Observer.Traduccion traduccion = _idiomaDAL.GetTraduccionId(traduccionId);
+                return traduccion;
+            }
+            catch (Exception) { throw new Exception("Hubo un error al querer obtener la traducción."); }
         }
         #endregion
 

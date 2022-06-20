@@ -14,7 +14,9 @@ namespace Interfaces.Observer
         IDictionary<string, ITraduccion> ObtenerTraducciones(IIdioma idioma);
         int AltaIdioma(Models.Observer.Idioma idioma);
         int AltaTraduccion(Models.Observer.IIdioma idioma, Models.Observer.Traduccion traduccion);
+        int ModificarTraduccion(Models.Observer.Traduccion traduccion);
         List<Models.Observer.Etiqueta> GetEtiquetas();
         List<Models.Observer.Traduccion> GetTraduccionesPorIdioma(int idiomaId);
+        Models.Observer.Traduccion GetTraduccionId(int traduccionId);
     }
 }
