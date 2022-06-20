@@ -25,6 +25,51 @@ namespace DAL.Observer
         private const string GET_IDIOMAS = "SELECT * FROM Idioma";
         private const string GET_TRADUCCIONES = "SELECT t.IdiomaId, t.Traduccion as traduccion_traduccion, e.Id as EtiquetaId, NombreEtiqueta as nombre_etiqueta FROM Traduccion t" +
                                                 " INNER JOIN Etiqueta e on t.EtiquetaId = e.Id WHERE t.IdiomaId = {0}";
+        private const string ALTA_IDIOMA = "INSERT INTO Idioma OUTPUT inserted.Id VALUES (@parNombre, 0)";
+        private const string GET_ETIQUETAS = "SELECT * FROM Etiqueta";
+        private const string GET_ETIQUETA = "SELECT * FROM Etiqueta WHERE Id = {0}";
+        private const string ALTA_TRADUCCION = "INSERT INTO Traduccion (IdiomaId, EtiquetaId, Traduccion) OUTPUT inserted.Id VALUES (@parIdiomaId, @parEtiquetaId, @parTraduccion)";
+        private const string GET_TRADUCCIONES_POR_IDIOMA = "SELECT * FROM Traduccion WHERE IdiomaId = {0}";
+        #endregion
+
+        #region Métodos CRUD
+        public int AltaIdioma (Models.Observer.Idioma idioma)
+        {
+            try
+            {
+                ExecuteCommandText = ALTA_IDIOMA;
+
+                ExecuteParameters.Parameters.Clear();
+
+                ExecuteParameters.Parameters.AddWithValue("@parNombre", idioma.Nombre);
+
+                return ExecuteNonEscalar();
+            }
+            catch
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public int AltaTraduccion(Models.Observer.IIdioma idioma, Models.Observer.Traduccion traduccion)
+        {
+            try
+            {
+                ExecuteCommandText = ALTA_TRADUCCION;
+
+                ExecuteParameters.Parameters.Clear();
+
+                ExecuteParameters.Parameters.AddWithValue("@parIdiomaId", idioma.Id);
+                ExecuteParameters.Parameters.AddWithValue("@parEtiquetaId", traduccion.Etiqueta.Id);
+                ExecuteParameters.Parameters.AddWithValue("@parTraduccion", traduccion.Texto);
+
+                return ExecuteNonEscalar();
+            }
+            catch
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
         #endregion
 
         #region Métodos View
@@ -70,6 +115,63 @@ namespace DAL.Observer
                     _traducciones = _fill.FillTraducciones(ds);
 
                 return _traducciones;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public List<Models.Observer.Etiqueta> GetEtiquetas()
+        {
+            try
+            {
+                SelectCommandText = String.Format(GET_ETIQUETAS);
+                DataSet ds = ExecuteNonReader();
+
+                List<Models.Observer.Etiqueta> etiquetas = new List<Models.Observer.Etiqueta>();
+
+                if (ds.Tables[0].Rows.Count > 0)
+                    etiquetas = _fill.FillListEtiqueta(ds);
+
+                return etiquetas;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public Models.Observer.Etiqueta GetEtiqueta(int etiquetaId)
+        {
+            try
+            {
+                SelectCommandText = String.Format(GET_ETIQUETA, etiquetaId);
+
+                DataSet ds = ExecuteNonReader();
+                Models.Observer.Etiqueta etiqueta = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectEtiqueta(ds.Tables[0].Rows[0]);
+
+                return etiqueta;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public List<Models.Observer.Traduccion> GetTraduccionesPorIdioma(int idiomaId)
+        {
+            try
+            {
+                SelectCommandText = String.Format(GET_TRADUCCIONES_POR_IDIOMA, idiomaId);
+                DataSet ds = ExecuteNonReader();
+
+                List<Models.Observer.Traduccion> traducciones = new List<Models.Observer.Traduccion>();
+
+                if (ds.Tables[0].Rows.Count > 0)
+                    traducciones = _fill.FillListGridTraduccion(ds);
+
+                return traducciones;
             }
             catch (Exception)
             {

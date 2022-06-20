@@ -350,12 +350,29 @@ namespace UI
             {
                 MostrarControles();
                 mdiChildActivo = false;
+                UpdateLanguage(Sesion.GetInstance().Idioma);
             }
             else
             {
                 OcultarControles();
                 mdiChildActivo = true;
             }
+        }
+
+        private void altaIdiomaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AltaIdioma altaIdioma = new AltaIdioma(_traductorService);
+            altaIdioma.MdiParent = this;
+            altaIdioma.StartPosition = FormStartPosition.CenterScreen;
+            altaIdioma.Show();
+        }
+
+        private void cargarEtiquetasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CargarEtiquetas cargarEtiquetas = new CargarEtiquetas(_traductorService);
+            cargarEtiquetas.MdiParent = this;
+            cargarEtiquetas.StartPosition = FormStartPosition.CenterScreen;
+            cargarEtiquetas.Show();
         }
     }
 }

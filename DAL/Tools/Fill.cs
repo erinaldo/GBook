@@ -493,6 +493,61 @@ namespace DAL.Tools
 
             return _traducciones;
         }
+
+        public Models.Observer.Traduccion FillGridTraduccion(DataRow dr)
+        {
+            Traduccion traduccion = new Models.Observer.Traduccion();
+            Observer.Idioma _idiomaDAL = new Observer.Idioma();
+            
+            try
+            {
+                if (dr.Table.Columns.Contains("EtiquetaId") && !Convert.IsDBNull(dr["EtiquetaId"]))
+                    traduccion.Etiqueta = _idiomaDAL.GetEtiqueta(Convert.ToInt32(dr["EtiquetaId"]));
+
+                if (dr.Table.Columns.Contains("Traduccion") && !Convert.IsDBNull(dr["Traduccion"]))
+                    traduccion.Texto = (Convert.ToString(dr["Traduccion"]));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return traduccion;
+        }
+
+        public List<Models.Observer.Traduccion> FillListGridTraduccion(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillGridTraduccion(dr)).ToList();
+        }
+
+        #endregion
+
+        #region Etiqueta
+        public Models.Observer.Etiqueta FillObjectEtiqueta(DataRow dr)
+        {
+            Models.Observer.Etiqueta etiqueta = new Models.Observer.Etiqueta();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    etiqueta.Id = Convert.ToInt32(dr["Id"]);
+
+
+                if (dr.Table.Columns.Contains("NombreEtiqueta") && !Convert.IsDBNull(dr["NombreEtiqueta"]))
+                    etiqueta.Nombre = Convert.ToString(dr["NombreEtiqueta"]);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+
+            return etiqueta;
+        }
+
+        public List<Models.Observer.Etiqueta> FillListEtiqueta(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectEtiqueta(dr)).ToList();
+        }
         #endregion
     }
 }

@@ -44,7 +44,7 @@
             this.btnAlta.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlta.Location = new System.Drawing.Point(70, 121);
             this.btnAlta.Name = "btnAlta";
-            this.btnAlta.Size = new System.Drawing.Size(100, 37);
+            this.btnAlta.Size = new System.Drawing.Size(104, 44);
             this.btnAlta.TabIndex = 29;
             this.btnAlta.Tag = "btn_AltaEditorial";
             this.btnAlta.Text = "Alta";

@@ -58,6 +58,9 @@
             this.realizarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizarVentasHistóricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuIdioma = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cargarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblAlerta = new System.Windows.Forms.Label();
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.timerAlerta = new System.Windows.Forms.Timer(this.components);
@@ -302,9 +305,34 @@
             // 
             // menuIdioma
             // 
+            this.menuIdioma.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestiónIdiomaToolStripMenuItem});
             this.menuIdioma.Name = "menuIdioma";
             this.menuIdioma.Size = new System.Drawing.Size(56, 20);
             this.menuIdioma.Text = "Idioma";
+            // 
+            // gestiónIdiomaToolStripMenuItem
+            // 
+            this.gestiónIdiomaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaIdiomaToolStripMenuItem,
+            this.cargarEtiquetasToolStripMenuItem});
+            this.gestiónIdiomaToolStripMenuItem.Name = "gestiónIdiomaToolStripMenuItem";
+            this.gestiónIdiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestiónIdiomaToolStripMenuItem.Text = "Gestión idioma";
+            // 
+            // altaIdiomaToolStripMenuItem
+            // 
+            this.altaIdiomaToolStripMenuItem.Name = "altaIdiomaToolStripMenuItem";
+            this.altaIdiomaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.altaIdiomaToolStripMenuItem.Text = "Alta idioma";
+            this.altaIdiomaToolStripMenuItem.Click += new System.EventHandler(this.altaIdiomaToolStripMenuItem_Click);
+            // 
+            // cargarEtiquetasToolStripMenuItem
+            // 
+            this.cargarEtiquetasToolStripMenuItem.Name = "cargarEtiquetasToolStripMenuItem";
+            this.cargarEtiquetasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cargarEtiquetasToolStripMenuItem.Text = "Cargar etiquetas";
+            this.cargarEtiquetasToolStripMenuItem.Click += new System.EventHandler(this.cargarEtiquetasToolStripMenuItem_Click);
             // 
             // lblAlerta
             // 
@@ -401,5 +429,8 @@
         private System.Windows.Forms.ToolStripMenuItem visualizarPedidosDeStockRealizadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visualizarVentasHistóricasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuIdioma;
+        private System.Windows.Forms.ToolStripMenuItem gestiónIdiomaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem altaIdiomaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cargarEtiquetasToolStripMenuItem;
     }
 }

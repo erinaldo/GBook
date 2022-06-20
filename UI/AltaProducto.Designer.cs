@@ -73,9 +73,9 @@
             this.btnAlta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAlta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlta.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlta.Location = new System.Drawing.Point(61, 486);
+            this.btnAlta.Location = new System.Drawing.Point(68, 480);
             this.btnAlta.Name = "btnAlta";
-            this.btnAlta.Size = new System.Drawing.Size(106, 38);
+            this.btnAlta.Size = new System.Drawing.Size(105, 44);
             this.btnAlta.TabIndex = 40;
             this.btnAlta.Tag = "btn_AltaProducto";
             this.btnAlta.Text = "Alta";
