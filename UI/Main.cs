@@ -148,6 +148,7 @@ namespace UI
         {
             AltaAutor altaAutor = new AltaAutor(_autorService, _traductorService);
             altaAutor.MdiParent = this;
+            altaAutor.StartPosition = FormStartPosition.CenterScreen;
             altaAutor.Show();
         }
 
@@ -155,6 +156,7 @@ namespace UI
         {
             ModificarAutor modificarAutor = new ModificarAutor(_autorService);
             modificarAutor.MdiParent = this;
+            modificarAutor.StartPosition = FormStartPosition.CenterScreen;
             modificarAutor.Show();
         }
 
@@ -162,6 +164,7 @@ namespace UI
         {
             AltaEditorial altaEditorial = new AltaEditorial(_editorialService);
             altaEditorial.MdiParent = this;
+            altaEditorial.StartPosition = FormStartPosition.CenterScreen;
             altaEditorial.Show();
         }
 
@@ -169,6 +172,7 @@ namespace UI
         {
             ModificarEditorial modificarEditorial = new ModificarEditorial(_editorialService);
             modificarEditorial.MdiParent = this;
+            modificarEditorial.StartPosition = FormStartPosition.CenterScreen;
             modificarEditorial.Show();
         }
 
@@ -176,6 +180,7 @@ namespace UI
         {
             AltaGenero altaGenero = new AltaGenero(_generoService);
             altaGenero.MdiParent = this;
+            altaGenero.StartPosition = FormStartPosition.CenterScreen;
             altaGenero.Show();
         }
 
@@ -183,6 +188,7 @@ namespace UI
         {
             ModificarGenero modificarGenero = new ModificarGenero(_generoService);
             modificarGenero.MdiParent = this;
+            modificarGenero.StartPosition = FormStartPosition.CenterScreen;
             modificarGenero.Show();
         }
 
@@ -190,6 +196,7 @@ namespace UI
         {
             AltaProducto altaProducto = new AltaProducto(_productoService, _autorService, _generoService, _editorialService);
             altaProducto.MdiParent = this;
+            altaProducto.StartPosition = FormStartPosition.CenterScreen;
             altaProducto.Show();
         }
 
@@ -197,6 +204,7 @@ namespace UI
         {
             ModificarProducto modificarProducto = new ModificarProducto(_productoService, _autorService, _generoService, _editorialService);
             modificarProducto.MdiParent = this;
+            modificarProducto.StartPosition = FormStartPosition.CenterScreen;
             modificarProducto.Show();
         }
 
@@ -204,6 +212,7 @@ namespace UI
         {
             PublicarProducto publicarProducto = new PublicarProducto(_productoService);
             publicarProducto.MdiParent = this;
+            publicarProducto.StartPosition = FormStartPosition.CenterScreen;
             publicarProducto.Show();
         }
 
@@ -211,6 +220,7 @@ namespace UI
         {
             FijarProducto fijarProducto = new FijarProducto(_productoService);
             fijarProducto.MdiParent = this;
+            fijarProducto.StartPosition = FormStartPosition.CenterScreen;
             fijarProducto.Show();
         }
 
@@ -218,6 +228,7 @@ namespace UI
         {
             GenerarPedidoStockManual generarPedidoStockManual = new GenerarPedidoStockManual(_productoService, _compraService);
             generarPedidoStockManual.MdiParent = this;
+            generarPedidoStockManual.StartPosition = FormStartPosition.CenterScreen;
             generarPedidoStockManual.Show();
         }
 
@@ -225,6 +236,7 @@ namespace UI
         {
             RecibirPedidoStock recibirPedidoStock = new RecibirPedidoStock(_compraService);
             recibirPedidoStock.MdiParent = this;
+            recibirPedidoStock.StartPosition = FormStartPosition.CenterScreen;
             recibirPedidoStock.Show();
         }
 
@@ -232,6 +244,7 @@ namespace UI
         {
             RealizarVenta realizarVenta = new RealizarVenta(_productoService, _ventaService);
             realizarVenta.MdiParent = this;
+            realizarVenta.StartPosition = FormStartPosition.CenterScreen;
             realizarVenta.Show();            
         }
 
@@ -255,6 +268,7 @@ namespace UI
         {
             GenerarPedidoStockFijados generarPedidoStockFijados = new GenerarPedidoStockFijados(_productoService, _compraService);
             generarPedidoStockFijados.MdiParent = this;
+            generarPedidoStockFijados.StartPosition = FormStartPosition.CenterScreen;
             generarPedidoStockFijados.Show();
         }
 
@@ -262,6 +276,7 @@ namespace UI
         {
             ListarProductos listarProductos = new ListarProductos(_productoService);
             listarProductos.MdiParent = this;
+            listarProductos.StartPosition = FormStartPosition.CenterScreen;
             listarProductos.Show();
         }
 
@@ -269,6 +284,7 @@ namespace UI
         {
             VisualizarPedidosStock visualizarPedidosStock = new VisualizarPedidosStock(_compraService);
             visualizarPedidosStock.MdiParent = this;
+            visualizarPedidosStock.StartPosition = FormStartPosition.CenterScreen;
             visualizarPedidosStock.Show();
         }
 
@@ -276,6 +292,7 @@ namespace UI
         {
             VisualizarVentas visualizarVentas = new VisualizarVentas(_ventaService);
             visualizarVentas.MdiParent = this;
+            visualizarVentas.StartPosition = FormStartPosition.CenterScreen;
             visualizarVentas.Show();
         }
 

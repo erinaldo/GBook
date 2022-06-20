@@ -65,6 +65,9 @@
             this.ClientSize = new System.Drawing.Size(963, 447);
             this.Controls.Add(this.lblProductos);
             this.Controls.Add(this.datagridProductos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ListarProductos";
             this.Text = "ListarProductos";
             this.Load += new System.EventHandler(this.ListarProductos_Load);

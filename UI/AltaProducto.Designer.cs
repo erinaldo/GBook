@@ -330,6 +330,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtISBN);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AltaProducto";
             this.Text = "AltaProducto";
             this.Load += new System.EventHandler(this.AltaProducto_Load);

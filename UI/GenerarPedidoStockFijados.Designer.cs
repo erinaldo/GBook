@@ -498,6 +498,9 @@
             this.Controls.Add(this.txtISBN);
             this.Controls.Add(this.datagridCarrito);
             this.Controls.Add(this.datagridProductosCompra);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "GenerarPedidoStockFijados";
             this.Text = "GenerarPedidoStockFijados";
             this.Load += new System.EventHandler(this.GenerarPedidoStockFijados_Load);

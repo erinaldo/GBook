@@ -106,6 +106,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ModificarGenero";
             this.Text = "ModificarGenero";
             this.Load += new System.EventHandler(this.ModificarGenero_Load);

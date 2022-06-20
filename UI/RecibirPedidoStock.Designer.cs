@@ -130,6 +130,9 @@
             this.Controls.Add(this.chkRecibido);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.datagridPedidosStock);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RecibirPedidoStock";
             this.Text = "RecibirPedidoStock";
             this.Load += new System.EventHandler(this.RecibirPedidoStock_Load);

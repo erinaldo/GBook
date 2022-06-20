@@ -64,6 +64,9 @@
             this.ClientSize = new System.Drawing.Size(961, 438);
             this.Controls.Add(this.lblProductos);
             this.Controls.Add(this.datagridPedidosStock);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "VisualizarPedidosStock";
             this.Text = "VisualizarPedidosStock";
             this.Load += new System.EventHandler(this.VisualizarPedidosStock_Load);

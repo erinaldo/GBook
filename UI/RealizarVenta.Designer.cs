@@ -313,6 +313,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtISBN);
             this.Controls.Add(this.datagridProductosVenta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RealizarVenta";
             this.Text = "RealizarVenta";
             this.Load += new System.EventHandler(this.RealizarVenta_Load);

@@ -222,6 +222,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtISBN);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FijarProducto";
             this.Text = "FijarProducto";
             this.Load += new System.EventHandler(this.FijarProducto_Load);
