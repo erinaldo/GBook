@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace BLL
     {
         #region Inyección de dependencias
         private readonly DAL.Genero _generoDAL;
+        private readonly DAL.Observer.Idioma _idiomaDAL;
 
         public Genero()
         {
             _generoDAL = new DAL.Genero();
+            _idiomaDAL = new DAL.Observer.Idioma();
         }
         #endregion
 
@@ -83,7 +86,12 @@ namespace BLL
         #region Tools
         private void ValidarGenero(Models.Genero genero)
         {
-            if (string.IsNullOrEmpty(genero.Nombre)) throw new Exception("El nombre es requerido.");
+            if (string.IsNullOrEmpty(genero.Nombre)) throw new Exception(TraducirMensaje("msg_GeneroNombre"));
+        }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_idiomaDAL, msgTag);
         }
         #endregion
     }

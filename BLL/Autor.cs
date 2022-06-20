@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace BLL
     {
         #region Inyección de dependencias
         private readonly DAL.Autor _autorDAL;
+        private readonly DAL.Observer.Idioma _idiomaDAL;
 
         public Autor()
         {
             _autorDAL = new DAL.Autor();
+            _idiomaDAL = new DAL.Observer.Idioma();
         }
         #endregion
 
@@ -83,9 +86,14 @@ namespace BLL
         #region Tools
         private void ValidarAutor(Models.Autor autor)
         {
-            if (string.IsNullOrEmpty(autor.Nombre)) throw new Exception("El nombre es requerido.");
-            if (string.IsNullOrEmpty(autor.Apellido)) throw new Exception("El apellido es requerido.");
-            if (string.IsNullOrEmpty(autor.Seudonimo)) throw new Exception("El seudónimo es requerido.");
+            if (string.IsNullOrEmpty(autor.Nombre)) throw new Exception(TraducirMensaje("msg_AutorNombre"));
+            if (string.IsNullOrEmpty(autor.Apellido)) throw new Exception(TraducirMensaje("msg_AutorApellido"));
+            if (string.IsNullOrEmpty(autor.Seudonimo)) throw new Exception(TraducirMensaje("AutorSeudonimo"));
+        }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_idiomaDAL, msgTag);
         }
         #endregion
 

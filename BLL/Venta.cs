@@ -1,5 +1,6 @@
 ﻿using Interfaces;
 using Models;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace BLL
     {
         #region Inyección de dependencias
         private readonly DAL.Venta _ventaDAL;
+        private readonly DAL.Observer.Idioma _idiomaDAL;
 
         public Venta()
         {
             _ventaDAL = new DAL.Venta();
+            _idiomaDAL = new DAL.Observer.Idioma();
         }
         #endregion
 
@@ -107,9 +110,14 @@ namespace BLL
         #region Tools
         private void ValidarVenta(Models.ComprobanteVenta venta)
         {
-            if (string.IsNullOrWhiteSpace(venta.Detalle)) throw new Exception("El detalle de la venta es requerido.");
-            if (venta.Total <= 0) throw new Exception("El total de la venta debe ser mayor a cero.");
-            if (venta.Items.Count() == 0) throw new Exception("Los items no pueden estar vacios");
+            if (string.IsNullOrWhiteSpace(venta.Detalle)) throw new Exception(TraducirMensaje("msg_VentaDetalle"));
+            if (venta.Total <= 0) throw new Exception(TraducirMensaje("msg_VentaTotal"));
+            if (venta.Items.Count() == 0) throw new Exception(TraducirMensaje("msg_VentaCarrito"));
+        }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_idiomaDAL, msgTag);
         }
         #endregion
     }

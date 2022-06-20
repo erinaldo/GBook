@@ -88,7 +88,7 @@ namespace UI
 
                 CargarGridGeneros();
                 Limpiar();
-                MessageBox.Show("Editorial cargada con éxito.");
+                MessageBox.Show("Género cargado con éxito.");
             }
             catch (Exception ex)
             {

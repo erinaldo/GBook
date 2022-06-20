@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace BLL
     {
         #region Inyección de dependencias
         private readonly DAL.Editorial _editorialDAL;
+        private readonly DAL.Observer.Idioma _idiomaDAL;
 
         public Editorial()
         {
             _editorialDAL = new DAL.Editorial();
+            _idiomaDAL = new DAL.Observer.Idioma();
         }
         #endregion
 
@@ -84,7 +87,12 @@ namespace BLL
         #region Tools
         private void ValidarEditorial(Models.Editorial editorial)
         {
-            if (string.IsNullOrEmpty(editorial.Nombre)) throw new Exception("El nombre es requerido.");
+            if (string.IsNullOrEmpty(editorial.Nombre)) throw new Exception(TraducirMensaje("msg_EditorialNombre"));
+        }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_idiomaDAL, msgTag);
         }
         #endregion
     }

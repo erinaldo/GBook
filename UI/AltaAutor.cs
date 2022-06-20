@@ -42,24 +42,13 @@ namespace UI
 
         private void Traducir(IIdioma idioma)
         {
-            IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
-
-            foreach (Control ctrl in this.Controls)
-            {
-                if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
-
-                else if (ctrl.Tag != null && !traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = ctrl.Text = $"PLACEHOLDER_{ctrl.Tag}_NO_TRADUCTION";
-
-                else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
-
-                if (ctrl.GetType() == typeof(TextBox) || ctrl.GetType() == typeof(ComboBox))
-                {
-                    ctrl.Text = "";
-                }
-            }            
+            Traductor.Traducir(_traductorService, idioma, this.Controls);         
         }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_traductorService, msgTag);
+        }        
 
         private void btnAlta_Click(object sender, EventArgs e)
         {
@@ -76,7 +65,7 @@ namespace UI
 
                 CargarGridAutores();
                 Limpiar();
-                MessageBox.Show("Autor cargado con éxito.");
+                MessageBox.Show(TraducirMensaje("msg_AutorAltaExito"));
             }
             catch (Exception ex)
             {

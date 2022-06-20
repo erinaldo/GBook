@@ -1,5 +1,6 @@
 ﻿using Interfaces;
 using Models;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace BLL
     {
         #region Inyección de dependencias
         private readonly DAL.Producto _productoDAL;
+        private readonly DAL.Observer.Idioma _idiomaDAL;
 
         public Producto()
         {
             _productoDAL = new DAL.Producto();
+            _idiomaDAL = new DAL.Observer.Idioma();
         }
         #endregion
 
@@ -160,13 +163,18 @@ namespace BLL
         #region Tools
         private void ValidarProducto(Models.Producto producto)
         {
-            if (string.IsNullOrEmpty(producto.ISBN)) throw new Exception("El ISBN es requerido.");
-            if (string.IsNullOrEmpty(producto.Nombre)) throw new Exception("El Nombre es requerido.");
-            if (producto.Precio <= 0) throw new Exception("El Precio es requerido.");
-            if (producto.CantidadPaginas <= 0) throw new Exception("La cantidad de páginas es requerido.");
-            if (producto.Autor == null) throw new Exception("El autor es requerido.");
-            if (producto.Genero == null) throw new Exception("El Genero es requerido.");
-            if (producto.Editorial == null) throw new Exception("La Editorial es requerida.");
+            if (string.IsNullOrEmpty(producto.ISBN)) throw new Exception(TraducirMensaje("msg_ProductoISBN"));
+            if (string.IsNullOrEmpty(producto.Nombre)) throw new Exception(TraducirMensaje("msg_ProductoNombre"));
+            if (producto.Precio <= 0) throw new Exception(TraducirMensaje("msg_ProductoPrecio"));
+            if (producto.CantidadPaginas <= 0) throw new Exception(TraducirMensaje("msg_ProductoCantidadPaginas"));
+            if (producto.Autor == null) throw new Exception(TraducirMensaje("msg_ProductoAutor"));
+            if (producto.Genero == null) throw new Exception(TraducirMensaje("msg_ProductoGenero"));
+            if (producto.Editorial == null) throw new Exception(TraducirMensaje("msg_ProductoEditorial"));
+        }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_idiomaDAL, msgTag);
         }
         #endregion
     }
