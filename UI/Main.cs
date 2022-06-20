@@ -4,6 +4,7 @@ using Models;
 using Models.DTOs;
 using Models.Observer;
 using Servicios;
+using Servicios.Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +17,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class Main : Form
+    public partial class Main : Form, IObserver
     {
         private readonly IUsuario _usuarioService;
         private readonly IAutor _autorService;
@@ -42,6 +43,7 @@ namespace UI
 
         private void lblLogout_Click(object sender, EventArgs e)
         {
+            Sesion.DesuscribirObservador(this);
             this.Close();
         }
 
@@ -51,6 +53,8 @@ namespace UI
 
             lblBienvenido.Text = $"Hola, {usuario.Nombre} {usuario.Apellido}.";
 
+            MostrarIdiomasDisponibles();
+            Sesion.SuscribirObservador(this);
             UpdateLanguage(Sesion.GetInstance().Idioma);
 
             GenerarAlertaPedidoStock();
@@ -228,10 +232,34 @@ namespace UI
 
         private void Traducir(IIdioma idioma)
         {
-            var traducciones = _traductorService.ObtenerTraducciones(Sesion.GetInstance().Idioma);
+            IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
 
-            if (lblAlerta.Tag != null && traducciones.ContainsKey(lblAlerta.Tag.ToString()))
-                lblAlerta.Text = traducciones[lblAlerta.Tag.ToString()].Texto;
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
+                    ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
+                else ctrl.Text = ctrl.Text = "PLACEHOLDER_NO_TRADUCTION";
+            }
+        }
+
+        private void MostrarIdiomasDisponibles()
+        {
+            IList<IIdioma> idiomas = _traductorService.ObtenerIdiomas();
+
+            foreach (IIdioma idioma in idiomas)
+            {
+                var t = new ToolStripMenuItem();
+                t.Text = idioma.Nombre;
+                t.Tag = idioma;
+                this.menuIdioma.DropDownItems.Add(t);
+
+                t.Click += T_Click;
+            }           
+        }
+
+        private void T_Click(object sender, EventArgs e)
+        {
+            Sesion.CambiarIdioma(((IIdioma)((ToolStripMenuItem)sender).Tag));
         }
     }
 }

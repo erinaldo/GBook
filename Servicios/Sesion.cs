@@ -58,6 +58,7 @@ namespace Servicios
             foreach (var o in _observers)
             {
                 o.UpdateLanguage(idioma);
+                _instance.Idioma = idioma;
             }
         }
         public static void CambiarIdioma(IIdioma idioma) // Cambio de idioma.

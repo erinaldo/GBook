@@ -1,5 +1,6 @@
 ﻿using DAL.Conexion;
 using DAL.Tools;
+using Interfaces.Observer;
 using Models.Observer;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Observer
 {
-    public class Idioma : Acceso
+    public class Idioma : Acceso, ITraductor
     {
         #region Inyección de dependencias
         private readonly Fill _fill;

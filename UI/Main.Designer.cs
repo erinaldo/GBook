@@ -60,6 +60,7 @@
             this.lblAlerta = new System.Windows.Forms.Label();
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.timerAlerta = new System.Windows.Forms.Timer(this.components);
+            this.menuIdioma = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
             this.SuspendLayout();
@@ -93,7 +94,8 @@
             this.administrarNegocioToolStripMenuItem,
             this.productosToolStripMenuItem,
             this.compraToolStripMenuItem,
-            this.ventaToolStripMenuItem});
+            this.ventaToolStripMenuItem,
+            this.menuIdioma});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1030, 24);
@@ -328,6 +330,12 @@
             this.timerAlerta.Interval = 30000;
             this.timerAlerta.Tick += new System.EventHandler(this.timerAlerta_Tick);
             // 
+            // menuIdioma
+            // 
+            this.menuIdioma.Name = "menuIdioma";
+            this.menuIdioma.Size = new System.Drawing.Size(56, 20);
+            this.menuIdioma.Text = "Idioma";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,5 +394,6 @@
         private System.Windows.Forms.ToolStripMenuItem listarProductosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visualizarPedidosDeStockRealizadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem visualizarVentasHistóricasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuIdioma;
     }
 }
