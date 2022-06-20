@@ -50,7 +50,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cbxEditorial = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbl_ProductoEditorial = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +77,7 @@
             this.btnAlta.Name = "btnAlta";
             this.btnAlta.Size = new System.Drawing.Size(106, 38);
             this.btnAlta.TabIndex = 40;
+            this.btnAlta.Tag = "btn_AltaProducto";
             this.btnAlta.Text = "Alta";
             this.btnAlta.UseVisualStyleBackColor = false;
             this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
@@ -99,6 +100,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 21);
             this.label3.TabIndex = 38;
+            this.label3.Tag = "lbl_ProductoPrecio";
             this.label3.Text = "Precio";
             // 
             // txtPrecio
@@ -130,6 +132,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 21);
             this.label2.TabIndex = 35;
+            this.label2.Tag = "lbl_ProductoNombre";
             this.label2.Text = "Nombre";
             // 
             // txtNombre
@@ -161,6 +164,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 21);
             this.label1.TabIndex = 32;
+            this.label1.Tag = "lbl_ProductoISBN";
             this.label1.Text = "ISBN";
             // 
             // txtISBN
@@ -192,6 +196,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 21);
             this.label4.TabIndex = 43;
+            this.label4.Tag = "lbl_ProductoCantidadPaginas";
             this.label4.Text = "Cantidad de páginas";
             // 
             // txtCantidadPaginas
@@ -223,6 +228,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 21);
             this.label5.TabIndex = 46;
+            this.label5.Tag = "lbl_ProductoAutor";
             this.label5.Text = "Autor";
             // 
             // cbxAutor
@@ -267,6 +273,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 21);
             this.label6.TabIndex = 49;
+            this.label6.Tag = "lbl_ProductoGenero";
             this.label6.Text = "Género";
             // 
             // cbxEditorial
@@ -290,16 +297,16 @@
             this.panel7.Size = new System.Drawing.Size(216, 1);
             this.panel7.TabIndex = 53;
             // 
-            // label7
+            // lbl_ProductoEditorial
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.label7.Location = new System.Drawing.Point(13, 416);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 21);
-            this.label7.TabIndex = 52;
-            this.label7.Text = "Editorial";
+            this.lbl_ProductoEditorial.AutoSize = true;
+            this.lbl_ProductoEditorial.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ProductoEditorial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.lbl_ProductoEditorial.Location = new System.Drawing.Point(13, 416);
+            this.lbl_ProductoEditorial.Name = "lbl_ProductoEditorial";
+            this.lbl_ProductoEditorial.Size = new System.Drawing.Size(91, 21);
+            this.lbl_ProductoEditorial.TabIndex = 52;
+            this.lbl_ProductoEditorial.Text = "Editorial";
             // 
             // AltaProducto
             // 
@@ -309,7 +316,7 @@
             this.ClientSize = new System.Drawing.Size(1215, 536);
             this.Controls.Add(this.cbxEditorial);
             this.Controls.Add(this.panel7);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lbl_ProductoEditorial);
             this.Controls.Add(this.cbxGenero);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.label6);
@@ -335,6 +342,7 @@
             this.MinimizeBox = false;
             this.Name = "AltaProducto";
             this.Text = "AltaProducto";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaProducto_FormClosed);
             this.Load += new System.EventHandler(this.AltaProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).EndInit();
             this.ResumeLayout(false);
@@ -366,6 +374,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbxEditorial;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbl_ProductoEditorial;
     }
 }

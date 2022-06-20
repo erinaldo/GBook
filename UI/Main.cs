@@ -154,7 +154,7 @@ namespace UI
 
         private void modificarAutorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModificarAutor modificarAutor = new ModificarAutor(_autorService);
+            ModificarAutor modificarAutor = new ModificarAutor(_autorService, _traductorService);
             modificarAutor.MdiParent = this;
             modificarAutor.StartPosition = FormStartPosition.CenterScreen;
             modificarAutor.Show();
@@ -162,7 +162,7 @@ namespace UI
 
         private void altaEditorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AltaEditorial altaEditorial = new AltaEditorial(_editorialService);
+            AltaEditorial altaEditorial = new AltaEditorial(_editorialService, _traductorService);
             altaEditorial.MdiParent = this;
             altaEditorial.StartPosition = FormStartPosition.CenterScreen;
             altaEditorial.Show();
@@ -170,7 +170,7 @@ namespace UI
 
         private void modificarEditorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModificarEditorial modificarEditorial = new ModificarEditorial(_editorialService);
+            ModificarEditorial modificarEditorial = new ModificarEditorial(_editorialService, _traductorService);
             modificarEditorial.MdiParent = this;
             modificarEditorial.StartPosition = FormStartPosition.CenterScreen;
             modificarEditorial.Show();
@@ -178,7 +178,7 @@ namespace UI
 
         private void altaGéneroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AltaGenero altaGenero = new AltaGenero(_generoService);
+            AltaGenero altaGenero = new AltaGenero(_generoService, _traductorService);
             altaGenero.MdiParent = this;
             altaGenero.StartPosition = FormStartPosition.CenterScreen;
             altaGenero.Show();
@@ -186,7 +186,7 @@ namespace UI
 
         private void modificarGéneroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModificarGenero modificarGenero = new ModificarGenero(_generoService);
+            ModificarGenero modificarGenero = new ModificarGenero(_generoService, _traductorService);
             modificarGenero.MdiParent = this;
             modificarGenero.StartPosition = FormStartPosition.CenterScreen;
             modificarGenero.Show();
@@ -194,7 +194,7 @@ namespace UI
 
         private void altaProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AltaProducto altaProducto = new AltaProducto(_productoService, _autorService, _generoService, _editorialService);
+            AltaProducto altaProducto = new AltaProducto(_productoService, _autorService, _generoService, _editorialService, _traductorService);
             altaProducto.MdiParent = this;
             altaProducto.StartPosition = FormStartPosition.CenterScreen;
             altaProducto.Show();
@@ -202,7 +202,7 @@ namespace UI
 
         private void modificarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModificarProducto modificarProducto = new ModificarProducto(_productoService, _autorService, _generoService, _editorialService);
+            ModificarProducto modificarProducto = new ModificarProducto(_productoService, _autorService, _generoService, _editorialService, _traductorService);
             modificarProducto.MdiParent = this;
             modificarProducto.StartPosition = FormStartPosition.CenterScreen;
             modificarProducto.Show();
@@ -210,7 +210,7 @@ namespace UI
 
         private void publicarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PublicarProducto publicarProducto = new PublicarProducto(_productoService);
+            PublicarProducto publicarProducto = new PublicarProducto(_productoService, _traductorService);
             publicarProducto.MdiParent = this;
             publicarProducto.StartPosition = FormStartPosition.CenterScreen;
             publicarProducto.Show();
@@ -218,7 +218,7 @@ namespace UI
 
         private void fijarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FijarProducto fijarProducto = new FijarProducto(_productoService);
+            FijarProducto fijarProducto = new FijarProducto(_productoService, _traductorService);
             fijarProducto.MdiParent = this;
             fijarProducto.StartPosition = FormStartPosition.CenterScreen;
             fijarProducto.Show();
@@ -226,7 +226,7 @@ namespace UI
 
         private void generarPedidoDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GenerarPedidoStockManual generarPedidoStockManual = new GenerarPedidoStockManual(_productoService, _compraService);
+            GenerarPedidoStockManual generarPedidoStockManual = new GenerarPedidoStockManual(_productoService, _compraService, _traductorService);
             generarPedidoStockManual.MdiParent = this;
             generarPedidoStockManual.StartPosition = FormStartPosition.CenterScreen;
             generarPedidoStockManual.Show();
@@ -234,7 +234,7 @@ namespace UI
 
         private void recibirPedidoDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RecibirPedidoStock recibirPedidoStock = new RecibirPedidoStock(_compraService);
+            RecibirPedidoStock recibirPedidoStock = new RecibirPedidoStock(_compraService, _traductorService);
             recibirPedidoStock.MdiParent = this;
             recibirPedidoStock.StartPosition = FormStartPosition.CenterScreen;
             recibirPedidoStock.Show();
@@ -242,7 +242,7 @@ namespace UI
 
         private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RealizarVenta realizarVenta = new RealizarVenta(_productoService, _ventaService);
+            RealizarVenta realizarVenta = new RealizarVenta(_productoService, _ventaService, _traductorService);
             realizarVenta.MdiParent = this;
             realizarVenta.StartPosition = FormStartPosition.CenterScreen;
             realizarVenta.Show();            
@@ -266,7 +266,7 @@ namespace UI
 
         private void generarPedidoStockProductosFijadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GenerarPedidoStockFijados generarPedidoStockFijados = new GenerarPedidoStockFijados(_productoService, _compraService);
+            GenerarPedidoStockFijados generarPedidoStockFijados = new GenerarPedidoStockFijados(_productoService, _compraService, _traductorService);
             generarPedidoStockFijados.MdiParent = this;
             generarPedidoStockFijados.StartPosition = FormStartPosition.CenterScreen;
             generarPedidoStockFijados.Show();
@@ -274,7 +274,7 @@ namespace UI
 
         private void listarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListarProductos listarProductos = new ListarProductos(_productoService);
+            ListarProductos listarProductos = new ListarProductos(_productoService, _traductorService);
             listarProductos.MdiParent = this;
             listarProductos.StartPosition = FormStartPosition.CenterScreen;
             listarProductos.Show();
@@ -282,7 +282,7 @@ namespace UI
 
         private void visualizarPedidosDeStockRealizadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VisualizarPedidosStock visualizarPedidosStock = new VisualizarPedidosStock(_compraService);
+            VisualizarPedidosStock visualizarPedidosStock = new VisualizarPedidosStock(_compraService, _traductorService);
             visualizarPedidosStock.MdiParent = this;
             visualizarPedidosStock.StartPosition = FormStartPosition.CenterScreen;
             visualizarPedidosStock.Show();
@@ -290,7 +290,7 @@ namespace UI
 
         private void visualizarVentasHistóricasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VisualizarVentas visualizarVentas = new VisualizarVentas(_ventaService);
+            VisualizarVentas visualizarVentas = new VisualizarVentas(_ventaService, _traductorService);
             visualizarVentas.MdiParent = this;
             visualizarVentas.StartPosition = FormStartPosition.CenterScreen;
             visualizarVentas.Show();

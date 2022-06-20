@@ -151,7 +151,7 @@
             this.btnAlta.Name = "btnAlta";
             this.btnAlta.Size = new System.Drawing.Size(100, 37);
             this.btnAlta.TabIndex = 19;
-            this.btnAlta.Tag = "lbl_AltaAutor";
+            this.btnAlta.Tag = "btn_AltaAutor";
             this.btnAlta.Text = "Alta";
             this.btnAlta.UseVisualStyleBackColor = false;
             this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
@@ -190,6 +190,7 @@
             this.MaximizeBox = false;
             this.Name = "AltaAutor";
             this.Text = "Autor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaAutor_FormClosed);
             this.Load += new System.EventHandler(this.Autor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridAutores)).EndInit();
             this.ResumeLayout(false);

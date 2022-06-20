@@ -59,6 +59,7 @@
             this.btnAlta.Name = "btnAlta";
             this.btnAlta.Size = new System.Drawing.Size(100, 37);
             this.btnAlta.TabIndex = 34;
+            this.btnAlta.Tag = "btn_AltaGenero";
             this.btnAlta.Text = "Alta";
             this.btnAlta.UseVisualStyleBackColor = false;
             this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
@@ -81,6 +82,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 21);
             this.label1.TabIndex = 32;
+            this.label1.Tag = "lbl_NombreGenero";
             this.label1.Text = "Nombre";
             // 
             // txtNombre
@@ -110,6 +112,7 @@
             this.MinimizeBox = false;
             this.Name = "AltaGenero";
             this.Text = "AltaGenero";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaGenero_FormClosed);
             this.Load += new System.EventHandler(this.AltaGenero_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridGenero)).EndInit();
             this.ResumeLayout(false);

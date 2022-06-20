@@ -1,4 +1,8 @@
 ﻿using Interfaces;
+using Interfaces.Observer;
+using Models.Observer;
+using Servicios;
+using Servicios.Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,19 +15,50 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class ModificarAutor : Form
+    public partial class ModificarAutor : Form, IObserver
     {
         private readonly IAutor _autorService;
+        private readonly ITraductor _traductorService;
         
-        public ModificarAutor(IAutor autorService)
+        public ModificarAutor(IAutor autorService, ITraductor traductorService)
         {
             _autorService = autorService;
+            _traductorService = traductorService;
             InitializeComponent();
         }
 
         private void ModificarAutor_Load(object sender, EventArgs e)
         {
             CargarGridAutores();
+
+            Sesion.SuscribirObservador(this);
+            UpdateLanguage(Sesion.GetInstance().Idioma);
+        }
+
+        public void UpdateLanguage(IIdioma idioma)
+        {
+            Traducir(idioma);
+        }
+
+        private void Traducir(IIdioma idioma)
+        {
+            IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
+
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
+                    ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
+
+                else if (ctrl.Tag != null && !traducciones.ContainsKey(ctrl.Tag.ToString()))
+                    ctrl.Text = ctrl.Text = $"PLACEHOLDER_{ctrl.Tag}_NO_TRADUCTION";
+
+                else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
+
+                if (ctrl.GetType() == typeof(TextBox) || ctrl.GetType() == typeof(ComboBox))
+                {
+                    ctrl.Text = "";
+                }
+            }
         }
 
         private void CargarGridAutores()
@@ -74,6 +109,12 @@ namespace UI
             txtNombre.Text = datagridAutores.CurrentRow.Cells["Nombre"].Value.ToString();
             txtApellido.Text = datagridAutores.CurrentRow.Cells["Apellido"].Value.ToString();
             txtSeudonimo.Text = datagridAutores.CurrentRow.Cells["Seudonimo"].Value.ToString();
+        }
+
+        private void ModificarAutor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Sesion.DesuscribirObservador(this);
+            this.Dispose();
         }
     }
 }

@@ -42,6 +42,7 @@
             this.lblProductos.Name = "lblProductos";
             this.lblProductos.Size = new System.Drawing.Size(163, 21);
             this.lblProductos.TabIndex = 112;
+            this.lblProductos.Tag = "lbl_VentasRealizadas";
             this.lblProductos.Text = "Ventas realizadas";
             // 
             // datagridVentas
@@ -70,6 +71,7 @@
             this.MinimizeBox = false;
             this.Name = "VisualizarVentas";
             this.Text = "VisualizarVentas";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VisualizarVentas_FormClosed);
             this.Load += new System.EventHandler(this.VisualizarVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridVentas)).EndInit();
             this.ResumeLayout(false);

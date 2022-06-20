@@ -86,6 +86,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(235, 21);
             this.label12.TabIndex = 139;
+            this.label12.Tag = "lbl_PrecioUnitarioCompra";
             this.label12.Text = "Precio unitario de compra";
             // 
             // txtPrecioCompra
@@ -117,6 +118,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 21);
             this.label11.TabIndex = 136;
+            this.label11.Tag = "lbl_DetalleCompra";
             this.label11.Text = "Detalle de compra";
             // 
             // txtDetalle
@@ -139,6 +141,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 21);
             this.label10.TabIndex = 134;
+            this.label10.Tag = "lbl_Carrito";
             this.label10.Text = "Carrito";
             // 
             // label9
@@ -150,6 +153,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 21);
             this.label9.TabIndex = 133;
+            this.label9.Tag = "lbl_Productos";
             this.label9.Text = "Productos";
             // 
             // btnGenerarPedidoStock
@@ -162,6 +166,7 @@
             this.btnGenerarPedidoStock.Name = "btnGenerarPedidoStock";
             this.btnGenerarPedidoStock.Size = new System.Drawing.Size(147, 55);
             this.btnGenerarPedidoStock.TabIndex = 132;
+            this.btnGenerarPedidoStock.Tag = "btn_GenerarPedidoStock";
             this.btnGenerarPedidoStock.Text = "Generar pedido de stock";
             this.btnGenerarPedidoStock.UseVisualStyleBackColor = false;
             this.btnGenerarPedidoStock.Click += new System.EventHandler(this.btnGenerarPedidoStock_Click);
@@ -184,6 +189,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(163, 21);
             this.label8.TabIndex = 130;
+            this.label8.Tag = "lbl_TelefonoContacto";
             this.label8.Text = "Teléfono contacto";
             // 
             // txtTelefonoContacto
@@ -215,6 +221,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(118, 21);
             this.label7.TabIndex = 127;
+            this.label7.Tag = "lbl_EntreCalles";
             this.label7.Text = "Entre calles";
             // 
             // txtEntreCalles
@@ -246,6 +253,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 21);
             this.label6.TabIndex = 124;
+            this.label6.Tag = "lbl_DomicilioNumero";
             this.label6.Text = "Numero";
             // 
             // txtNumero
@@ -277,6 +285,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 21);
             this.label5.TabIndex = 121;
+            this.label5.Tag = "lbl_Domicilio";
             this.label5.Text = "Domicilio";
             // 
             // txtDomicilio
@@ -300,6 +309,7 @@
             this.btnAgregarCarrito.Name = "btnAgregarCarrito";
             this.btnAgregarCarrito.Size = new System.Drawing.Size(116, 55);
             this.btnAgregarCarrito.TabIndex = 119;
+            this.btnAgregarCarrito.Tag = "btn_AgregarCarrito";
             this.btnAgregarCarrito.Text = "Agregar a carrito";
             this.btnAgregarCarrito.UseVisualStyleBackColor = false;
             this.btnAgregarCarrito.Click += new System.EventHandler(this.btnAgregarCarrito_Click);
@@ -322,6 +332,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 21);
             this.label4.TabIndex = 117;
+            this.label4.Tag = "lbl_ProductoCantidad";
             this.label4.Text = "Cantidad";
             // 
             // txtCantidad
@@ -353,6 +364,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(154, 21);
             this.label3.TabIndex = 114;
+            this.label3.Tag = "lbl_ProductoPrecioPublicado";
             this.label3.Text = "Precio publicado";
             // 
             // txtPrecio
@@ -385,6 +397,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 21);
             this.label2.TabIndex = 111;
+            this.label2.Tag = "lbl_ProductoNombre";
             this.label2.Text = "Nombre";
             // 
             // txtNombre
@@ -417,6 +430,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 21);
             this.label1.TabIndex = 108;
+            this.label1.Tag = "lbl_ProductoISBN";
             this.label1.Text = "ISBN";
             // 
             // txtISBN
@@ -503,6 +517,7 @@
             this.MinimizeBox = false;
             this.Name = "GenerarPedidoStockFijados";
             this.Text = "GenerarPedidoStockFijados";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GenerarPedidoStockFijados_FormClosed);
             this.Load += new System.EventHandler(this.GenerarPedidoStockFijados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridCarrito)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductosCompra)).EndInit();

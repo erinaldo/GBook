@@ -46,6 +46,7 @@
             this.btnAlta.Name = "btnAlta";
             this.btnAlta.Size = new System.Drawing.Size(100, 37);
             this.btnAlta.TabIndex = 29;
+            this.btnAlta.Tag = "btn_AltaEditorial";
             this.btnAlta.Text = "Alta";
             this.btnAlta.UseVisualStyleBackColor = false;
             this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);
@@ -68,6 +69,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 21);
             this.label1.TabIndex = 21;
+            this.label1.Tag = "lbl_NombreEditorial";
             this.label1.Text = "Nombre";
             // 
             // txtNombre
@@ -110,6 +112,7 @@
             this.MinimizeBox = false;
             this.Name = "AltaEditorial";
             this.Text = "AltaEditorial";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaEditorial_FormClosed);
             this.Load += new System.EventHandler(this.AltaEditorial_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridEditoriales)).EndInit();
             this.ResumeLayout(false);

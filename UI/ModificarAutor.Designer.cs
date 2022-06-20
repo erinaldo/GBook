@@ -52,6 +52,7 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(106, 38);
             this.btnModificar.TabIndex = 29;
+            this.btnModificar.Tag = "btn_ModificarAutor";
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -74,6 +75,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 21);
             this.label3.TabIndex = 27;
+            this.label3.Tag = "lbl_SeudonimoAutor";
             this.label3.Text = "Seudónimo";
             // 
             // txtSeudonimo
@@ -105,6 +107,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 21);
             this.label2.TabIndex = 24;
+            this.label2.Tag = "lbl_ApellidoAutor";
             this.label2.Text = "Apellido";
             // 
             // txtApellido
@@ -136,6 +139,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 21);
             this.label1.TabIndex = 21;
+            this.label1.Tag = "lbl_NombreAutor";
             this.label1.Text = "Nombre";
             // 
             // txtNombre
@@ -185,6 +189,7 @@
             this.MinimizeBox = false;
             this.Name = "ModificarAutor";
             this.Text = "ModificarAutor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModificarAutor_FormClosed);
             this.Load += new System.EventHandler(this.ModificarAutor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridAutores)).EndInit();
             this.ResumeLayout(false);

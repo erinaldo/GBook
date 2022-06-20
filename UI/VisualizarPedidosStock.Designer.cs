@@ -42,6 +42,7 @@
             this.lblProductos.Name = "lblProductos";
             this.lblProductos.Size = new System.Drawing.Size(253, 21);
             this.lblProductos.TabIndex = 110;
+            this.lblProductos.Tag = "lbl_PedidosStockRealizados";
             this.lblProductos.Text = "Pedidos de stock realizados";
             // 
             // datagridPedidosStock
@@ -69,6 +70,7 @@
             this.MinimizeBox = false;
             this.Name = "VisualizarPedidosStock";
             this.Text = "VisualizarPedidosStock";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VisualizarPedidosStock_FormClosed);
             this.Load += new System.EventHandler(this.VisualizarPedidosStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridPedidosStock)).EndInit();
             this.ResumeLayout(false);

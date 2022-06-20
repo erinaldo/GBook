@@ -60,6 +60,7 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(107, 37);
             this.btnModificar.TabIndex = 39;
+            this.btnModificar.Tag = "btn_ModificarGenero";
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -82,6 +83,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 21);
             this.label1.TabIndex = 37;
+            this.label1.Tag = "lbl_NombreGenero";
             this.label1.Text = "Nombre";
             // 
             // txtNombre
@@ -111,6 +113,7 @@
             this.MinimizeBox = false;
             this.Name = "ModificarGenero";
             this.Text = "ModificarGenero";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModificarGenero_FormClosed);
             this.Load += new System.EventHandler(this.ModificarGenero_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridGenero)).EndInit();
             this.ResumeLayout(false);

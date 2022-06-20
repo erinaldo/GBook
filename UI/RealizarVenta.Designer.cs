@@ -62,6 +62,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 21);
             this.label9.TabIndex = 119;
+            this.label9.Tag = "lbl_Productos";
             this.label9.Text = "Productos";
             // 
             // btnAgregarCarrito
@@ -74,6 +75,7 @@
             this.btnAgregarCarrito.Name = "btnAgregarCarrito";
             this.btnAgregarCarrito.Size = new System.Drawing.Size(116, 55);
             this.btnAgregarCarrito.TabIndex = 118;
+            this.btnAgregarCarrito.Tag = "btn_AgregarCarrito";
             this.btnAgregarCarrito.Text = "Agregar a carrito";
             this.btnAgregarCarrito.UseVisualStyleBackColor = false;
             this.btnAgregarCarrito.Click += new System.EventHandler(this.btnAgregarCarrito_Click);
@@ -96,6 +98,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 21);
             this.label4.TabIndex = 116;
+            this.label4.Tag = "lbl_ProductoCantidadPaginas";
             this.label4.Text = "Cantidad";
             // 
             // txtCantidad
@@ -127,6 +130,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(145, 21);
             this.label3.TabIndex = 113;
+            this.label3.Tag = "lbl_ProductoPrecio";
             this.label3.Text = "Precio de venta";
             // 
             // txtPrecioVenta
@@ -159,6 +163,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 21);
             this.label2.TabIndex = 110;
+            this.label2.Tag = "lbl_ProductoNombre";
             this.label2.Text = "Nombre";
             // 
             // txtNombre
@@ -191,6 +196,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 21);
             this.label1.TabIndex = 107;
+            this.label1.Tag = "lbl_ProductoISBN";
             this.label1.Text = "ISBN";
             // 
             // txtISBN
@@ -227,6 +233,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 21);
             this.label10.TabIndex = 121;
+            this.label10.Tag = "lbl_Carrito";
             this.label10.Text = "Carrito";
             // 
             // datagridCarrito
@@ -259,6 +266,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(154, 21);
             this.label11.TabIndex = 136;
+            this.label11.Tag = "lbl_DetalleVenta";
             this.label11.Text = "Detalle de venta";
             // 
             // txtDetalle
@@ -282,6 +290,7 @@
             this.btnRealizarVenta.Name = "btnRealizarVenta";
             this.btnRealizarVenta.Size = new System.Drawing.Size(128, 56);
             this.btnRealizarVenta.TabIndex = 134;
+            this.btnRealizarVenta.Tag = "btn_RealizarVenta";
             this.btnRealizarVenta.Text = "Realizar venta";
             this.btnRealizarVenta.UseVisualStyleBackColor = false;
             this.btnRealizarVenta.Click += new System.EventHandler(this.btnRealizarVenta_Click);
@@ -318,6 +327,7 @@
             this.MinimizeBox = false;
             this.Name = "RealizarVenta";
             this.Text = "RealizarVenta";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RealizarVenta_FormClosed);
             this.Load += new System.EventHandler(this.RealizarVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductosVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCarrito)).EndInit();

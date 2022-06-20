@@ -55,6 +55,7 @@
             this.lblProductos.Name = "lblProductos";
             this.lblProductos.Size = new System.Drawing.Size(172, 21);
             this.lblProductos.TabIndex = 108;
+            this.lblProductos.Tag = "lbl_ProductosCargados";
             this.lblProductos.Text = "Productos cargados";
             // 
             // ListarProductos
@@ -70,6 +71,7 @@
             this.MinimizeBox = false;
             this.Name = "ListarProductos";
             this.Text = "ListarProductos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ListarProductos_FormClosed);
             this.Load += new System.EventHandler(this.ListarProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).EndInit();
             this.ResumeLayout(false);

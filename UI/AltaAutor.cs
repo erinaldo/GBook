@@ -2,6 +2,7 @@
 using Interfaces.Observer;
 using Models.Observer;
 using Servicios;
+using Servicios.Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class AltaAutor : Form
+    public partial class AltaAutor : Form, IObserver
     {
         private readonly IAutor _autorService;
         private readonly ITraductor _traductorService;
@@ -24,18 +25,13 @@ namespace UI
             _autorService = autorService;
             _traductorService = traductorService;
             InitializeComponent();
-
-            Main.OnCambioIdioma += Main_onCambioIdioma;
-        }
-
-        private void Main_onCambioIdioma(IIdioma idioma)
-        {
-            UpdateLanguage(idioma);
         }
 
         private void Autor_Load(object sender, EventArgs e)
         {
             CargarGridAutores();
+            
+            Sesion.SuscribirObservador(this);
             UpdateLanguage(Sesion.GetInstance().Idioma);
         }
 
@@ -58,7 +54,7 @@ namespace UI
 
                 else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
 
-                if (ctrl.GetType() == typeof(TextBox))
+                if (ctrl.GetType() == typeof(TextBox) || ctrl.GetType() == typeof(ComboBox))
                 {
                     ctrl.Text = "";
                 }
@@ -102,6 +98,12 @@ namespace UI
             txtNombre.Text = string.Empty;
             txtApellido.Text = string.Empty;
             txtSeudonimo.Text = string.Empty;
+        }
+
+        private void AltaAutor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Sesion.DesuscribirObservador(this);
+            this.Dispose();
         }
     }
 }

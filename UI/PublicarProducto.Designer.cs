@@ -78,6 +78,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 21);
             this.label5.TabIndex = 92;
+            this.label5.Tag = "lbl_EnVenta";
             this.label5.Text = "En venta";
             // 
             // datagridProductos
@@ -103,6 +104,7 @@
             this.btnPublicar.Name = "btnPublicar";
             this.btnPublicar.Size = new System.Drawing.Size(106, 38);
             this.btnPublicar.TabIndex = 87;
+            this.btnPublicar.Tag = "btn_PublicarProducto";
             this.btnPublicar.Text = "Publicar";
             this.btnPublicar.UseVisualStyleBackColor = false;
             this.btnPublicar.Click += new System.EventHandler(this.btnPublicar_Click);
@@ -125,6 +127,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 21);
             this.label3.TabIndex = 85;
+            this.label3.Tag = "lbl_ProductoPrecio";
             this.label3.Text = "Precio";
             // 
             // txtPrecio
@@ -156,6 +159,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 21);
             this.label2.TabIndex = 82;
+            this.label2.Tag = "lbl_ProductoNombre";
             this.label2.Text = "Nombre";
             // 
             // txtNombre
@@ -188,6 +192,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 21);
             this.label1.TabIndex = 79;
+            this.label1.Tag = "lbl_ProductoISBN";
             this.label1.Text = "ISBN";
             // 
             // txtISBN
@@ -227,6 +232,7 @@
             this.MinimizeBox = false;
             this.Name = "PublicarProducto";
             this.Text = "PublicarProducto";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PublicarProducto_FormClosed);
             this.Load += new System.EventHandler(this.PublicarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).EndInit();
             this.ResumeLayout(false);

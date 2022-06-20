@@ -60,6 +60,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 21);
             this.label1.TabIndex = 72;
+            this.label1.Tag = "lbl_PedidoRecibido";
             this.label1.Text = "Recibido";
             // 
             // chkRecibido
@@ -81,6 +82,7 @@
             this.btnRecibirPedido.Name = "btnRecibirPedido";
             this.btnRecibirPedido.Size = new System.Drawing.Size(111, 53);
             this.btnRecibirPedido.TabIndex = 81;
+            this.btnRecibirPedido.Tag = "btn_RecibirPedido";
             this.btnRecibirPedido.Text = "Recibir pedido";
             this.btnRecibirPedido.UseVisualStyleBackColor = false;
             this.btnRecibirPedido.Click += new System.EventHandler(this.btnRecibirPedido_Click);
@@ -103,6 +105,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 21);
             this.label2.TabIndex = 83;
+            this.label2.Tag = "lbl_DetalleCompra";
             this.label2.Text = "Detalle";
             // 
             // txtDetalle
@@ -135,6 +138,7 @@
             this.MinimizeBox = false;
             this.Name = "RecibirPedidoStock";
             this.Text = "RecibirPedidoStock";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RecibirPedidoStock_FormClosed);
             this.Load += new System.EventHandler(this.RecibirPedidoStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridPedidosStock)).EndInit();
             this.ResumeLayout(false);

@@ -84,6 +84,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 21);
             this.label7.TabIndex = 75;
+            this.label7.Tag = "lbl_ProductoEditorial";
             this.label7.Text = "Editorial";
             // 
             // cbxGenero
@@ -116,6 +117,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 21);
             this.label6.TabIndex = 72;
+            this.label6.Tag = "lbl_ProductoGenero";
             this.label6.Text = "Género";
             // 
             // cbxAutor
@@ -148,6 +150,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 21);
             this.label5.TabIndex = 69;
+            this.label5.Tag = "lbl_ProductoAutor";
             this.label5.Text = "Autor";
             // 
             // panel4
@@ -168,6 +171,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 21);
             this.label4.TabIndex = 67;
+            this.label4.Tag = "lbl_ProductoCantidadPaginas";
             this.label4.Text = "Cantidad de páginas";
             // 
             // txtCantidadPaginas
@@ -204,6 +208,7 @@
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(106, 38);
             this.btnModificar.TabIndex = 64;
+            this.btnModificar.Tag = "btn_ModificarAutor";
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
@@ -226,6 +231,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 21);
             this.label3.TabIndex = 62;
+            this.label3.Tag = "lbl_ProductoPrecio";
             this.label3.Text = "Precio";
             // 
             // txtPrecio
@@ -257,6 +263,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 21);
             this.label2.TabIndex = 59;
+            this.label2.Tag = "lbl_ProductoNombre";
             this.label2.Text = "Nombre";
             // 
             // txtNombre
@@ -288,6 +295,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 21);
             this.label1.TabIndex = 56;
+            this.label1.Tag = "lbl_ProductoISBN";
             this.label1.Text = "ISBN";
             // 
             // txtISBN
@@ -335,6 +343,7 @@
             this.MinimizeBox = false;
             this.Name = "ModificarProducto";
             this.Text = "ModificarProducto";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModificarProducto_FormClosed);
             this.Load += new System.EventHandler(this.ModificarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).EndInit();
             this.ResumeLayout(false);
