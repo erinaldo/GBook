@@ -44,23 +44,12 @@ namespace UI
 
         private void Traducir(IIdioma idioma)
         {
-            IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
+            Traductor.Traducir(_traductorService, idioma, this.Controls);
+        }
 
-            foreach (Control ctrl in this.Controls)
-            {
-                if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
-
-                else if (ctrl.Tag != null && !traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = ctrl.Text = $"PLACEHOLDER_{ctrl.Tag}_NO_TRADUCTION";
-
-                else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
-
-                if (ctrl.GetType() == typeof(TextBox) || ctrl.GetType() == typeof(ComboBox))
-                {
-                    ctrl.Text = "";
-                }
-            }
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_traductorService, msgTag);
         }
 
         private void CargarPedidosStock()
@@ -76,14 +65,14 @@ namespace UI
         {
             try
             {
-                if (datagridPedidosStock.CurrentRow == null) throw new Exception("No seleccionó ningún pedido.");
+                if (datagridPedidosStock.CurrentRow == null) throw new Exception(TraducirMensaje("msg_NoPedidoSeleccionado"));
 
                 if (chkRecibido.Checked == true)
                 {
                     ComprobanteCompra comprobante = _compraService.GetComprobanteCompra().Where(c => c.Id == (int)datagridPedidosStock.CurrentRow.Cells["Id"].Value).FirstOrDefault();
 
                     _compraService.RecibirPedidoStock(comprobante);
-                    MessageBox.Show("Pedido recibido correctamente. Se actualizó el stock.");
+                    MessageBox.Show(TraducirMensaje("msg_PedidoRecibido"));
                     Limpiar();
 
                     CargarPedidosStock();

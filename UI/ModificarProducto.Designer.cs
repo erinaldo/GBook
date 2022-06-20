@@ -197,6 +197,7 @@
             this.datagridProductos.Size = new System.Drawing.Size(941, 522);
             this.datagridProductos.TabIndex = 65;
             this.datagridProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridProductos_CellClick);
+            this.datagridProductos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridProductos_DataBindingComplete);
             // 
             // btnModificar
             // 

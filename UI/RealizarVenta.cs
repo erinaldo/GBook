@@ -50,24 +50,14 @@ namespace UI
 
         private void Traducir(IIdioma idioma)
         {
-            IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
-
-            foreach (Control ctrl in this.Controls)
-            {
-                if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
-
-                else if (ctrl.Tag != null && !traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = ctrl.Text = $"PLACEHOLDER_{ctrl.Tag}_NO_TRADUCTION";
-
-                else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
-
-                if (ctrl.GetType() == typeof(TextBox) || ctrl.GetType() == typeof(ComboBox))
-                {
-                    ctrl.Text = "";
-                }
-            }
+            Traductor.Traducir(_traductorService, idioma, this.Controls);
         }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_traductorService, msgTag);
+        }
+        
         private void CargarProductos()
         {
             List<ProductoDTO> productos = ProductoDTO.FillListDTO(_productoService.GetProductos().Where(p => p.Activo == true && p.EnVenta == true).ToList());
@@ -89,18 +79,18 @@ namespace UI
         {
             try
             {
-                if (datagridProductosVenta.CurrentRow == null) throw new Exception("No seleccionó ningún producto.");
-                if (string.IsNullOrWhiteSpace(txtCantidad.Text)) throw new Exception("No se seleccionó la cantidad.");
+                if (datagridProductosVenta.CurrentRow == null) throw new Exception(TraducirMensaje("msg_CarritoNoProductos"));
+                if (string.IsNullOrWhiteSpace(txtCantidad.Text)) throw new Exception(TraducirMensaje("msg_CarritoNoCantidad"));
 
                 Producto producto = _productoService.GetProducto((int)datagridProductosVenta.CurrentRow.Cells["Id"].Value);
                 if (_carrito != null)
                 {
                     foreach (var item in _carrito)
                     {
-                        if (item.Producto.Id == producto.Id) throw new Exception("El producto ya esta en el carrito");
+                        if (item.Producto.Id == producto.Id) throw new Exception(TraducirMensaje("msg_CarritoProductoExistente"));
                     }
                 }
-                if (Convert.ToInt32(txtCantidad.Text) > producto.Stock.Cantidad) throw new Exception("No hay suficientes unidades en stock");
+                if (Convert.ToInt32(txtCantidad.Text) > producto.Stock.Cantidad) throw new Exception(TraducirMensaje("msg_StockInsuficiente"));
 
                 DetalleComprobante carrito = new DetalleComprobante()
                 {
@@ -138,7 +128,7 @@ namespace UI
 
         private void btnRealizarVenta_Click(object sender, EventArgs e)
         {
-            if (_carrito.Count() == 0) throw new Exception("El carrito está vacío.");
+            if (_carrito.Count() == 0) throw new Exception(TraducirMensaje("msg_CarritoVacio"));
 
             ComprobanteVenta comprobante = new ComprobanteVenta()
             {
@@ -149,7 +139,7 @@ namespace UI
             };
 
             _ventaService.RealizarVenta(comprobante);
-            MessageBox.Show("Se realizó una venta correctamente.");
+            MessageBox.Show(TraducirMensaje("msg_VentaExito"));
 
             Limpiar();
             LimpiarCarrito();

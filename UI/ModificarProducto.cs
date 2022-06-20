@@ -53,23 +53,12 @@ namespace UI
 
         private void Traducir(IIdioma idioma)
         {
-            IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
+            Traductor.Traducir(_traductorService, idioma, this.Controls);
+        }
 
-            foreach (Control ctrl in this.Controls)
-            {
-                if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
-
-                else if (ctrl.Tag != null && !traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = ctrl.Text = $"PLACEHOLDER_{ctrl.Tag}_NO_TRADUCTION";
-
-                else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
-
-                if (ctrl.GetType() == typeof(TextBox) || ctrl.GetType() == typeof(ComboBox))
-                {
-                    ctrl.Text = "";
-                }
-            }
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_traductorService, msgTag);
         }
 
         private void CargarAutores()
@@ -120,7 +109,10 @@ namespace UI
         {
             try
             {
-                if (datagridProductos.CurrentRow == null) throw new Exception("No seleccionó ningún producto.");
+                if (datagridProductos.CurrentRow == null) throw new Exception(TraducirMensaje("msg_ProductoNoSeleccionado"));
+                if (cbxAutor.SelectedIndex == -1) throw new Exception(TraducirMensaje("msg_ProductoAutor"));
+                if (cbxGenero.SelectedIndex == -1) throw new Exception(TraducirMensaje("msg_ProductoGenero"));
+                if (cbxEditorial.SelectedIndex == -1) throw new Exception(TraducirMensaje("msg_ProductoEditorial"));
 
                 Autor autor = new Models.Autor()
                 {
@@ -154,7 +146,7 @@ namespace UI
 
                 CargarProductos();
                 Limpiar();
-                MessageBox.Show("Producto modificado con éxito.");
+                MessageBox.Show(TraducirMensaje("msg_ProductoModificacionExito"));
             }
             catch (Exception ex)
             {
@@ -178,6 +170,11 @@ namespace UI
         {
             Sesion.DesuscribirObservador(this);
             this.Dispose();
+        }
+
+        private void datagridProductos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridProductos.ClearSelection();
         }
     }
 }

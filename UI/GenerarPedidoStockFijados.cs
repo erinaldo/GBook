@@ -49,23 +49,12 @@ namespace UI
 
         private void Traducir(IIdioma idioma)
         {
-            IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
+            Traductor.Traducir(_traductorService, idioma, this.Controls);
+        }
 
-            foreach (Control ctrl in this.Controls)
-            {
-                if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
-
-                else if (ctrl.Tag != null && !traducciones.ContainsKey(ctrl.Tag.ToString()))
-                    ctrl.Text = ctrl.Text = $"PLACEHOLDER_{ctrl.Tag}_NO_TRADUCTION";
-
-                else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
-
-                if (ctrl.GetType() == typeof(TextBox) || ctrl.GetType() == typeof(ComboBox))
-                {
-                    ctrl.Text = "";
-                }
-            }
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_traductorService, msgTag);
         }
 
         private void CargarProductos()
@@ -89,16 +78,16 @@ namespace UI
         {
             try
             {
-                if (datagridProductosCompra.CurrentRow == null) throw new Exception("No seleccionó ningún producto.");
-                if (string.IsNullOrWhiteSpace(txtPrecioCompra.Text)) throw new Exception("No se completó el precio de compra.");
-                if (string.IsNullOrWhiteSpace(txtCantidad.Text)) throw new Exception("No se seleccionó la cantidad.");
+                if (datagridProductosCompra.CurrentRow == null) throw new Exception(TraducirMensaje("msg_CarritoNoProductos"));
+                if (string.IsNullOrWhiteSpace(txtPrecioCompra.Text)) throw new Exception(TraducirMensaje("msg_CarritoNoPrecioCompra"));
+                if (string.IsNullOrWhiteSpace(txtCantidad.Text)) throw new Exception(TraducirMensaje("msg_CarritoNoCantidad"));
 
                 Producto producto = _productoService.GetProducto((int)datagridProductosCompra.CurrentRow.Cells["Id"].Value);
                 if (_carrito != null)
                 {
                     foreach (var item in _carrito)
                     {
-                        if (item.Producto.Id == producto.Id) throw new Exception("El producto ya esta en el carrito");
+                        if (item.Producto.Id == producto.Id) throw new Exception(TraducirMensaje("msg_CarritoProductoExistente"));
                     }
                 }
 
@@ -151,7 +140,7 @@ namespace UI
         {
             try
             {
-                if (_carrito.Count() == 0) throw new Exception("El carrito está vacío.");
+                if (_carrito.Count() == 0) throw new Exception(TraducirMensaje("msg_CarritoVacio"));
 
                 Models.Envio envio = new Models.Envio()
                 {
@@ -171,7 +160,7 @@ namespace UI
                 };
 
                 _compraService.GenerarPedidoStock(envio, comprobante);
-                MessageBox.Show("Se realizó un pedido de stock correctamente.");
+                MessageBox.Show(TraducirMensaje("msg_PedidoRealizadoCorrectamente"));
 
                 Limpiar();
                 LimpiarCarrito();

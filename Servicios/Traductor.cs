@@ -11,6 +11,34 @@ namespace Servicios
 {
     public class Traductor
     {
+        public static void TraducirMenu(ITraductor traductorService, IIdioma idioma, MenuStrip menu)
+        {
+            IDictionary<string, ITraduccion> traducciones = traductorService.ObtenerTraducciones(idioma);
+
+            foreach (ToolStripMenuItem item in menu.Items)
+            {
+                if (item.Tag != null && traducciones.ContainsKey(item.Tag.ToString()))
+                    item.Text = traducciones[item.Tag.ToString()].Texto;
+                else item.Text = $"{item.Tag}_NO_TRADUCTION";
+               
+                foreach (ToolStripMenuItem subItem in item.DropDownItems)
+                {
+                    if (subItem.Tag != null && traducciones.ContainsKey(subItem.Tag.ToString()))
+                        subItem.Text = traducciones[subItem.Tag.ToString()].Texto;
+                    else if (subItem.AccessibleDescription != null && subItem.AccessibleDescription.ToString() == "idioma_agregado" && !traducciones.ContainsKey(subItem.Tag.ToString())) 
+                        subItem.Text = $"{subItem.Text}";
+                    else subItem.Text = $"{subItem.Tag}_NO_TRADUCTION";
+
+                    foreach (ToolStripItem subSubItem in subItem.DropDownItems)
+                    {
+                        if (subSubItem.Tag != null && traducciones.ContainsKey(subSubItem.Tag.ToString()))
+                            subSubItem.Text = traducciones[subSubItem.Tag.ToString()].Texto;
+                        else subSubItem.Text = $"{subSubItem.Tag}_NO_TRADUCTION";
+                    }
+                }
+            }            
+        }
+        
         public static void Traducir(ITraductor traductorService, IIdioma idioma, Control.ControlCollection controls)
         {
             IDictionary<string, ITraduccion> traducciones = traductorService.ObtenerTraducciones(idioma);

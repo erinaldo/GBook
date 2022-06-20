@@ -29,8 +29,6 @@ namespace UI
         private readonly ITraductor _traductorService;
         
         private bool mdiChildActivo = false;
-        public delegate void CambioIdioma(IIdioma idioma);
-        public static event CambioIdioma OnCambioIdioma;
 
         public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService)
         {
@@ -43,8 +41,6 @@ namespace UI
             _compraService = compraService;
             _ventaService = ventaService;
             _traductorService = traductorService;
-
-            OnCambioIdioma += Main_OnCambioIdioma;
         }
 
         private void lblLogout_Click(object sender, EventArgs e)
@@ -298,14 +294,15 @@ namespace UI
 
         public void UpdateLanguage(IIdioma idioma)
         {
-            OnCambioIdioma.Invoke(idioma);
-        }
-
-        private void Main_OnCambioIdioma(IIdioma idioma)
-        {
             Traducir(idioma);
+            TraducirMenu(idioma);
         }
 
+        private void TraducirMenu(IIdioma idioma)
+        {
+            Traductor.TraducirMenu(_traductorService, idioma, menuStrip1);
+        }
+        
         private void Traducir(IIdioma idioma)
         {
             IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
@@ -331,6 +328,7 @@ namespace UI
                 var t = new ToolStripMenuItem();
                 t.Text = idioma.Nombre;
                 t.Tag = idioma;
+                t.AccessibleDescription = "idioma_agregado";
                 this.menuIdioma.DropDownItems.Add(t);
 
                 t.Click += T_Click;

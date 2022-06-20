@@ -70,6 +70,7 @@
             this.chkRecibido.Name = "chkRecibido";
             this.chkRecibido.Size = new System.Drawing.Size(15, 14);
             this.chkRecibido.TabIndex = 73;
+            this.chkRecibido.Tag = "chk_Recibido";
             this.chkRecibido.UseVisualStyleBackColor = true;
             // 
             // btnRecibirPedido

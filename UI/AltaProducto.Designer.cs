@@ -306,6 +306,7 @@
             this.lbl_ProductoEditorial.Name = "lbl_ProductoEditorial";
             this.lbl_ProductoEditorial.Size = new System.Drawing.Size(91, 21);
             this.lbl_ProductoEditorial.TabIndex = 52;
+            this.lbl_ProductoEditorial.Tag = "lbl_ProductoEditorial";
             this.lbl_ProductoEditorial.Text = "Editorial";
             // 
             // AltaProducto
