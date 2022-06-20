@@ -57,10 +57,10 @@
             this.ventaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.realizarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizarVentasHistóricasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuIdioma = new System.Windows.Forms.ToolStripMenuItem();
             this.lblAlerta = new System.Windows.Forms.Label();
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.timerAlerta = new System.Windows.Forms.Timer(this.components);
-            this.menuIdioma = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +74,7 @@
             this.lblLogout.Name = "lblLogout";
             this.lblLogout.Size = new System.Drawing.Size(127, 21);
             this.lblLogout.TabIndex = 0;
+            this.lblLogout.Tag = "lbl_Logout";
             this.lblLogout.Text = "Cerrar sesión";
             this.lblLogout.Click += new System.EventHandler(this.lblLogout_Click);
             // 
@@ -86,6 +87,7 @@
             this.lblBienvenido.Name = "lblBienvenido";
             this.lblBienvenido.Size = new System.Drawing.Size(64, 21);
             this.lblBienvenido.TabIndex = 1;
+            this.lblBienvenido.Tag = "lbl_Bienvenido";
             this.lblBienvenido.Text = "label1";
             // 
             // menuStrip1
@@ -298,6 +300,12 @@
             this.visualizarVentasHistóricasToolStripMenuItem.Text = "Visualizar ventas históricas";
             this.visualizarVentasHistóricasToolStripMenuItem.Click += new System.EventHandler(this.visualizarVentasHistóricasToolStripMenuItem_Click);
             // 
+            // menuIdioma
+            // 
+            this.menuIdioma.Name = "menuIdioma";
+            this.menuIdioma.Size = new System.Drawing.Size(56, 20);
+            this.menuIdioma.Text = "Idioma";
+            // 
             // lblAlerta
             // 
             this.lblAlerta.AutoSize = true;
@@ -329,12 +337,6 @@
             // 
             this.timerAlerta.Interval = 30000;
             this.timerAlerta.Tick += new System.EventHandler(this.timerAlerta_Tick);
-            // 
-            // menuIdioma
-            // 
-            this.menuIdioma.Name = "menuIdioma";
-            this.menuIdioma.Size = new System.Drawing.Size(56, 20);
-            this.menuIdioma.Text = "Idioma";
             // 
             // Main
             // 

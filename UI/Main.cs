@@ -49,10 +49,6 @@ namespace UI
 
         private void Main_Load(object sender, EventArgs e)
         {
-            UsuarioDTO usuario = Sesion.GetInstance();
-
-            lblBienvenido.Text = $"Hola, {usuario.Nombre} {usuario.Apellido}.";
-
             MostrarIdiomasDisponibles();
             Sesion.SuscribirObservador(this);
             UpdateLanguage(Sesion.GetInstance().Idioma);
@@ -238,7 +234,11 @@ namespace UI
             {
                 if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
                     ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
-                else ctrl.Text = ctrl.Text = "PLACEHOLDER_NO_TRADUCTION";
+                
+                else if (ctrl.Tag != null && !traducciones.ContainsKey(ctrl.Tag.ToString()))
+                    ctrl.Text = ctrl.Text = $"PLACEHOLDER_{ctrl.Tag}_NO_TRADUCTION";
+                
+                else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
             }
         }
 
