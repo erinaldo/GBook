@@ -60,6 +60,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 21);
             this.label1.TabIndex = 11;
+            this.label1.Tag = "lbl_NombreAutor";
             this.label1.Text = "Nombre";
             // 
             // txtNombre
@@ -72,6 +73,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(216, 16);
             this.txtNombre.TabIndex = 10;
+            this.txtNombre.Tag = "txtNombre";
             // 
             // panel2
             // 
@@ -91,6 +93,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 21);
             this.label2.TabIndex = 14;
+            this.label2.Tag = "lbl_ApellidoAutor";
             this.label2.Text = "Apellido";
             // 
             // txtApellido
@@ -103,6 +106,7 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(216, 16);
             this.txtApellido.TabIndex = 13;
+            this.txtApellido.Tag = "txtApellido";
             // 
             // panel3
             // 
@@ -122,6 +126,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 21);
             this.label3.TabIndex = 17;
+            this.label3.Tag = "lbl_SeudonimoAutor";
             this.label3.Text = "Seudónimo";
             // 
             // txtSeudonimo
@@ -134,6 +139,7 @@
             this.txtSeudonimo.Name = "txtSeudonimo";
             this.txtSeudonimo.Size = new System.Drawing.Size(216, 16);
             this.txtSeudonimo.TabIndex = 16;
+            this.txtSeudonimo.Tag = "txtSeudonimo";
             // 
             // btnAlta
             // 
@@ -145,6 +151,7 @@
             this.btnAlta.Name = "btnAlta";
             this.btnAlta.Size = new System.Drawing.Size(100, 37);
             this.btnAlta.TabIndex = 19;
+            this.btnAlta.Tag = "lbl_AltaAutor";
             this.btnAlta.Text = "Alta";
             this.btnAlta.UseVisualStyleBackColor = false;
             this.btnAlta.Click += new System.EventHandler(this.btnAlta_Click);

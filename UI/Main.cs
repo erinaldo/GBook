@@ -27,6 +27,10 @@ namespace UI
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
         private readonly ITraductor _traductorService;
+        
+        private bool mdiChildActivo = false;
+        public delegate void CambioIdioma(IIdioma idioma);
+        public static event CambioIdioma OnCambioIdioma;
 
         public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService)
         {
@@ -39,6 +43,8 @@ namespace UI
             _compraService = compraService;
             _ventaService = ventaService;
             _traductorService = traductorService;
+
+            OnCambioIdioma += Main_OnCambioIdioma;
         }
 
         private void lblLogout_Click(object sender, EventArgs e)
@@ -49,6 +55,8 @@ namespace UI
 
         private void Main_Load(object sender, EventArgs e)
         {
+            CambiarColorMDI();
+            
             MostrarIdiomasDisponibles();
             Sesion.SuscribirObservador(this);
             UpdateLanguage(Sesion.GetInstance().Idioma);
@@ -57,11 +65,28 @@ namespace UI
             timerAlerta.Start();
         }
 
+        private void CambiarColorMDI()
+        {
+            MdiClient ctlMDI;
+            foreach (Control ctl in this.Controls)
+            {
+                try
+                {
+                    ctlMDI = (MdiClient)ctl;
+                    ctlMDI.BackColor = Color.FromArgb(30, 30, 30);
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
         private void GenerarAlertaPedidoStock()
         {
             List<Producto> productos = _productoService.GenerarAlertaPedidoStock();
             
-            if (productos.Count() > 0 && productos != null)
+            if (productos.Count() > 0 && productos != null && mdiChildActivo == false)
             {
                 lblAlerta.Visible = true;
                 datagridProductos.Visible = true;
@@ -81,6 +106,22 @@ namespace UI
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
             datagridProductos.TabStop = false;
+        }
+
+        private void OcultarControles()
+        {
+            datagridProductos.Visible = false;
+            lblAlerta.Visible = false;
+            lblBienvenido.Visible = false;
+            lblLogout.Visible = false;
+        }
+
+        private void MostrarControles()
+        {
+            datagridProductos.Visible = true;
+            lblAlerta.Visible = true;
+            lblBienvenido.Visible = true;
+            lblLogout.Visible = true;
         }
 
         private void AbrirFormLogin()
@@ -105,79 +146,92 @@ namespace UI
 
         private void altaAutorToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AltaAutor altaAutor = new AltaAutor(_autorService);
+            AltaAutor altaAutor = new AltaAutor(_autorService, _traductorService);
+            altaAutor.MdiParent = this;
             altaAutor.Show();
         }
 
         private void modificarAutorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ModificarAutor modificarAutor = new ModificarAutor(_autorService);
+            modificarAutor.MdiParent = this;
             modificarAutor.Show();
         }
 
         private void altaEditorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AltaEditorial altaEditorial = new AltaEditorial(_editorialService);
+            altaEditorial.MdiParent = this;
             altaEditorial.Show();
         }
 
         private void modificarEditorialToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ModificarEditorial modificarEditorial = new ModificarEditorial(_editorialService);
+            modificarEditorial.MdiParent = this;
             modificarEditorial.Show();
         }
 
         private void altaGéneroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AltaGenero altaGenero = new AltaGenero(_generoService);
+            altaGenero.MdiParent = this;
             altaGenero.Show();
         }
 
         private void modificarGéneroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ModificarGenero modificarGenero = new ModificarGenero(_generoService);
+            modificarGenero.MdiParent = this;
             modificarGenero.Show();
         }
 
         private void altaProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AltaProducto altaProducto = new AltaProducto(_productoService, _autorService, _generoService, _editorialService);
+            altaProducto.MdiParent = this;
             altaProducto.Show();
         }
 
         private void modificarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ModificarProducto modificarProducto = new ModificarProducto(_productoService, _autorService, _generoService, _editorialService);
+            modificarProducto.MdiParent = this;
             modificarProducto.Show();
         }
 
         private void publicarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PublicarProducto publicarProducto = new PublicarProducto(_productoService);
+            publicarProducto.MdiParent = this;
             publicarProducto.Show();
         }
 
         private void fijarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FijarProducto fijarProducto = new FijarProducto(_productoService);
+            fijarProducto.MdiParent = this;
             fijarProducto.Show();
         }
 
         private void generarPedidoDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GenerarPedidoStockManual generarPedidoStockManual = new GenerarPedidoStockManual(_productoService, _compraService);
+            generarPedidoStockManual.MdiParent = this;
             generarPedidoStockManual.Show();
         }
 
         private void recibirPedidoDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RecibirPedidoStock recibirPedidoStock = new RecibirPedidoStock(_compraService);
+            recibirPedidoStock.MdiParent = this;
             recibirPedidoStock.Show();
         }
 
         private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RealizarVenta realizarVenta = new RealizarVenta(_productoService, _ventaService);
+            realizarVenta.MdiParent = this;
             realizarVenta.Show();            
         }
 
@@ -200,28 +254,37 @@ namespace UI
         private void generarPedidoStockProductosFijadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GenerarPedidoStockFijados generarPedidoStockFijados = new GenerarPedidoStockFijados(_productoService, _compraService);
+            generarPedidoStockFijados.MdiParent = this;
             generarPedidoStockFijados.Show();
         }
 
         private void listarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListarProductos listarProductos = new ListarProductos(_productoService);
+            listarProductos.MdiParent = this;
             listarProductos.Show();
         }
 
         private void visualizarPedidosDeStockRealizadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VisualizarPedidosStock visualizarPedidosStock = new VisualizarPedidosStock(_compraService);
+            visualizarPedidosStock.MdiParent = this;
             visualizarPedidosStock.Show();
         }
 
         private void visualizarVentasHistóricasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             VisualizarVentas visualizarVentas = new VisualizarVentas(_ventaService);
+            visualizarVentas.MdiParent = this;
             visualizarVentas.Show();
         }
 
         public void UpdateLanguage(IIdioma idioma)
+        {
+            OnCambioIdioma.Invoke(idioma);
+        }
+
+        private void Main_OnCambioIdioma(IIdioma idioma)
         {
             Traducir(idioma);
         }
@@ -260,6 +323,22 @@ namespace UI
         private void T_Click(object sender, EventArgs e)
         {
             Sesion.CambiarIdioma(((IIdioma)((ToolStripMenuItem)sender).Tag));
+        }
+
+        private void Main_MdiChildActivate(object sender, EventArgs e)
+        {
+            Form formEvento = (Form)sender;
+
+            if (formEvento.ActiveMdiChild == null)
+            {
+                MostrarControles();
+                mdiChildActivo = false;
+            }
+            else
+            {
+                OcultarControles();
+                mdiChildActivo = true;
+            }
         }
     }
 }

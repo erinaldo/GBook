@@ -1,4 +1,7 @@
 ﻿using Interfaces;
+using Interfaces.Observer;
+using Models.Observer;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,15 +17,52 @@ namespace UI
     public partial class AltaAutor : Form
     {
         private readonly IAutor _autorService;
-        public AltaAutor(IAutor autorService)
+        private readonly ITraductor _traductorService;
+
+        public AltaAutor(IAutor autorService, ITraductor traductorService)
         {
             _autorService = autorService;
+            _traductorService = traductorService;
             InitializeComponent();
+
+            Main.OnCambioIdioma += Main_onCambioIdioma;
+        }
+
+        private void Main_onCambioIdioma(IIdioma idioma)
+        {
+            UpdateLanguage(idioma);
         }
 
         private void Autor_Load(object sender, EventArgs e)
         {
             CargarGridAutores();
+            UpdateLanguage(Sesion.GetInstance().Idioma);
+        }
+
+        public void UpdateLanguage(IIdioma idioma)
+        {
+            Traducir(idioma);
+        }
+
+        private void Traducir(IIdioma idioma)
+        {
+            IDictionary<string, ITraduccion> traducciones = _traductorService.ObtenerTraducciones(idioma);
+
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl.Tag != null && traducciones.ContainsKey(ctrl.Tag.ToString()))
+                    ctrl.Text = traducciones[ctrl.Tag.ToString()].Texto;
+
+                else if (ctrl.Tag != null && !traducciones.ContainsKey(ctrl.Tag.ToString()))
+                    ctrl.Text = ctrl.Text = $"PLACEHOLDER_{ctrl.Tag}_NO_TRADUCTION";
+
+                else ctrl.Text = ctrl.Text = "PLACEHOLDER_TAG_NOT_ASSIGNED";
+
+                if (ctrl.GetType() == typeof(TextBox))
+                {
+                    ctrl.Text = "";
+                }
+            }            
         }
 
         private void btnAlta_Click(object sender, EventArgs e)
