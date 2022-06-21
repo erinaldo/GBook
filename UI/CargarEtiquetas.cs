@@ -72,6 +72,9 @@ namespace UI
         {
             try
             {
+                if (cbxEtiqueta.SelectedValue == null) throw new Exception("Se debe elegir una etiqueta");
+                if (string.IsNullOrWhiteSpace(txtTraduccion.Text)) throw new Exception("Se debe completar la traducción");
+
                 foreach (var item in _traducciones)
                 {
                     if (item.Etiqueta == cbxEtiqueta.Text)

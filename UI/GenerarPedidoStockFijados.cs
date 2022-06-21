@@ -178,5 +178,15 @@ namespace UI
             Sesion.DesuscribirObservador(this);
             this.Dispose();
         }
+
+        private void datagridProductosCompra_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridProductosCompra.ClearSelection();
+        }
+
+        private void datagridCarrito_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridCarrito.ClearSelection();
+        }
     }
 }

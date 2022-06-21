@@ -449,19 +449,18 @@
             // 
             this.datagridCarrito.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridCarrito.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridCarrito.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridCarrito.Location = new System.Drawing.Point(279, 427);
             this.datagridCarrito.Name = "datagridCarrito";
             this.datagridCarrito.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridCarrito.Size = new System.Drawing.Size(773, 362);
             this.datagridCarrito.TabIndex = 106;
+            this.datagridCarrito.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridCarrito_DataBindingComplete);
             // 
             // datagridProductosCompra
             // 
             this.datagridProductosCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridProductosCompra.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridProductosCompra.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridProductosCompra.Location = new System.Drawing.Point(279, 38);
             this.datagridProductosCompra.Name = "datagridProductosCompra";
             this.datagridProductosCompra.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -469,6 +468,7 @@
             this.datagridProductosCompra.Size = new System.Drawing.Size(773, 335);
             this.datagridProductosCompra.TabIndex = 105;
             this.datagridProductosCompra.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridProductosCompra_CellClick);
+            this.datagridProductosCompra.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridProductosCompra_DataBindingComplete);
             // 
             // GenerarPedidoStockFijados
             // 

@@ -160,14 +160,15 @@
             // 
             this.datagridAutores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridAutores.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.datagridAutores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridAutores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.datagridAutores.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.datagridAutores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.datagridAutores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridAutores.Enabled = false;
             this.datagridAutores.Location = new System.Drawing.Point(267, 13);
             this.datagridAutores.Name = "datagridAutores";
             this.datagridAutores.Size = new System.Drawing.Size(378, 386);
             this.datagridAutores.TabIndex = 20;
+            this.datagridAutores.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridAutores_DataBindingComplete);
             // 
             // AltaAutor
             // 

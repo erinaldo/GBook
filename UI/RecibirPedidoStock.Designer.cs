@@ -41,8 +41,8 @@
             // datagridPedidosStock
             // 
             this.datagridPedidosStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.datagridPedidosStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridPedidosStock.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.datagridPedidosStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.datagridPedidosStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.datagridPedidosStock.Location = new System.Drawing.Point(283, 12);
             this.datagridPedidosStock.Name = "datagridPedidosStock";
             this.datagridPedidosStock.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -50,6 +50,7 @@
             this.datagridPedidosStock.Size = new System.Drawing.Size(502, 324);
             this.datagridPedidosStock.TabIndex = 67;
             this.datagridPedidosStock.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridPedidosStock_CellClick);
+            this.datagridPedidosStock.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridPedidosStock_DataBindingComplete);
             // 
             // label1
             // 
@@ -126,7 +127,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(792, 342);
+            this.ClientSize = new System.Drawing.Size(792, 349);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDetalle);

@@ -40,14 +40,15 @@
             // 
             this.datagridGenero.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridGenero.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.datagridGenero.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridGenero.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.datagridGenero.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.datagridGenero.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.datagridGenero.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagridGenero.Enabled = false;
             this.datagridGenero.Location = new System.Drawing.Point(281, 12);
             this.datagridGenero.Name = "datagridGenero";
             this.datagridGenero.Size = new System.Drawing.Size(403, 426);
             this.datagridGenero.TabIndex = 35;
+            this.datagridGenero.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridGenero_DataBindingComplete);
             // 
             // btnAlta
             // 
@@ -101,7 +102,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(696, 459);
+            this.ClientSize = new System.Drawing.Size(694, 448);
             this.Controls.Add(this.datagridGenero);
             this.Controls.Add(this.btnAlta);
             this.Controls.Add(this.panel1);

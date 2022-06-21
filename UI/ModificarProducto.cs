@@ -130,23 +130,27 @@ namespace UI
                     Nombre = cbxEditorial.Text
                 };
 
-                Producto producto = new Models.Producto()
+                if (!string.IsNullOrWhiteSpace(txtPrecio.Text) && !string.IsNullOrWhiteSpace(txtCantidadPaginas.Text))
                 {
-                    Id = (int)datagridProductos.SelectedRows[0].Cells["Id"].Value,
-                    ISBN = txtISBN.Text,
-                    Nombre = txtNombre.Text,
-                    Precio = Convert.ToDouble(txtPrecio.Text),
-                    CantidadPaginas = Convert.ToInt32(txtCantidadPaginas.Text),
-                    Autor = autor,
-                    Genero = genero,
-                    Editorial = editorial,
-                };
+                    Producto producto = new Models.Producto()
+                    {
+                        Id = (int)datagridProductos.SelectedRows[0].Cells["Id"].Value,
+                        ISBN = txtISBN.Text,
+                        Nombre = txtNombre.Text,
+                        Precio = Convert.ToDouble(txtPrecio.Text),
+                        CantidadPaginas = Convert.ToInt32(txtCantidadPaginas.Text),
+                        Autor = autor,
+                        Genero = genero,
+                        Editorial = editorial,
+                    };
 
-                _productoService.ModificarProducto(producto);
+                    _productoService.ModificarProducto(producto);
 
-                CargarProductos();
-                Limpiar();
-                MessageBox.Show(TraducirMensaje("msg_ProductoModificacionExito"));
+                    CargarProductos();
+                    Limpiar();
+                    MessageBox.Show(TraducirMensaje("msg_ProductoModificacionExito"));
+                }
+                else throw new Exception(TraducirMensaje("msg_CompletarCampos"));
             }
             catch (Exception ex)
             {

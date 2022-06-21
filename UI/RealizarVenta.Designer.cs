@@ -215,7 +215,6 @@
             // 
             this.datagridProductosVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridProductosVenta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridProductosVenta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridProductosVenta.Location = new System.Drawing.Point(275, 39);
             this.datagridProductosVenta.Name = "datagridProductosVenta";
             this.datagridProductosVenta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -223,6 +222,7 @@
             this.datagridProductosVenta.Size = new System.Drawing.Size(773, 335);
             this.datagridProductosVenta.TabIndex = 105;
             this.datagridProductosVenta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridProductosVenta_CellClick);
+            this.datagridProductosVenta.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridProductosVenta_DataBindingComplete);
             // 
             // label10
             // 
@@ -240,13 +240,13 @@
             // 
             this.datagridCarrito.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridCarrito.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridCarrito.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.datagridCarrito.Location = new System.Drawing.Point(275, 410);
             this.datagridCarrito.Name = "datagridCarrito";
             this.datagridCarrito.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridCarrito.Size = new System.Drawing.Size(773, 362);
             this.datagridCarrito.TabIndex = 120;
+            this.datagridCarrito.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridCarrito_DataBindingComplete);
             // 
             // panel9
             // 

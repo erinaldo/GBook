@@ -76,22 +76,26 @@ namespace UI
         {
             try
             {
-                Alerta alerta = new Alerta()
+                if (!string.IsNullOrWhiteSpace(txtCantidadStockAviso.Text))
                 {
-                    CantidadStockAviso = int.Parse(txtCantidadStockAviso.Text),
-                    Activo = cbxActivo.Text == "Si" ? true : false,
-                };
-                Producto producto = new Producto()
-                {
-                    Id = (int)datagridProductos.CurrentRow.Cells["Id"].Value,
-                    Alerta = alerta
-                };
+                    Alerta alerta = new Alerta()
+                    {
+                        CantidadStockAviso = int.Parse(txtCantidadStockAviso.Text),
+                        Activo = cbxActivo.Text == "Si" ? true : false,
+                    };
+                    Producto producto = new Producto()
+                    {
+                        Id = (int)datagridProductos.CurrentRow.Cells["Id"].Value,
+                        Alerta = alerta
+                    };
 
-                _productoService.FijarProducto(producto);
+                    _productoService.FijarProducto(producto);
 
-                CargarProductos();
-                Limpiar();
-                MessageBox.Show(TraducirMensaje("msg_ProductoFijarExito"));
+                    CargarProductos();
+                    Limpiar();
+                    MessageBox.Show(TraducirMensaje("msg_ProductoFijarExito"));
+                }
+                else throw new Exception(TraducirMensaje("msg_CompletarCampos"));
             }
             catch (Exception ex)
             {
@@ -110,6 +114,11 @@ namespace UI
         {
             Sesion.DesuscribirObservador(this);
             this.Dispose();
+        }
+
+        private void datagridProductos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridProductos.ClearSelection();
         }
     }
 }

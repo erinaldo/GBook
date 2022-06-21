@@ -90,14 +90,23 @@ namespace UI
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Traduccion traduccion = _traductorService.GetTraduccionId((int)datagridTraducciones.CurrentRow.Cells["Id"].Value);
-            traduccion.Texto = txtTraduccion.Text;
+            try
+            {
+                if (cbxEtiqueta.SelectedValue == null) throw new Exception("Se debe seleccionar una etiqueta");
 
-            _traductorService.ModificarTraduccion(traduccion);
-            MessageBox.Show("Traducción modificada con éxito.");
+                Traduccion traduccion = _traductorService.GetTraduccionId((int)datagridTraducciones.CurrentRow.Cells["Id"].Value);
+                traduccion.Texto = txtTraduccion.Text;
 
-            CargarGridTraducciones(_traductorService.ObtenerIdiomas().Where(x => x.Id == (int)cbxIdioma.SelectedValue).FirstOrDefault());
-            Limpiar();
+                _traductorService.ModificarTraduccion(traduccion);
+                MessageBox.Show("Traducción modificada con éxito.");
+
+                CargarGridTraducciones(_traductorService.ObtenerIdiomas().Where(x => x.Id == (int)cbxIdioma.SelectedValue).FirstOrDefault());
+                Limpiar();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Limpiar()

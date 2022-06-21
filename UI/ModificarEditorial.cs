@@ -98,5 +98,10 @@ namespace UI
             Sesion.DesuscribirObservador(this);
             this.Dispose();
         }
+
+        private void datagridEditoriales_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridEditoriales.ClearSelection();
+        }
     }
 }

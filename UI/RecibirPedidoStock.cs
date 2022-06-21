@@ -100,5 +100,10 @@ namespace UI
             Sesion.DesuscribirObservador(this);
             this.Dispose();
         }
+
+        private void datagridPedidosStock_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridPedidosStock.ClearSelection();
+        }
     }
 }

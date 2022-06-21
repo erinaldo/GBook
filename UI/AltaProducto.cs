@@ -119,22 +119,26 @@ namespace UI
                     Nombre = cbxEditorial.Text
                 };
 
-                Producto producto = new Models.Producto()
+                if (!string.IsNullOrWhiteSpace(txtPrecio.Text) && !string.IsNullOrWhiteSpace(txtCantidadPaginas.Text))
                 {
-                    ISBN = txtISBN.Text,
-                    Nombre = txtNombre.Text,
-                    Precio = Convert.ToDouble(txtPrecio.Text),
-                    CantidadPaginas = Convert.ToInt32(txtCantidadPaginas.Text),
-                    Autor = autor,
-                    Genero = genero,
-                    Editorial = editorial,
-                };
+                    Producto producto = new Models.Producto()
+                    {
+                        ISBN = txtISBN.Text,
+                        Nombre = txtNombre.Text,
+                        Precio = Convert.ToDouble(txtPrecio.Text),
+                        CantidadPaginas = Convert.ToInt32(txtCantidadPaginas.Text),
+                        Autor = autor,
+                        Genero = genero,
+                        Editorial = editorial,
+                    };
 
-                _productoService.AltaProducto(producto);
+                    _productoService.AltaProducto(producto);
 
-                CargarProductos();
-                Limpiar();
-                MessageBox.Show(TraducirMensaje("msg_ProductoAltaExito"));
+                    CargarProductos();
+                    Limpiar();
+                    MessageBox.Show(TraducirMensaje("msg_ProductoAltaExito"));
+                }
+                else throw new Exception(TraducirMensaje("msg_CompletarCampos"));
             }
             catch (Exception ex)
             {
@@ -156,6 +160,11 @@ namespace UI
         {
             Sesion.DesuscribirObservador(this);
             this.Dispose();
+        }
+
+        private void datagridProductos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridProductos.ClearSelection();
         }
     }
 }

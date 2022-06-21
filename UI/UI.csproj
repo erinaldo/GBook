@@ -297,7 +297,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Scripts\base_con_traducciones_v1.sql" />
     <Content Include="Scripts\base_v1.sql" />
+    <Content Include="Scripts\script_insert_etiquetas.txt" />
     <Content Include="Scripts\script_v1_limpio.sql" />
     <Content Include="Scripts\script_v2.sql" />
   </ItemGroup>

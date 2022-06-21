@@ -128,23 +128,30 @@ namespace UI
 
         private void btnRealizarVenta_Click(object sender, EventArgs e)
         {
-            if (_carrito.Count() == 0) throw new Exception(TraducirMensaje("msg_CarritoVacio"));
-
-            ComprobanteVenta comprobante = new ComprobanteVenta()
+            try
             {
-                Fecha = DateTime.Now,
-                Items = _carrito,
-                Detalle = txtDetalle.Text,
-                Total = Convert.ToDouble(_carrito.Sum(x => x.Total)),
-            };
+                if (_carrito.Count() == 0) throw new Exception(TraducirMensaje("msg_CarritoVacio"));
 
-            _ventaService.RealizarVenta(comprobante);
-            MessageBox.Show(TraducirMensaje("msg_VentaExito"));
+                ComprobanteVenta comprobante = new ComprobanteVenta()
+                {
+                    Fecha = DateTime.Now,
+                    Items = _carrito,
+                    Detalle = txtDetalle.Text,
+                    Total = Convert.ToDouble(_carrito.Sum(x => x.Total)),
+                };
 
-            Limpiar();
-            LimpiarCarrito();
-            CargarCarrito();
-            CargarProductos();
+                _ventaService.RealizarVenta(comprobante);
+                MessageBox.Show(TraducirMensaje("msg_VentaExito"));
+
+                Limpiar();
+                LimpiarCarrito();
+                CargarCarrito();
+                CargarProductos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void LimpiarCarrito()
@@ -157,6 +164,16 @@ namespace UI
         {
             Sesion.DesuscribirObservador(this);
             this.Dispose();
+        }
+
+        private void datagridProductosVenta_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridProductosVenta.ClearSelection();
+        }
+
+        private void datagridCarrito_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridCarrito.ClearSelection();
         }
     }
 }

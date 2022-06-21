@@ -76,21 +76,25 @@ namespace UI
         {
             try
             {
-                if (datagridProductos.CurrentRow == null) throw new Exception(TraducirMensaje("msg_CarritoNoProductos"));                
+                if (datagridProductos.CurrentRow == null) throw new Exception(TraducirMensaje("msg_CarritoNoProductos"));
 
-                Producto producto = new Producto()
+                if (!string.IsNullOrWhiteSpace(txtPrecio.Text))
                 {
-                    Id = (int)datagridProductos.CurrentRow.Cells["Id"].Value,
-                    Precio = Convert.ToDouble(txtPrecio.Text),
-                };
-                if (cbxEnVenta.Text == "Si") producto.EnVenta = true;
-                else producto.EnVenta = false;
+                    Producto producto = new Producto()
+                    {
+                        Id = (int)datagridProductos.CurrentRow.Cells["Id"].Value,
+                        Precio = Convert.ToDouble(txtPrecio.Text),
+                    };
+                    if (cbxEnVenta.Text == "Si") producto.EnVenta = true;
+                    else producto.EnVenta = false;
 
-                _productoService.PublicarProducto(producto);
+                    _productoService.PublicarProducto(producto);
 
-                CargarProductos();
-                Limpiar();
-                MessageBox.Show(TraducirMensaje("msg_ProductoPublicadoExito"));
+                    CargarProductos();
+                    Limpiar();
+                    MessageBox.Show(TraducirMensaje("msg_ProductoPublicadoExito"));
+                }
+                else throw new Exception(TraducirMensaje("msg_CompletarCampos"));
             }
             catch (Exception ex)
             {
@@ -110,6 +114,11 @@ namespace UI
         {
             Sesion.DesuscribirObservador(this);
             this.Dispose();
+        }
+
+        private void datagridProductos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            datagridProductos.ClearSelection();
         }
     }
 }

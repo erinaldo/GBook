@@ -127,9 +127,12 @@ menu_ModificarEtiquetas
 
 lbl_EnVenta
 chk_Recibido
+msg_CompletarCampos
 
 
 
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CompletarCampos')
 
 INSERT INTO Etiqueta (NombreEtiqueta)
 VALUES ('lbl_Bienvenido')

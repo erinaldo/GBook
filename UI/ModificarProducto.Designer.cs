@@ -188,8 +188,8 @@
             // datagridProductos
             // 
             this.datagridProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.datagridProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.datagridProductos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.datagridProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.datagridProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.datagridProductos.Location = new System.Drawing.Point(260, 12);
             this.datagridProductos.Name = "datagridProductos";
             this.datagridProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
