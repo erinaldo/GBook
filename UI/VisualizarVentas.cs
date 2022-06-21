@@ -87,5 +87,11 @@ namespace UI
             Sesion.DesuscribirObservador(this);
             this.Dispose();
         }
+
+        private void datagridVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            VentaComprobante ventaComprobante = new VentaComprobante(_ventaService, (int)datagridVentas.CurrentRow.Cells["Id"].Value);
+            ventaComprobante.ShowDialog();
+        }
     }
 }

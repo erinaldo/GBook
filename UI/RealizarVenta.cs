@@ -140,8 +140,10 @@ namespace UI
                     Total = Convert.ToDouble(_carrito.Sum(x => x.Total)),
                 };
 
-                _ventaService.RealizarVenta(comprobante);
-                MessageBox.Show(TraducirMensaje("msg_VentaExito"));
+                int ventaId = _ventaService.RealizarVenta(comprobante);
+                MessageBox.Show(TraducirMensaje("msg_VentaExito"));                
+                VentaComprobante ventaComprobante = new VentaComprobante(_ventaService, ventaId);
+                ventaComprobante.Show();
 
                 Limpiar();
                 LimpiarCarrito();

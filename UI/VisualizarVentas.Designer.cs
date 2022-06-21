@@ -56,6 +56,7 @@
             this.datagridVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridVentas.Size = new System.Drawing.Size(941, 384);
             this.datagridVentas.TabIndex = 111;
+            this.datagridVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridVentas_CellDoubleClick);
             this.datagridVentas.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridVentas_DataBindingComplete);
             // 
             // VisualizarVentas
