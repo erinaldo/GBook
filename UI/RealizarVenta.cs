@@ -159,7 +159,7 @@ namespace UI
         private void LimpiarCarrito()
         {
             txtDetalle.Text = "";
-            _carrito = null;
+            _carrito = new List<DetalleComprobante>();
         }
 
         private void RealizarVenta_FormClosed(object sender, FormClosedEventArgs e)

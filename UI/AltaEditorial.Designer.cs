@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaEditorial));
             this.btnAlta = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -109,10 +110,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AltaEditorial";
-            this.Text = "AltaEditorial";
+            this.Text = "GBook - Alta editorial";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaEditorial_FormClosed);
             this.Load += new System.EventHandler(this.AltaEditorial_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridEditoriales)).EndInit();

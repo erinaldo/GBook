@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarProductos));
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.lblProductos = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
@@ -67,10 +68,11 @@
             this.Controls.Add(this.lblProductos);
             this.Controls.Add(this.datagridProductos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ListarProductos";
-            this.Text = "ListarProductos";
+            this.Text = "GBook - Listar productos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ListarProductos_FormClosed);
             this.Load += new System.EventHandler(this.ListarProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).EndInit();

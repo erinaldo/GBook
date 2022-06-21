@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RealizarVenta));
             this.label9 = new System.Windows.Forms.Label();
             this.btnAgregarCarrito = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -98,7 +99,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 21);
             this.label4.TabIndex = 116;
-            this.label4.Tag = "lbl_ProductoCantidadPaginas";
+            this.label4.Tag = "lbl_ProductoCantidad";
             this.label4.Text = "Cantidad";
             // 
             // txtCantidad
@@ -323,10 +324,11 @@
             this.Controls.Add(this.txtISBN);
             this.Controls.Add(this.datagridProductosVenta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RealizarVenta";
-            this.Text = "RealizarVenta";
+            this.Text = "GBook - Realizar venta";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RealizarVenta_FormClosed);
             this.Load += new System.EventHandler(this.RealizarVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductosVenta)).EndInit();

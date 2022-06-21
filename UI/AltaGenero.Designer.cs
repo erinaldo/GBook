@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaGenero));
             this.datagridGenero = new System.Windows.Forms.DataGridView();
             this.btnAlta = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -109,10 +110,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AltaGenero";
-            this.Text = "AltaGenero";
+            this.Text = "GBook - Alta género";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AltaGenero_FormClosed);
             this.Load += new System.EventHandler(this.AltaGenero_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridGenero)).EndInit();

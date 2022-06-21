@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarEtiquetas));
             this.datagridTraducciones = new System.Windows.Forms.DataGridView();
             this.btnModificar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -187,8 +188,9 @@
             this.Controls.Add(this.cbxIdioma);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModificarEtiquetas";
-            this.Text = "ModificarEtiquetas";
+            this.Text = "GBook - Modificar etiquetas";
             this.Load += new System.EventHandler(this.ModificarEtiquetas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridTraducciones)).EndInit();
             this.ResumeLayout(false);

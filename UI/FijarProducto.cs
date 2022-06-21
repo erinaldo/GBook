@@ -108,6 +108,7 @@ namespace UI
             txtISBN.Text = "";
             txtNombre.Text = "";
             cbxActivo.SelectedIndex = -1;
+            txtCantidadStockAviso.Text = "";
         }
 
         private void FijarProducto_FormClosed(object sender, FormClosedEventArgs e)

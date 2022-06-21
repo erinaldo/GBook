@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarProducto));
             this.cbxEditorial = new System.Windows.Forms.ComboBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -340,10 +341,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtISBN);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModificarProducto";
-            this.Text = "ModificarProducto";
+            this.Text = "GBook - Modificar producto";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModificarProducto_FormClosed);
             this.Load += new System.EventHandler(this.ModificarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).EndInit();

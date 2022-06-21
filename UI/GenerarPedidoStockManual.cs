@@ -169,7 +169,7 @@ namespace UI
             txtEntreCalles.Text = "";
             txtTelefonoContacto.Text = "";
             txtDetalle.Text = "";
-            _carrito = null;
+            _carrito = new List<DetalleComprobante>() ;
         }
 
         private void GenerarPedidoStockManual_FormClosed(object sender, FormClosedEventArgs e)

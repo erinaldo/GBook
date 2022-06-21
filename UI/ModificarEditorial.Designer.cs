@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarEditorial));
             this.datagridEditoriales = new System.Windows.Forms.DataGridView();
             this.btnModificar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -110,10 +111,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModificarEditorial";
-            this.Text = "ModificarEditorial";
+            this.Text = "GBook - Modificar editorial";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModificarEditorial_FormClosed);
             this.Load += new System.EventHandler(this.ModificarEditorial_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridEditoriales)).EndInit();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CargarEtiquetas));
             this.cbxIdioma = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -185,8 +186,9 @@
             this.Controls.Add(this.cbxIdioma);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CargarEtiquetas";
-            this.Text = "CargarEtiquetas";
+            this.Text = "GBook - Cargar etiquetas";
             this.Load += new System.EventHandler(this.CargarEtiquetas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridTraducciones)).EndInit();
             this.ResumeLayout(false);

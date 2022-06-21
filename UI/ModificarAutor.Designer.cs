@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificarAutor));
             this.btnModificar = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -186,10 +187,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNombre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ModificarAutor";
-            this.Text = "ModificarAutor";
+            this.Text = "GBook - Modificar autor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModificarAutor_FormClosed);
             this.Load += new System.EventHandler(this.ModificarAutor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridAutores)).EndInit();

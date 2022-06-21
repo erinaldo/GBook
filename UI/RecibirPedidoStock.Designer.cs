@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecibirPedidoStock));
             this.datagridPedidosStock = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.chkRecibido = new System.Windows.Forms.CheckBox();
@@ -136,10 +137,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.datagridPedidosStock);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RecibirPedidoStock";
-            this.Text = "RecibirPedidoStock";
+            this.Text = "GBook - Recibir pedido de stock";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RecibirPedidoStock_FormClosed);
             this.Load += new System.EventHandler(this.RecibirPedidoStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.datagridPedidosStock)).EndInit();

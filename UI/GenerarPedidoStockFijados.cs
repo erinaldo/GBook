@@ -133,7 +133,7 @@ namespace UI
             txtEntreCalles.Text = "";
             txtTelefonoContacto.Text = "";
             txtDetalle.Text = "";
-            _carrito = null;
+            _carrito = new List<DetalleComprobante>();
         }
 
         private void btnGenerarPedidoStock_Click(object sender, EventArgs e)
