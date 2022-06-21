@@ -71,16 +71,6 @@ namespace UI
             datagridProductos.TabStop = false;
         }
 
-        private void datagridProductos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            var altura = 40;
-            foreach (DataGridViewRow dr in datagridProductos.Rows)
-            {
-                altura += dr.Height;
-            }
-
-            datagridProductos.Height = altura;
-        }
 
         private void ListarProductos_FormClosed(object sender, FormClosedEventArgs e)
         {

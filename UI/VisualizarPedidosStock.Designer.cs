@@ -55,7 +55,7 @@
             this.datagridPedidosStock.Name = "datagridPedidosStock";
             this.datagridPedidosStock.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridPedidosStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridPedidosStock.Size = new System.Drawing.Size(941, 384);
+            this.datagridPedidosStock.Size = new System.Drawing.Size(998, 380);
             this.datagridPedidosStock.TabIndex = 109;
             this.datagridPedidosStock.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridPedidosStock_CellDoubleClick);
             // 
@@ -64,7 +64,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(961, 438);
+            this.ClientSize = new System.Drawing.Size(1022, 438);
             this.Controls.Add(this.lblProductos);
             this.Controls.Add(this.datagridPedidosStock);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

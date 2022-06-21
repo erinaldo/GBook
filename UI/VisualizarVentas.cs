@@ -71,17 +71,6 @@ namespace UI
             datagridVentas.TabStop = false;
         }
 
-        private void datagridVentas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            var altura = 40;
-            foreach (DataGridViewRow dr in datagridVentas.Rows)
-            {
-                altura += dr.Height;
-            }
-
-            datagridVentas.Height = altura;
-        }
-
         private void VisualizarVentas_FormClosed(object sender, FormClosedEventArgs e)
         {
             Sesion.DesuscribirObservador(this);

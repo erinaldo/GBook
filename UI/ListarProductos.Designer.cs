@@ -43,9 +43,8 @@
             this.datagridProductos.Name = "datagridProductos";
             this.datagridProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridProductos.Size = new System.Drawing.Size(941, 384);
+            this.datagridProductos.Size = new System.Drawing.Size(1001, 384);
             this.datagridProductos.TabIndex = 107;
-            this.datagridProductos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridProductos_DataBindingComplete);
             // 
             // lblProductos
             // 
@@ -64,7 +63,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(963, 447);
+            this.ClientSize = new System.Drawing.Size(1025, 447);
             this.Controls.Add(this.lblProductos);
             this.Controls.Add(this.datagridProductos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
