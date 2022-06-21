@@ -6,10 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.30717in</Width>
+              <Width>3.27326in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.10417in</Width>
+              <Width>1.15892in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1in</Width>
@@ -63,7 +63,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Precio Unitario</Value>
+                              <Value>Precio de compra</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -313,11 +313,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DataSetVenta</DataSetName>
-        <Top>4.73236in</Top>
-        <Left>0.02083in</Left>
+        <DataSetName>DataSetCompra</DataSetName>
+        <Top>6.78445in</Top>
+        <Left>0.03391in</Left>
         <Height>0.5in</Height>
-        <Width>6.41134in</Width>
+        <Width>6.43218in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -344,7 +344,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox46</rd:DefaultName>
         <Top>9.65051cm</Top>
-        <Left>0.05292cm</Left>
+        <Left>0.13906cm</Left>
         <Height>0.6cm</Height>
         <Width>4.69604cm</Width>
         <ZIndex>1</ZIndex>
@@ -376,7 +376,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox46</rd:DefaultName>
         <Top>9.65051cm</Top>
-        <Left>4.92535cm</Left>
+        <Left>5.01149cm</Left>
         <Height>0.6cm</Height>
         <Width>4.69604cm</Width>
         <ZIndex>2</ZIndex>
@@ -410,7 +410,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox46</rd:DefaultName>
         <Top>7.69195cm</Top>
-        <Left>0.05292cm</Left>
+        <Left>0.13906cm</Left>
         <Height>0.6cm</Height>
         <Width>4.69604cm</Width>
         <ZIndex>3</ZIndex>
@@ -442,7 +442,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox46</rd:DefaultName>
         <Top>7.69195cm</Top>
-        <Left>4.92535cm</Left>
+        <Left>5.01149cm</Left>
         <Height>0.6cm</Height>
         <Width>4.69604cm</Width>
         <ZIndex>4</ZIndex>
@@ -476,7 +476,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox46</rd:DefaultName>
         <Top>8.71791cm</Top>
-        <Left>0.05292cm</Left>
+        <Left>0.13906cm</Left>
         <Height>0.6cm</Height>
         <Width>4.69604cm</Width>
         <ZIndex>5</ZIndex>
@@ -508,7 +508,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox46</rd:DefaultName>
         <Top>8.71791cm</Top>
-        <Left>4.92535cm</Left>
+        <Left>5.01149cm</Left>
         <Height>0.6cm</Height>
         <Width>4.69604cm</Width>
         <ZIndex>6</ZIndex>
@@ -540,8 +540,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox66</rd:DefaultName>
-        <Top>10.98831cm</Top>
-        <Left>0.05292cm</Left>
+        <Top>16.20061cm</Top>
+        <Left>0.08613cm</Left>
         <Height>0.85549cm</Height>
         <Width>3.66417cm</Width>
         <ZIndex>7</ZIndex>
@@ -575,8 +575,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox46</rd:DefaultName>
-        <Top>13.36075cm</Top>
-        <Left>0cm</Left>
+        <Top>18.57305cm</Top>
+        <Left>0.03321cm</Left>
         <Height>0.94396cm</Height>
         <Width>2.09021cm</Width>
         <ZIndex>8</ZIndex>
@@ -617,8 +617,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox46</rd:DefaultName>
-        <Top>13.32547cm</Top>
-        <Left>2.0902cm</Left>
+        <Top>18.57305cm</Top>
+        <Left>2.12341cm</Left>
         <Height>0.94396cm</Height>
         <Width>5.38396cm</Width>
         <ZIndex>9</ZIndex>
@@ -651,7 +651,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox71</rd:DefaultName>
         <Top>1.70327cm</Top>
-        <Left>0.05292cm</Left>
+        <Left>0.13906cm</Left>
         <Height>1.01755cm</Height>
         <Width>8.40021cm</Width>
         <ZIndex>10</ZIndex>
@@ -684,7 +684,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox72</rd:DefaultName>
         <Top>3.11629cm</Top>
-        <Left>0.05292cm</Left>
+        <Left>0.13906cm</Left>
         <Height>1.0862cm</Height>
         <Width>8.40021cm</Width>
         <ZIndex>11</ZIndex>
@@ -716,7 +716,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox73</rd:DefaultName>
         <Top>4.56077cm</Top>
-        <Left>0.05292cm</Left>
+        <Left>0.13906cm</Left>
         <Height>0.73229cm</Height>
         <Width>8.40021cm</Width>
         <ZIndex>12</ZIndex>
@@ -748,7 +748,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox74</rd:DefaultName>
         <Top>5.93661cm</Top>
-        <Left>0.05292cm</Left>
+        <Left>0.13906cm</Left>
         <Height>0.6cm</Height>
         <Width>8.40021cm</Width>
         <ZIndex>13</ZIndex>
@@ -769,7 +769,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>COMPROBANTE DE VENTA</Value>
+                <Value>COMPROBANTE DE COMPRA</Value>
                 <Style>
                   <FontSize>24pt</FontSize>
                   <FontWeight>Bold</FontWeight>
@@ -780,7 +780,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox38</rd:DefaultName>
-        <Left>0.05292cm</Left>
+        <Left>0.13906cm</Left>
         <Height>1.24163cm</Height>
         <Width>12.2138cm</Width>
         <ZIndex>14</ZIndex>
@@ -796,6 +796,7 @@
       </Textbox>
       <Line Name="Line1">
         <Top>2.7818in</Top>
+        <Left>0.03391in</Left>
         <Height>0in</Height>
         <Width>6.43217in</Width>
         <ZIndex>15</ZIndex>
@@ -806,15 +807,316 @@
           </Border>
         </Style>
       </Line>
+      <Textbox Name="Textbox58">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Teléfono de contacto:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>14.03217cm</Top>
+        <Left>0.13907cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.99993cm</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox48">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Domicilio:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>12.0586cm</Top>
+        <Left>0.13907cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.99993cm</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox52">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Entre calles:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>13.09957cm</Top>
+        <Left>0.13907cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.99993cm</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox67">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>ENVIO</Value>
+                <Style>
+                  <FontSize>18pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox66</rd:DefaultName>
+        <Top>10.81242cm</Top>
+        <Left>0.13907cm</Left>
+        <Height>0.85549cm</Height>
+        <Width>3.66417cm</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox60">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Fecha de recepción:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>14.93538cm</Top>
+        <Left>0.13907cm</Left>
+        <Height>0.6cm</Height>
+        <Width>3.99993cm</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox49">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!Domicilio.Value</Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>, </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
+                <Value>=Fields!Numero.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>12.0586cm</Top>
+        <Left>5.01149cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.69604cm</Width>
+        <ZIndex>21</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox53">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!EntreCalles.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>13.09957cm</Top>
+        <Left>5.01149cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.69604cm</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox56">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!TelefonoContacto.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>14.03217cm</Top>
+        <Left>5.01149cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.69604cm</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox61">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!FechaRecepcion.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox46</rd:DefaultName>
+        <Top>14.93538cm</Top>
+        <Left>5.01149cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.69604cm</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>5.71187in</Height>
-    <Style>
-      <Border>
-        <Style>None</Style>
-      </Border>
-    </Style>
+    <Height>7.74636in</Height>
+    <Style />
   </Body>
-  <Width>6.43217in</Width>
+  <Width>6.46608in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>
@@ -829,11 +1131,11 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>6394e19f-2db7-4480-ac0e-837f2f4ec656</rd:DataSourceID>
+      <rd:DataSourceID>89c5f139-0cca-4751-a28f-28035daecfbc</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSetVenta">
+    <DataSet Name="DataSetCompra">
       <Query>
         <DataSourceName>ModelsDTOs</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -847,9 +1149,25 @@
           <DataField>Detalle</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Domicilio">
+          <DataField>Domicilio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EntreCalles">
+          <DataField>EntreCalles</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Fecha">
           <DataField>Fecha</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="FechaRecepcion">
+          <DataField>FechaRecepcion</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Numero">
+          <DataField>Numero</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="NumeroComprobante">
           <DataField>NumeroComprobante</DataField>
@@ -867,6 +1185,10 @@
           <DataField>Subtotal</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
+        <Field Name="TelefonoContacto">
+          <DataField>TelefonoContacto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Total">
           <DataField>Total</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
@@ -874,11 +1196,11 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>Models.DTOs</rd:DataSetName>
-        <rd:TableName>ReporteVentaDTO</rd:TableName>
-        <rd:ObjectDataSourceType>Models.DTOs.ReporteVentaDTO, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:TableName>ReporteCompraDTO</rd:TableName>
+        <rd:ObjectDataSourceType>Models.DTOs.ReporteCompraDTO, Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
-  <rd:ReportID>014237ad-ba0a-4b73-a971-da43f019f0e6</rd:ReportID>
+  <rd:ReportID>365133c2-8918-46ee-8428-f6383a2572e6</rd:ReportID>
 </Report>

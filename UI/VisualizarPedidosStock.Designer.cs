@@ -56,6 +56,7 @@
             this.datagridPedidosStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridPedidosStock.Size = new System.Drawing.Size(941, 384);
             this.datagridPedidosStock.TabIndex = 109;
+            this.datagridPedidosStock.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridPedidosStock_CellDoubleClick);
             // 
             // VisualizarPedidosStock
             // 

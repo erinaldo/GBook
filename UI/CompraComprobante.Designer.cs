@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class VentaComprobante
+    partial class CompraComprobante
     {
         /// <summary>
         /// Required designer variable.
@@ -33,28 +33,27 @@
             // 
             // reportViewer1
             // 
-            this.reportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.ReporteVenta.rdlc";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "UI.ReporteCompra.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(624, 679);
+            this.reportViewer1.Size = new System.Drawing.Size(630, 809);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
-            // VentaComprobante
+            // CompraComprobante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 679);
+            this.ClientSize = new System.Drawing.Size(630, 809);
             this.Controls.Add(this.reportViewer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
-            this.Name = "VentaComprobante";
+            this.Name = "CompraComprobante";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VentaComprobante";
-            this.Load += new System.EventHandler(this.VentaComprobante_Load);
+            this.Text = "CompraComprobante";
+            this.Load += new System.EventHandler(this.CompraComprobante_Load);
             this.ResumeLayout(false);
 
         }

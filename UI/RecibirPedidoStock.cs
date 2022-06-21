@@ -71,9 +71,12 @@ namespace UI
                 {
                     ComprobanteCompra comprobante = _compraService.GetComprobanteCompra().Where(c => c.Id == (int)datagridPedidosStock.CurrentRow.Cells["Id"].Value).FirstOrDefault();
 
-                    _compraService.RecibirPedidoStock(comprobante);
+                    int compraId = _compraService.RecibirPedidoStock(comprobante);
                     MessageBox.Show(TraducirMensaje("msg_PedidoRecibido"));
                     Limpiar();
+
+                    CompraComprobante compraComprobante = new CompraComprobante(_compraService, compraId);
+                    compraComprobante.Show();
 
                     CargarPedidosStock();
                 }

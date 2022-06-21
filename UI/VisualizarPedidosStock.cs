@@ -64,7 +64,7 @@ namespace UI
 
         private void CargarPedidosStockRealizados()
         {
-            List<PedidosRealizadosDTO> comprobantes = PedidosRealizadosDTO.FillListDTO(_compraService.GetComprobanteCompra());
+            List<PedidosRealizadosDTO> comprobantes = PedidosRealizadosDTO.FillListDTO(_compraService.GetComprobanteCompra().Where(x => x.FechaRecepcion != DateTime.MinValue).ToList());
             datagridPedidosStock.DataSource = comprobantes;
             datagridPedidosStock.Columns["Id"].Visible = false;
             datagridPedidosStock.ClearSelection();
@@ -75,6 +75,12 @@ namespace UI
         {
             Sesion.DesuscribirObservador(this);
             this.Dispose();
+        }
+
+        private void datagridPedidosStock_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CompraComprobante compraComprobante = new CompraComprobante(_compraService, (int)datagridPedidosStock.CurrentRow.Cells["Id"].Value);
+            compraComprobante.Show();
         }
     }
 }

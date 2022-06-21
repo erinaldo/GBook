@@ -100,6 +100,12 @@
     <Compile Include="CargarEtiquetas.Designer.cs">
       <DependentUpon>CargarEtiquetas.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompraComprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompraComprobante.Designer.cs">
+      <DependentUpon>CompraComprobante.cs</DependentUpon>
+    </Compile>
     <Compile Include="FijarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     <EmbeddedResource Include="CargarEtiquetas.resx">
       <DependentUpon>CargarEtiquetas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CompraComprobante.resx">
+      <DependentUpon>CompraComprobante.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FijarProducto.resx">
       <DependentUpon>FijarProducto.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,6 +292,7 @@
     <EmbeddedResource Include="Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReporteCompra.rdlc" />
     <EmbeddedResource Include="ReporteVenta.rdlc" />
     <EmbeddedResource Include="VentaComprobante.resx">
       <DependentUpon>VentaComprobante.cs</DependentUpon>
@@ -294,6 +304,7 @@
       <DependentUpon>VisualizarVentas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Models.DTOs.ReporteCompraDTO.datasource" />
     <None Include="Properties\DataSources\Models.DTOs.ReporteVentaDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

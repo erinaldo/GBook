@@ -49,6 +49,7 @@
     <Compile Include="DTOs\PedidosRealizadosDTO.cs" />
     <Compile Include="DTOs\ProductoAlertaDTO.cs" />
     <Compile Include="DTOs\ProductoDTO.cs" />
+    <Compile Include="DTOs\ReporteCompraDTO.cs" />
     <Compile Include="DTOs\ReporteVentaDTO.cs" />
     <Compile Include="DTOs\TraduccionesDTO.cs" />
     <Compile Include="DTOs\UsuarioDTO.cs" />
