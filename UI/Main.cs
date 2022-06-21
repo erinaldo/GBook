@@ -296,6 +296,7 @@ namespace UI
         {
             Traducir(idioma);
             TraducirMenu(idioma);
+            MostrarIdiomasDisponibles();
         }
 
         private void TraducirMenu(IIdioma idioma)
