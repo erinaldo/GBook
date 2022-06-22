@@ -403,7 +403,7 @@
             // 
             // timerAlerta
             // 
-            this.timerAlerta.Interval = 30000;
+            this.timerAlerta.Interval = 999999999;
             this.timerAlerta.Tick += new System.EventHandler(this.timerAlerta_Tick);
             // 
             // Main

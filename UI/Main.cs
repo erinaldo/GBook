@@ -8,6 +8,7 @@ using Servicios.Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -58,6 +59,8 @@ namespace UI
             UpdateLanguage(Sesion.GetInstance().Idioma);
 
             GenerarAlertaPedidoStock();
+
+            timerAlerta.Interval = int.Parse(ConfigurationManager.AppSettings["Intervalo_AlertaStock"]);
             timerAlerta.Start();
         }
 
