@@ -28,6 +28,7 @@ namespace UI
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
         private readonly ITraductor _traductorService;
+        private readonly IList<IIdioma> _idiomas;
         
         private bool mdiChildActivo = false;
 
@@ -42,6 +43,8 @@ namespace UI
             _compraService = compraService;
             _ventaService = ventaService;
             _traductorService = traductorService;
+
+            _idiomas = new List<IIdioma>();
         }
 
         private void lblLogout_Click(object sender, EventArgs e)
@@ -54,8 +57,8 @@ namespace UI
         {
             CambiarColorMDI();
             
-            MostrarIdiomasDisponibles();
             Sesion.SuscribirObservador(this);
+            MostrarIdiomasDisponibles();
             UpdateLanguage(Sesion.GetInstance().Idioma);
 
             GenerarAlertaPedidoStock();
@@ -299,7 +302,6 @@ namespace UI
         {
             Traducir(idioma);
             TraducirMenu(idioma);
-            MostrarIdiomasDisponibles();
         }
 
         private void TraducirMenu(IIdioma idioma)
@@ -326,17 +328,36 @@ namespace UI
         private void MostrarIdiomasDisponibles()
         {
             IList<IIdioma> idiomas = _traductorService.ObtenerIdiomas();
-
+            
             foreach (IIdioma idioma in idiomas)
-            {
-                var t = new ToolStripMenuItem();
-                t.Text = idioma.Nombre;
-                t.Tag = idioma;
-                t.AccessibleDescription = "idioma_agregado";
-                this.menuIdioma.DropDownItems.Add(t);
+            {   
+                _idiomas.Add(idioma);
 
-                t.Click += T_Click;
+                ToolStripMenuItem idiomaMenu = Traductor.AgregarIdiomaMenu(idioma);
+                this.menuIdioma.DropDownItems.Add(idiomaMenu);
+
+                idiomaMenu.Click += T_Click;
             }           
+        }
+
+        private void AgregarIdiomaMenu()
+        {
+            IList<IIdioma> idiomas = _traductorService.ObtenerIdiomas();
+            List<int> idiomasId = (from idio in idiomas select idio.Id).Except(_idiomas.Select(x => x.Id)).ToList();
+
+            if (idiomasId.Count > 0 && idiomasId != null)
+            { 
+                foreach (int idiomaId in idiomasId)
+                {
+                    IIdioma idioma = _traductorService.ObtenerIdiomas().Where(x => x.Id == idiomaId).FirstOrDefault();
+                    _idiomas.Add(idioma);
+
+                    ToolStripMenuItem idiomaMenu = Traductor.AgregarIdiomaMenu(idioma);
+                    this.menuIdioma.DropDownItems.Add(idiomaMenu);
+
+                    idiomaMenu.Click += T_Click;
+                }
+            }
         }
 
         private void T_Click(object sender, EventArgs e)
@@ -353,6 +374,8 @@ namespace UI
                 MostrarControles();
                 mdiChildActivo = false;
                 UpdateLanguage(Sesion.GetInstance().Idioma);
+                GenerarAlertaPedidoStock();
+                AgregarIdiomaMenu();
             }
             else
             {

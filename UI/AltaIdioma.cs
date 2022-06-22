@@ -1,5 +1,6 @@
 ﻿using Interfaces.Observer;
 using Models.Observer;
+using Servicios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,6 +53,7 @@ namespace UI
                 txtNombre.Text = "";
                 MessageBox.Show("Idioma cargado con éxito.");
                 CargarGridIdiomas();
+                this.Refresh(); 
             }
             catch (Exception ex)
             {

@@ -68,5 +68,15 @@ namespace Servicios
 
             return msgTag;
         }
+
+        public static ToolStripMenuItem AgregarIdiomaMenu(IIdioma idioma)
+        {
+            ToolStripMenuItem idiomaMenu = new ToolStripMenuItem();
+            idiomaMenu.Text = idioma.Nombre;
+            idiomaMenu.Tag = idioma;
+            idiomaMenu.AccessibleDescription = "idioma_agregado";
+
+            return idiomaMenu;
+        }
     }
 }
