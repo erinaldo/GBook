@@ -347,6 +347,7 @@
     <Content Include="Scripts\script_v1_limpio.sql" />
     <Content Include="Scripts\script_v2.sql" />
     <Content Include="Scripts\script_v3.sql" />
+    <Content Include="Scripts\script_v4.sql" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll" />
