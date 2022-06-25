@@ -45,7 +45,7 @@
     <Compile Include="ICompra.cs" />
     <Compile Include="IEditorial.cs" />
     <Compile Include="IGenero.cs" />
-    <Compile Include="IPermiso.cs" />
+    <Compile Include="Composite\IPermiso.cs" />
     <Compile Include="IProducto.cs" />
     <Compile Include="IUsuario.cs" />
     <Compile Include="IVenta.cs" />

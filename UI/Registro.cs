@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Interfaces.Composite;
 using Interfaces.Observer;
 using Models;
 using Models.DTOs;

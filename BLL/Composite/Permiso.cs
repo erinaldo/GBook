@@ -1,5 +1,7 @@
 ﻿using Interfaces;
+using Interfaces.Composite;
 using Models.Composite;
+using Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +41,18 @@ namespace BLL.Composite
             try
             {
                 return _permisoDAL.GuardarPatenteFamilia(componente, familia);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void GuardarPermiso(UsuarioDTO usuario)
+        {
+            try
+            {
+                _permisoDAL.GuardarPermiso(usuario);
             }
             catch (Exception ex)
             {
@@ -105,6 +119,30 @@ namespace BLL.Composite
             }
             
             return existeComponente;
+        }
+
+        public void GetComponenteUsuario(UsuarioDTO usuario)
+        {
+            try
+            {
+                _permisoDAL.GetComponenteUsuario(usuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void GetComponenteFamilia(Familia familia)
+        {
+            try
+            {
+                _permisoDAL.GetComponenteFamilia(familia);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
         #endregion
     }

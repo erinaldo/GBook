@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Interfaces.Composite;
 using Interfaces.Observer;
 using Models;
 using Models.DTOs;
@@ -417,6 +418,14 @@ namespace UI
             gestionFamiliaPatente.MdiParent = this;
             gestionFamiliaPatente.StartPosition = FormStartPosition.CenterScreen;
             gestionFamiliaPatente.Show();
+        }
+
+        private void gestiónPermisosDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestionarPermisosUsuario gestionarPermisosUsuario = new GestionarPermisosUsuario(_permisoService, _usuarioService);
+            gestionarPermisosUsuario.MdiParent = this;
+            gestionarPermisosUsuario.StartPosition = FormStartPosition.CenterScreen;
+            gestionarPermisosUsuario.Show();
         }
     }
 }

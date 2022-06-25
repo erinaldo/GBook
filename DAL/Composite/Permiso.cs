@@ -1,6 +1,7 @@
 ﻿using DAL.Conexion;
 using DAL.Tools;
 using Models.Composite;
+using Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,6 +30,9 @@ namespace DAL.Composite
         private const string GET_FAMILIA_PATENTE = "WITH RECURSIVO AS (SELECT fp.PadreId, fp.HijoId FROM FamiliaPatente fp WHERE fp.PadreId = {0}" +
                                                     " UNION ALL SELECT fp2.PadreId, fp2.HijoId FROM FamiliaPatente fp2 INNER JOIN RECURSIVO r on r.HijoId = fp2.PadreId) " +
                                                     " SELECT r.PadreId, r.HijoId, p.Id as PermisoId, p.Nombre, p.Permiso FROM RECURSIVO r INNER JOIN Patente p on r.HijoId = p.Id";
+        private const string GET_USUARIO_PERMISO = "SELECT p.* FROM UsuarioPermiso up INNER JOIN Patente p on p.Id = up.PatenteId WHERE UsuarioId = {0}";
+        private const string BORRAR_PERMISO_USUARIO = "DELETE FROM UsuarioPermiso WHERE UsuarioId = @parUsuarioId";
+        private const string GUARDAR_PERMISO_USUARIO = "INSERT INTO UsuarioPermiso (UsuarioId, PatenteId) VALUES (@parUsuarioId, @parPatenteId)";
         #endregion
 
         #region Métodos CRUD
@@ -70,6 +74,33 @@ namespace DAL.Composite
 
                     ExecuteParameters.Parameters.AddWithValue("@parPadreId", familia.Id);
                     ExecuteParameters.Parameters.AddWithValue("@parHijoId", item.Id);
+                    ExecuteNonQuery();
+                }
+            }
+            catch
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public void GuardarPermiso(UsuarioDTO usuario)
+        {
+            try
+            {
+                ExecuteCommandText = BORRAR_PERMISO_USUARIO;
+                ExecuteParameters.Parameters.Clear();
+
+                ExecuteParameters.Parameters.AddWithValue("@parUsuarioId", usuario.UsuarioId);
+
+                ExecuteNonQuery();
+
+                foreach (Componente item in usuario.Permisos)
+                {
+                    ExecuteCommandText = GUARDAR_PERMISO_USUARIO;
+                    ExecuteParameters.Parameters.Clear();
+
+                    ExecuteParameters.Parameters.AddWithValue("@parUsuarioId", usuario.UsuarioId);
+                    ExecuteParameters.Parameters.AddWithValue("@parPatenteId", item.Id);
                     ExecuteNonQuery();
                 }
             }
@@ -166,23 +197,84 @@ namespace DAL.Composite
                 throw new Exception("Error en la base de datos.");
             }
         }
+
+
         #endregion
 
         #region Tools
         private Componente GetComponente(int id, IList<Componente> lista)
         {
-            Componente componente = lista != null ? lista.Where(i => i.Id.Equals(id)).FirstOrDefault() : null;
-
-            if (componente == null && lista != null)
+            try
             {
-                foreach (var item in lista)
+                Componente componente = lista != null ? lista.Where(i => i.Id.Equals(id)).FirstOrDefault() : null;
+
+                if (componente == null && lista != null)
                 {
-                    var _lista = GetComponente(id, item.Hijos);
-                    if (_lista != null && _lista.Id == id) return _lista;
-                    else if (_lista != null) return GetComponente(id, _lista.Hijos);
+                    foreach (var item in lista)
+                    {
+                        var _lista = GetComponente(id, item.Hijos);
+                        if (_lista != null && _lista.Id == id) return _lista;
+                        else if (_lista != null) return GetComponente(id, _lista.Hijos);
+                    }
+                }
+                return componente;
+            }
+            catch { throw new Exception("Error al obtener los componentes."); }
+        }
+
+        public void GetComponenteUsuario(UsuarioDTO usuario)
+        {
+            try
+            {
+                SelectCommandText = String.Format(GET_USUARIO_PERMISO, usuario.UsuarioId);
+                DataSet ds = ExecuteNonReader();
+                DataTable dt = ds.Tables[0];
+
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow rows in dt.Rows)
+                    {
+                        int id = int.Parse(rows["Id"].ToString());
+                        string nombre = rows["Nombre"].ToString();
+                        string permiso = String.Empty;
+                        if (rows["Permiso"].ToString() != String.Empty) permiso = rows["Permiso"].ToString();
+
+                        Componente componente;
+                        if (!String.IsNullOrEmpty(permiso))
+                        {
+                            componente = new Patente();
+                            componente.Id = id;
+                            componente.Nombre = nombre;
+                            componente.Permiso = (Models.Composite.Permiso)Enum.Parse(typeof(Models.Composite.Permiso), permiso);
+                            usuario.Permisos.Add(componente);
+                        }
+                        else
+                        {
+                            componente = new Familia();
+                            componente.Id = id;
+                            componente.Nombre = nombre;
+
+                            var familia = TraerFamiliaPatentes(id);
+                            foreach (Familia f in familia)
+                            {
+                                componente.AgregarHijo(f);
+                            }
+
+                            usuario.Permisos.Add(componente);
+                        }
+                    }
                 }
             }
-            return componente;
+            catch { throw new Exception("Hubo un error al obtener los permisos del usuario."); }
+        }
+
+        public void GetComponenteFamilia(Familia familia)
+        {
+            familia.VaciarHijos();
+            foreach (Componente item in TraerFamiliaPatentes(familia.Id))
+            {
+                familia.AgregarHijo(item);
+            }
         }
         #endregion
     }

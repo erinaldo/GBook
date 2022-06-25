@@ -68,6 +68,7 @@
             this.lblAlerta = new System.Windows.Forms.Label();
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.timerAlerta = new System.Windows.Forms.Timer(this.components);
+            this.gestiónPermisosDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
             this.SuspendLayout();
@@ -380,7 +381,8 @@
             // seguridadToolStripMenuItem
             // 
             this.seguridadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestiónDeFamiliaYPatenteToolStripMenuItem});
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem,
+            this.gestiónPermisosDeUsuariosToolStripMenuItem});
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
             this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.seguridadToolStripMenuItem.Text = "Seguridad";
@@ -388,7 +390,7 @@
             // gestiónDeFamiliaYPatenteToolStripMenuItem
             // 
             this.gestiónDeFamiliaYPatenteToolStripMenuItem.Name = "gestiónDeFamiliaYPatenteToolStripMenuItem";
-            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.gestiónDeFamiliaYPatenteToolStripMenuItem.Text = "Gestión de familia y patente";
             this.gestiónDeFamiliaYPatenteToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeFamiliaYPatenteToolStripMenuItem_Click);
             // 
@@ -423,6 +425,13 @@
             // 
             this.timerAlerta.Interval = 999999999;
             this.timerAlerta.Tick += new System.EventHandler(this.timerAlerta_Tick);
+            // 
+            // gestiónPermisosDeUsuariosToolStripMenuItem
+            // 
+            this.gestiónPermisosDeUsuariosToolStripMenuItem.Name = "gestiónPermisosDeUsuariosToolStripMenuItem";
+            this.gestiónPermisosDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.gestiónPermisosDeUsuariosToolStripMenuItem.Text = "Gestión permisos de usuarios";
+            this.gestiónPermisosDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.gestiónPermisosDeUsuariosToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -494,5 +503,6 @@
         private System.Windows.Forms.ToolStripMenuItem modificarEtiquetasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seguridadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gestiónDeFamiliaYPatenteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestiónPermisosDeUsuariosToolStripMenuItem;
     }
 }

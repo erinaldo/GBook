@@ -125,6 +125,12 @@
     <Compile Include="GenerarPedidoStockManual.Designer.cs">
       <DependentUpon>GenerarPedidoStockManual.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionarPermisosUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionarPermisosUsuario.Designer.cs">
+      <DependentUpon>GestionarPermisosUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionFamiliaPatente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GenerarPedidoStockManual.resx">
       <DependentUpon>GenerarPedidoStockManual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionarPermisosUsuario.resx">
+      <DependentUpon>GestionarPermisosUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GestionFamiliaPatente.resx">
       <DependentUpon>GestionFamiliaPatente.cs</DependentUpon>
