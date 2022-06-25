@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="Alerta.cs" />
     <Compile Include="Autor.cs" />
+    <Compile Include="Composite\Componente.cs" />
+    <Compile Include="Composite\Familia.cs" />
+    <Compile Include="Composite\Patente.cs" />
+    <Compile Include="Composite\Permiso.cs" />
     <Compile Include="DetalleComprobante.cs" />
     <Compile Include="DTOs\CarritoDTO.cs" />
     <Compile Include="DTOs\ComprobanteCompraDTO.cs" />

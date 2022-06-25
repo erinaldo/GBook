@@ -28,11 +28,13 @@ namespace UI
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
         private readonly ITraductor _traductorService;
-        private readonly IList<IIdioma> _idiomas;
+        private readonly IPermiso _permisoService;
+
+        private readonly IList<IIdioma> _idiomas;        
         
         private bool mdiChildActivo = false;
 
-        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService)
+        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService, IPermiso permisoService)
         {
             InitializeComponent();
             _usuarioService = UsuarioService;
@@ -43,6 +45,7 @@ namespace UI
             _compraService = compraService;
             _ventaService = ventaService;
             _traductorService = traductorService;
+            _permisoService = permisoService;
 
             _idiomas = new List<IIdioma>();
         }
@@ -128,7 +131,7 @@ namespace UI
 
         private void AbrirFormLogin()
         {
-            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService);
+            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService, _permisoService);
             login.Show();
         }
 
@@ -406,6 +409,14 @@ namespace UI
             modificarEtiquetas.MdiParent = this;
             modificarEtiquetas.StartPosition = FormStartPosition.CenterScreen;
             modificarEtiquetas.Show();
+        }
+
+        private void gestiónDeFamiliaYPatenteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GestionFamiliaPatente gestionFamiliaPatente = new GestionFamiliaPatente(_permisoService);
+            gestionFamiliaPatente.MdiParent = this;
+            gestionFamiliaPatente.StartPosition = FormStartPosition.CenterScreen;
+            gestionFamiliaPatente.Show();
         }
     }
 }

@@ -63,6 +63,8 @@
             this.altaIdiomaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cargarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblAlerta = new System.Windows.Forms.Label();
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.timerAlerta = new System.Windows.Forms.Timer(this.components);
@@ -102,7 +104,8 @@
             this.productosToolStripMenuItem,
             this.compraToolStripMenuItem,
             this.ventaToolStripMenuItem,
-            this.menuIdioma});
+            this.menuIdioma,
+            this.seguridadToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1340, 24);
@@ -374,6 +377,21 @@
             this.modificarEtiquetasToolStripMenuItem.Text = "Modificar etiquetas";
             this.modificarEtiquetasToolStripMenuItem.Click += new System.EventHandler(this.modificarEtiquetasToolStripMenuItem_Click);
             // 
+            // seguridadToolStripMenuItem
+            // 
+            this.seguridadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem});
+            this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
+            this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.seguridadToolStripMenuItem.Text = "Seguridad";
+            // 
+            // gestiónDeFamiliaYPatenteToolStripMenuItem
+            // 
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Name = "gestiónDeFamiliaYPatenteToolStripMenuItem";
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Text = "Gestión de familia y patente";
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeFamiliaYPatenteToolStripMenuItem_Click);
+            // 
             // lblAlerta
             // 
             this.lblAlerta.AutoSize = true;
@@ -474,5 +492,7 @@
         private System.Windows.Forms.ToolStripMenuItem altaIdiomaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cargarEtiquetasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarEtiquetasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem seguridadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestiónDeFamiliaYPatenteToolStripMenuItem;
     }
 }

@@ -23,8 +23,9 @@ namespace UI
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
         private readonly ITraductor _traductorService;
+        private readonly IPermiso _permisoService;
 
-        public Login(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService)
+        public Login(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService, IPermiso permisoService)
         {
             InitializeComponent();
             _usuarioService = usuarioService;
@@ -35,6 +36,7 @@ namespace UI
             _compraService = compraService;
             _ventaService = ventaService;
             _traductorService = traductorService;
+            _permisoService = permisoService;
         }
 
         private void txtLogin_Click(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace UI
                 Limpiar();
                 this.Hide();
                 
-                Main main = new Main(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService);
+                Main main = new Main(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService, _permisoService);
                 main.Show();
             }
             catch (Exception ex)
@@ -66,7 +68,7 @@ namespace UI
         {
             this.Hide();
 
-            Registro formRegistro = new Registro(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService);
+            Registro formRegistro = new Registro(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService, _permisoService);
             formRegistro.Show();
         }
 
