@@ -44,6 +44,11 @@ namespace UI
             cbxPatenteAgregar.ValueMember = "Id";
             cbxPatenteAgregar.DisplayMember = "Nombre";
             cbxPatenteAgregar.SelectedIndex = -1;
+
+            cbxFamiliaAgregar.DataSource = _permisoService.GetFamilias();
+            cbxFamiliaAgregar.ValueMember = "Id";
+            cbxFamiliaAgregar.DisplayMember = "Nombre";
+            cbxFamiliaAgregar.SelectedIndex = -1;
         }
 
         private void btnGuardarFamilia_Click(object sender, EventArgs e)
@@ -108,10 +113,31 @@ namespace UI
             if (_seleccionFamilia == null) return;
 
             IList<Componente> _familia = null;
+            IList<Componente> _hijo = null;
+
             if (familia)
             {
                 _familia = _permisoService.TraerFamiliaPatentes(_seleccionFamilia.Id);
-                foreach (var i in _familia) _seleccionFamilia.AgregarHijo(i);
+                foreach (var i in _familia)
+                {
+                    if (i.GetType() == typeof(Familia))
+                    {
+                        _seleccionFamilia.AgregarHijo(i);
+                    }
+                    else if (i.GetType() == typeof(Patente))
+                    {
+                        _hijo = _permisoService.TraerFamiliaPatentes(i.Id);
+                        foreach (var j in _hijo)
+                        {
+                            if (_hijo.Count == 0)
+                            {
+                                i.AgregarHijo(j);
+                            }
+                        }
+
+                        _seleccionFamilia.AgregarHijo(i);
+                    }
+                }
             }
             else _familia = _seleccionFamilia.Hijos;
 
@@ -159,8 +185,8 @@ namespace UI
                     if (patente != null)
                     {
                         bool existeComponente = _permisoService.ExisteComponente(_seleccionFamilia, patente.Id);
-                        
-                        if (existeComponente) 
+
+                        if (existeComponente)
                             MessageBox.Show("Esa patente ya está cargada.");
 
                         else
@@ -198,7 +224,7 @@ namespace UI
             {
                 IList<Componente> familia;
                 familia = _seleccionFamilia.Hijos;
-                
+
                 foreach (Familia item in familia)
                 {
                     if (treePatenteFamilia.SelectedNode.Text == item.Nombre)
@@ -208,6 +234,41 @@ namespace UI
                 }
 
                 CargarTreeFamilia(false);
+            }
+        }
+
+        private void btnAgregarFamilia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_seleccionFamilia != null)
+                {
+                    Familia familia = (Familia)cbxFamiliaAgregar.SelectedItem;
+                    var f = _permisoService.TraerFamiliaPatentes(familia.Id);
+                    foreach (var item in f)
+                    {
+                        familia.AgregarHijo(item);
+                    }
+
+                    if (familia != null)
+                    {
+                        bool existeComponente = _permisoService.ExisteComponente(_seleccionFamilia, familia.Id);
+
+                        if (existeComponente)
+                            MessageBox.Show("Esa patente ya está cargada.");
+
+                        else
+                        {
+                            IList<Componente> _familia = _permisoService.TraerFamiliaPatentes(_seleccionFamilia.Id);
+                            _seleccionFamilia.AgregarHijo(familia);
+                            CargarTreeFamilia(false);
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Hubo un error al querer agregar la patente.");
             }
         }
     }
