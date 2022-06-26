@@ -412,17 +412,17 @@ namespace UI
             modificarEtiquetas.Show();
         }
 
-        private void gestiónDeFamiliaYPatenteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gestiónDeFamiliaYPatenteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            GestionFamiliaPatente gestionFamiliaPatente = new GestionFamiliaPatente(_permisoService);
+            GestionFamiliaPatente gestionFamiliaPatente = new GestionFamiliaPatente(_permisoService, _traductorService);
             gestionFamiliaPatente.MdiParent = this;
             gestionFamiliaPatente.StartPosition = FormStartPosition.CenterScreen;
             gestionFamiliaPatente.Show();
         }
 
-        private void gestiónPermisosDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gestiónPermisosDeUsuariosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            GestionarPermisosUsuario gestionarPermisosUsuario = new GestionarPermisosUsuario(_permisoService, _usuarioService);
+            GestionarPermisosUsuario gestionarPermisosUsuario = new GestionarPermisosUsuario(_permisoService, _usuarioService, _traductorService);
             gestionarPermisosUsuario.MdiParent = this;
             gestionarPermisosUsuario.StartPosition = FormStartPosition.CenterScreen;
             gestionarPermisosUsuario.Show();

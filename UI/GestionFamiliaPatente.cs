@@ -1,6 +1,10 @@
 ﻿using Interfaces;
 using Interfaces.Composite;
+using Interfaces.Observer;
 using Models.Composite;
+using Models.Observer;
+using Servicios;
+using Servicios.Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,41 +17,77 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class GestionFamiliaPatente : Form
+    public partial class GestionFamiliaPatente : Form, IObserver
     {
         private readonly IPermiso _permisoService;
+        private readonly ITraductor _traductorService;
 
         private Familia _seleccionFamilia;
 
-        public GestionFamiliaPatente(IPermiso permisoService)
+        public GestionFamiliaPatente(IPermiso permisoService, ITraductor traductorService)
         {
             InitializeComponent();
             _permisoService = permisoService;
+            _traductorService = traductorService;
         }
 
         private void GestionFamiliaPatente_Load(object sender, EventArgs e)
         {
+            Sesion.SuscribirObservador(this);
+            UpdateLanguage(Sesion.GetInstance().Idioma);
             CargarCombos();
+        }
+
+        public void UpdateLanguage(IIdioma idioma)
+        {
+            Traducir(idioma);
+        }
+
+        private void Traducir(IIdioma idioma)
+        {
+            Traductor.Traducir(_traductorService, idioma, this.Controls);
+        }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_traductorService, msgTag);
         }
 
         private void CargarCombos()
         {
-            cbxFamilia.DataSource = _permisoService.GetFamilias();
+            IList<Familia> familias = _permisoService.GetFamilias();
+            IList<Familia> familiasAgregar = _permisoService.GetFamilias();
+            Array permisos = _permisoService.TraerPermisos();
+            IList<Patente> patentes = _permisoService.GetPatentes();
+
+            cbxFamilia.DataSource = familias;
             cbxFamilia.ValueMember = "Id";
             cbxFamilia.DisplayMember = "Nombre";
             cbxFamilia.SelectedIndex = -1;
 
-            cbxPatente.DataSource = _permisoService.TraerPermisos();
+            cbxPatente.DataSource = permisos;
             cbxPatente.SelectedIndex = -1;
 
-            cbxPatenteAgregar.DataSource = _permisoService.GetPatentes();
+            cbxPatenteAgregar.DataSource = patentes;
             cbxPatenteAgregar.ValueMember = "Id";
             cbxPatenteAgregar.DisplayMember = "Nombre";
             cbxPatenteAgregar.SelectedIndex = -1;
 
-            cbxFamiliaAgregar.DataSource = _permisoService.GetFamilias();
+            cbxFamiliaAgregar.DataSource = familiasAgregar;
             cbxFamiliaAgregar.ValueMember = "Id";
             cbxFamiliaAgregar.DisplayMember = "Nombre";
+            cbxFamiliaAgregar.SelectedIndex = -1;
+
+            Limpiar();
+        }
+
+        private void Limpiar()
+        {
+            txtNombreFamilia.Text = "";
+            txtNombrePatente.Text = "";
+            cbxFamilia.SelectedIndex = -1;
+            cbxPatente.SelectedIndex = -1;
+            cbxPatenteAgregar.SelectedIndex = -1;
             cbxFamiliaAgregar.SelectedIndex = -1;
         }
 
@@ -62,7 +102,7 @@ namespace UI
 
                 _permisoService.GuardarPatenteFamilia(familia, true);
 
-                MessageBox.Show("Familia creada con éxito");
+                MessageBox.Show(TraducirMensaje("msg_FamiliaCreadaExito"));
                 CargarCombos();
             }
             catch (Exception ex)
@@ -82,7 +122,7 @@ namespace UI
                 };
 
                 _permisoService.GuardarPatenteFamilia(patente, false);
-                MessageBox.Show("Patente cargada con éxito");
+                MessageBox.Show(TraducirMensaje("msg_PatenteCreadaExito"));
                 CargarCombos();
             }
             catch (Exception ex)
@@ -96,15 +136,18 @@ namespace UI
             try
             {
                 Familia tempFamilia = (Familia)cbxFamilia.SelectedItem;
-                _seleccionFamilia = new Familia();
-                _seleccionFamilia.Id = tempFamilia.Id;
-                _seleccionFamilia.Nombre = tempFamilia.Nombre;
+                if (tempFamilia != null)
+                {
+                    _seleccionFamilia = new Familia();
+                    _seleccionFamilia.Id = tempFamilia.Id;
+                    _seleccionFamilia.Nombre = tempFamilia.Nombre;
 
-                CargarTreeFamilia(true);
+                    CargarTreeFamilia(true);
+                }
             }
             catch
             {
-                MessageBox.Show("Hubo un error al querer cargar el árbol.");
+                MessageBox.Show(TraducirMensaje("msg_ErrorCargarArbol"));
             }
         }
 
@@ -171,7 +214,7 @@ namespace UI
             }
             catch
             {
-                MessageBox.Show("Hubo un error al querer cargar el árbol.");
+                MessageBox.Show(TraducirMensaje("msg_ErrorCargarArbol"));
             }
         }
 
@@ -187,7 +230,7 @@ namespace UI
                         bool existeComponente = _permisoService.ExisteComponente(_seleccionFamilia, patente.Id);
 
                         if (existeComponente)
-                            MessageBox.Show("Esa patente ya está cargada.");
+                            MessageBox.Show(TraducirMensaje("msg_PatenteYaCargada"));
 
                         else
                         {
@@ -199,7 +242,7 @@ namespace UI
             }
             catch
             {
-                MessageBox.Show("Hubo un error al querer agregar la patente.");
+                MessageBox.Show(TraducirMensaje("msg_ErrorCargarPatente"));
             }
         }
 
@@ -210,7 +253,8 @@ namespace UI
                 _permisoService.GuardarFamiliaCreada(_seleccionFamilia);
 
                 treePatenteFamilia.Nodes.Clear();
-                MessageBox.Show("Familia guardada con éxito.");
+                MessageBox.Show(TraducirMensaje("msg_FamiliaGuardadaExito"));
+                CargarCombos();
             }
             catch (Exception ex)
             {
@@ -243,6 +287,8 @@ namespace UI
             {
                 if (_seleccionFamilia != null)
                 {
+                    ValidarArbol();
+
                     Familia familia = (Familia)cbxFamiliaAgregar.SelectedItem;
                     var f = _permisoService.TraerFamiliaPatentes(familia.Id);
                     foreach (var item in f)
@@ -255,7 +301,7 @@ namespace UI
                         bool existeComponente = _permisoService.ExisteComponente(_seleccionFamilia, familia.Id);
 
                         if (existeComponente)
-                            MessageBox.Show("Esa patente ya está cargada.");
+                            MessageBox.Show(TraducirMensaje("msg_PatenteYaCargada"));
 
                         else
                         {
@@ -266,10 +312,40 @@ namespace UI
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Hubo un error al querer agregar la patente.");
+                MessageBox.Show(ex.Message);
             }
+        }
+
+        private void ValidarArbol()
+        {
+            var _familia = _seleccionFamilia;
+            var _familiaComparacion = _permisoService.TraerFamiliaPatentes((int)cbxFamiliaAgregar.SelectedValue);
+            
+
+            foreach (var item in _familiaComparacion)
+            {
+                if (item.Permiso == Permiso.EsFamilia && _familia.Permiso == Permiso.EsFamilia)
+                {
+                    if (item.Id == _familia.Id) throw new Exception(TraducirMensaje("msg_Recursividad"));
+                }
+
+                foreach (var item2 in _familia.Hijos)
+                {
+                    if (item2.Permiso == Permiso.EsFamilia && item.Permiso == Permiso.EsFamilia)
+                    {
+                        if (item2.Id == item.Id) throw new Exception("msg_Recursividad");
+                    }
+                }
+            }
+
+        }
+
+        private void GestionFamiliaPatente_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Sesion.DesuscribirObservador(this);
+            this.Dispose();
         }
     }
 }

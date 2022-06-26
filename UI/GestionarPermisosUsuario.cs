@@ -1,6 +1,10 @@
 ﻿using Interfaces;
 using Interfaces.Composite;
+using Interfaces.Observer;
 using Models.Composite;
+using Models.Observer;
+using Servicios;
+using Servicios.Observer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,25 +17,43 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class GestionarPermisosUsuario : Form
+    public partial class GestionarPermisosUsuario : Form, IObserver
     {
         private readonly IPermiso _permisoService;
         private readonly IUsuario _usuarioService;
+        private readonly ITraductor _traductorService;
         private readonly Servicios.Encriptacion _encriptacionService;
 
         private Models.DTOs.UsuarioDTO _seleccionUsuario;
         private Models.DTOs.UsuarioDTO _usuario;
 
-        public GestionarPermisosUsuario(IPermiso permisoService, IUsuario usuarioService)
+        public GestionarPermisosUsuario(IPermiso permisoService, IUsuario usuarioService, ITraductor traductorService)
         {
             InitializeComponent();
             _permisoService = permisoService;
             _usuarioService = usuarioService;
+            _traductorService = traductorService;
             _encriptacionService = new Servicios.Encriptacion();
         }
 
+        public void UpdateLanguage(IIdioma idioma)
+        {
+            Traducir(idioma);
+        }
+
+        private void Traducir(IIdioma idioma)
+        {
+            Traductor.Traducir(_traductorService, idioma, this.Controls);
+        }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_traductorService, msgTag);
+        }
         private void GestionarPermisosUsuario_Load(object sender, EventArgs e)
         {
+            Sesion.SuscribirObservador(this);
+            UpdateLanguage(Sesion.GetInstance().Idioma);
             CargarCombos();
         }
 
@@ -106,7 +128,7 @@ namespace UI
 
                 if (tieneFamilia)
                 {
-                    MessageBox.Show("El usuario ya tiene esa familia asociada.");
+                    MessageBox.Show(TraducirMensaje("msg_UsuarioFamiliaAsociada"));
                 }
                 else
                 {
@@ -117,7 +139,7 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Primero debe seleccionar un usuario.");
+                MessageBox.Show(TraducirMensaje("msg_SeleccionarUsuario"));
             }
         }
 
@@ -136,7 +158,7 @@ namespace UI
 
                     if (tienePatente)
                     {
-                        MessageBox.Show("El usuario ya tiene esa patente asociada.");
+                        MessageBox.Show(TraducirMensaje("msg_PatenteYaAsociada"));
                     }
                     else
                     {
@@ -153,14 +175,20 @@ namespace UI
             {
                 _permisoService.GuardarPermiso(_usuario);
 
-                MessageBox.Show("Permisos del usuario guardados correctamente.");
+                MessageBox.Show(TraducirMensaje("msg_PermisosGuardadosExito"));
 
                 treeAsignacionPermisos.Nodes.Clear();
             }
             catch
             {
-                MessageBox.Show("Error al querer guardar los permisos del usuario.");
+                MessageBox.Show(TraducirMensaje("msg_PermisosGuardadosError"));
             }
+        }
+
+        private void GestionarPermisosUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Sesion.DesuscribirObservador(this);
+            this.Dispose();
         }
     }
 }

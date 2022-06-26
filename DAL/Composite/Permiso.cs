@@ -22,15 +22,15 @@ namespace DAL.Composite
         #endregion
 
         #region Querys
-        private const string GUARDAR_COMPONENTE = "INSERT INTO Patente (Nombre, Permiso) OUTPUT inserted.Id VALUES (@parNombre, @parPermiso)";
+        private const string GUARDAR_COMPONENTE = "INSERT INTO Permiso (Nombre, Permiso) OUTPUT inserted.Id VALUES (@parNombre, @parPermiso)";
         private const string BORRAR_FAMILIA = "DELETE FROM FamiliaPatente WHERE PadreId = @parId";
         private const string GUARDAR_FAMILIA = "INSERT INTO FamiliaPatente (PadreId, HijoId) VALUES (@parPadreId, @parHijoId)";
-        private const string GET_FAMILIAS = "SELECT * FROM Patente WHERE Permiso IS NULL";
-        private const string GET_PATENTES = "SELECT * FROM Patente WHERE Permiso IS NOT NULL";
+        private const string GET_FAMILIAS = "SELECT * FROM Permiso WHERE Permiso IS NULL";
+        private const string GET_PATENTES = "SELECT * FROM Permiso WHERE Permiso IS NOT NULL";
         private const string GET_FAMILIA_PATENTE = "WITH RECURSIVO AS (SELECT fp.PadreId, fp.HijoId FROM FamiliaPatente fp WHERE fp.PadreId = {0}" +
                                                     " UNION ALL SELECT fp2.PadreId, fp2.HijoId FROM FamiliaPatente fp2 INNER JOIN RECURSIVO r on r.HijoId = fp2.PadreId) " +
-                                                    " SELECT r.PadreId, r.HijoId, p.Id as PermisoId, p.Nombre, p.Permiso FROM RECURSIVO r INNER JOIN Patente p on r.HijoId = p.Id";
-        private const string GET_USUARIO_PERMISO = "SELECT p.* FROM UsuarioPermiso up INNER JOIN Patente p on p.Id = up.PatenteId WHERE UsuarioId = {0}";
+                                                    " SELECT r.PadreId, r.HijoId, p.Id as PermisoId, p.Nombre, p.Permiso FROM RECURSIVO r INNER JOIN Permiso p on r.HijoId = p.Id";
+        private const string GET_USUARIO_PERMISO = "SELECT p.* FROM UsuarioPermiso up INNER JOIN Permiso p on p.Id = up.PatenteId WHERE UsuarioId = {0}";
         private const string BORRAR_PERMISO_USUARIO = "DELETE FROM UsuarioPermiso WHERE UsuarioId = @parUsuarioId";
         private const string GUARDAR_PERMISO_USUARIO = "INSERT INTO UsuarioPermiso (UsuarioId, PatenteId) VALUES (@parUsuarioId, @parPatenteId)";
         #endregion

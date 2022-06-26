@@ -98,7 +98,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 21);
             this.label5.TabIndex = 49;
-            this.label5.Tag = "lbl_NombrePatente";
+            this.label5.Tag = "lbl_Patente";
             this.label5.Text = "Patente";
             // 
             // btnGuardarPatente
@@ -466,8 +466,11 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.treePatenteFamilia);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "GestionFamiliaPatente";
             this.Text = "GestionFamiliaPatente";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionFamiliaPatente_FormClosed);
             this.Load += new System.EventHandler(this.GestionFamiliaPatente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

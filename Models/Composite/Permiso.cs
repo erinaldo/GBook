@@ -8,6 +8,7 @@ namespace Models.Composite
 {
     public enum Permiso
     {
+        EsFamilia,
         CargarProducto,
         ModificarProducto,
         BajaProducto,

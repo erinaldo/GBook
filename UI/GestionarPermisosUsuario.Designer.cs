@@ -74,7 +74,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 21);
             this.label5.TabIndex = 52;
-            this.label5.Tag = "lbl_Usuario";
+            this.label5.Tag = "lbl_PermisoUsuario";
             this.label5.Text = "Usuario";
             // 
             // btnConfigurarUsuario
@@ -137,7 +137,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 21);
             this.label1.TabIndex = 56;
-            this.label1.Tag = "lbl_Familia";
+            this.label1.Tag = "lbl_NombreFamilia";
             this.label1.Text = "Familia";
             // 
             // btnAgregarPatente
@@ -230,8 +230,11 @@
             this.Controls.Add(this.cbxUsuarios);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "GestionarPermisosUsuario";
             this.Text = "GestionarPermisosUsuario";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionarPermisosUsuario_FormClosed);
             this.Load += new System.EventHandler(this.GestionarPermisosUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

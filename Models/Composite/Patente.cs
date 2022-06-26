@@ -28,7 +28,6 @@ namespace Models.Composite
         }
         public override void VaciarHijos()
         {
-
         }
         public override void BorrarHijo(Componente componente)
         {

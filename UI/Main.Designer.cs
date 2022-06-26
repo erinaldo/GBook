@@ -64,11 +64,13 @@
             this.cargarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestiónDeFamiliaYPatenteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblAlerta = new System.Windows.Forms.Label();
             this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.timerAlerta = new System.Windows.Forms.Timer(this.components);
-            this.gestiónPermisosDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestiónPermisosDeUsuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.cambiarPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
             this.SuspendLayout();
@@ -381,18 +383,12 @@
             // seguridadToolStripMenuItem
             // 
             this.seguridadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.gestiónDeFamiliaYPatenteToolStripMenuItem,
-            this.gestiónPermisosDeUsuariosToolStripMenuItem});
+            this.permisosToolStripMenuItem,
+            this.cambiarPasswordToolStripMenuItem});
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
             this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.seguridadToolStripMenuItem.Tag = "menu_Seguridad";
             this.seguridadToolStripMenuItem.Text = "Seguridad";
-            // 
-            // gestiónDeFamiliaYPatenteToolStripMenuItem
-            // 
-            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Name = "gestiónDeFamiliaYPatenteToolStripMenuItem";
-            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Text = "Gestión de familia y patente";
-            this.gestiónDeFamiliaYPatenteToolStripMenuItem.Click += new System.EventHandler(this.gestiónDeFamiliaYPatenteToolStripMenuItem_Click);
             // 
             // lblAlerta
             // 
@@ -426,12 +422,38 @@
             this.timerAlerta.Interval = 999999999;
             this.timerAlerta.Tick += new System.EventHandler(this.timerAlerta_Tick);
             // 
-            // gestiónPermisosDeUsuariosToolStripMenuItem
+            // permisosToolStripMenuItem
             // 
-            this.gestiónPermisosDeUsuariosToolStripMenuItem.Name = "gestiónPermisosDeUsuariosToolStripMenuItem";
-            this.gestiónPermisosDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
-            this.gestiónPermisosDeUsuariosToolStripMenuItem.Text = "Gestión permisos de usuarios";
-            this.gestiónPermisosDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.gestiónPermisosDeUsuariosToolStripMenuItem_Click);
+            this.permisosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem1,
+            this.gestiónPermisosDeUsuariosToolStripMenuItem1});
+            this.permisosToolStripMenuItem.Name = "permisosToolStripMenuItem";
+            this.permisosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.permisosToolStripMenuItem.Tag = "menu_Permisos";
+            this.permisosToolStripMenuItem.Text = "Permisos";
+            // 
+            // gestiónDeFamiliaYPatenteToolStripMenuItem1
+            // 
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem1.Name = "gestiónDeFamiliaYPatenteToolStripMenuItem1";
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem1.Size = new System.Drawing.Size(228, 22);
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem1.Tag = "menu_GestionFamiliaPatente";
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem1.Text = "Gestión de familia y patente";
+            this.gestiónDeFamiliaYPatenteToolStripMenuItem1.Click += new System.EventHandler(this.gestiónDeFamiliaYPatenteToolStripMenuItem1_Click);
+            // 
+            // gestiónPermisosDeUsuariosToolStripMenuItem1
+            // 
+            this.gestiónPermisosDeUsuariosToolStripMenuItem1.Name = "gestiónPermisosDeUsuariosToolStripMenuItem1";
+            this.gestiónPermisosDeUsuariosToolStripMenuItem1.Size = new System.Drawing.Size(228, 22);
+            this.gestiónPermisosDeUsuariosToolStripMenuItem1.Tag = "menu_GestionPermisosUsuarios";
+            this.gestiónPermisosDeUsuariosToolStripMenuItem1.Text = "Gestión permisos de usuarios";
+            this.gestiónPermisosDeUsuariosToolStripMenuItem1.Click += new System.EventHandler(this.gestiónPermisosDeUsuariosToolStripMenuItem1_Click);
+            // 
+            // cambiarPasswordToolStripMenuItem
+            // 
+            this.cambiarPasswordToolStripMenuItem.Name = "cambiarPasswordToolStripMenuItem";
+            this.cambiarPasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cambiarPasswordToolStripMenuItem.Tag = "menu_CambiarPassword";
+            this.cambiarPasswordToolStripMenuItem.Text = "Cambiar password";
             // 
             // Main
             // 
@@ -502,7 +524,9 @@
         private System.Windows.Forms.ToolStripMenuItem cargarEtiquetasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarEtiquetasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seguridadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestiónDeFamiliaYPatenteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem gestiónPermisosDeUsuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem permisosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gestiónDeFamiliaYPatenteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem gestiónPermisosDeUsuariosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem cambiarPasswordToolStripMenuItem;
     }
 }
