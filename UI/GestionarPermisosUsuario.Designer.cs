@@ -190,6 +190,9 @@
             // 
             // treeAsignacionPermisos
             // 
+            this.treeAsignacionPermisos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.treeAsignacionPermisos.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeAsignacionPermisos.ForeColor = System.Drawing.Color.White;
             this.treeAsignacionPermisos.Location = new System.Drawing.Point(296, 30);
             this.treeAsignacionPermisos.Name = "treeAsignacionPermisos";
             this.treeAsignacionPermisos.Size = new System.Drawing.Size(492, 325);

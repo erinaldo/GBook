@@ -63,6 +63,9 @@
             // 
             // treePatenteFamilia
             // 
+            this.treePatenteFamilia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.treePatenteFamilia.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treePatenteFamilia.ForeColor = System.Drawing.Color.White;
             this.treePatenteFamilia.Location = new System.Drawing.Point(636, 12);
             this.treePatenteFamilia.Name = "treePatenteFamilia";
             this.treePatenteFamilia.Size = new System.Drawing.Size(396, 423);
