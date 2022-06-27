@@ -370,7 +370,9 @@
     <Content Include="Iconos\books.ico" />
     <Content Include="Scripts\base_con_traducciones_v1.sql" />
     <Content Include="Scripts\base_v1.sql" />
+    <Content Include="Scripts\script v5.sql" />
     <Content Include="Scripts\script_insert_etiquetas.txt" />
+    <Content Include="Scripts\script_insert_etiquetas_v2.txt" />
     <Content Include="Scripts\script_v1_limpio.sql" />
     <Content Include="Scripts\script_v2.sql" />
     <Content Include="Scripts\script_v3.sql" />
