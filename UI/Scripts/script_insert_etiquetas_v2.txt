@@ -1,0 +1,677 @@
+lbl_Bienvenido
+lbl_AlertaPedidoStock
+lbl_Logout
+lbl_NombreAutor
+lbl_ApellidoAutor
+lbl_SeudonimoAutor
+btn_AltaAutor
+lbl_NombreEditorial
+btn_AltaEditorial
+lbl_NombreGenero
+btn_AltaGenero
+lbl_ProductoISBN
+lbl_ProductoNombre
+lbl_ProductoPrecio
+lbl_ProductoCantidadPaginas
+lbl_ProductoAutor
+lbl_ProductoGenero
+lbl_ProductoEditorial
+btn_AltaProducto
+lbl_ProductoCantidadStockAviso
+lbl_ProductoActivo
+btn_FijarProducto
+lbl_ProductoPrecioPublicado
+lbl_PrecioUnitarioCompra
+lbl_ProductoCantidad
+btn_AgregarCarrito
+lbl_Domicilio
+lbl_DomicilioNumero
+lbl_EntreCalles
+lbl_TelefonoContacto
+lbl_DetalleCompra
+btn_GenerarPedidoStock
+lbl_Productos
+lbl_Carrito
+lbl_ProductosCargados
+btn_ModificarAutor
+btn_ModificarEditorial
+btn_ModificarGenero
+btn_ModificarAutor
+lbl_EnVenta
+btn_PublicarProducto
+lbl_DetalleVenta
+btn_RealizarVenta
+lbl_PedidoRecibido
+btn_RecibirPedido
+lbl_PedidosStockRealizados
+lbl_VentasRealizadas
+
+msg_AutorNombre
+msg_AutorApellido
+msg_AutorSeudonimo
+msg_CompraDetalle
+msg_CompraTotal
+msg_CompraEnvio
+msg_CompraCarrito
+msg_EnvioDomicilio
+msg_EnvioNumero
+msg_EnvioEntreCalles
+msg_EnvioTelefonoContacto
+msg_EditorialNombre
+msg_GeneroNombre
+msg_ProductoISBN
+msg_ProductoNombre
+msg_ProductoPrecio
+msg_ProductoCantidadPaginas
+msg_ProductoAutor
+msg_ProductoGenero
+msg_ProductoEditorial
+msg_VentaDetalle
+msg_VentaTotal
+msg_VentaCarrito
+msg_AutorAltaExito
+msg_EditorialAltaExito
+msg_GeneroAltaExito
+msg_ProductoAltaExito
+msg_ProductoFijarExito
+msg_CarritoNoProductos
+msg_CarritoNoPrecioCompra
+msg_CarritoNoCantidad
+msg_CarritoProductoExistente
+msg_CarritoVacio
+msg_PedidoRealizadoCorrectamente
+msg_AutorNoSeleccionado
+msg_AutorModificadoExito
+msg_EditorialNoSeleccionada
+msg_EditorialModificadaExito
+msg_GeneroNoSeleccionado
+msg_GeneroModificadoExito
+msg_ProductoNoSeleccionado
+msg_ProductoModificacionExito
+msg_ProductoPublicadoExito
+msg_StockInsuficiente
+msg_VentaExito
+msg_NoPedidoSeleccionado
+msg_PedidoRecibido
+
+menu_AdministrarNegocio
+menu_GestionAutores
+menu_AltaAutor
+menu_ModificarAutor
+menu_GestionEditoriales
+menu_AltaEditorial
+menu_ModificarEditorial
+menu_GestionGeneros
+menu_AltaGenero
+menu_ModificarGenero
+menu_Producto
+menu_GestionProductos
+menu_AltaProducto
+menu_ModificarProducto
+menu_PublicarProducto
+menu_FijarProducto
+menu_ListarProductos
+menu_Compra
+menu_GenerarPedidoStock
+menu_GenerarPedidoStockFijados
+menu_RecibirPedidoStock
+menu_VisualizarPedidosStock
+menu_Venta
+menu_RealizarVenta
+menu_VisualizarVentas
+menu_Idioma
+menu_GestionIdioma
+menu_AltaIdioma
+menu_CargarEtiquetas
+menu_ModificarEtiquetas
+
+lbl_EnVenta
+chk_Recibido
+msg_CompletarCampos
+
+menu_Seguridad
+menu_Permisos
+menu_GestionFamiliaPatente
+menu_GestionPermisosUsuarios
+menu_CambiarPassword
+lbl_NuevaFamilia
+lbl_NombreFamilia
+lbl_NuevaPatente
+lbl_Patente
+lbl_NombrePatente
+lbl_PatentesExistentes
+lbl_NombrePatente
+lbl_FamiliasExistentes
+lbl_NombreFamilia
+lbl_PermisoUsuario
+btn_GuardarFamilia
+btn_GuardarPatente
+btn_ConfigurarFamilia
+btn_AgregarPatente
+btn_AgregarFamilia
+btn_GuardarFamilia
+btn_EliminarPatente
+btn_ConfigurarUsuario
+btn_GuardarFamiliaPatente
+msg_FamiliaCreadaExito
+msg_PatenteCreadaExito
+msg_ErrorCargarArbol
+msg_PatenteYaCargada
+msg_ErrorCargarPatente
+msg_FamiliaGuardadaExito
+msg_Recursividad
+msg_UsuarioFamiliaAsociada
+msg_SeleccionarUsuario
+msg_PatenteYaAsociada
+msg_PermisosGuardadosExito
+msg_PermisosGuardadosError
+
+
+lbl_PasswordActual
+lbl_PasswordNueva
+lbl_PasswordNuevaConfirmar
+btn_CambiarPassword
+msg_PasswordNoCoindice
+msg_ValidacionPassword
+msg_PasswordCambioExito
+
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CompletarCampos')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_Bienvenido')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_AlertaPedidoStock')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_NombreAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ApellidoAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_SeudonimoAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_AltaAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_NombreEditorial')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_AltaEditorial')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_NombreGenero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_AltaGenero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoISBN')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoNombre')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoPrecio')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoCantidadPaginas')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoGenero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoEditorial')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_AltaProducto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoCantidadStockAviso')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoActivo')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_FijarProducto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoPrecioPublicado')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_PrecioUnitarioCompra')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductoCantidad')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_AgregarCarrito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_Domicilio')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_DomicilioNumero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_EntreCalles')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_TelefonoContacto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_DetalleCompra')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_GenerarPedidoStock')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_Productos')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_Carrito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_ProductosCargados')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_ModificarAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_ModificarEditorial')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_ModificarGenero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_ModificarAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_PublicarProducto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_DetalleVenta')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_RealizarVenta')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_PedidoRecibido')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_RecibirPedido')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_PedidosStockRealizados')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_VentasRealizadas')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_AutorNombre')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_AutorApellido')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_AutorSeudonimo')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CompraDetalle')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CompraTotal')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CompraEnvio')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CompraCarrito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_EnvioDomicilio')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_EnvioNumero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_EnvioEntreCalles')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_EnvioTelefonoContacto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_EditorialNombre')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_GeneroNombre')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoISBN')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoNombre')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoPrecio')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoCantidadPaginas')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoGenero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoEditorial')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_VentaDetalle')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_VentaTotal')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_VentaCarrito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_AutorAltaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_EditorialAltaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_GeneroAltaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoAltaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoFijarExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CarritoNoProductos')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CarritoNoPrecioCompra')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CarritoNoCantidad')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CarritoProductoExistente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_CarritoVacio')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PedidoRealizadoCorrectamente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_AutorNoSeleccionado')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_AutorModificadoExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_EditorialNoSeleccionada')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_EditorialModificadaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_GeneroNoSeleccionado')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_GeneroModificadoExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoNoSeleccionado')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoModificacionExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ProductoPublicadoExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_StockInsuficiente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_VentaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_NoPedidoSeleccionado')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PedidoRecibido')
+
+
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_AdministrarNegocio')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GestionAutores')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_AltaAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_ModificarAutor')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GestionEditoriales')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_AltaEditorial')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_ModificarEditorial')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GestionGeneros')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_AltaGenero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_ModificarGenero')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_Producto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GestionProductos')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_AltaProducto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_ModificarProducto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_PublicarProducto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_FijarProducto')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_ListarProductos')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_Compra')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GenerarPedidoStock')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GenerarPedidoStockFijados')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_RecibirPedidoStock')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_VisualizarPedidosStock')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_Venta')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_RealizarVenta')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_VisualizarVentas')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_Idioma')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GestionIdioma')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_AltaIdioma')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_CargarEtiquetas')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_ModificarEtiquetas')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('chk_Recibido')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_EnVenta')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_Seguridad')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_Permisos')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GestionFamiliaPatente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_GestionPermisosUsuarios')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('menu_CambiarPassword')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_NuevaFamilia')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_NombreFamilia')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_NuevaPatente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_Patente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_NombrePatente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_PatentesExistentes')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_FamiliasExistentes')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_PermisoUsuario')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_GuardarFamilia')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_GuardarPatente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_ConfigurarFamilia')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_AgregarPatente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_AgregarFamilia')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_GuardarFamilia')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_EliminarPatente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_ConfigurarUsuario')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_GuardarFamiliaPatente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_FamiliaCreadaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PatenteCreadaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ErrorCargarArbol')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PatenteYaCargada')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ErrorCargarPatente')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_FamiliaGuardadaExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_Recursividad')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_UsuarioFamiliaAsociada')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_SeleccionarUsuario')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PatenteYaAsociada')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PermisosGuardadosExito')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PermisosGuardadosError')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_PasswordActual')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_PasswordNueva')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('lbl_PasswordNuevaConfirmar')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('btn_CambiarPassword')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PasswordNoCoindice')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_ValidacionPassword')
+
+INSERT INTO Etiqueta (NombreEtiqueta)
+VALUES ('msg_PasswordCambioExito')
