@@ -109,35 +109,6 @@ namespace BLL
         #endregion
 
         #region Métodos View
-        public Models.Libro GetProducto(int productoId)
-        {
-            try
-            {
-                Models.Libro producto = _productoDAL.GetProducto(productoId);
-                return producto;
-            }
-            catch (Exception) { throw new Exception("Hubo un error al querer obtener el producto."); }
-        }
-
-        public List<Models.Libro> GetProductos()
-        {
-            try
-            {
-                List<Models.Libro> productos = _productoDAL.GetProductos();
-                return productos;
-            }
-            catch (Exception) { throw new Exception("Hubo un error al querer obtener los productos."); }
-        }
-
-        public List<Models.Libro> GenerarAlertaPedidoStock()
-        {
-            try
-            {
-                List<Models.Libro> productos = _productoDAL.GetProductos().Where(x => x.Stock.Cantidad <= x.Alerta.CantidadStockAviso && x.Alerta.Activo == true).ToList();
-                return productos;
-            }
-            catch (Exception) { throw new Exception("Hubo un error al querer generer las alertas de pedido de stock."); }
-        }
 
         public Stock GetStock(int productoId)
         {
@@ -165,7 +136,7 @@ namespace BLL
         {
             if (producto.GetType() == typeof(Libro))
             {
-                Libro libro = (Libro)producto;
+                Models.Libro libro = (Models.Libro)producto;
 
                 if (string.IsNullOrEmpty(libro.ISBN)) throw new Exception(TraducirMensaje("msg_ProductoISBN"));
                 if (libro.CantidadPaginas <= 0) throw new Exception(TraducirMensaje("msg_ProductoCantidadPaginas"));

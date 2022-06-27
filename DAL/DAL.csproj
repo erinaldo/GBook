@@ -48,6 +48,7 @@
     <Compile Include="Conexion\Conexion.cs" />
     <Compile Include="Editorial.cs" />
     <Compile Include="Genero.cs" />
+    <Compile Include="Libro.cs" />
     <Compile Include="Observer\Idioma.cs" />
     <Compile Include="Composite\Permiso.cs" />
     <Compile Include="Producto.cs" />

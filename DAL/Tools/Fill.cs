@@ -172,6 +172,49 @@ namespace DAL.Tools
         }
         #endregion
 
+        #region Producto
+        public Models.Producto FillObjectProducto(DataRow dr)
+        {
+            Producto _productoDAL = new Producto();
+
+            Models.Producto producto = new Models.Producto();
+
+            try
+            {
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    producto.Id = Convert.ToInt32(dr["Id"]);
+
+                if (dr.Table.Columns.Contains("Nombre") && !Convert.IsDBNull(dr["ISBN"]))
+                    producto.Nombre = Convert.ToString(dr["Nombre"]);
+
+                if (dr.Table.Columns.Contains("Precio") && !Convert.IsDBNull(dr["Precio"]))
+                    producto.Precio = Convert.ToDouble(dr["Precio"]);
+
+                if (dr.Table.Columns.Contains("EnVenta") && !Convert.IsDBNull(dr["EnVenta"]))
+                    producto.EnVenta = Convert.ToBoolean(dr["EnVenta"]);
+
+                if (dr.Table.Columns.Contains("Activo") && !Convert.IsDBNull(dr["Activo"]))
+                    producto.Activo = Convert.ToBoolean(dr["Activo"]);
+
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    producto.Stock = _productoDAL.GetStock(producto.Id);
+
+                if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
+                    producto.Alerta = _productoDAL.GetAlerta(producto.Id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el método FillObject, " + ex.Message);
+            }
+            return producto;
+        }
+
+        public List<Models.Producto> FillListProducto(DataSet ds)
+        {
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectProducto(dr)).ToList();
+        }
+        #endregion
+
         #region Libro
         public Models.Libro FillObjectLibro(DataRow dr)
         {
@@ -360,6 +403,7 @@ namespace DAL.Tools
         public Models.DetalleComprobante FillObjectDetalleComprobante(DataRow dr)
         {
             Producto _productoDAL = new Producto();
+            Libro _libroDAL = new Libro();
 
             Models.DetalleComprobante detalle = new Models.DetalleComprobante();
 
@@ -473,7 +517,7 @@ namespace DAL.Tools
                 foreach (var item in ds.Tables[0].Rows)
                 {
                     DataRow dr = item as DataRow;
-                    
+
                     ITraduccion traduccion = new Traduccion();
                     traduccion.Texto = Convert.ToString(dr["traduccion_traduccion"]);
                     Etiqueta etiqueta = new Etiqueta()
@@ -498,7 +542,7 @@ namespace DAL.Tools
         {
             Traduccion traduccion = new Models.Observer.Traduccion();
             Observer.Idioma _idiomaDAL = new Observer.Idioma();
-            
+
             try
             {
                 if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))

@@ -26,6 +26,7 @@ namespace UI
         private readonly IEditorial _editorialService;
         private readonly IGenero _generoService;
         private readonly IProducto _productoService;
+        private readonly ILibro _libroService;
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
         private readonly ITraductor _traductorService;
@@ -35,7 +36,7 @@ namespace UI
         
         private bool mdiChildActivo = false;
 
-        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService, IPermiso permisoService)
+        public Main(IUsuario UsuarioService, IAutor AutorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ILibro libroService, ICompra compraService, IVenta ventaService, ITraductor traductorService, IPermiso permisoService)
         {
             InitializeComponent();
             _usuarioService = UsuarioService;
@@ -43,6 +44,7 @@ namespace UI
             _editorialService = editorialService;
             _generoService = generoService;
             _productoService = productoService;
+            _libroService = libroService;
             _compraService = compraService;
             _ventaService = ventaService;
             _traductorService = traductorService;
@@ -92,7 +94,7 @@ namespace UI
 
         private void GenerarAlertaPedidoStock()
         {
-            List<Libro> productos = _productoService.GenerarAlertaPedidoStock();
+            List<Libro> productos = _libroService.GenerarAlertaPedidoStock();
             
             if (productos.Count() > 0 && productos != null && mdiChildActivo == false)
             {
@@ -109,7 +111,7 @@ namespace UI
 
         private void CargarGridProductosAlerta()
         {
-            List<LibroAlertaDTO> productos = LibroAlertaDTO.FillListDTO(_productoService.GenerarAlertaPedidoStock());
+            List<LibroAlertaDTO> productos = LibroAlertaDTO.FillListDTO(_libroService.GenerarAlertaPedidoStock());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
@@ -134,7 +136,7 @@ namespace UI
 
         private void AbrirFormLogin()
         {
-            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService, _permisoService);
+            Login login = new Login(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _libroService, _compraService, _ventaService, _traductorService, _permisoService);
             login.Show();
         }
 
@@ -202,7 +204,7 @@ namespace UI
 
         private void altaProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AltaProducto altaProducto = new AltaProducto(_productoService, _autorService, _generoService, _editorialService, _traductorService);
+            AltaProducto altaProducto = new AltaProducto(_productoService, _libroService, _autorService, _generoService, _editorialService, _traductorService);
             altaProducto.MdiParent = this;
             altaProducto.StartPosition = FormStartPosition.CenterScreen;
             altaProducto.Show();
@@ -210,7 +212,7 @@ namespace UI
 
         private void modificarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ModificarProducto modificarProducto = new ModificarProducto(_productoService, _autorService, _generoService, _editorialService, _traductorService);
+            ModificarProducto modificarProducto = new ModificarProducto(_productoService, _libroService, _autorService, _generoService, _editorialService, _traductorService);
             modificarProducto.MdiParent = this;
             modificarProducto.StartPosition = FormStartPosition.CenterScreen;
             modificarProducto.Show();
@@ -218,7 +220,7 @@ namespace UI
 
         private void publicarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            PublicarProducto publicarProducto = new PublicarProducto(_productoService, _traductorService);
+            PublicarProducto publicarProducto = new PublicarProducto(_productoService, _libroService, _traductorService);
             publicarProducto.MdiParent = this;
             publicarProducto.StartPosition = FormStartPosition.CenterScreen;
             publicarProducto.Show();
@@ -226,7 +228,7 @@ namespace UI
 
         private void fijarProductoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FijarProducto fijarProducto = new FijarProducto(_productoService, _traductorService);
+            FijarProducto fijarProducto = new FijarProducto(_productoService, _libroService, _traductorService);
             fijarProducto.MdiParent = this;
             fijarProducto.StartPosition = FormStartPosition.CenterScreen;
             fijarProducto.Show();
@@ -234,7 +236,7 @@ namespace UI
 
         private void generarPedidoDeStockToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GenerarPedidoStockManual generarPedidoStockManual = new GenerarPedidoStockManual(_productoService, _compraService, _traductorService);
+            GenerarPedidoStockManual generarPedidoStockManual = new GenerarPedidoStockManual(_productoService, _libroService, _compraService, _traductorService);
             generarPedidoStockManual.MdiParent = this;
             generarPedidoStockManual.StartPosition = FormStartPosition.CenterScreen;
             generarPedidoStockManual.Show();
@@ -250,7 +252,7 @@ namespace UI
 
         private void realizarVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RealizarVenta realizarVenta = new RealizarVenta(_productoService, _ventaService, _traductorService);
+            RealizarVenta realizarVenta = new RealizarVenta(_productoService, _libroService, _ventaService, _traductorService);
             realizarVenta.MdiParent = this;
             realizarVenta.StartPosition = FormStartPosition.CenterScreen;
             realizarVenta.Show();            
@@ -274,7 +276,7 @@ namespace UI
 
         private void generarPedidoStockProductosFijadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GenerarPedidoStockFijados generarPedidoStockFijados = new GenerarPedidoStockFijados(_productoService, _compraService, _traductorService);
+            GenerarPedidoStockFijados generarPedidoStockFijados = new GenerarPedidoStockFijados(_productoService, _libroService, _compraService, _traductorService);
             generarPedidoStockFijados.MdiParent = this;
             generarPedidoStockFijados.StartPosition = FormStartPosition.CenterScreen;
             generarPedidoStockFijados.Show();
@@ -282,7 +284,7 @@ namespace UI
 
         private void listarProductosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListarProductos listarProductos = new ListarProductos(_productoService, _traductorService);
+            ListarProductos listarProductos = new ListarProductos(_productoService, _libroService, _traductorService);
             listarProductos.MdiParent = this;
             listarProductos.StartPosition = FormStartPosition.CenterScreen;
             listarProductos.Show();

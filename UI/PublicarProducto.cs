@@ -20,12 +20,14 @@ namespace UI
     public partial class PublicarProducto : Form, IObserver
     {
         private readonly IProducto _productoService;
+        private readonly ILibro _libroService;
         private readonly ITraductor _traductorService;
 
-        public PublicarProducto(IProducto productoService, ITraductor traductorService)
+        public PublicarProducto(IProducto productoService, ILibro libroService, ITraductor traductorService)
         {
             InitializeComponent();
             _productoService = productoService;
+            _libroService = libroService;
             _traductorService = traductorService;
         }
 
@@ -54,7 +56,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_libroService.GetLibros());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
@@ -63,7 +65,7 @@ namespace UI
 
         private void datagridProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Libro libro = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
+            Libro libro = _libroService.GetLibro((int)datagridProductos.CurrentRow.Cells["Id"].Value);
             txtISBN.Text = libro.ISBN;
             txtNombre.Text = libro.Nombre;
             txtPrecio.Text = libro.Precio.ToString();

@@ -20,13 +20,15 @@ namespace UI
     public partial class FijarProducto : Form, IObserver
     {
         private readonly IProducto _productoService;
+        private readonly ILibro _libroService;
         private readonly ITraductor _traductorService;
 
-        public FijarProducto(IProducto productoService, ITraductor traductorService)
+        public FijarProducto(IProducto productoService, ILibro libroService, ITraductor traductorService)
         {
             InitializeComponent();
             _productoService = productoService;
             _traductorService = traductorService;
+            _libroService = libroService;
         }
 
         private void FijarProducto_Load(object sender, EventArgs e)
@@ -54,7 +56,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<LibroAlertaDTO> productos = LibroAlertaDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroAlertaDTO> productos = LibroAlertaDTO.FillListDTO(_libroService.GetLibros());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
@@ -63,7 +65,7 @@ namespace UI
 
         private void datagridProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Libro libro = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
+            Libro libro = _libroService.GetLibro((int)datagridProductos.CurrentRow.Cells["Id"].Value);
             txtISBN.Text = libro.ISBN;
             txtNombre.Text = libro.Nombre;
             txtCantidadStockAviso.Text = libro.Alerta.CantidadStockAviso.ToString();

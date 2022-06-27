@@ -30,14 +30,13 @@ namespace DAL
         private const string ALTA_ALERTA = "INSERT INTO Alerta (Activo, CantidadStockAviso, ProductoId) OUTPUT inserted.Id " +
                                             " VALUES (@parActivo, @parCantidadStockAviso, @parProductoId)";
         private const string GET_STOCK = "SELECT Id, Cantidad FROM Stock WHERE ProductoId = {0}";
-        private const string GET_PRODUCTO = "SELECT TOP 1 * FROM Producto WHERE Id = {0}";
-        private const string GET_PRODUCTOS = "SELECT * FROM Producto";
         private const string MODIFICAR_PRODUCTO = "UPDATE Producto SET ISBN = @parISBN, Nombre = @parNombre, Precio = @parPrecio, " +
                                                   "CantidadPaginas = @parCantidadPaginas, AutorId = @parAutorId, GeneroId = @parGeneroId, " +
                                                    "EditorialId = @parEditorialId OUTPUT inserted.Id WHERE Id = @parProductoId";
         private const string PUBLICAR_PRODUCTO = "Update Producto SET EnVenta = @parEnVenta, Precio = @parPrecio OUTPUT inserted.Id WHERE Id = @parProductoId";
         private const string GET_ALERTA = "SELECT Id, Activo, CantidadStockAviso FROM Alerta WHERE ProductoId = {0}";
         private const string FIJAR_PRODUCTO = "UPDATE Alerta SET Activo = @parActivo, CantidadStockAviso = @parCantidadStockAviso OUTPUT inserted.Id WHERE ProductoId = @parProductoId";
+        private const string GET_PRODUCTO = "SELECT TOP 1 * FROM Producto WHERE Id = {0}";
         #endregion
 
         #region Métodos CRUD
@@ -47,7 +46,7 @@ namespace DAL
             {
                 if (producto.GetType() == typeof(Libro))
                 {
-                    Libro libro = (Libro)producto;
+                    Models.Libro libro = (Models.Libro)producto;
 
                     ExecuteCommandText = ALTA_PRODUCTO;
 
@@ -118,7 +117,7 @@ namespace DAL
             {
                 if (producto.GetType() == typeof(Libro))
                 {
-                    Libro libro = (Libro)producto;
+                    Models.Libro libro = (Models.Libro)producto;
 
                     ExecuteCommandText = MODIFICAR_PRODUCTO;
 
@@ -183,6 +182,23 @@ namespace DAL
         #endregion
 
         #region Métodos View
+        public Models.Producto GetProducto(int productoId)
+        {
+            try
+            {
+                SelectCommandText = String.Format(GET_PRODUCTO, productoId);
+
+                DataSet ds = ExecuteNonReader();
+                Models.Producto producto = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectProducto(ds.Tables[0].Rows[0]);
+
+                return producto;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
         public Models.Stock GetStock(int productoId)
         {
             try
@@ -215,48 +231,6 @@ namespace DAL
             {
                 throw new Exception("Error en la base de datos.");
             }
-        }
-
-        public Models.Libro GetProducto(int productoId)
-        {
-            try
-            {
-                SelectCommandText = String.Format(GET_PRODUCTO, productoId);
-
-                DataSet ds = ExecuteNonReader();
-                Models.Libro producto = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectLibro(ds.Tables[0].Rows[0]);
-
-                return producto;
-            }
-            catch (Exception)
-            {
-                throw new Exception("Error en la base de datos.");
-            }
-        }
-
-        public List<Models.Libro> GetProductos()
-        {
-            try
-            {
-                SelectCommandText = String.Format(GET_PRODUCTOS);
-                DataSet ds = ExecuteNonReader();
-
-                List<Models.Libro> productos = new List<Models.Libro>();
-
-                if (ds.Tables[0].Rows.Count > 0)
-                    productos = _fill.FillListLibro(ds);
-
-                return productos;
-            }
-            catch (Exception)
-            {
-                throw new Exception("Error en la base de datos.");
-            }
-        }
-
-        public List<Models.Libro> GenerarAlertaPedidoStock()
-        {
-            throw new NotImplementedException();
         }
         #endregion
     }

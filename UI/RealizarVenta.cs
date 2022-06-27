@@ -20,15 +20,17 @@ namespace UI
     public partial class RealizarVenta : Form, IObserver
     {
         private readonly IProducto _productoService;
+        private readonly ILibro _libroService;
         private readonly IVenta _ventaService;
         private readonly ITraductor _traductorService;
 
         private List<DetalleComprobante> _carrito;
 
-        public RealizarVenta(IProducto productoService, IVenta ventaService, ITraductor traductorService)
+        public RealizarVenta(IProducto productoService, ILibro libroService, IVenta ventaService, ITraductor traductorService)
         {
             InitializeComponent();
             _productoService = productoService;
+            _libroService = libroService;
             _ventaService = ventaService;
             _traductorService = traductorService;
 
@@ -60,7 +62,7 @@ namespace UI
         
         private void CargarProductos()
         {
-            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos().Where(p => p.Activo == true && p.EnVenta == true).ToList());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_libroService.GetLibros().Where(p => p.Activo == true && p.EnVenta == true).ToList());
             datagridProductosVenta.DataSource = productos;
             datagridProductosVenta.Columns["Id"].Visible = false;
             datagridProductosVenta.ClearSelection();
@@ -69,7 +71,7 @@ namespace UI
 
         private void datagridProductosVenta_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Libro libro = _productoService.GetProducto((int)datagridProductosVenta.CurrentRow.Cells["Id"].Value);
+            Libro libro = _libroService.GetLibro((int)datagridProductosVenta.CurrentRow.Cells["Id"].Value);
             txtISBN.Text = libro.ISBN;
             txtNombre.Text = libro.Nombre;
             txtPrecioVenta.Text = libro.Precio.ToString();
@@ -82,7 +84,7 @@ namespace UI
                 if (datagridProductosVenta.CurrentRow == null) throw new Exception(TraducirMensaje("msg_CarritoNoProductos"));
                 if (string.IsNullOrWhiteSpace(txtCantidad.Text)) throw new Exception(TraducirMensaje("msg_CarritoNoCantidad"));
 
-                Producto producto = _productoService.GetProducto((int)datagridProductosVenta.CurrentRow.Cells["Id"].Value);
+                Producto producto = _libroService.GetLibro((int)datagridProductosVenta.CurrentRow.Cells["Id"].Value);
                 if (_carrito != null)
                 {
                     foreach (var item in _carrito)

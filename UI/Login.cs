@@ -21,12 +21,13 @@ namespace UI
         private readonly IEditorial _editorialService;
         private readonly IGenero _generoService;
         private readonly IProducto _productoService;
+        private readonly ILibro _libroService;
         private readonly ICompra _compraService;
         private readonly IVenta _ventaService;
         private readonly ITraductor _traductorService;
         private readonly IPermiso _permisoService;
 
-        public Login(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ICompra compraService, IVenta ventaService, ITraductor traductorService, IPermiso permisoService)
+        public Login(IUsuario usuarioService, IAutor autorService, IEditorial editorialService, IGenero generoService, IProducto productoService, ILibro libroService, ICompra compraService, IVenta ventaService, ITraductor traductorService, IPermiso permisoService)
         {
             InitializeComponent();
             _usuarioService = usuarioService;
@@ -34,6 +35,7 @@ namespace UI
             _editorialService = editorialService;
             _generoService = generoService;
             _productoService = productoService;
+            _libroService = libroService;
             _compraService = compraService;
             _ventaService = ventaService;
             _traductorService = traductorService;
@@ -49,7 +51,7 @@ namespace UI
                 Limpiar();
                 this.Hide();
                 
-                Main main = new Main(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService, _permisoService);
+                Main main = new Main(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _libroService, _compraService, _ventaService, _traductorService, _permisoService);
                 main.Show();
             }
             catch (Exception ex)
@@ -69,7 +71,7 @@ namespace UI
         {
             this.Hide();
 
-            Registro formRegistro = new Registro(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _compraService, _ventaService, _traductorService, _permisoService);
+            Registro formRegistro = new Registro(_usuarioService, _autorService, _editorialService, _generoService, _productoService, _libroService, _compraService, _ventaService, _traductorService, _permisoService);
             formRegistro.Show();
         }
 

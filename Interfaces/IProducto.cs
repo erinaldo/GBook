@@ -16,8 +16,5 @@ namespace Interfaces
         int FijarProducto(Models.Producto producto);
         Models.Stock GetStock(int productoId);
         Models.Alerta GetAlerta(int productoId);
-        Models.Libro GetProducto(int productoId);
-        List<Models.Libro> GetProductos();
-        List<Models.Libro> GenerarAlertaPedidoStock();
     }
 }

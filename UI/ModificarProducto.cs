@@ -20,15 +20,17 @@ namespace UI
     public partial class ModificarProducto : Form, IObserver
     {
         private readonly IProducto _productoService;
+        private readonly ILibro _libroService;
         private readonly IAutor _autorService;
         private readonly IGenero _generoService;
         private readonly IEditorial _editorialService;
         private readonly ITraductor _traductorService;
 
-        public ModificarProducto(IProducto productoService, IAutor autorService, IGenero generoService, IEditorial editorialService, ITraductor traductorService)
+        public ModificarProducto(IProducto productoService, ILibro libroService, IAutor autorService, IGenero generoService, IEditorial editorialService, ITraductor traductorService)
         {
             InitializeComponent();
             _productoService = productoService;
+            _libroService = libroService;
             _autorService = autorService;
             _generoService = generoService;
             _editorialService = editorialService;
@@ -87,7 +89,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_libroService.GetLibros());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
@@ -160,7 +162,7 @@ namespace UI
 
         private void datagridProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Libro libro = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
+            Libro libro = _libroService.GetLibro((int)datagridProductos.CurrentRow.Cells["Id"].Value);
             txtISBN.Text = libro.ISBN;
             txtNombre.Text = libro.Nombre;
             txtPrecio.Text = libro.Precio.ToString();

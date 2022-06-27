@@ -19,12 +19,14 @@ namespace UI
     public partial class ListarProductos : Form, IObserver
     {
         private readonly IProducto _productoService;
+        private readonly ILibro _libroService;
         private readonly ITraductor _traductorService;
 
-        public ListarProductos(IProducto productoService, ITraductor traductorService)
+        public ListarProductos(IProducto productoService, ILibro libroService, ITraductor traductorService)
         {
             InitializeComponent();
             _productoService = productoService;
+            _libroService = libroService;
             _traductorService = traductorService;
         }
 
@@ -64,7 +66,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_libroService.GetLibros());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();

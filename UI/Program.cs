@@ -23,12 +23,13 @@ namespace UI
             BLL.Editorial editorialService = new BLL.Editorial();
             BLL.Genero generoService = new BLL.Genero();
             BLL.Producto productoService = new BLL.Producto();
+            BLL.Libro libroService = new BLL.Libro();
             BLL.Compra compraService = new BLL.Compra();
             BLL.Venta ventaService = new BLL.Venta();
             BLL.Observer.Idioma traductorService = new BLL.Observer.Idioma();
             BLL.Composite.Permiso permisoService = new BLL.Composite.Permiso();
 
-            Application.Run(new Login(usuarioService, autorService, editorialService, generoService, productoService, compraService, ventaService, traductorService, permisoService));
+            Application.Run(new Login(usuarioService, autorService, editorialService, generoService, productoService, libroService, compraService, ventaService, traductorService, permisoService));
         }
     }
 }
