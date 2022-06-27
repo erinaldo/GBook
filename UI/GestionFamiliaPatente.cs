@@ -269,7 +269,7 @@ namespace UI
                 IList<Componente> familia;
                 familia = _seleccionFamilia.Hijos;
 
-                foreach (Familia item in familia)
+                foreach (var item in familia)
                 {
                     if (treePatenteFamilia.SelectedNode.Text == item.Nombre)
                     {
@@ -335,7 +335,7 @@ namespace UI
                 {
                     if (item2.Permiso == Permiso.EsFamilia && item.Permiso == Permiso.EsFamilia)
                     {
-                        if (item2.Id == item.Id) throw new Exception("msg_Recursividad");
+                        if (item2.Id == item.Id) throw new Exception(TraducirMensaje("msg_Recursividad"));
                     }
                 }
             }
