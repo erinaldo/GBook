@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Models.DTOs;
 using System.Text.RegularExpressions;
 using Servicios;
+using System.IO;
+using System.Security.AccessControl;
+using System.Security.Principal;
 
 namespace BLL
 {
@@ -64,7 +67,7 @@ namespace BLL
 
                 string emailEncriptado = _encriptacion.EncriptarAES(email);
                 Models.Usuario usuario = _usuarioDAL.Login(emailEncriptado);
-             
+
                 if (usuario != null)
                 {
                     if (usuario.Bloqueo >= 3) throw new Exception("El usuario está bloqueado.");
@@ -83,7 +86,7 @@ namespace BLL
                         Sesion.CreateInstance(usuarioSingleton, _idiomaDAL.ObtenerIdiomaDefault());
                     }
                     else
-                    { 
+                    {
                         _usuarioDAL.BloquearUsuario(emailEncriptado);
                         throw new Exception("La contraseña ingresada es incorrecta.");
                     }
@@ -112,12 +115,16 @@ namespace BLL
             try
             {
                 ValidarUsuario(usuario);
+                string passwordRandom = _encriptacion.GenerarPasswordRandom();
+                string email = usuario.Email.Replace("@", "-");
+                string emailTxt = email.Replace(".com", "");
 
                 usuario.Email = _encriptacion.EncriptarAES(usuario.Email);
                 usuario.Nombre = _encriptacion.EncriptarAES(usuario.Nombre);
                 usuario.Apellido = _encriptacion.EncriptarAES(usuario.Apellido);
-                usuario.Password = _encriptacion.Hash(usuario.Password);
+                usuario.Password = _encriptacion.Hash(passwordRandom);
                 usuario.Bloqueo = 0;
+                GuardarPassword(emailTxt, passwordRandom);
 
                 return _usuarioDAL.RegistrarUsuario(usuario);
             }
@@ -131,7 +138,7 @@ namespace BLL
         {
             try
             {
-                ValidarCambioPassword(usuario, _encriptacion.Hash(passwordActual));
+                ValidarCambioPassword(usuario, _encriptacion.Hash(passwordActual), nuevaPassword);
                 if (string.IsNullOrWhiteSpace(nuevaPassword) || nuevaPassword.Length < 8) throw new Exception("msg_ValidacionPassword");
 
                 string nuevaPasswordEncriptada = _encriptacion.Hash(nuevaPassword);
@@ -149,7 +156,6 @@ namespace BLL
         private void ValidarUsuario(Models.Usuario usuario)
         {
             if ((ValidarEmail(usuario.Email) == false) || string.IsNullOrWhiteSpace(usuario.Email)) throw new Exception("El email no puede estar vacío ni tener el formato incorrecto.");
-            if (string.IsNullOrWhiteSpace(usuario.Password) || usuario.Password.Length < 8) throw new Exception("La contraseña no puede estar vacía ni tener menos de 8 caracteres.");
             if (string.IsNullOrWhiteSpace(usuario.Nombre) || usuario.Nombre.Length < 3) throw new Exception("El nombre no puede estar vacía ni tener menos de 3 caracteres.");
             if (string.IsNullOrWhiteSpace(usuario.Apellido) || usuario.Apellido.Length < 3) throw new Exception("El apellido no puede estar vacía ni tener menos de 3 caracteres.");
         }
@@ -165,15 +171,39 @@ namespace BLL
             else return false;
         }
 
-        private void ValidarCambioPassword(Models.DTOs.UsuarioDTO user, string passwordActual)
+        private void ValidarCambioPassword(Models.DTOs.UsuarioDTO user, string passwordActual, string nuevaPassword)
         {
             Models.Usuario _usuario = _usuarioDAL.GetUsuario(user.UsuarioId);
             if (passwordActual != _usuario.Password) throw new Exception(TraducirMensaje("msg_PasswordNoCoindice"));
+            if (string.IsNullOrWhiteSpace(nuevaPassword) || nuevaPassword.Length < 8) throw new Exception(TraducirMensaje("msg_NuevaPasswordFormato"));
         }
 
         private string TraducirMensaje(string msgTag)
         {
             return Traductor.TraducirMensaje(_idiomaDAL, msgTag);
+        }
+
+        private void GuardarPassword(string usuario, string password)
+        {
+            try
+            {
+                string directorio = $"C:\\GBook\\{usuario}\\";
+                string _password = $"Contraseña: {password}";
+
+                if (!Directory.Exists(directorio))
+                {
+                    Directory.CreateDirectory(directorio);
+                }
+
+                StreamWriter fichero;
+                fichero = File.CreateText($"{directorio}{usuario}.txt");  
+                fichero.WriteLine(_password);
+                fichero.Close();
+            }
+            catch
+            {
+                throw new Exception("Hubo un error al querer guardar la contraseña del usuario en el disco.");
+            }
         }
         #endregion
     }

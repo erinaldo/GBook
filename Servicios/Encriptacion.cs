@@ -65,6 +65,25 @@ namespace Servicios
 
             return ASCIIEncoding.ASCII.GetString(dec);
         }
+
+        public string GenerarPasswordRandom()
+        {
+            string Password = "";
+            
+            Random random = new Random();
+            string caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            int longitud = caracteresPermitidos.Length;            
+            char letra;
+            int longitudPassword = 8;
+
+            for (int i = 0; i < longitudPassword; i++)
+            {
+                letra = caracteresPermitidos[random.Next(longitud)];
+                Password += letra.ToString();
+            }
+
+            return Password;
+        }
         #endregion
     }
 }
