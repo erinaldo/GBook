@@ -20,10 +20,12 @@ namespace BLL
         private readonly DAL.Usuario _usuarioDAL;
         private readonly Encriptacion _encriptacion;
         private readonly DAL.Observer.Idioma _idiomaDAL;
+        private readonly DAL.Composite.Permiso _permisoDAL;
 
         public Usuario()
         {
             _usuarioDAL = new DAL.Usuario();
+            _permisoDAL = new DAL.Composite.Permiso();
             _encriptacion = new Encriptacion();
             _idiomaDAL = new DAL.Observer.Idioma();
         }
@@ -82,6 +84,7 @@ namespace BLL
                             Nombre = _encriptacion.DesencriptarAES(usuario.Nombre),
                             Apellido = _encriptacion.DesencriptarAES(usuario.Apellido),
                         };
+                        _permisoDAL.GetComponenteUsuario(usuarioSingleton);                       
 
                         Sesion.CreateInstance(usuarioSingleton, _idiomaDAL.ObtenerIdiomaDefault());
                     }

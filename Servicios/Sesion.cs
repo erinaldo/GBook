@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.Composite;
 using Models.DTOs;
 using Models.Observer;
 using Servicios.Observer;

@@ -255,7 +255,7 @@ namespace DAL.Composite
                             componente.Nombre = nombre;
 
                             var familia = TraerFamiliaPatentes(id);
-                            foreach (Familia f in familia)
+                            foreach (var f in familia)
                             {
                                 componente.AgregarHijo(f);
                             }

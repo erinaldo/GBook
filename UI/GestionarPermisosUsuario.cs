@@ -22,7 +22,6 @@ namespace UI
         private readonly IPermiso _permisoService;
         private readonly IUsuario _usuarioService;
         private readonly ITraductor _traductorService;
-        private readonly Servicios.Encriptacion _encriptacionService;
 
         private Models.DTOs.UsuarioDTO _seleccionUsuario;
         private Models.DTOs.UsuarioDTO _usuario;
@@ -33,7 +32,6 @@ namespace UI
             _permisoService = permisoService;
             _usuarioService = usuarioService;
             _traductorService = traductorService;
-            _encriptacionService = new Servicios.Encriptacion();
         }
 
         public void UpdateLanguage(IIdioma idioma)
@@ -59,7 +57,7 @@ namespace UI
 
         private void CargarCombos()
         {
-            cbxUsuarios.DataSource = _usuarioService.GetUsersDesencriptado();
+            cbxUsuarios.DataSource = _usuarioService.GetUsersDesencriptado().Where(x => x.UsuarioId != Sesion.GetInstance().UsuarioId).ToList();
             cbxUsuarios.ValueMember = "UsuarioId";
             cbxUsuarios.DisplayMember = "Email";
             cbxUsuarios.SelectedIndex = -1;

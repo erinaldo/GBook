@@ -32,6 +32,7 @@ namespace UI
         private readonly ITraductor _traductorService;
         private readonly IPermiso _permisoService;
 
+        private UsuarioDTO usuario;
         private readonly IList<IIdioma> _idiomas;        
         
         private bool mdiChildActivo = false;
@@ -50,6 +51,7 @@ namespace UI
             _traductorService = traductorService;
             _permisoService = permisoService;
 
+            usuario = Sesion.GetInstance();
             _idiomas = new List<IIdioma>();
         }
 
@@ -63,16 +65,38 @@ namespace UI
         {
             CambiarColorMDI();
 
-            UsuarioDTO usuario = Sesion.GetInstance();
-            
+            CargarPermisosMenu();
+
             Sesion.SuscribirObservador(this);
             MostrarIdiomasDisponibles();
             UpdateLanguage(Sesion.GetInstance().Idioma);
 
             GenerarAlertaPedidoStock();
 
-            timerAlerta.Interval = int.Parse(ConfigurationManager.AppSettings["Intervalo_AlertaStock"]);
-            timerAlerta.Start();
+            comenzarTimerAlertaStock();
+        }
+
+        private void CargarPermisosMenu()
+        {
+            PermisoTool.HabilitarMenu(usuario, gestiónAutoresToolStripMenuItem);
+            PermisoTool.HabilitarMenu(usuario, gestiónGénerosToolStripMenuItem);
+            PermisoTool.HabilitarMenu(usuario, gestiónEditorialesToolStripMenuItem);
+            PermisoTool.HabilitarMenu(usuario, gestiónProductosToolStripMenuItem);
+            PermisoTool.HabilitarMenu(usuario, compraToolStripMenuItem);
+            PermisoTool.HabilitarMenu(usuario, ventaToolStripMenuItem);
+            PermisoTool.HabilitarMenu(usuario, gestiónIdiomaToolStripMenuItem);
+            PermisoTool.HabilitarMenu(usuario, permisosToolStripMenuItem);
+
+            listarProductosToolStripMenuItem.Enabled = PermisoTool.TienePermiso(usuario, Models.Composite.Permiso.ListarProductos);
+        }
+
+        private void comenzarTimerAlertaStock()
+        {
+            if (PermisoTool.TienePermiso(usuario, Models.Composite.Permiso.GenerarAlertaPedidoStock))
+            {
+                timerAlerta.Interval = int.Parse(ConfigurationManager.AppSettings["Intervalo_AlertaStock"]);
+                timerAlerta.Start();
+            }
         }
 
         private void CambiarColorMDI()
@@ -94,18 +118,21 @@ namespace UI
 
         private void GenerarAlertaPedidoStock()
         {
-            List<Libro> productos = _libroService.GenerarAlertaPedidoStock();
-            
-            if (productos.Count() > 0 && productos != null && mdiChildActivo == false)
+            if (PermisoTool.TienePermiso(usuario, Models.Composite.Permiso.GenerarAlertaPedidoStock))
             {
-                lblAlerta.Visible = true;
-                datagridProductos.Visible = true;
-                CargarGridProductosAlerta();
-            }
-            else
-            {
-                lblAlerta.Visible = false;
-                datagridProductos.Visible = false;
+                List<Libro> productos = _libroService.GenerarAlertaPedidoStock();
+
+                if (productos.Count() > 0 && productos != null && mdiChildActivo == false)
+                {
+                    lblAlerta.Visible = true;
+                    datagridProductos.Visible = true;
+                    CargarGridProductosAlerta();
+                }
+                else
+                {
+                    lblAlerta.Visible = false;
+                    datagridProductos.Visible = false;
+                }
             }
         }
 
@@ -376,6 +403,7 @@ namespace UI
         private void Main_MdiChildActivate(object sender, EventArgs e)
         {
             Form formEvento = (Form)sender;
+            CargarPermisosMenu();
 
             if (formEvento.ActiveMdiChild == null)
             {
