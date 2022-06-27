@@ -20,6 +20,7 @@ namespace BLL
         }
         #endregion
 
+        #region Métodos View
         public Models.Libro GetLibro(int productoId)
         {
             try
@@ -49,5 +50,6 @@ namespace BLL
             }
             catch (Exception) { throw new Exception("Hubo un error al querer generer las alertas de pedido de stock."); }
         }
+        #endregion
     }
 }

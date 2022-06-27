@@ -109,25 +109,14 @@ namespace BLL
         #endregion
 
         #region Métodos View
-
-        public Stock GetStock(int productoId)
+        public Models.Producto GetProducto(int productoId)
         {
             try
             {
-                Models.Stock stock = _productoDAL.GetStock(productoId);
-                return stock;
+                Models.Producto producto = _productoDAL.GetProducto(productoId);
+                return producto;
             }
-            catch (Exception) { throw new Exception("Hubo un error al querer obtener el stock."); }
-        }
-
-        public Models.Alerta GetAlerta (int productoId)
-        {
-            try
-            {
-                Models.Alerta alerta = _productoDAL.GetAlerta(productoId);
-                return alerta;
-            }
-            catch (Exception) { throw new Exception("Hubo un error al querer obtener la alerta."); }
+            catch (Exception) { throw new Exception("Hubo un error al querer obtener el producto."); }
         }
         #endregion
 

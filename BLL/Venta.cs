@@ -15,10 +15,12 @@ namespace BLL
         #region Inyección de dependencias
         private readonly DAL.Venta _ventaDAL;
         private readonly DAL.Observer.Idioma _idiomaDAL;
+        private readonly DAL.Producto _productoDAL;
 
         public Venta()
         {
             _ventaDAL = new DAL.Venta();
+            _productoDAL = new DAL.Producto();
             _idiomaDAL = new DAL.Observer.Idioma();
         }
         #endregion
@@ -28,6 +30,8 @@ namespace BLL
         {
             try
             {
+                ComprobarStock(comprobante);
+
                 using (TransactionScope scope = new TransactionScope())
                 {
                     int ventaId = GenerarComprobanteVenta(comprobante);
@@ -118,6 +122,15 @@ namespace BLL
         private string TraducirMensaje(string msgTag)
         {
             return Traductor.TraducirMensaje(_idiomaDAL, msgTag);
+        }
+
+        private void ComprobarStock(ComprobanteVenta comprobante)
+        {
+            foreach (DetalleComprobante comprobanteItem in comprobante.Items)
+            {
+                Models.Producto producto = _productoDAL.GetProducto(comprobanteItem.Producto.Id);
+                if (producto.Stock.Cantidad < comprobanteItem.Cantidad) throw new Exception(TraducirMensaje("msg_StockInsuficienteCambio"));
+            }
         }
         #endregion
     }

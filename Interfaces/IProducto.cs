@@ -14,7 +14,6 @@ namespace Interfaces
         int ModificarProducto(Models.Producto producto);
         int PublicarProducto(Models.Producto producto);
         int FijarProducto(Models.Producto producto);
-        Models.Stock GetStock(int productoId);
-        Models.Alerta GetAlerta(int productoId);
+        Models.Producto GetProducto(int productoId);
     }
 }
