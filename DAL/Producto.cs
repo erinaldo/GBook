@@ -1,6 +1,7 @@
 ﻿using DAL.Conexion;
 using DAL.Tools;
 using Interfaces;
+using Models;
 using Servicios;
 using System;
 using System.Collections.Generic;
@@ -44,19 +45,24 @@ namespace DAL
         {
             try
             {
-                ExecuteCommandText = ALTA_PRODUCTO;
+                if (producto.GetType() == typeof(Libro))
+                {
+                    Libro libro = (Libro)producto;
 
-                ExecuteParameters.Parameters.Clear();
+                    ExecuteCommandText = ALTA_PRODUCTO;
 
-                ExecuteParameters.Parameters.AddWithValue("@parISBN", producto.ISBN);
-                ExecuteParameters.Parameters.AddWithValue("@parNombre", producto.Nombre);
-                ExecuteParameters.Parameters.AddWithValue("@parPrecio", producto.Precio);
-                ExecuteParameters.Parameters.AddWithValue("@parCantidadPaginas", producto.CantidadPaginas);
-                ExecuteParameters.Parameters.AddWithValue("@parEnVenta", false);
-                ExecuteParameters.Parameters.AddWithValue("@parActivo", true);
-                ExecuteParameters.Parameters.AddWithValue("@parAutorId", producto.Autor.Id);
-                ExecuteParameters.Parameters.AddWithValue("@parGeneroId", producto.Genero.Id);
-                ExecuteParameters.Parameters.AddWithValue("@parEditorialId", producto.Editorial.Id);
+                    ExecuteParameters.Parameters.Clear();
+
+                    ExecuteParameters.Parameters.AddWithValue("@parISBN", libro.ISBN);
+                    ExecuteParameters.Parameters.AddWithValue("@parNombre", libro.Nombre);
+                    ExecuteParameters.Parameters.AddWithValue("@parPrecio", libro.Precio);
+                    ExecuteParameters.Parameters.AddWithValue("@parCantidadPaginas", libro.CantidadPaginas);
+                    ExecuteParameters.Parameters.AddWithValue("@parEnVenta", false);
+                    ExecuteParameters.Parameters.AddWithValue("@parActivo", true);
+                    ExecuteParameters.Parameters.AddWithValue("@parAutorId", libro.Autor.Id);
+                    ExecuteParameters.Parameters.AddWithValue("@parGeneroId", libro.Genero.Id);
+                    ExecuteParameters.Parameters.AddWithValue("@parEditorialId", libro.Editorial.Id);
+                }
 
                 return ExecuteNonEscalar();
             }
@@ -110,18 +116,23 @@ namespace DAL
         {
             try
             {
-                ExecuteCommandText = MODIFICAR_PRODUCTO;
+                if (producto.GetType() == typeof(Libro))
+                {
+                    Libro libro = (Libro)producto;
 
-                ExecuteParameters.Parameters.Clear();
+                    ExecuteCommandText = MODIFICAR_PRODUCTO;
 
-                ExecuteParameters.Parameters.AddWithValue("@parProductoId", producto.Id);
-                ExecuteParameters.Parameters.AddWithValue("@parISBN", producto.ISBN);
-                ExecuteParameters.Parameters.AddWithValue("@parNombre", producto.Nombre);
-                ExecuteParameters.Parameters.AddWithValue("@parPrecio", producto.Precio);
-                ExecuteParameters.Parameters.AddWithValue("@parCantidadPaginas", producto.CantidadPaginas);
-                ExecuteParameters.Parameters.AddWithValue("@parAutorId", producto.Autor.Id);
-                ExecuteParameters.Parameters.AddWithValue("@parGeneroId", producto.Genero.Id);
-                ExecuteParameters.Parameters.AddWithValue("@parEditorialId", producto.Editorial.Id);
+                    ExecuteParameters.Parameters.Clear();
+
+                    ExecuteParameters.Parameters.AddWithValue("@parProductoId", libro.Id);
+                    ExecuteParameters.Parameters.AddWithValue("@parISBN", libro.ISBN);
+                    ExecuteParameters.Parameters.AddWithValue("@parNombre", libro.Nombre);
+                    ExecuteParameters.Parameters.AddWithValue("@parPrecio", libro.Precio);
+                    ExecuteParameters.Parameters.AddWithValue("@parCantidadPaginas", libro.CantidadPaginas);
+                    ExecuteParameters.Parameters.AddWithValue("@parAutorId", libro.Autor.Id);
+                    ExecuteParameters.Parameters.AddWithValue("@parGeneroId", libro.Genero.Id);
+                    ExecuteParameters.Parameters.AddWithValue("@parEditorialId", libro.Editorial.Id);
+                }
 
                 return ExecuteNonEscalar();
             }
@@ -206,14 +217,14 @@ namespace DAL
             }
         }
 
-        public Models.Producto GetProducto(int productoId)
+        public Models.Libro GetProducto(int productoId)
         {
             try
             {
                 SelectCommandText = String.Format(GET_PRODUCTO, productoId);
 
                 DataSet ds = ExecuteNonReader();
-                Models.Producto producto = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectProducto(ds.Tables[0].Rows[0]);
+                Models.Libro producto = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectLibro(ds.Tables[0].Rows[0]);
 
                 return producto;
             }
@@ -223,17 +234,17 @@ namespace DAL
             }
         }
 
-        public List<Models.Producto> GetProductos()
+        public List<Models.Libro> GetProductos()
         {
             try
             {
                 SelectCommandText = String.Format(GET_PRODUCTOS);
                 DataSet ds = ExecuteNonReader();
 
-                List<Models.Producto> productos = new List<Models.Producto>();
+                List<Models.Libro> productos = new List<Models.Libro>();
 
                 if (ds.Tables[0].Rows.Count > 0)
-                    productos = _fill.FillListProducto(ds);
+                    productos = _fill.FillListLibro(ds);
 
                 return productos;
             }
@@ -243,7 +254,7 @@ namespace DAL
             }
         }
 
-        public List<Models.Producto> GenerarAlertaPedidoStock()
+        public List<Models.Libro> GenerarAlertaPedidoStock()
         {
             throw new NotImplementedException();
         }

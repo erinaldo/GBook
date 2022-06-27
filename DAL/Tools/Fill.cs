@@ -172,64 +172,64 @@ namespace DAL.Tools
         }
         #endregion
 
-        #region Producto
-        public Models.Producto FillObjectProducto(DataRow dr)
+        #region Libro
+        public Models.Libro FillObjectLibro(DataRow dr)
         {
             Autor _autorDAL = new Autor();
             Genero _generoDAL = new Genero();
             Editorial _editorialDAL = new Editorial();
             Producto _productoDAL = new Producto();
 
-            Models.Producto producto = new Models.Producto();
+            Models.Libro libro = new Models.Libro();
 
             try
             {
                 if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
-                    producto.Id = Convert.ToInt32(dr["Id"]);
+                    libro.Id = Convert.ToInt32(dr["Id"]);
 
                 if (dr.Table.Columns.Contains("ISBN") && !Convert.IsDBNull(dr["ISBN"]))
-                    producto.ISBN = Convert.ToString(dr["ISBN"]);
+                    libro.ISBN = Convert.ToString(dr["ISBN"]);
 
                 if (dr.Table.Columns.Contains("Nombre") && !Convert.IsDBNull(dr["ISBN"]))
-                    producto.Nombre = Convert.ToString(dr["Nombre"]);
+                    libro.Nombre = Convert.ToString(dr["Nombre"]);
 
                 if (dr.Table.Columns.Contains("Precio") && !Convert.IsDBNull(dr["Precio"]))
-                    producto.Precio = Convert.ToDouble(dr["Precio"]);
+                    libro.Precio = Convert.ToDouble(dr["Precio"]);
 
                 if (dr.Table.Columns.Contains("CantidadPaginas") && !Convert.IsDBNull(dr["CantidadPaginas"]))
-                    producto.CantidadPaginas = Convert.ToInt32(dr["CantidadPaginas"]);
+                    libro.CantidadPaginas = Convert.ToInt32(dr["CantidadPaginas"]);
 
                 if (dr.Table.Columns.Contains("EnVenta") && !Convert.IsDBNull(dr["EnVenta"]))
-                    producto.EnVenta = Convert.ToBoolean(dr["EnVenta"]);
+                    libro.EnVenta = Convert.ToBoolean(dr["EnVenta"]);
 
                 if (dr.Table.Columns.Contains("Activo") && !Convert.IsDBNull(dr["Activo"]))
-                    producto.Activo = Convert.ToBoolean(dr["Activo"]);
+                    libro.Activo = Convert.ToBoolean(dr["Activo"]);
 
                 if (dr.Table.Columns.Contains("AutorId") && !Convert.IsDBNull(dr["AutorId"]))
-                    producto.Autor = _autorDAL.GetAutor(Convert.ToInt32(dr["AutorId"]));
+                    libro.Autor = _autorDAL.GetAutor(Convert.ToInt32(dr["AutorId"]));
 
                 if (dr.Table.Columns.Contains("GeneroId") && !Convert.IsDBNull(dr["GeneroId"]))
-                    producto.Genero = _generoDAL.GetGenero(Convert.ToInt32(dr["GeneroId"]));
+                    libro.Genero = _generoDAL.GetGenero(Convert.ToInt32(dr["GeneroId"]));
 
                 if (dr.Table.Columns.Contains("EditorialId") && !Convert.IsDBNull(dr["EditorialId"]))
-                    producto.Editorial = _editorialDAL.GetEditorial(Convert.ToInt32(dr["EditorialId"]));
+                    libro.Editorial = _editorialDAL.GetEditorial(Convert.ToInt32(dr["EditorialId"]));
 
                 if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
-                    producto.Stock = _productoDAL.GetStock(producto.Id);
+                    libro.Stock = _productoDAL.GetStock(libro.Id);
 
                 if (dr.Table.Columns.Contains("Id") && !Convert.IsDBNull(dr["Id"]))
-                    producto.Alerta = _productoDAL.GetAlerta(producto.Id);
+                    libro.Alerta = _productoDAL.GetAlerta(libro.Id);
             }
             catch (Exception ex)
             {
                 throw new Exception("Error en el método FillObject, " + ex.Message);
             }
-            return producto;
+            return libro;
         }
 
-        public List<Models.Producto> FillListProducto(DataSet ds)
+        public List<Models.Libro> FillListLibro(DataSet ds)
         {
-            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectProducto(dr)).ToList();
+            return (from DataRow dr in ds.Tables[0].Rows select (new Fill()).FillObjectLibro(dr)).ToList();
         }
         #endregion
 

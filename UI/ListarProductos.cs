@@ -64,7 +64,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<ProductoDTO> productos = ProductoDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();

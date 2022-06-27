@@ -54,7 +54,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<ProductoDTO> productos = ProductoDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
@@ -63,12 +63,12 @@ namespace UI
 
         private void datagridProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Producto producto = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
-            txtISBN.Text = producto.ISBN;
-            txtNombre.Text = producto.Nombre;
-            txtPrecio.Text = producto.Precio.ToString();
+            Libro libro = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
+            txtISBN.Text = libro.ISBN;
+            txtNombre.Text = libro.Nombre;
+            txtPrecio.Text = libro.Precio.ToString();
 
-            if (producto.EnVenta == true) cbxEnVenta.Text = "Si";
+            if (libro.EnVenta == true) cbxEnVenta.Text = "Si";
             else cbxEnVenta.Text = "No";
         }
 
@@ -80,15 +80,15 @@ namespace UI
 
                 if (!string.IsNullOrWhiteSpace(txtPrecio.Text))
                 {
-                    Producto producto = new Producto()
+                    Libro libro = new Libro()
                     {
                         Id = (int)datagridProductos.CurrentRow.Cells["Id"].Value,
                         Precio = Convert.ToDouble(txtPrecio.Text),
                     };
-                    if (cbxEnVenta.Text == "Si") producto.EnVenta = true;
-                    else producto.EnVenta = false;
+                    if (cbxEnVenta.Text == "Si") libro.EnVenta = true;
+                    else libro.EnVenta = false;
 
-                    _productoService.PublicarProducto(producto);
+                    _productoService.PublicarProducto(libro);
 
                     CargarProductos();
                     Limpiar();

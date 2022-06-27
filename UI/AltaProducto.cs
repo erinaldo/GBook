@@ -88,7 +88,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<ProductoDTO> productos = ProductoDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
@@ -121,7 +121,7 @@ namespace UI
 
                 if (!string.IsNullOrWhiteSpace(txtPrecio.Text) && !string.IsNullOrWhiteSpace(txtCantidadPaginas.Text))
                 {
-                    Producto producto = new Models.Producto()
+                    Libro libro = new Models.Libro()
                     {
                         ISBN = txtISBN.Text,
                         Nombre = txtNombre.Text,
@@ -132,7 +132,7 @@ namespace UI
                         Editorial = editorial,
                     };
 
-                    _productoService.AltaProducto(producto);
+                    _productoService.AltaProducto(libro);
 
                     CargarProductos();
                     Limpiar();

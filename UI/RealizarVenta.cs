@@ -60,7 +60,7 @@ namespace UI
         
         private void CargarProductos()
         {
-            List<ProductoDTO> productos = ProductoDTO.FillListDTO(_productoService.GetProductos().Where(p => p.Activo == true && p.EnVenta == true).ToList());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos().Where(p => p.Activo == true && p.EnVenta == true).ToList());
             datagridProductosVenta.DataSource = productos;
             datagridProductosVenta.Columns["Id"].Visible = false;
             datagridProductosVenta.ClearSelection();
@@ -69,10 +69,10 @@ namespace UI
 
         private void datagridProductosVenta_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Producto producto = _productoService.GetProducto((int)datagridProductosVenta.CurrentRow.Cells["Id"].Value);
-            txtISBN.Text = producto.ISBN;
-            txtNombre.Text = producto.Nombre;
-            txtPrecioVenta.Text = producto.Precio.ToString();
+            Libro libro = _productoService.GetProducto((int)datagridProductosVenta.CurrentRow.Cells["Id"].Value);
+            txtISBN.Text = libro.ISBN;
+            txtNombre.Text = libro.Nombre;
+            txtPrecioVenta.Text = libro.Precio.ToString();
         }
 
         private void btnAgregarCarrito_Click(object sender, EventArgs e)

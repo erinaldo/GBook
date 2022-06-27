@@ -92,7 +92,7 @@ namespace UI
 
         private void GenerarAlertaPedidoStock()
         {
-            List<Producto> productos = _productoService.GenerarAlertaPedidoStock();
+            List<Libro> productos = _productoService.GenerarAlertaPedidoStock();
             
             if (productos.Count() > 0 && productos != null && mdiChildActivo == false)
             {
@@ -109,7 +109,7 @@ namespace UI
 
         private void CargarGridProductosAlerta()
         {
-            List<ProductoAlertaDTO> productos = ProductoAlertaDTO.FillListDTO(_productoService.GenerarAlertaPedidoStock());
+            List<LibroAlertaDTO> productos = LibroAlertaDTO.FillListDTO(_productoService.GenerarAlertaPedidoStock());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();

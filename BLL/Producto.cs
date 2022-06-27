@@ -109,31 +109,31 @@ namespace BLL
         #endregion
 
         #region Métodos View
-        public Models.Producto GetProducto(int productoId)
+        public Models.Libro GetProducto(int productoId)
         {
             try
             {
-                Models.Producto producto = _productoDAL.GetProducto(productoId);
+                Models.Libro producto = _productoDAL.GetProducto(productoId);
                 return producto;
             }
             catch (Exception) { throw new Exception("Hubo un error al querer obtener el producto."); }
         }
 
-        public List<Models.Producto> GetProductos()
+        public List<Models.Libro> GetProductos()
         {
             try
             {
-                List<Models.Producto> productos = _productoDAL.GetProductos();
+                List<Models.Libro> productos = _productoDAL.GetProductos();
                 return productos;
             }
             catch (Exception) { throw new Exception("Hubo un error al querer obtener los productos."); }
         }
 
-        public List<Models.Producto> GenerarAlertaPedidoStock()
+        public List<Models.Libro> GenerarAlertaPedidoStock()
         {
             try
             {
-                List<Models.Producto> productos = _productoDAL.GetProductos().Where(x => x.Stock.Cantidad <= x.Alerta.CantidadStockAviso && x.Alerta.Activo == true).ToList();
+                List<Models.Libro> productos = _productoDAL.GetProductos().Where(x => x.Stock.Cantidad <= x.Alerta.CantidadStockAviso && x.Alerta.Activo == true).ToList();
                 return productos;
             }
             catch (Exception) { throw new Exception("Hubo un error al querer generer las alertas de pedido de stock."); }
@@ -163,13 +163,19 @@ namespace BLL
         #region Tools
         private void ValidarProducto(Models.Producto producto)
         {
-            if (string.IsNullOrEmpty(producto.ISBN)) throw new Exception(TraducirMensaje("msg_ProductoISBN"));
+            if (producto.GetType() == typeof(Libro))
+            {
+                Libro libro = (Libro)producto;
+
+                if (string.IsNullOrEmpty(libro.ISBN)) throw new Exception(TraducirMensaje("msg_ProductoISBN"));
+                if (libro.CantidadPaginas <= 0) throw new Exception(TraducirMensaje("msg_ProductoCantidadPaginas"));
+                if (libro.Autor == null) throw new Exception(TraducirMensaje("msg_ProductoAutor"));
+                if (libro.Genero == null) throw new Exception(TraducirMensaje("msg_ProductoGenero"));
+                if (libro.Editorial == null) throw new Exception(TraducirMensaje("msg_ProductoEditorial"));
+            }
+
             if (string.IsNullOrEmpty(producto.Nombre)) throw new Exception(TraducirMensaje("msg_ProductoNombre"));
             if (producto.Precio <= 0) throw new Exception(TraducirMensaje("msg_ProductoPrecio"));
-            if (producto.CantidadPaginas <= 0) throw new Exception(TraducirMensaje("msg_ProductoCantidadPaginas"));
-            if (producto.Autor == null) throw new Exception(TraducirMensaje("msg_ProductoAutor"));
-            if (producto.Genero == null) throw new Exception(TraducirMensaje("msg_ProductoGenero"));
-            if (producto.Editorial == null) throw new Exception(TraducirMensaje("msg_ProductoEditorial"));
         }
 
         private string TraducirMensaje(string msgTag)

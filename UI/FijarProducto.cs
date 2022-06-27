@@ -54,7 +54,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<ProductoAlertaDTO> productos = ProductoAlertaDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroAlertaDTO> productos = LibroAlertaDTO.FillListDTO(_productoService.GetProductos());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
@@ -63,12 +63,12 @@ namespace UI
 
         private void datagridProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Producto producto = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
-            txtISBN.Text = producto.ISBN;
-            txtNombre.Text = producto.Nombre;
-            txtCantidadStockAviso.Text = producto.Alerta.CantidadStockAviso.ToString();
+            Libro libro = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
+            txtISBN.Text = libro.ISBN;
+            txtNombre.Text = libro.Nombre;
+            txtCantidadStockAviso.Text = libro.Alerta.CantidadStockAviso.ToString();
 
-            if (producto.Alerta.Activo == true) cbxActivo.Text = "Si";
+            if (libro.Alerta.Activo == true) cbxActivo.Text = "Si";
             else cbxActivo.Text = "No";
         }
 
@@ -83,13 +83,13 @@ namespace UI
                         CantidadStockAviso = int.Parse(txtCantidadStockAviso.Text),
                         Activo = cbxActivo.Text == "Si" ? true : false,
                     };
-                    Producto producto = new Producto()
+                    Libro libro = new Libro()
                     {
                         Id = (int)datagridProductos.CurrentRow.Cells["Id"].Value,
                         Alerta = alerta
                     };
 
-                    _productoService.FijarProducto(producto);
+                    _productoService.FijarProducto(libro);
 
                     CargarProductos();
                     Limpiar();

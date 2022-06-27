@@ -87,7 +87,7 @@ namespace UI
 
         private void CargarProductos()
         {
-            List<ProductoDTO> productos = ProductoDTO.FillListDTO(_productoService.GetProductos());
+            List<LibroDTO> productos = LibroDTO.FillListDTO(_productoService.GetProductos());
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
@@ -132,7 +132,7 @@ namespace UI
 
                 if (!string.IsNullOrWhiteSpace(txtPrecio.Text) && !string.IsNullOrWhiteSpace(txtCantidadPaginas.Text))
                 {
-                    Producto producto = new Models.Producto()
+                    Libro libro = new Models.Libro()
                     {
                         Id = (int)datagridProductos.SelectedRows[0].Cells["Id"].Value,
                         ISBN = txtISBN.Text,
@@ -144,7 +144,7 @@ namespace UI
                         Editorial = editorial,
                     };
 
-                    _productoService.ModificarProducto(producto);
+                    _productoService.ModificarProducto(libro);
 
                     CargarProductos();
                     Limpiar();
@@ -160,14 +160,14 @@ namespace UI
 
         private void datagridProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Producto producto = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
-            txtISBN.Text = producto.ISBN;
-            txtNombre.Text = producto.Nombre;
-            txtPrecio.Text = producto.Precio.ToString();
-            txtCantidadPaginas.Text = producto.CantidadPaginas.ToString();
-            cbxAutor.SelectedValue = producto.Autor.Id;
-            cbxGenero.SelectedValue = producto.Genero.Id;
-            cbxEditorial.SelectedValue = producto.Editorial.Id;
+            Libro libro = _productoService.GetProducto((int)datagridProductos.CurrentRow.Cells["Id"].Value);
+            txtISBN.Text = libro.ISBN;
+            txtNombre.Text = libro.Nombre;
+            txtPrecio.Text = libro.Precio.ToString();
+            txtCantidadPaginas.Text = libro.CantidadPaginas.ToString();
+            cbxAutor.SelectedValue = libro.Autor.Id;
+            cbxGenero.SelectedValue = libro.Genero.Id;
+            cbxEditorial.SelectedValue = libro.Editorial.Id;
         }
 
         private void ModificarProducto_FormClosed(object sender, FormClosedEventArgs e)
