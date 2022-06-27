@@ -37,6 +37,24 @@ namespace BLL
             catch (Exception) { throw new Exception("Hubo un error al querer obtener los usuarios."); }
         }
 
+        public List<UsuarioDTO> GetUsersDesencriptado()
+        {
+            try
+            {
+                List<UsuarioDTO> usuarios = _usuarioDAL.GetUsers();
+                List<UsuarioDTO> usuariosDesencriptado = new List<UsuarioDTO>();
+
+                foreach (UsuarioDTO user in usuarios)
+                {
+                    user.Email = _encriptacion.DesencriptarAES(user.Email);
+                    usuariosDesencriptado.Add(user);
+                }
+
+                return usuariosDesencriptado;
+            }
+            catch (Exception) { throw new Exception("Hubo un error al querer obtener los usuarios."); }
+        }
+
         public void Login(string email, string password)
         {
             try
@@ -108,6 +126,23 @@ namespace BLL
                 throw new Exception(ex.Message);
             }
         }
+
+        public int CambiarPassword(UsuarioDTO usuario, string passwordActual, string nuevaPassword)
+        {
+            try
+            {
+                ValidarCambioPassword(usuario, _encriptacion.Hash(passwordActual));
+                if (string.IsNullOrWhiteSpace(nuevaPassword) || nuevaPassword.Length < 8) throw new Exception("msg_ValidacionPassword");
+
+                string nuevaPasswordEncriptada = _encriptacion.Hash(nuevaPassword);
+
+                return _usuarioDAL.CambiarPassword(usuario, nuevaPasswordEncriptada);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
         #endregion
 
         #region Tools
@@ -128,6 +163,17 @@ namespace BLL
                 else return false;
             }
             else return false;
+        }
+
+        private void ValidarCambioPassword(Models.DTOs.UsuarioDTO user, string passwordActual)
+        {
+            Models.Usuario _usuario = _usuarioDAL.GetUsuario(user.UsuarioId);
+            if (passwordActual != _usuario.Password) throw new Exception(TraducirMensaje("msg_PasswordNoCoindice"));
+        }
+
+        private string TraducirMensaje(string msgTag)
+        {
+            return Traductor.TraducirMensaje(_idiomaDAL, msgTag);
         }
         #endregion
     }

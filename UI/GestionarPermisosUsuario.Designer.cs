@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionarPermisosUsuario));
             this.cbxUsuarios = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -234,9 +235,10 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "GestionarPermisosUsuario";
-            this.Text = "GestionarPermisosUsuario";
+            this.Text = "GBook - Gestionar permisos de usuario";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionarPermisosUsuario_FormClosed);
             this.Load += new System.EventHandler(this.GestionarPermisosUsuario_Load);
             this.ResumeLayout(false);

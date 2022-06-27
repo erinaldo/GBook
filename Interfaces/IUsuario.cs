@@ -11,8 +11,10 @@ namespace Interfaces
     public interface IUsuario
     {
         List<UsuarioDTO> GetUsers();
+        List<UsuarioDTO> GetUsersDesencriptado();
         int RegistrarUsuario(Usuario usuario);
         void Login(string email, string password);
         void Logout();
+        int CambiarPassword(UsuarioDTO usuario, string passwordActual, string nuevaPassword);
     }
 }

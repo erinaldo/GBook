@@ -60,6 +60,8 @@ namespace UI
         private void Main_Load(object sender, EventArgs e)
         {
             CambiarColorMDI();
+
+            UsuarioDTO usuario = Sesion.GetInstance();
             
             Sesion.SuscribirObservador(this);
             MostrarIdiomasDisponibles();
@@ -426,6 +428,14 @@ namespace UI
             gestionarPermisosUsuario.MdiParent = this;
             gestionarPermisosUsuario.StartPosition = FormStartPosition.CenterScreen;
             gestionarPermisosUsuario.Show();
+        }
+
+        private void cambiarPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CambiarPassword cambiarPassword = new CambiarPassword(_traductorService, _usuarioService);
+            cambiarPassword.MdiParent = this;
+            cambiarPassword.StartPosition = FormStartPosition.CenterScreen;
+            cambiarPassword.Show();
         }
     }
 }

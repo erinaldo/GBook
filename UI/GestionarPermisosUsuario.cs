@@ -59,7 +59,7 @@ namespace UI
 
         private void CargarCombos()
         {
-            cbxUsuarios.DataSource = _usuarioService.GetUsers();
+            cbxUsuarios.DataSource = _usuarioService.GetUsersDesencriptado();
             cbxUsuarios.ValueMember = "UsuarioId";
             cbxUsuarios.DisplayMember = "Email";
             cbxUsuarios.SelectedIndex = -1;

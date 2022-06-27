@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestionFamiliaPatente));
             this.treePatenteFamilia = new System.Windows.Forms.TreeView();
             this.cbxPatente = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -470,9 +471,10 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.treePatenteFamilia);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "GestionFamiliaPatente";
-            this.Text = "GestionFamiliaPatente";
+            this.Text = "GBook - Gestión de familia y patente";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GestionFamiliaPatente_FormClosed);
             this.Load += new System.EventHandler(this.GestionFamiliaPatente_Load);
             this.ResumeLayout(false);

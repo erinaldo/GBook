@@ -64,13 +64,13 @@
             this.cargarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarEtiquetasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.seguridadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblAlerta = new System.Windows.Forms.Label();
-            this.datagridProductos = new System.Windows.Forms.DataGridView();
-            this.timerAlerta = new System.Windows.Forms.Timer(this.components);
             this.permisosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónDeFamiliaYPatenteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gestiónPermisosDeUsuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cambiarPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblAlerta = new System.Windows.Forms.Label();
+            this.datagridProductos = new System.Windows.Forms.DataGridView();
+            this.timerAlerta = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
             this.SuspendLayout();
@@ -390,38 +390,6 @@
             this.seguridadToolStripMenuItem.Tag = "menu_Seguridad";
             this.seguridadToolStripMenuItem.Text = "Seguridad";
             // 
-            // lblAlerta
-            // 
-            this.lblAlerta.AutoSize = true;
-            this.lblAlerta.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAlerta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
-            this.lblAlerta.Location = new System.Drawing.Point(12, 84);
-            this.lblAlerta.Name = "lblAlerta";
-            this.lblAlerta.Size = new System.Drawing.Size(64, 21);
-            this.lblAlerta.TabIndex = 3;
-            this.lblAlerta.Tag = "lbl_AlertaPedidoStock";
-            this.lblAlerta.Text = "label1";
-            this.lblAlerta.Visible = false;
-            // 
-            // datagridProductos
-            // 
-            this.datagridProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.datagridProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.datagridProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.datagridProductos.Location = new System.Drawing.Point(12, 108);
-            this.datagridProductos.Name = "datagridProductos";
-            this.datagridProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.datagridProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridProductos.Size = new System.Drawing.Size(1218, 278);
-            this.datagridProductos.TabIndex = 106;
-            this.datagridProductos.Visible = false;
-            this.datagridProductos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridProductos_DataBindingComplete);
-            // 
-            // timerAlerta
-            // 
-            this.timerAlerta.Interval = 999999999;
-            this.timerAlerta.Tick += new System.EventHandler(this.timerAlerta_Tick);
-            // 
             // permisosToolStripMenuItem
             // 
             this.permisosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -454,6 +422,39 @@
             this.cambiarPasswordToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cambiarPasswordToolStripMenuItem.Tag = "menu_CambiarPassword";
             this.cambiarPasswordToolStripMenuItem.Text = "Cambiar password";
+            this.cambiarPasswordToolStripMenuItem.Click += new System.EventHandler(this.cambiarPasswordToolStripMenuItem_Click);
+            // 
+            // lblAlerta
+            // 
+            this.lblAlerta.AutoSize = true;
+            this.lblAlerta.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAlerta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.lblAlerta.Location = new System.Drawing.Point(12, 84);
+            this.lblAlerta.Name = "lblAlerta";
+            this.lblAlerta.Size = new System.Drawing.Size(64, 21);
+            this.lblAlerta.TabIndex = 3;
+            this.lblAlerta.Tag = "lbl_AlertaPedidoStock";
+            this.lblAlerta.Text = "label1";
+            this.lblAlerta.Visible = false;
+            // 
+            // datagridProductos
+            // 
+            this.datagridProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.datagridProductos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.datagridProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.datagridProductos.Location = new System.Drawing.Point(12, 108);
+            this.datagridProductos.Name = "datagridProductos";
+            this.datagridProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.datagridProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datagridProductos.Size = new System.Drawing.Size(1218, 278);
+            this.datagridProductos.TabIndex = 106;
+            this.datagridProductos.Visible = false;
+            this.datagridProductos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridProductos_DataBindingComplete);
+            // 
+            // timerAlerta
+            // 
+            this.timerAlerta.Interval = 999999999;
+            this.timerAlerta.Tick += new System.EventHandler(this.timerAlerta_Tick);
             // 
             // Main
             // 

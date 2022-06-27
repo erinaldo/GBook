@@ -23,10 +23,12 @@ namespace DAL
 
         #region Querys
         private const string GET_USERS = @"SELECT * FROM Usuario";
+        private const string GET_USUARIO = @"SELECT TOP 1 * FROM Usuario WHERE UsuarioId = {0}";
         private const string REGISTRAR_USUARIO = @"INSERT INTO Usuario (Email, Password, Nombre, Apellido, Bloqueo) 
                                                    OUTPUT inserted.UsuarioId VALUES (@parEmail, @parPassword, @parNombre, @parApellido, @parBloqueo)";
         private const string LOGIN = @"SELECT TOP 1 * FROM Usuario WHERE Email = '{0}'";
         private const string BLOQUEAR_USUARIO = @"UPDATE Usuario SET Bloqueo = Bloqueo + 1 WHERE Email = @parEmail";
+        private const string CAMBIAR_PASSWORD = @"UPDATE Usuario SET Password = @parPassword OUTPUT inserted.UsuarioId WHERE UsuarioId = @parUsuarioId";
         #endregion
 
         #region Métodos View
@@ -43,6 +45,23 @@ namespace DAL
                     usuariosDTO = _fill.FillListUsuarioDTO(ds);
 
                 return usuariosDTO;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public Models.Usuario GetUsuario(int usuarioId)
+        {
+            try
+            {
+                SelectCommandText = String.Format(GET_USUARIO, usuarioId);
+
+                DataSet ds = ExecuteNonReader();
+                Models.Usuario usuario = ds.Tables[0].Rows.Count <= 0 ? null : _fill.FillObjectUsuario(ds.Tables[0].Rows[0]);
+
+                return usuario;
             }
             catch (Exception)
             {
@@ -103,6 +122,25 @@ namespace DAL
                 ExecuteNonQuery();
             }
             catch (Exception)
+            {
+                throw new Exception("Error en la base de datos.");
+            }
+        }
+
+        public int CambiarPassword(UsuarioDTO usuario, string nuevaPassword)
+        {
+            try
+            {
+                ExecuteCommandText = CAMBIAR_PASSWORD;
+
+                ExecuteParameters.Parameters.Clear();
+
+                ExecuteParameters.Parameters.AddWithValue("@parUsuarioId", usuario.UsuarioId);
+                ExecuteParameters.Parameters.AddWithValue("@parPassword", nuevaPassword);
+
+                return ExecuteNonEscalar();
+            }
+            catch
             {
                 throw new Exception("Error en la base de datos.");
             }
