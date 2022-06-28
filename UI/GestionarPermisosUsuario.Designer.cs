@@ -43,6 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.treeAsignacionPermisos = new System.Windows.Forms.TreeView();
             this.btnGuardarFamiliaPatente = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbxUsuarios
@@ -205,7 +206,7 @@
             this.btnGuardarFamiliaPatente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnGuardarFamiliaPatente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarFamiliaPatente.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarFamiliaPatente.Location = new System.Drawing.Point(496, 361);
+            this.btnGuardarFamiliaPatente.Location = new System.Drawing.Point(421, 361);
             this.btnGuardarFamiliaPatente.Name = "btnGuardarFamiliaPatente";
             this.btnGuardarFamiliaPatente.Size = new System.Drawing.Size(114, 41);
             this.btnGuardarFamiliaPatente.TabIndex = 65;
@@ -214,12 +215,28 @@
             this.btnGuardarFamiliaPatente.UseVisualStyleBackColor = false;
             this.btnGuardarFamiliaPatente.Click += new System.EventHandler(this.btnGuardarFamiliaPatente_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(562, 361);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(114, 41);
+            this.btnEliminar.TabIndex = 66;
+            this.btnEliminar.Tag = "btn_EliminarPatente";
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // GestionarPermisosUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(800, 414);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardarFamiliaPatente);
             this.Controls.Add(this.treeAsignacionPermisos);
             this.Controls.Add(this.btnAgregarPatente);
@@ -262,5 +279,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TreeView treeAsignacionPermisos;
         private System.Windows.Forms.Button btnGuardarFamiliaPatente;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

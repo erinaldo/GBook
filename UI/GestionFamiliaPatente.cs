@@ -153,47 +153,54 @@ namespace UI
 
         private void CargarTreeFamilia(bool familia)
         {
-            if (_seleccionFamilia == null) return;
-
-            IList<Componente> _familia = null;
-            IList<Componente> _hijo = null;
-
-            if (familia)
+            try
             {
-                _familia = _permisoService.TraerFamiliaPatentes(_seleccionFamilia.Id);
-                foreach (var i in _familia)
-                {
-                    if (i.GetType() == typeof(Familia))
-                    {
-                        _seleccionFamilia.AgregarHijo(i);
-                    }
-                    else if (i.GetType() == typeof(Patente))
-                    {
-                        _hijo = _permisoService.TraerFamiliaPatentes(i.Id);
-                        foreach (var j in _hijo)
-                        {
-                            if (_hijo.Count == 0)
-                            {
-                                i.AgregarHijo(j);
-                            }
-                        }
+                if (_seleccionFamilia == null) return;
 
-                        _seleccionFamilia.AgregarHijo(i);
+                IList<Componente> _familia = null;
+                IList<Componente> _hijo = null;
+
+                if (familia)
+                {
+                    _familia = _permisoService.TraerFamiliaPatentes(_seleccionFamilia.Id);
+                    foreach (var i in _familia)
+                    {
+                        if (i.GetType() == typeof(Familia))
+                        {
+                            _seleccionFamilia.AgregarHijo(i);
+                        }
+                        else if (i.GetType() == typeof(Patente))
+                        {
+                            _hijo = _permisoService.TraerFamiliaPatentes(i.Id);
+                            foreach (var j in _hijo)
+                            {
+                                if (_hijo.Count == 0)
+                                {
+                                    i.AgregarHijo(j);
+                                }
+                            }
+
+                            _seleccionFamilia.AgregarHijo(i);
+                        }
                     }
                 }
+                else _familia = _seleccionFamilia.Hijos;
+
+                treePatenteFamilia.Nodes.Clear();
+                TreeNode root = new TreeNode(_seleccionFamilia.Nombre);
+                root.Tag = _seleccionFamilia;
+                treePatenteFamilia.Nodes.Add(root);
+
+                foreach (var item in _familia)
+                {
+                    MostrarEnTreePatenteFamilia(root, item);
+                }
+                treePatenteFamilia.ExpandAll();
             }
-            else _familia = _seleccionFamilia.Hijos;
-
-            treePatenteFamilia.Nodes.Clear();
-            TreeNode root = new TreeNode(_seleccionFamilia.Nombre);
-            root.Tag = _seleccionFamilia;
-            treePatenteFamilia.Nodes.Add(root);
-
-            foreach (var item in _familia)
+            catch
             {
-                MostrarEnTreePatenteFamilia(root, item);
+                MessageBox.Show(TraducirMensaje("msg_ErrorCargarArbol"));
             }
-            treePatenteFamilia.ExpandAll();
         }
 
         private void MostrarEnTreePatenteFamilia(TreeNode treeNode, Componente componente)
@@ -320,26 +327,31 @@ namespace UI
 
         private void ValidarArbol()
         {
-            var _familia = _seleccionFamilia;
-            var _familiaComparacion = _permisoService.TraerFamiliaPatentes((int)cbxFamiliaAgregar.SelectedValue);
-            
-
-            foreach (var item in _familiaComparacion)
+            try
             {
-                if (item.Permiso == Permiso.EsFamilia && _familia.Permiso == Permiso.EsFamilia)
-                {
-                    if (item.Id == _familia.Id) throw new Exception(TraducirMensaje("msg_Recursividad"));
-                }
+                var _familia = _seleccionFamilia;
+                var _familiaComparacion = _permisoService.TraerFamiliaPatentes((int)cbxFamiliaAgregar.SelectedValue);
 
-                foreach (var item2 in _familia.Hijos)
+                foreach (var item in _familiaComparacion)
                 {
-                    if (item2.Permiso == Permiso.EsFamilia && item.Permiso == Permiso.EsFamilia)
+                    if (item.Permiso == Permiso.EsFamilia && _familia.Permiso == Permiso.EsFamilia)
                     {
-                        if (item2.Id == item.Id) throw new Exception(TraducirMensaje("msg_Recursividad"));
+                        if (item.Id == _familia.Id) throw new Exception(TraducirMensaje("msg_Recursividad"));
+                    }
+
+                    foreach (var item2 in _familia.Hijos)
+                    {
+                        if (item2.Permiso == Permiso.EsFamilia && item.Permiso == Permiso.EsFamilia)
+                        {
+                            if (item2.Id == item.Id) throw new Exception(TraducirMensaje("msg_Recursividad"));
+                        }
                     }
                 }
             }
-
+            catch
+            {
+                MessageBox.Show(TraducirMensaje("msg_ErrorCargarArbol"));
+            }
         }
 
         private void GestionFamiliaPatente_FormClosed(object sender, FormClosedEventArgs e)

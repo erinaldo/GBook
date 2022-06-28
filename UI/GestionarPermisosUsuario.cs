@@ -2,6 +2,7 @@
 using Interfaces.Composite;
 using Interfaces.Observer;
 using Models.Composite;
+using Models.DTOs;
 using Models.Observer;
 using Servicios;
 using Servicios.Observer;
@@ -89,81 +90,109 @@ namespace UI
 
         private void MostrarPermisosUsuario(Models.DTOs.UsuarioDTO usuario)
         {
-            treeAsignacionPermisos.Nodes.Clear();
-            TreeNode root = new TreeNode(usuario.Email);
-            foreach (var item in usuario.Permisos)
+            try
             {
-                MostrarTreeUsuario(root, item);
+                treeAsignacionPermisos.Nodes.Clear();
+                TreeNode root = new TreeNode(usuario.Email);
+                foreach (var item in usuario.Permisos)
+                {
+                    MostrarTreeUsuario(root, item);
+                }
+                treeAsignacionPermisos.Nodes.Add(root);
+                treeAsignacionPermisos.ExpandAll();
             }
-            treeAsignacionPermisos.Nodes.Add(root);
-            treeAsignacionPermisos.ExpandAll();
+            catch 
+            {
+                MessageBox.Show(TraducirMensaje("msg_ErrorCargarArbol"));
+            }
         }
 
         private void MostrarTreeUsuario(TreeNode padre, Componente componente)
         {
-            TreeNode hijo = new TreeNode(componente.Nombre);
-            hijo.Tag = componente;
-            padre.Nodes.Add(hijo);
-            foreach (var item in componente.Hijos)
+            try
             {
-                MostrarTreeUsuario(hijo, item);
+                TreeNode hijo = new TreeNode(componente.Nombre);
+                hijo.Tag = componente;
+                padre.Nodes.Add(hijo);
+                foreach (var item in componente.Hijos)
+                {
+                    MostrarTreeUsuario(hijo, item);
+                }
+            }
+            catch
+            {
+                MessageBox.Show(TraducirMensaje("msg_ErrorCargarArbol"));
             }
         }
 
         private void btnAgregarFamilia_Click(object sender, EventArgs e)
         {
-            bool tieneFamilia = false;
-            if (_usuario != null)
+            try
             {
-                var familia = (Familia)cbxFamilias.SelectedItem;
-                if (familia != null)
+                bool tieneFamilia = false;
+                if (_usuario != null)
                 {
-                    foreach (var item in _usuario.Permisos)
+                    var familia = (Familia)cbxFamilias.SelectedItem;
+                    if (familia != null)
                     {
-                        if (_permisoService.ExisteComponente(item, familia.Id)) tieneFamilia = true;
+                        foreach (var item in _usuario.Permisos)
+                        {
+                            if (_permisoService.ExisteComponente(item, familia.Id)) tieneFamilia = true;
+                        }
                     }
-                }
 
-                if (tieneFamilia)
-                {
-                    MessageBox.Show(TraducirMensaje("msg_UsuarioFamiliaAsociada"));
+                    if (tieneFamilia)
+                    {
+                        MessageBox.Show(TraducirMensaje("msg_UsuarioFamiliaAsociada"));
+                    }
+                    else
+                    {
+                        _permisoService.GetComponenteFamilia(familia);
+                        _usuario.Permisos.Add(familia);
+                        MostrarPermisosUsuario(_usuario);
+                    }
                 }
                 else
                 {
-                    _permisoService.GetComponenteFamilia(familia);
-                    _usuario.Permisos.Add(familia);
-                    MostrarPermisosUsuario(_usuario);
+                    MessageBox.Show(TraducirMensaje("msg_SeleccionarUsuario"));
                 }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show(TraducirMensaje("msg_SeleccionarUsuario"));
+                MessageBox.Show(TraducirMensaje("msg_PermisosGuardadosError"));
             }
         }
 
         private void btnAgregarPatente_Click(object sender, EventArgs e)
         {
-            if (_usuario != null)
+            try
             {
-                var patente = (Patente)cbxPatentes.SelectedItem;
-                if (patente != null)
+                if (_usuario != null)
                 {
-                    bool tienePatente = false;
-                    foreach (var item in _usuario.Permisos)
+                    var patente = (Patente)cbxPatentes.SelectedItem;
+                    if (patente != null)
                     {
-                        if (_permisoService.ExisteComponente(item, patente.Id)) tienePatente = true; break;
-                    }
+                        bool tienePatente = false;
+                        foreach (Componente item in _usuario.Permisos)
+                        {
+                            if (_permisoService.ExisteComponente(item, patente.Id)) tienePatente = true;
+                        }
 
-                    if (tienePatente)
-                    {
-                        MessageBox.Show(TraducirMensaje("msg_PatenteYaAsociada"));
-                    }
-                    else
-                    {
-                        _usuario.Permisos.Add(patente);
-                        MostrarPermisosUsuario(_usuario);
+                        if (tienePatente)
+                        {
+                            MessageBox.Show(TraducirMensaje("msg_PatenteYaAsociada"));
+                        }
+                        else
+                        {
+                            _usuario.Permisos.Add(patente);
+                            MostrarPermisosUsuario(_usuario);
+                        }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(TraducirMensaje("msg_PermisosGuardadosError"));
             }
         }
 
@@ -174,6 +203,7 @@ namespace UI
                 _permisoService.GuardarPermiso(_usuario);
 
                 MessageBox.Show(TraducirMensaje("msg_PermisosGuardadosExito"));
+                _usuario = null;
 
                 treeAsignacionPermisos.Nodes.Clear();
             }
@@ -187,6 +217,47 @@ namespace UI
         {
             Sesion.DesuscribirObservador(this);
             this.Dispose();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (treeAsignacionPermisos.SelectedNode != null)
+                {
+                    // Hago esto para evitar errores
+                    UsuarioDTO usuario = _seleccionUsuario;
+                    usuario = _usuario;
+
+                    IList<Componente> familia;
+                    familia = usuario.Permisos;
+
+                    foreach (var item in familia.ToList())
+                    {
+                        if (treeAsignacionPermisos.SelectedNode.Text == item.Nombre)
+                        {
+                            item.BorrarHijo(item);
+                            usuario.Permisos.Remove(item);
+                        }
+
+                        foreach (var item2 in item.Hijos)
+                        {
+                            if (treeAsignacionPermisos.SelectedNode.Text == item2.Nombre)
+                            {
+                                item.BorrarHijo(item2);
+                                usuario.Permisos.Remove(item2);
+                            }
+                        }
+                    }
+
+                    _usuario = usuario;
+                    MostrarPermisosUsuario(_usuario);
+                }
+            }
+            catch
+            {
+                MessageBox.Show(TraducirMensaje("msg_PermisosGuardadosError"));
+            }
         }
     }
 }
