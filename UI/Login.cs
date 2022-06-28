@@ -46,7 +46,7 @@ namespace UI
         {
             try
             {
-                _usuarioService.Login(txtEmail.Text, txtPassword.Text);
+                _usuarioService.Login(txtEmail.Text.ToLower(), txtPassword.Text);
                 
                 Limpiar();
                 this.Hide();

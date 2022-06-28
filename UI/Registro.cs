@@ -47,9 +47,12 @@ namespace UI
         {
             try
             {
+                if (_usuarioService.GetUsersDesencriptado().Where(x => x.Email == txtEmail.Text.ToLower()).Any())
+                    throw new Exception("Ese email ya está siendo utilizado.");
+
                 Usuario usuario = new Usuario()
                 {
-                    Email = txtEmail.Text,
+                    Email = txtEmail.Text.ToLower(),
                     Nombre = txtNombre.Text,
                     Apellido = txtApellido.Text,
                     Password = txtPassword.Text,

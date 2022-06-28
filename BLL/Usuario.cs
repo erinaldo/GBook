@@ -11,6 +11,7 @@ using Servicios;
 using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using System.Configuration;
 
 namespace BLL
 {
@@ -190,7 +191,8 @@ namespace BLL
         {
             try
             {
-                string directorio = $"C:\\GBook\\{usuario}\\";
+                string ruta = ConfigurationManager.AppSettings["Directorio_Registro"];
+                string directorio = $"{ruta}{usuario}\\";
                 string _password = $"Contraseña: {password}";
 
                 if (!Directory.Exists(directorio))
