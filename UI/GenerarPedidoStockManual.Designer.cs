@@ -65,6 +65,8 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.txtPrecioCompra = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductosCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCarrito)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +79,7 @@
             this.datagridProductosCompra.Name = "datagridProductosCompra";
             this.datagridProductosCompra.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridProductosCompra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridProductosCompra.Size = new System.Drawing.Size(773, 335);
+            this.datagridProductosCompra.Size = new System.Drawing.Size(1011, 308);
             this.datagridProductosCompra.TabIndex = 66;
             this.datagridProductosCompra.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridProductosCompra_CellClick);
             this.datagridProductosCompra.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridProductosCompra_DataBindingComplete);
@@ -90,7 +92,7 @@
             this.datagridCarrito.Name = "datagridCarrito";
             this.datagridCarrito.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridCarrito.Size = new System.Drawing.Size(773, 362);
+            this.datagridCarrito.Size = new System.Drawing.Size(1011, 308);
             this.datagridCarrito.TabIndex = 67;
             this.datagridCarrito.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridCarrito_DataBindingComplete);
             // 
@@ -471,12 +473,42 @@
             this.txtPrecioCompra.Size = new System.Drawing.Size(216, 16);
             this.txtPrecioCompra.TabIndex = 102;
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(279, 741);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(111, 35);
+            this.btnEliminar.TabIndex = 142;
+            this.btnEliminar.Tag = "btn_EliminarCarrito";
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.lblTotal.Location = new System.Drawing.Point(966, 748);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(64, 21);
+            this.lblTotal.TabIndex = 143;
+            this.lblTotal.Tag = "lbl_Total";
+            this.lblTotal.Text = "Total:";
+            this.lblTotal.Visible = false;
+            // 
             // GenerarPedidoStockManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(1065, 799);
+            this.ClientSize = new System.Drawing.Size(1302, 782);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.txtPrecioCompra);
@@ -566,5 +598,7 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtPrecioCompra;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Label lblTotal;
     }
 }

@@ -25,6 +25,7 @@ namespace UI
         private readonly ITraductor _traductorService;
 
         private List<DetalleComprobante> _carrito;
+        string labelTotalTexto;
 
         public RealizarVenta(IProducto productoService, ILibro libroService, IVenta ventaService, ITraductor traductorService)
         {
@@ -43,6 +44,8 @@ namespace UI
 
             Sesion.SuscribirObservador(this);
             UpdateLanguage(Sesion.GetInstance().Idioma);
+
+            labelTotalTexto = lblTotal.Text;
         }
 
         public void UpdateLanguage(IIdioma idioma)
@@ -118,6 +121,9 @@ namespace UI
             datagridCarrito.DataSource = carritoDTO;
             datagridCarrito.ClearSelection();
             datagridCarrito.TabStop = false;
+            datagridCarrito.Columns["Id"].Visible = false;
+
+            CalcularTotal();
         }
 
         private void Limpiar()
@@ -178,6 +184,35 @@ namespace UI
         private void datagridCarrito_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             datagridCarrito.ClearSelection();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (datagridCarrito.CurrentRow != null)
+                {
+                    int productoId = (int)datagridCarrito.CurrentRow.Cells["Id"].Value;
+                    _carrito.RemoveAll(x => x.Producto.Id == productoId);
+
+                    CargarCarrito();
+                }
+            }
+            catch
+            {
+                MessageBox.Show(TraducirMensaje("msg_ErrorEliminarCarrito"));
+            }
+        }
+
+        private void CalcularTotal()
+        {
+            if (_carrito.Count > 0)
+            {
+                double total = _carrito.Sum(x => x.Total);
+                lblTotal.Text = $"{labelTotalTexto}: ${total}";
+                lblTotal.Visible = true;
+            }
+            else lblTotal.Visible = false;
         }
     }
 }

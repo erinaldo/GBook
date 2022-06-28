@@ -8,6 +8,7 @@ namespace Models.DTOs
 {
     public class CarritoDTO
     {
+        public int Id { get; set; }
         public string Producto { get; set; }
         public string PrecioUnitario { get; set; }
         public string Cantidad { get; set; }
@@ -17,6 +18,7 @@ namespace Models.DTOs
         {
             return new CarritoDTO()
             {
+                Id = carrito.Producto.Id,
                 Producto = carrito.Producto.Nombre,
                 PrecioUnitario = carrito.PrecioUnitario.ToString(),
                 Cantidad = carrito.Cantidad.ToString(),

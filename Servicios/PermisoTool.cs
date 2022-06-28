@@ -24,7 +24,6 @@ namespace Servicios
                     existePermiso = EstaPermisoEnFamilia(item, permiso, existePermiso);
                     if (existePermiso) return true;
                 }
-
             }
 
             return existePermiso;

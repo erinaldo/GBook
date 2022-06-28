@@ -374,11 +374,13 @@
     <Content Include="Scripts\script_insert_etiquetas.txt" />
     <Content Include="Scripts\script_insert_etiquetas_v2.txt" />
     <Content Include="Scripts\script_insert_etiquetas_v3.txt" />
+    <Content Include="Scripts\script_insert_etiquetas_v4.txt" />
     <Content Include="Scripts\script_v1_limpio.sql" />
     <Content Include="Scripts\script_v2.sql" />
     <Content Include="Scripts\script_v3.sql" />
     <Content Include="Scripts\script_v4.sql" />
     <Content Include="Scripts\script_v6.sql" />
+    <Content Include="Scripts\script_v7.sql" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll" />

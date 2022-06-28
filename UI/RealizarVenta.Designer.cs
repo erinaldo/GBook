@@ -50,6 +50,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtDetalle = new System.Windows.Forms.TextBox();
             this.btnRealizarVenta = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.lblTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datagridProductosVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datagridCarrito)).BeginInit();
             this.SuspendLayout();
@@ -220,7 +222,7 @@
             this.datagridProductosVenta.Name = "datagridProductosVenta";
             this.datagridProductosVenta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridProductosVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridProductosVenta.Size = new System.Drawing.Size(773, 335);
+            this.datagridProductosVenta.Size = new System.Drawing.Size(1011, 308);
             this.datagridProductosVenta.TabIndex = 105;
             this.datagridProductosVenta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridProductosVenta_CellClick);
             this.datagridProductosVenta.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridProductosVenta_DataBindingComplete);
@@ -245,7 +247,7 @@
             this.datagridCarrito.Name = "datagridCarrito";
             this.datagridCarrito.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.datagridCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.datagridCarrito.Size = new System.Drawing.Size(773, 362);
+            this.datagridCarrito.Size = new System.Drawing.Size(1011, 308);
             this.datagridCarrito.TabIndex = 120;
             this.datagridCarrito.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.datagridCarrito_DataBindingComplete);
             // 
@@ -296,12 +298,42 @@
             this.btnRealizarVenta.UseVisualStyleBackColor = false;
             this.btnRealizarVenta.Click += new System.EventHandler(this.btnRealizarVenta_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(275, 724);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(111, 35);
+            this.btnEliminar.TabIndex = 143;
+            this.btnEliminar.Tag = "btn_EliminarCarrito";
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(210)))), ((int)(((byte)(135)))));
+            this.lblTotal.Location = new System.Drawing.Point(957, 731);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(64, 21);
+            this.lblTotal.TabIndex = 144;
+            this.lblTotal.Tag = "lbl_Total";
+            this.lblTotal.Text = "Total:";
+            this.lblTotal.Visible = false;
+            // 
             // RealizarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(1054, 782);
+            this.ClientSize = new System.Drawing.Size(1302, 763);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtDetalle);
@@ -361,5 +393,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDetalle;
         private System.Windows.Forms.Button btnRealizarVenta;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
