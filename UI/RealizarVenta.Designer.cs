@@ -216,8 +216,14 @@
             // 
             // datagridProductosVenta
             // 
+            this.datagridProductosVenta.AllowUserToAddRows = false;
+            this.datagridProductosVenta.AllowUserToDeleteRows = false;
+            this.datagridProductosVenta.AllowUserToResizeColumns = false;
+            this.datagridProductosVenta.AllowUserToResizeRows = false;
             this.datagridProductosVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.datagridProductosVenta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.datagridProductosVenta.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.datagridProductosVenta.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2;
             this.datagridProductosVenta.Location = new System.Drawing.Point(275, 39);
             this.datagridProductosVenta.Name = "datagridProductosVenta";
             this.datagridProductosVenta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;

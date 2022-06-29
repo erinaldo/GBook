@@ -69,6 +69,7 @@ namespace UI
             datagridVentas.Columns["Id"].Visible = false;
             datagridVentas.ClearSelection();
             datagridVentas.TabStop = false;
+            datagridVentas.ReadOnly = true;
         }
 
         private void VisualizarVentas_FormClosed(object sender, FormClosedEventArgs e)

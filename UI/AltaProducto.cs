@@ -94,7 +94,8 @@ namespace UI
             datagridProductos.DataSource = productos;
             datagridProductos.Columns["Id"].Visible = false;
             datagridProductos.ClearSelection();
-            datagridProductos.TabStop = false;            
+            datagridProductos.TabStop = false;
+            datagridProductos.ReadOnly = true;
         }
 
         private void btnAlta_Click(object sender, EventArgs e)

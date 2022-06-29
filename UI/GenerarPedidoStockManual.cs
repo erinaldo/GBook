@@ -69,6 +69,7 @@ namespace UI
             datagridProductosCompra.Columns["Id"].Visible = false;
             datagridProductosCompra.ClearSelection();
             datagridProductosCompra.TabStop = false;
+            datagridProductosCompra.ReadOnly = true;
         }
 
         private void datagridProductosCompra_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -121,6 +122,7 @@ namespace UI
             datagridCarrito.ClearSelection();
             datagridCarrito.TabStop = false;
             datagridCarrito.Columns["Id"].Visible = false;
+            datagridCarrito.ReadOnly = true;
 
             CalcularTotal();
         }

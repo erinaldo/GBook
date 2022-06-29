@@ -80,6 +80,7 @@ namespace UI
             datagridAutores.Columns["Activo"].Visible = false;
             datagridAutores.ClearSelection();
             datagridAutores.TabStop = false;
+            datagridAutores.ReadOnly = true;
         }
 
         private void Limpiar()

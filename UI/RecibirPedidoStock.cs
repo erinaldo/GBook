@@ -59,6 +59,7 @@ namespace UI
             datagridPedidosStock.Columns["Id"].Visible = false;
             datagridPedidosStock.ClearSelection();
             datagridPedidosStock.TabStop = false;
+            datagridPedidosStock.ReadOnly = true;
         }
 
         private void btnRecibirPedido_Click(object sender, EventArgs e)

@@ -42,6 +42,7 @@ namespace UI
             datagridEditoriales.Columns["Activo"].Visible = false;
             datagridEditoriales.ClearSelection();
             datagridEditoriales.TabStop = false;
+            datagridEditoriales.ReadOnly = true;
         }
 
         public void UpdateLanguage(IIdioma idioma)

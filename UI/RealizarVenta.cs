@@ -7,12 +7,8 @@ using Servicios;
 using Servicios.Observer;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -70,6 +66,7 @@ namespace UI
             datagridProductosVenta.Columns["Id"].Visible = false;
             datagridProductosVenta.ClearSelection();
             datagridProductosVenta.TabStop = false;
+            datagridProductosVenta.ReadOnly = true;
         }
 
         private void datagridProductosVenta_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -122,6 +119,7 @@ namespace UI
             datagridCarrito.ClearSelection();
             datagridCarrito.TabStop = false;
             datagridCarrito.Columns["Id"].Visible = false;
+            datagridCarrito.ReadOnly = true;
 
             CalcularTotal();
         }

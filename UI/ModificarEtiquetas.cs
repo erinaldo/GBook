@@ -77,6 +77,7 @@ namespace UI
                 datagridTraducciones.DataSource = _traducciones;
                 datagridTraducciones.ClearSelection();
                 datagridTraducciones.TabStop = false;
+                datagridTraducciones.ReadOnly = true;
             }
         }
 

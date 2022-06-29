@@ -57,6 +57,7 @@ namespace UI
             datagridGenero.Columns["Activo"].Visible = false;
             datagridGenero.ClearSelection();
             datagridGenero.TabStop = false;
+            datagridGenero.ReadOnly = true;
         }
 
         private void Limpiar()

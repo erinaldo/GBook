@@ -37,6 +37,7 @@ namespace UI
             datagridIdiomas.Columns["Default"].Visible = false;
             datagridIdiomas.ClearSelection();
             datagridIdiomas.TabStop = false;
+            datagridIdiomas.ReadOnly = true;
         }
 
         private void btnAlta_Click(object sender, EventArgs e)
